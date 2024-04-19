@@ -6,10 +6,10 @@
     <title>Admin Manager</title>
     <!--JS-->
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
-    <script src="resources/js/core.js"></script>
+    <script src="2.Admin/js/core.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!--Style CSS-->
-    <link rel="stylesheet" type="text/css" href="resources/css/core.css" />
+    <link rel="stylesheet" type="text/css" href="2.Admin/css/core.css" />
 </head>
 <body>
     <!--Top sidebar-->
@@ -17,7 +17,7 @@
         <div class="header-content">
             <!--Logo and name page-->
             <a href="#" title="Logo">
-                <img src="resources/images/ptit_logo.png" alt="logo" class="logo">
+                <img src="2.Admin/images/ptit_logo.png" alt="logo" class="logo">
             </a>
             <h3 style="margin-left: 100px; top: 20px;">Trang quản trị viên</h3>
 
@@ -29,19 +29,19 @@
 
             <!--Notification-->
             <button class="notification">
-                <img src="resources/images/notification.svg">
+                <img src="2.Admin/images/notification.svg">
             </button>
 
             <!--Setting-->
             <button class="setting">
-                <img src="resources/images/setting.svg">
+                <img src="2.Admin/images/setting.svg">
             </button>
 
             <!--Avatar and username-->
             <button class="admin" onclick="toggleChevron('chevronIcon')">
-                <img src="resources/images/admin_VMQ.jpg" alt="Avatar" class="admin-avatar">
+                <img src="2.Admin/images/admin_VMQ.jpg" alt="Avatar" class="admin-avatar">
                 <span class="admin-name">Vũ Mạnh Quân</span>
-                <img src="resources/images/chevron-down.svg" class="chevron-icon" id="chevronIcon">
+                <img src="2.Admin/images/chevron-down.svg" class="chevron-icon" id="chevronIcon">
             </button>
 
         </div>
@@ -56,102 +56,102 @@
                 <!--Phân tích hiệu suất-->
                 <li class="dropdown">
                     <button class="dropdown-toggle" onclick="toggleChevron('chevronIcon2')">
-                        <img src="resources/images/performance-analysis.svg">
+                        <img src="2.Admin/images/performance-analysis.svg">
                         <span>Phân Tích Hiệu Suất</span>
-                        <img src="resources/images/chevron-down.svg" class="chevron-icon" id="chevronIcon2">
+                        <img src="2.Admin/images/chevron-down.svg" class="chevron-icon" id="chevronIcon2">
                     </button>
                     <ul class="submenu">
-                        <li><a href="index.html"><img src="resources/images/dash.svg"> Số Lượng Đơn Đặt Dịch Vụ</a></li>
-                        <li><a href="index2.html"><img src="resources/images/dash.svg"> Số Lượng Dịch Vụ Cung Cấp</a></li>
-                        <li><a href="index3.html"><img src="resources/images/dash.svg"> Số Lượng Người Tiếp Cận</a></li>
+                        <li><a href="index.html"><img src="2.Admin/images/dash.svg"> Số Lượng Đơn Đặt Dịch Vụ</a></li>
+                        <li><a href="index2.html"><img src="2.Admin/images/dash.svg"> Số Lượng Dịch Vụ Cung Cấp</a></li>
+                        <li><a href="index3.html"><img src="2.Admin/images/dash.svg"> Số Lượng Người Tiếp Cận</a></li>
                     </ul>
                 </li>
 
                 <!--Quản lý tài khoản người dùng-->
                 <li class="dropdown">
                     <button class="dropdown-toggle" onclick="toggleChevron('chevronIcon3')">
-                        <img src="resources/images/manager accout.svg">
+                        <img src="2.Admin/images/manager accout.svg">
                         <span>Quản Lý Tài Khoản Người Dùng</span>
-                        <img src="resources/images/chevron-down.svg" class="chevron-icon" id="chevronIcon3">
+                        <img src="2.Admin/images/chevron-down.svg" class="chevron-icon" id="chevronIcon3">
                     </button>
                     <ul class="submenu">
-                        <li><a href="index.html"><img src="resources/images/dash.svg"> Số Lượng Tài Khoản Mới</a></li>
-                        <li><a href="index2.html"><img src="resources/images/dash.svg"> Tài Khoản Khách Hàng</a></li>
-                        <li><a href="index3.html"><img src="resources/images/dash.svg"> Tài Khoản Nhà Cung Cấp</a></li>
+                        <li><a href="index.html"><img src="2.Admin/images/dash.svg"> Số Lượng Tài Khoản Mới</a></li>
+                        <li><a href="index2.html"><img src="2.Admin/images/dash.svg"> Tài Khoản Khách Hàng</a></li>
+                        <li><a href="index3.html"><img src="2.Admin/images/dash.svg"> Tài Khoản Nhà Cung Cấp</a></li>
                     </ul>
                 </li>
 
                 <!--Quản lý giao diện-->
                 <li class="dropdown">
                     <button class="dropdown-toggle" onclick="toggleChevron('chevronIcon4')">
-                        <img src="resources/images/manager-browser.svg">
+                        <img src="2.Admin/images/manager-browser.svg">
                         <span>Quản Lý Giao Diện</span>
-                        <img src="resources/images/chevron-down.svg" class="chevron-icon" id="chevronIcon4">
+                        <img src="2.Admin/images/chevron-down.svg" class="chevron-icon" id="chevronIcon4">
                     </button>
                     <ul class="submenu">
-                        <li><a href="index.html"><img src="resources/images/dash.svg"> Thêm / Xóa Tiện Ích</a></li>
-                        <li><a href="index2.html"><img src="resources/images/dash.svg"> Bố Cục Giao Diện</a></li>
+                        <li><a href="index.html"><img src="2.Admin/images/dash.svg"> Thêm / Xóa Tiện Ích</a></li>
+                        <li><a href="index2.html"><img src="2.Admin/images/dash.svg"> Bố Cục Giao Diện</a></li>
                     </ul>
                 </li>
 
                 <!--Quản lý tài nguyên-->
                 <li class="dropdown">
                     <button class="dropdown-toggle" onclick="toggleChevron('chevronIcon5')">
-                        <img src="resources/images/manager-database.svg">
+                        <img src="2.Admin/images/manager-database.svg">
                         <span>Quản Lý Tài Nguyên</span>
-                        <img src="resources/images/chevron-down.svg" class="chevron-icon" id="chevronIcon5">
+                        <img src="2.Admin/images/chevron-down.svg" class="chevron-icon" id="chevronIcon5">
                     </button>
                     <ul class="submenu">
-                        <li><a href="index.html"><img src="resources/images/dash.svg"> Quản Lý Người Dùng</a></li>
-                        <li><a href="index2.html"><img src="resources/images/dash.svg"> Quản Lý Nội Dung</a></li>
-                        <li><a href="index2.html"><img src="resources/images/dash.svg"> Quản Lý Hệ Thống</a></li>
+                        <li><a href="index.html"><img src="2.Admin/images/dash.svg"> Quản Lý Người Dùng</a></li>
+                        <li><a href="index2.html"><img src="2.Admin/images/dash.svg"> Quản Lý Nội Dung</a></li>
+                        <li><a href="index2.html"><img src="2.Admin/images/dash.svg"> Quản Lý Hệ Thống</a></li>
                     </ul>
                 </li>
 
                 <!--Quản lý tài chính-->
                 <li class="dropdown">
                     <button class="dropdown-toggle" onclick="toggleChevron('chevronIcon6')">
-                        <img src="resources/images/credit-card.svg">
+                        <img src="2.Admin/images/credit-card.svg">
                         <span>Quản Lý Tài Chính</span>
-                        <img src="resources/images/chevron-down.svg" class="chevron-icon" id="chevronIcon6">
+                        <img src="2.Admin/images/chevron-down.svg" class="chevron-icon" id="chevronIcon6">
                     </button>
                     <ul class="submenu">
-                        <li><a href="index.html"><img src="resources/images/dash.svg"> Dịch Vụ Đổi Tiền</a></li>
-                        <li><a href="index2.html"><img src="resources/images/dash.svg"> Tài Khoản Ngân Hàng</a></li>
-                        <li><a href="index2.html"><img src="resources/images/dash.svg"> Bảng Giá Tiền Tệ</a></li>
+                        <li><a href="index.html"><img src="2.Admin/images/dash.svg"> Dịch Vụ Đổi Tiền</a></li>
+                        <li><a href="index2.html"><img src="2.Admin/images/dash.svg"> Tài Khoản Ngân Hàng</a></li>
+                        <li><a href="index2.html"><img src="2.Admin/images/dash.svg"> Bảng Giá Tiền Tệ</a></li>
                     </ul>
                 </li>
 
                 <!--Thông tin liên hệ-->
                 <li class="dropdown">
                     <button class="dropdown-toggle" onclick="toggleChevron('chevronIcon7')">
-                        <img src="resources/images/mail.svg">
+                        <img src="2.Admin/images/mail.svg">
                         <span>Thông Tin Liên Hệ</span>
-                        <img src="resources/images/chevron-down.svg" class="chevron-icon" id="chevronIcon7">
+                        <img src="2.Admin/images/chevron-down.svg" class="chevron-icon" id="chevronIcon7">
                     </button>
                     <ul class="submenu">
-                        <li><a href="index.html"><img src="resources/images/dash.svg"> Thông Tin</a></li>
-                        <li><a href="index2.html"><img src="resources/images/dash.svg"> Liên Hệ</a></li>
-                        <li><a href="index2.html"><img src="resources/images/dash.svg"> Hợp Tác</a></li>
-                        <li><a href="index2.html"><img src="resources/images/dash.svg"> Liên Kết Mạng Xã Hội</a></li>
+                        <li><a href="index.html"><img src="2.Admin/images/dash.svg"> Thông Tin</a></li>
+                        <li><a href="index2.html"><img src="2.Admin/images/dash.svg"> Liên Hệ</a></li>
+                        <li><a href="index2.html"><img src="2.Admin/images/dash.svg"> Hợp Tác</a></li>
+                        <li><a href="index2.html"><img src="2.Admin/images/dash.svg"> Liên Kết Mạng Xã Hội</a></li>
                     </ul>
                 </li>
 
                 <!--Hỗ trợ và quản lý-->
                 <li class="dropdown">
                     <button class="dropdown-toggle" onclick="toggleChevron('chevronIcon8')">
-                        <img src="resources/images/manager-support-.svg">
+                        <img src="2.Admin/images/manager-support-.svg">
                         <span>Hỗ Trợ Và Quản Lý</span>
-                        <img src="resources/images/chevron-down.svg" class="chevron-icon" id="chevronIcon8">
+                        <img src="2.Admin/images/chevron-down.svg" class="chevron-icon" id="chevronIcon8">
                     </button>
                     <ul class="submenu">
-                        <li><a href="index.html"><img src="resources/images/dash.svg"> Trợ Giúp</a></li>
-                        <li><a href="index2.html"><img src="resources/images/dash.svg"> Thông Báo / Hòm Thư</a></li>
-                        <li><a href="index2.html"><img src="resources/images/dash.svg"> Cấp Quyền Truy Cập</a></li>
-                        <li><a href="index2.html"><img src="resources/images/dash.svg"> Theo Dõi / Quản Lý Đơn</a></li>
-                        <li><a href="index2.html"><img src="resources/images/dash.svg"> Quản Lý Thông Tin Tour</a></li>
-                        <li><a href="index2.html"><img src="resources/images/dash.svg"> Thông Kê / Báo Cáo Về Hoạt Động Trang Web</a></li>
-                        <li><a href="index2.html"><img src="resources/images/dash.svg"> Quản Lý Nội Dung Và Thông Báo Trên Trang Web</a></li>
+                        <li><a href="index.html"><img src="2.Admin/images/dash.svg"> Trợ Giúp</a></li>
+                        <li><a href="index2.html"><img src="2.Admin/images/dash.svg"> Thông Báo / Hòm Thư</a></li>
+                        <li><a href="index2.html"><img src="2.Admin/images/dash.svg"> Cấp Quyền Truy Cập</a></li>
+                        <li><a href="index2.html"><img src="2.Admin/images/dash.svg"> Theo Dõi / Quản Lý Đơn</a></li>
+                        <li><a href="index2.html"><img src="2.Admin/images/dash.svg"> Quản Lý Thông Tin Tour</a></li>
+                        <li><a href="index2.html"><img src="2.Admin/images/dash.svg"> Thông Kê / Báo Cáo Về Hoạt Động Trang Web</a></li>
+                        <li><a href="index2.html"><img src="2.Admin/images/dash.svg"> Quản Lý Nội Dung Và Thông Báo Trên Trang Web</a></li>
                     </ul>
                 </li>
             </ul>
