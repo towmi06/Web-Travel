@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Nội Dung</title>
+    <!--JS-->
+    <script src="resources/js/core.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap">
+    <!--Style CSS-->
+    <link rel="stylesheet" type="text/css" href="resources/css/resource-management.css"/> 
+    <link rel="stylesheet" type="text/css" href="resources/css/dark_mode.css"/> 
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap">
+</head>
+<body>
+    <!--Main container-->
+    <div class="main-container">
+        <h2>Danh sách Tour Du Lịch</h2>
+        <!-- Tour List -->
+        <div class="tour-list">
+            <div class="tour-item">
+                <div class="tour-info">
+                    <img src="resources/images/ha_giang.jpg" alt="Tour Image">
+                    <p>Tên Tour: Hà Giang</p>
+                    <p>Mô tả ngắn về tour du lịch.</p>
+                    <p>Giá: $100</p>
+                    <a href="tour_details.html">Chi tiết</a>
+                </div>
+
+                <!--Map-->
+                <div id="map" class="map"></div>
+                <script>
+                    var map = L.map('map').setView([22.8265, 104.9835], 8);
+
+                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                    }).addTo(map);
+
+                    L.marker([22.8265, 104.9835]).addTo(map)
+                        .bindPopup('Hà Giang')
+                        .openPopup();
+                </script>
+                <!--End map-->
+            </div>
+
+            <!-- Thêm các tour khác tương tự -->
+        </div>  
+    </div>
+    <!--End main container-->
+</body>
+</html>

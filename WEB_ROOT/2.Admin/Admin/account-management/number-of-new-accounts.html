@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Số Lượng Tài Khoản Mới</title>
+    <!--JS-->
+    <script src="resources/js/core.js"></script>
+    <script src="resources/js/account-management/number-of-new-accounts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <!--Style CSS-->
+    <link rel="stylesheet" type="text/css" href="resources/css/account-management.css"/> 
+    <link rel="stylesheet" type="text/css" href="resources/css/dark_mode.css"/> 
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap">
+</head>
+<body>
+    <!--Main container-->
+    <div class="main-container">
+        <!--Chart container 1-->
+        <div class="chart-container-1">
+            <!--Biểu đồ dạng cột chồng (Stacked Bar Chart)-->
+            <div class="stacked-bar-chart">
+                <canvas id="stackedBarChart"></canvas>
+                <div class="chart-title">Stacked Bar Chart</div>
+            </div>
+            <script>
+                var ctx = document.getElementById('stackedBarChart').getContext('2d');
+                var stackedBarChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['January', 'February', 'March', 'April', 'May'],
+                        datasets: [{
+                            label: 'Tour Type A',
+                            data: [10, 20, 30, 40, 50],
+                            backgroundColor: 'rgba(255, 99, 132, 0.5)'
+                        }, {
+                            label: 'Tour Type B',
+                            data: [15, 25, 35, 45, 55],
+                            backgroundColor: 'rgba(54, 162, 235, 0.5)'
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            x: { stacked: true },
+                            y: { stacked: true }
+                        }
+                    }
+                });
+            </script>
+        </div>
+    </div>
+    <!--End main container-->
+</body>
+</html>

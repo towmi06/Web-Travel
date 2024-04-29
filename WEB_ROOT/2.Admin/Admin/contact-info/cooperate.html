@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hợp Tác</title>
+    <!--JS-->
+    <script src="resources/js/core.js"></script>
+    <script src="resources/js/performance-analysis/number-of-service-orders.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <!--Style CSS-->
+    <link rel="stylesheet" type="text/css" href="resources/css/contact-info.css"/> 
+    <link rel="stylesheet" type="text/css" href="resources/css/dark_mode.css"/> 
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap">
+</head>
+<body>
+    <!--Main container-->
+    <div class="container">
+        <h1>Danh Sách NCC Gửi Biểu Mẫu Hợp Tác</h1>
+        <div class="sort-and-search">
+            <!--Sort-->
+            <div class="sort-dropdown">
+                <label for="sort-options">Sắp Xếp Theo:</label>
+                <select id="sort-options" onchange="sortTable()">
+                    <option value="name">Tên</option>
+                    <option value="date">Ngày Gửi</option>
+                    <option value="location">Địa Chỉ</option>
+                </select>
+            </div>
+            <!--Search-->
+            <div class="search">
+                <input type="search" name="btnSearch" id="search" class="search-input" placeholder="Nhập ở đây">
+                <img src="resources/images/search.svg" class="search-icon"></img>
+            </div>
+        </div>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Tên NCC</th>
+                    <th>Email</th>
+                    <th>Số Điện Thoại</th>
+                    <th>Địa Chỉ</th>
+                    <th>Ngày Gửi</th>
+                    <th>Nội Dung Hợp Tác</th>
+                    <th>Thao Tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr id="service1">
+                    <td>Hà Giang Travel</td>
+                    <td>hagiangtravel@gmail.com</td>
+                    <td>037182482</td>
+                    <td>Hà Giang</td>
+                    <td>30/4/2024</td>
+                    <td>Nội Dung Hợp Tác</td>
+                    <td><button class="edit-btn">Liên Hệ</button></td>
+                </tr>
+              
+            </tbody>
+        </table>
+    </div>
+    <!--End main container-->
+</body>
+</html>

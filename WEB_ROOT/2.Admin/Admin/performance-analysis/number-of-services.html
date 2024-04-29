@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Số Lượng Dịch Vụ Cung Cấp</title>
+    <!--JS-->
+    <script src="resources/js/core.js"></script>
+    <script src="resources/js/performance-analysis/number-of-services.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <!--Style CSS-->
+    <link rel="stylesheet" type="text/css" href="resources/css/performance-analysis.css"/> 
+    <link rel="stylesheet" type="text/css" href="resources/css/dark_mode.css"/> 
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap">
+</head>
+<body>
+    <!--Main container-->
+    <div class="main-container">
+        <!--Chart container 1-->
+        <div class="chart-container-1">
+            <!--Biểu đồ bánh (Pie Chart)-->
+            <div class="pie-chart">
+                <canvas id="pieChart" width="200" height="200"></canvas>
+                <div class="chart-title">Pie Chart</div>
+            </div>
+            <script>
+                var ctx = document.getElementById('pieChart').getContext('2d');
+                var pieChart = new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: ['Red', 'Blue', 'Yellow'],
+                        datasets: [{
+                            label: 'My First Dataset',
+                            data: [300, 50, 100],
+                            backgroundColor: ['rgb(255, 99, 132)', 'rgb(54, 162, 235)', 'rgb(255, 205, 86)'],
+                            hoverOffset: 4
+                        }]
+                    },
+                    options: {
+                        radius: 110,
+                        cutout: '50%',
+                    }
+                });
+            </script>  
+            
+            <!--Biểu đồ cột nằm ngang (Horizontal Bar Chart)-->
+            <div class="horizontal-bar-chart">
+                <canvas id="horizontalBarChart"></canvas> 
+                <div class="chart-title">Horizontal Bar Chart</div>
+            </div>
+            <script>
+                var ctx = document.getElementById('horizontalBarChart').getContext('2d'); 
+                var barChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                        datasets: [{
+                            label: 'Revenue1',
+                            data: [1000, 2000, 1500, 2500, 1800, 2200, 3000],
+                            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                            borderColor: 'rgba(255, 99, 132, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        indexAxis: 'y',
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            </script>   
+       </div>
+   </div>
+   <!--End main container-->
+</body>
+</html>

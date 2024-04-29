@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cấp Quyền Truy Cập</title>
+    <!--JS-->
+    <script src="resources/js/core.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap">
+    <!--Style CSS-->
+    <link rel="stylesheet" type="text/css" href="resources/css/support-management.css"/> 
+    <link rel="stylesheet" type="text/css" href="resources/css/dark_mode.css"/> 
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap">
+</head>
+<body>
+    <!--Main container-->
+    <div class="main-container">
+        <h1>Nhân Viên</h1>
+        <div class="sort-and-search">
+            <!--Sort-->
+            <div class="sort-dropdown">
+                <label for="sort-options">Sắp Xếp Theo:</label>
+                <select id="sort-options" onchange="sortTable()">
+                    <option value="id">ID</option>
+                    <option value="name">Tên</option>
+                    <option value="location">Địa Chỉ</option>
+                </select>
+            </div>
+            <!--Search-->
+            <div class="search">
+                <input type="search" name="btnSearch" id="search" class="search-input" placeholder="Nhập ở đây">
+                <img src="resources/images/search.svg" class="search-icon"></img>
+            </div>
+        </div>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Tên</th>
+                    <th>Giới Tính</th>
+                    <th>Tài Khoản</th>
+                    <th>Số Điện Thoại</th>
+                    <th>Địa Chỉ</th>
+                    <th>Chức Vụ</th>
+                    <th>Thao Tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr id="employee1">
+                    <td>NV001</td>
+                    <td>Vũ Mạnh Quân</td>
+                    <td>Nam</td>
+                    <td>abc@admin.com</td>
+                    <td>0378859502</td>
+                    <td>Hà Nội</td>
+                    <td>Quản Trị Viên</td>
+                    <td><button class="edit-btn">Edit</button></td>
+                </tr>
+              
+            </tbody>
+        </table>
+    </div>
+    <!--End main container-->
+</body>
+</html>

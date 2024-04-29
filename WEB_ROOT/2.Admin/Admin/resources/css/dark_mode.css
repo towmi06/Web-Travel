@@ -1,0 +1,138 @@
+/* Background settings */
+body.dark-mode {
+    background-color: #1a1a1a;
+    color: #ffffff;
+}
+
+/* Header settings */
+.header.dark-mode {
+  background-color: #333333;
+  color: #ffffff;
+}
+  
+/* Title setting */
+.dark-mode h3 {
+  color: #fff;
+}
+/* Logo settings */
+.logo.dark-mode {
+  filter: brightness(150%);
+}
+  
+/* Search bar settings */
+.search-input.dark-mode {
+  border-color: #f0f0f0;
+  background-color: #a49a9a;
+}
+  
+.search-input.dark-mode::placeholder {
+  color: white; 
+}
+
+.search-icon.dark-mode {
+  filter: brightness(0) invert(1); 
+}
+
+/* Notification settings */
+.notification.dark-mode img {
+  object-fit: cover; 
+  filter: brightness(0) invert(1);
+}
+
+.notification-page.dark-mode {
+  background-color: #333;
+  color: #ffffff;
+}
+
+/*Setting settings*/
+.setting.dark-mode img {
+  object-fit: cover; 
+  filter: brightness(0) invert(1);
+}
+
+.settings-page.dark-mode {
+  background-color: #333;
+  color: #ffffff;
+}
+
+.settings-page::after.dark-mode {
+  content: "";
+  position: absolute;
+  top: -6px; 
+  right: 10px; 
+  border-left: 15px solid transparent; 
+  border-bottom: 15px solid #808080;
+  transform: rotate(225deg); 
+  z-index: 1;
+}
+
+.settings-page-button.dark-mode img {
+  filter: brightness(0) invert(1);
+}
+
+.settings-page-button.dark-mode h4 {
+  filter: brightness(0) invert(1);
+}
+
+/*Admin setting*/
+.admin:hover.dark-mode {
+  background-color: #333333; 
+}
+
+.admin.dark-mode .chevron-icon {
+  filter: brightness(0) invert(1);
+}
+
+.dark-mode span {
+  font-weight: 600;
+  color: #f0f0f0; 
+}
+
+.admin-page-name.dark-mode {
+  border-bottom: 1px solid white;
+}
+
+.admin-page.dark-mode {
+  background-color: #333;
+  color: #ffffff;
+}
+
+.admin-page-button.dark-mode img {
+  filter: brightness(0) invert(1);
+}
+
+.admin-page-button.dark-mode h4 {
+  filter: brightness(0) invert(1);
+}
+
+/* Left sidebar settings */
+.left-side-bar.dark-mode{
+  background-color: #333333;
+  color: #ffffff;
+}
+
+.dropdown-toggle.dark-mode span {
+  color: #000000; /* Màu chữ mặc định là đen */
+}
+
+.dropdown-toggle.dark-mode:hover {
+  background-color: #000000; 
+}
+
+.dropdown-toggle.dark-mode:hover span {
+  color: #ffffff;
+}
+
+/* Main container settings */
+.main-container.dark-mode {
+  background-color: #333333;
+  color: #ffffff;
+  opacity: 0.9;
+}
+  
+/* Right sidebar settings */
+.right-side-bar.dark-mode {
+  background-color: #333333;
+  color: #ffffff;
+  opacity: 0.9;
+}

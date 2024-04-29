@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Số Lượng Tài Khoản Mới</title>
+    <!--JS-->
+    <script src="resources/js/core.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <!--Style CSS-->
+    <link rel="stylesheet" type="text/css" href="resources/css/interface-management.css"/> 
+    <link rel="stylesheet" type="text/css" href="resources/css/dark_mode.css"/> 
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap">
+</head>
+<body>
+    <!--Main container-->
+    <div class="main-container">
+        <!-- Các nút để điều khiển hiển thị hoặc ẩn các tính năng trên trang index.html -->
+        <!--Hide Search-->
+        <button  class="theme-toggle" onclick="toggleFeature('search')" >
+            <input type="checkbox">
+            <label>Hide Search</label>
+        </button>
+        <!--Hide Notification-->
+        <button  class="theme-toggle" onclick="toggleFeature('notification')">
+            <input type="checkbox">
+            <label>Hide Notification</label>
+        </button>
+        <!--Hide Setting-->
+        <button  class="theme-toggle" onclick="toggleFeature('setting')">
+            <input type="checkbox">
+            <label>Hide Setting</label>
+        </button>
+        <!--Hide Language-->
+        <button  class="theme-toggle" onclick="toggleFeature('language')">
+            <input type="checkbox">
+            <label>Hide Language</label>
+        </button>
+        <!--Hide Map-->
+        <button  class="theme-toggle" onclick="toggleFeature('map')">
+            <input type="checkbox">
+            <label>Hide Map</label>
+        </button>
+        <!--Hide Calendar-->
+        <button  class="theme-toggle" onclick="toggleFeature('calendar')">
+            <input type="checkbox">
+            <label>Hide Calendar</label>
+        </button>
+    </div>
+    <!--End main container-->
+</body>
+</html>

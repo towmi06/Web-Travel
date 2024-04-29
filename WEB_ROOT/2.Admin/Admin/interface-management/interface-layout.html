@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Số Lượng Tài Khoản Mới</title>
+    <!--JS-->
+    <script src="resources/js/core.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <!--Style CSS-->
+    <link rel="stylesheet" type="text/css" href="resources/css/interface-management.css"/> 
+    <link rel="stylesheet" type="text/css" href="resources/css/dark_mode.css"/> 
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap">
+</head>
+<body>
+    <!--Main container-->
+    <div class="main-container">
+        <!-- Các nút để điều khiển hiển thị hoặc ẩn các tính năng trên trang index.html -->
+        <!--Hide Header-->
+        <button  class="theme-toggle" onclick="toggleFeature('header')" >
+            <input type="checkbox">
+            <label>Hide Header</label>
+        </button>
+        <!--Hide Right Side Bar-->
+        <button  class="theme-toggle" onclick="toggleFeature('right-side-bar')">
+            <input type="checkbox">
+            <label>Hide Right Side Bar</label>
+        </button>
+        <!--Hide Left Side Bar-->
+        <button  class="theme-toggle" onclick="toggleFeature('left-side-bar')">
+            <input type="checkbox">
+            <label>Hide Left Side Bar</label>
+        </button>
+    </div>
+    <!--End main container-->
+</body>
+</html>

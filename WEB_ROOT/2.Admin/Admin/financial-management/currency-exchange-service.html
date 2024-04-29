@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chuyển Đổi Ngoại Tệ</title>
+    <link rel="stylesheet" type="text/css" href="resources/css/financial-management.css"/> 
+</head>
+<body>
+    <div class="main-container">
+        <h1>Chuyển Đổi Ngoại Tệ</h1>
+
+        <label for="operation">Chọn Loại Giao Dịch:</label>
+        <select id="operation">
+            <option value="buyCash">Mua Tiền Mặt</option>
+            <option value="buyTransfer">Mua Chuyển Khoản</option>
+            <option value="sell">Bán</option>
+        </select>
+        <br><br>
+
+        <label for="amount">Số Tiền Quý Khách Cần:</label>
+        <input type="number" id="amount" value="0">
+        <br><br>
+
+        <label for="fromCurrency">Chọn Loại Tiền:</label>
+        <select id="fromCurrency">
+            <option value="USD">USD - Đô la Mỹ</option>
+            <option value="EUR">EUR - Euro</option>
+            <!-- Add more currency options as needed -->
+        </select>
+        <br><br>
+
+        <button onclick="performCurrencyExchange()">Thực Hiện Giao Dịch</button>
+        <br><br>
+
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function performCurrencyExchange() {
+            var operation = document.getElementById('operation').value;
+            var amount = parseFloat(document.getElementById('amount').value);
+            var fromCurrency = document.getElementById('fromCurrency').value;
+
+            // Handle different operations based on selected option
+            switch (operation) {
+                case 'buyCash':
+                    convertToCash(amount, fromCurrency);
+                    break;
+                case 'buyTransfer':
+                    convertToTransfer(amount, fromCurrency);
+                    break;
+                case 'sell':
+                    sellCurrency(amount, fromCurrency);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        function convertToCash(amount, fromCurrency) {
+            var convertedAmount = amount * getExchangeRate(fromCurrency, 'VND', 'buyCash');
+            displayResult(convertedAmount, 'VND');
+        }
+
+        function convertToTransfer(amount, fromCurrency) {
+            var convertedAmount = amount * getExchangeRate(fromCurrency, 'VND', 'buyTransfer');
+            displayResult(convertedAmount, 'VND');
+        }
+
+        function sellCurrency(amount, fromCurrency) {
+            var convertedAmount = amount / getExchangeRate('VND', fromCurrency, 'sell');
+            displayResult(convertedAmount, fromCurrency);
+        }
+
+        function getExchangeRate(fromCurrency, toCurrency, rateType) {
+            var ngay = getCurrentDate();
+            var url = 'https://portal.vietcombank.com.vn/UserControls/TVPortal.TyGia/pListTyGia.aspx?txttungay=' + ngay;
+
+            return fetch(url)
+                .then(response => response.text())
+                .then(data => {
+                    var parser = new DOMParser();
+                    var doc = parser.parseFromString(data, 'text/html');
+                    var rows = doc.querySelectorAll('#ctl00_Content_ExrateView tr');
+
+                    for (var i = 1; i < rows.length; i++) {
+                        var cells = rows[i].querySelectorAll('td');
+                        if (cells.length >= 5) {
+                            var currencyCode = cells[1].textContent.trim();
+                            var rate = parseFloat(cells[4].textContent.trim().replace(/,/g, ''));
+                            if (currencyCode === fromCurrency && rateType === 'sell') {
+                                return rate; // Sell rate for specified currency
+                            } else if (currencyCode === fromCurrency && rateType === 'buyCash') {
+                                return rate; // Buy cash rate for specified currency
+                            } else if (currencyCode === fromCurrency && rateType === 'buyTransfer') {
+                                return rate; // Buy transfer rate for specified currency
+                            }
+                        }
+                    }
+                    throw new Error('Không tìm thấy tỷ giá cho loại tiền này.');
+                })
+                .catch(error => {
+                    console.error('Lỗi khi lấy tỷ giá:', error);
+                    throw new Error('Đã xảy ra lỗi khi lấy tỷ giá.');
+                });
+        }
+
+        function displayResult(convertedAmount, currency) {
+            var resultElement = document.getElementById('result');
+            resultElement.textContent = 'Số Tiền Quý Khách Sẽ Nhận: ' + convertedAmount.toFixed(2) + ' ' + currency;
+        }
+
+        function getCurrentDate() {
+            var today = new Date();
+            var dd = today.getDate();
+            var mm = today.getMonth() + 1;
+            var yyyy = today.getFullYear();
+
+            if (dd < 10) {
+                dd = '0' + dd;
+            }
+
+            if (mm < 10) {
+                mm = '0' + mm;
+            }
+
+            return dd + '/' + mm + '/' + yyyy;
+        }
+    </script>
+</body>
+</html>

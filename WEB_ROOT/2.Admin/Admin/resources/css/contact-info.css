@@ -1,0 +1,180 @@
+/*Main container setting*/
+.main-container {
+    position: fixed;
+    top: 80px;
+    bottom: 200px;
+    left: 20%;
+    width: 60%;
+    height: 90%;
+    background-color: #ffffff;
+    opacity: 0.9;
+    border-radius: 10px;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+/* Phần thông tin liên hệ */
+.information {
+    border-radius: 10px;
+    margin-left: 10%;
+    margin-top: 5%;
+    width: 80%;
+    height: 65%;
+    display: flex;
+    flex-direction: column; 
+    justify-content: space-between;
+    align-items: flex-start;
+    background-color: #f0f0f0;
+}
+
+.cover-photo {
+    margin-top: 1%;
+    margin-left: 1%;
+    height: 50%;
+    width: 98%;
+    background-color: #000000;
+}
+
+.avatar {
+    margin-top: -5%;
+    margin-left: 2%;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    z-index: 20;
+}
+
+.contact-info {
+    margin-top: -7%;
+    margin-left: 20%;
+}
+
+.contact-info ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.contact-info ul li {
+    margin-bottom: 10px;
+}
+
+.contact-info ul li strong {
+    font-weight: bold;
+}
+
+/* Phần liên kết mạng xã hội */
+.social-media {
+    margin-bottom: 20px;
+    margin-left: 5%;
+}
+
+.social-media h2 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.social-media img {
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+}
+
+/* Các hiệu ứng hover */
+.social-media img:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.edit-button {
+    margin-left: 90%;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.edit-button:hover {
+    background-color: #45a049;
+}
+
+/*Customer / Service account settings*/
+.sort-and-search {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background-color: #007bff; 
+    color: white; 
+    font-weight: bold; 
+    padding: 10px; 
+}
+
+h1, label, td {
+    color: black;
+}
+   
+
+td {
+    padding: 8px;
+    text-align: center; 
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2; 
+}
+
+
+tbody tr:hover {
+    background-color: #ddd; 
+}
+
+.sort-dropdown {
+    margin-bottom: 20px;
+}
+
+.sort-dropdown label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.sort-dropdown select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f8f8f8;
+    font-size: 16px;
+}
+
+.sort-dropdown select:hover {
+    background-color: #e9e9e9;
+}
+
+.sort-dropdown select:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px #007bff;
+}
+
+.edit-btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.edit-btn:hover {
+    background-color: #0056b3;
+}
