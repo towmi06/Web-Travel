@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chuyển Đổi Ngoại Tệ</title>
+    <link rel="stylesheet" type="text/css" href="resources/css/financial-management.css"/> 
+</head>
+<body>
+    <div class="main-container">
+        <h1>Chuyển Đổi Ngoại Tệ</h1>
+
+        <select id="operation" onchange="toggleInput()">
+            <option value="buyCash">Mua Tiền Mặt</option>
+            <option value="buyTransfer">Mua Chuyển Khoản</option>
+            <option value="sell">Bán</option>
+        </select>
+
+        <!--Nếu chọn Mua tiền mặt-->
+        <div id="buyCashInput" class="input" style="display:none;"> 
+            <label for="amount">SỐ TIỀN QUÝ KHÁCH CẦN BÁN</label>
+
+            <select id="fromCurrency">
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+            </select>
+
+            <input type="number" id="amount" value="0">
+        </div>
+
+        <div id="buyCashOutput" class="output" style="display:none;">
+            <label for="amount">SỐ TIỀN QUÝ KHÁCH SẼ NHẬN</label>
+
+            <div>
+                <h3>VND</h3>
+            </div>
+        </div>
+
+        <!--Nếu chọn Mua chuyên khoản-->
+        <div id="buyTransferInput" class="input" style="display:none;">
+            <label for="amount">SỐ TIỀN QUÝ KHÁCH CẦN BÁN</label>
+
+            <select id="fromCurrency">
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+            </select>
+
+            <input type="number" id="amount" value="0">
+        </div>
+
+        <div id="buyTransferOutput" class="output" style="display:none;">
+            <label for="amount">SỐ TIỀN QUÝ KHÁCH SẼ NHẬN</label>
+
+            <div>
+                <h3>VND</h3>
+            </div>
+        </div>
+
+        <!--Nếu chọn Bán-->
+        <div id="sellInput" class="input" style="display:none;"> 
+            <label for="amount">SỐ TIỀN QUÝ KHÁCH CẦN MUA</label>
+
+            <select id="fromCurrency">
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+            </select>
+
+            <input type="number" id="amount" value="0">
+        </div>
+
+        <div id="sellOutput" class="output" style="display:none;">
+            <label for="amount">SỐ TIỀN QUÝ KHÁCH SẼ TRẢ</label>
+
+            <div>
+                <h3>VND</h3>
+            </div>
+        </div>
+
+        <button onclick="performCurrencyExchange()">Thực Hiện Giao Dịch</button>
+    </div>
+</body>
+</html>
