@@ -20,38 +20,111 @@ body, html {
 }
 
 /* Style the heading */
+/* Heading styles */
 h1 {
   font-size: 24px;
-  color: #000000;
-  text-align: center;
   margin-bottom: 20px;
+  text-align: center;
 }
 
-/* Style the form elements */
+/* Select styles */
+#operation {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+}
+
+/* Input and Output container styles */
+.input,
+.output {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Label styles */
 label {
   font-weight: bold;
-  color: #666;
+  margin-bottom: 5px;
+  display: block;
 }
 
-input[type="text"] {
-  width: 100%;
+/* Select and input container styles */
+.select-input-container {
+  display: flex;
+  align-items: center;
+}
+
+/* Select styles */
+select {
+  flex: 1;
   padding: 8px;
-  margin-bottom: 10px;
-  box-sizing: border-box;
+  margin-right: 5px;
+  border-radius: 5px;
   border: 1px solid #ccc;
-  border-radius: 4px;
 }
 
-.main-container button {
-  padding: 10px 20px;
+/* Input styles */
+input[type="number"] {
+  flex: 2;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+/* Output styles */
+h3 {
+  font-size: 18px;
+  text-align: center;
+}
+
+
+/* Output container styles */
+.output {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Select and output container styles */
+.select-output-container {
+  display: flex;
+  align-items: center;
+}
+
+/* Output label styles */
+label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block;
+}
+
+/* Output result styles */
+h4 {
+  font-size: 18px;
+  margin-left: 20px;
+}
+
+
+/* Button styles */
+.button2 {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
   background-color: #007bff;
   color: #fff;
-  border: none;
-  border-radius: 4px;
+  font-size: 16px;
   cursor: pointer;
 }
 
-.main-container button:hover {
+.button2:hover {
   background-color: #0056b3;
 }
 

@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chuyển Đổi Ngoại Tệ</title>
-    <link rel="stylesheet" type="text/css" href="resources/css/financial-management.css"/> 
+    <link rel="stylesheet" type="text/css" href="resources/css/financial-management.css"/>
+    <script src="resources/js/financial-management/currency-exchange-service.js"></script>
 </head>
 <body>
     <div class="main-container">
@@ -17,42 +18,80 @@
         </select>
 
         <!--Nếu chọn Mua tiền mặt-->
-        <div id="buyCashInput" class="input" style="display:none;"> 
+        <div class="input" id="buyCashInput"> 
             <label for="amount">SỐ TIỀN QUÝ KHÁCH CẦN BÁN</label>
-
-            <select id="fromCurrency">
-                <option value="USD">USD</option>
-                <option value="EUR">EUR</option>
-            </select>
-
-            <input type="number" id="amount" value="0">
+            <div class="select-input-container">
+                <select id="fromCurrency">
+                    <option value="USD">USD</option>
+                    <option value="EUR">EUR</option>
+                    <option value="GBP">GBP</option>
+                    <option value="JPY">JPY</option>
+                    <option value="AUD">AUD</option>
+                    <option value="SGD">SGD</option>
+                    <option value="THB">THB</option>
+                    <option value="CAD">CAD</option>
+                    <option value="CHF">CHF</option>
+                    <option value="HKD">HKD</option>
+                    <option value="CNY">CNY</option>
+                    <option value="DKK">DKK</option>
+                    <option value="INR">INR</option>
+                    <option value="KRW">KRW</option>
+                    <option value="KWD">KWD</option>
+                    <option value="MYR">MYR</option>
+                    <option value="NOK">NOK</option>
+                    <option value="RUB">RUB</option>
+                    <option value="SAR">SAR</option>
+                    <option value="SEK">SEK</option>
+                </select>                 
+        
+                <input type="number" id="amount">
+            </div>
         </div>
 
-        <div id="buyCashOutput" class="output" style="display:none;">
+        <div id="buyCashOutput" class="output">
             <label for="amount">SỐ TIỀN QUÝ KHÁCH SẼ NHẬN</label>
-
-            <div>
-                <h3>VND</h3>
+            <div class="select-output-container">
+                <h4>VND</h4>
+                <h4 id="result"></h4>
             </div>
         </div>
 
         <!--Nếu chọn Mua chuyên khoản-->
         <div id="buyTransferInput" class="input" style="display:none;">
             <label for="amount">SỐ TIỀN QUÝ KHÁCH CẦN BÁN</label>
-
-            <select id="fromCurrency">
-                <option value="USD">USD</option>
-                <option value="EUR">EUR</option>
-            </select>
-
-            <input type="number" id="amount" value="0">
+            <div class="select-input-container">
+                <select id="fromCurrency">
+                    <option value="USD">USD</option>
+                    <option value="EUR">EUR</option>
+                    <option value="GBP">GBP</option>
+                    <option value="JPY">JPY</option>
+                    <option value="AUD">AUD</option>
+                    <option value="SGD">SGD</option>
+                    <option value="THB">THB</option>
+                    <option value="CAD">CAD</option>
+                    <option value="CHF">CHF</option>
+                    <option value="HKD">HKD</option>
+                    <option value="CNY">CNY</option>
+                    <option value="DKK">DKK</option>
+                    <option value="INR">INR</option>
+                    <option value="KRW">KRW</option>
+                    <option value="KWD">KWD</option>
+                    <option value="MYR">MYR</option>
+                    <option value="NOK">NOK</option>
+                    <option value="RUB">RUB</option>
+                    <option value="SAR">SAR</option>
+                    <option value="SEK">SEK</option>
+                </select>                          
+        
+                <input type="number" id="amount">
+            </div>
         </div>
 
         <div id="buyTransferOutput" class="output" style="display:none;">
             <label for="amount">SỐ TIỀN QUÝ KHÁCH SẼ NHẬN</label>
-
-            <div>
-                <h3>VND</h3>
+            <div class="select-output-container">
+                <h4>VND</h4>
+                <h4 id="result"></h4>
             </div>
         </div>
 
@@ -60,23 +99,44 @@
         <div id="sellInput" class="input" style="display:none;"> 
             <label for="amount">SỐ TIỀN QUÝ KHÁCH CẦN MUA</label>
 
-            <select id="fromCurrency">
-                <option value="USD">USD</option>
-                <option value="EUR">EUR</option>
-            </select>
-
-            <input type="number" id="amount" value="0">
+            <div class="select-input-container">
+                <select id="fromCurrency">
+                    <option value="USD">USD</option>
+                    <option value="EUR">EUR</option>
+                    <option value="GBP">GBP</option>
+                    <option value="JPY">JPY</option>
+                    <option value="AUD">AUD</option>
+                    <option value="SGD">SGD</option>
+                    <option value="THB">THB</option>
+                    <option value="CAD">CAD</option>
+                    <option value="CHF">CHF</option>
+                    <option value="HKD">HKD</option>
+                    <option value="CNY">CNY</option>
+                    <option value="DKK">DKK</option>
+                    <option value="INR">INR</option>
+                    <option value="KRW">KRW</option>
+                    <option value="KWD">KWD</option>
+                    <option value="MYR">MYR</option>
+                    <option value="NOK">NOK</option>
+                    <option value="RUB">RUB</option>
+                    <option value="SAR">SAR</option>
+                    <option value="SEK">SEK</option>
+                </select>                          
+        
+                <input type="number" id="amount">
+            </div>
         </div>
 
         <div id="sellOutput" class="output" style="display:none;">
             <label for="amount">SỐ TIỀN QUÝ KHÁCH SẼ TRẢ</label>
-
-            <div>
-                <h3>VND</h3>
+            <div class="select-output-container">
+                <h4>VND</h4>
+                <h4 id="result"></h4>
             </div>
         </div>
 
-        <button onclick="performCurrencyExchange()">Thực Hiện Giao Dịch</button>
+        <button class="button2" onclick="performCurrencyExchange()">Thực Hiện Giao Dịch</button>
     </div>
 </body>
 </html>
+ 
