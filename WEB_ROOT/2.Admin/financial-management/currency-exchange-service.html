@@ -11,7 +11,7 @@
     <div class="main-container">
         <h1>Chuyển Đổi Ngoại Tệ</h1>
 
-        <select id="operation" onchange="toggleInput()">
+        <select id="operation" onclick="toggleInput()">
             <option value="buyCash">Mua Tiền Mặt</option>
             <option value="buyTransfer">Mua Chuyển Khoản</option>
             <option value="sell">Bán</option>
@@ -52,7 +52,7 @@
             <label for="amount">SỐ TIỀN QUÝ KHÁCH SẼ NHẬN</label>
             <div class="select-output-container">
                 <h4>VND</h4>
-                <h4 id="result"></h4>
+                <h4 id="result1"></h4>
             </div>
         </div>
 
@@ -91,7 +91,7 @@
             <label for="amount">SỐ TIỀN QUÝ KHÁCH SẼ NHẬN</label>
             <div class="select-output-container">
                 <h4>VND</h4>
-                <h4 id="result"></h4>
+                <h4 id="result2"></h4>
             </div>
         </div>
 
@@ -125,13 +125,13 @@
         
                 <input type="number" id="amount">
             </div>
-        </div>  
+        </div>
 
         <div id="sellOutput" class="output" style="display:none;">
             <label for="amount">SỐ TIỀN QUÝ KHÁCH SẼ TRẢ</label>
             <div class="select-output-container">
                 <h4>VND</h4>
-                <h4 id="result"></h4>
+                <h4 id="result3"></h4>
             </div>
         </div>
 

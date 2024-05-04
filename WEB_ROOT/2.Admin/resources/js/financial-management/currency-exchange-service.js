@@ -37,11 +37,19 @@ function toggleInput() {
 
 var exchangeRates = {}; // Đối tượng lưu trữ tỷ giá
 
+function getDate() {
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0');
+    var yyyy = today.getFullYear();
+
+    today = dd + '/' + mm + '/' + yyyy;
+}
+
 // Hàm lấy tỷ giá từ trang web và lưu vào biến exchangeRates
 function fetchExchangeRates() {
-    var today = new Date();
-    var ngay = today.toISOString().slice(0, 10);
-    var url = 'https://portal.vietcombank.com.vn/UserControls/TVPortal.TyGia/pListTyGia.aspx?txttungay=' + ngay;
+    var today = getDate();
+    var url = 'https://portal.vietcombank.com.vn/UserControls/TVPortal.TyGia/pListTyGia.aspx?txttungay=' + today;
 
     fetch(url)
         .then(response => response.text())
@@ -78,12 +86,12 @@ function performCurrencyExchange() {
     var result = 0;
     if (operation === 'buyCash') {
         result = amount * exchangeRates[currency].buyCash;
+        document.getElementById('result1').innerText = result.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
     } else if (operation === 'buyTransfer') {
         result = amount * exchangeRates[currency].buyTransfer;
+        document.getElementById('result2').innerText = result.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
     } else if (operation === 'sell') {
         result = amount * exchangeRates[currency].sell;
+        document.getElementById('result3').innerText = result.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
     }
-
-    // Hiển thị kết quả cho người dùng
-    document.getElementById('result').innerText = result.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
 }
