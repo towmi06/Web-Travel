@@ -41,7 +41,7 @@ var exchangeRates = {}; // Đối tượng lưu trữ tỷ giá
 function fetchExchangeRates() {
     var ngayInput = document.getElementById('ngay').value;
     var today = new Date();
-    var ngay = ngayInput ? ngayInput : today.toISOString().slice(0, 10); // Sử dụng ngày hiện tại nếu không có ngày được chọn
+    var ngay = ngayInput ? ngayInput : today.toISOString().slice(0, 10);
 
     var url = 'https://portal.vietcombank.com.vn/UserControls/TVPortal.TyGia/pListTyGia.aspx?txttungay=' + ngay;
 
@@ -61,12 +61,9 @@ function fetchExchangeRates() {
                     var buyTransfer = parseFloat(cells[3].textContent.trim().replace(/,/g, ''));
                     var sell = parseFloat(cells[4].textContent.trim().replace(/,/g, ''));
 
-                    exchangeRates[currencyCode] = { buyCash: buyCash, buyTransfer: buyTransfer, sell: sell };
+                    exchangeRates[currencyCode] = {buyCash: buyCash, buyTransfer: buyTransfer, sell: sell };
                 }
             }
-
-            // Sau khi lấy tỷ giá xong, tính toán kết quả cho trang web
-            performCurrencyExchange();
         })
         .catch(error => {
             console.error('Lỗi khi lấy tỷ giá:', error);
