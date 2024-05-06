@@ -1,0 +1,247 @@
+
+.header-layout{
+    position: absolute;
+    margin-top: -2.5%;
+    background-color: rgb(255, 255, 255);
+    height: 60px;
+    width: 100%;
+    margin-left:-2%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.title-layout{
+    margin-left: 3%;
+    color: black;
+    margin-top: -1.5%;
+    font-size: 25px;
+}
+.left-main{
+    position: relative;
+    margin-top: 6%;
+    background-color: rgb(255, 255, 255);
+    height: 94%;
+    width: 75%;
+    margin-left: -1.95%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.right-bar {
+  
+	position: absolute; 
+	top: 12%; 
+	bottom: 100px;
+	margin-left:47.7%; 
+	width: 27.1%;
+	height: 89%;
+  left: 25%;
+	background-color: #453a56;
+	overflow-y: auto;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .right-bar .submenu1 {
+	display: none;
+	padding-left: 20px;
+  }
+  
+  .right-bar .drop-down-toggle.active + .submenu1 {
+	display: block;
+  }
+
+  /*Sidebar menu*/
+  .menu {
+    background-color: #453a56;
+	padding: 20px;
+	border-radius: 25px;
+  }
+  
+  .menu ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+  }
+  
+  /*dropdown*/
+  .drop-down {
+	margin-bottom: 20px;
+  }
+  
+  .drop-down-toggle {
+	display: flex;
+	align-items: center;
+	padding: 10px;
+	color: #000000;
+	text-decoration: none;
+	transition: all 0.3s ease;
+	border: none;
+	background-color: #ECEDEF; 
+	border-radius: 8px;
+	width: 100%;
+	font-size: 90%;
+  }
+  
+  .drop-down-toggle > *:last-child {
+	margin-left: auto;
+  }
+  
+  .drop-down-toggle > * {
+	margin-right: 8px;
+  }
+  
+  .drop-down-toggle:hover {
+	background-color: #4475d0;
+	color: #ffffff;
+  }
+  
+  .drop-down-toggle:hover img {
+	filter: invert(100%);
+  }
+  
+  .drop-down-toggle img.clicked {
+	filter: invert(100%);
+  }
+  
+  /*Sub menu*/
+  .submenu1 {
+    display: none;
+    padding-left: 20px;
+	  display: flex;
+	  align-items: center;
+  }
+
+  .icon0 {
+	width: 20px;
+	height: 20px;
+  }
+
+  .icon1 {
+	width: 30px;
+	height: 30px;
+  }
+
+  .icon2 {
+	width: 15px;
+	height: 20px;
+  }
+  
+  .submenu1 li {
+	margin-bottom: 5px;
+	margin-left: 15px;
+  }
+  
+  .submenu1 li a {
+	display: block;
+	padding: 10px;
+	color: #f7f7f7;
+	text-decoration: none;
+	transition: all 0.3s ease;
+	border-radius: 8px;
+	font-size: 85%;
+  }
+  
+  .submenu1 li a:hover {
+	background-color: #000000; 
+	color: #ffffff;
+  }
+  
+  .submenu1 li img {
+	transition: transform 0.3s ease, filter 0.3s ease;
+  }
+  
+  .submenu1 li:hover img {
+	transform: translateX(-7px); 
+	filter: invert(100%); 
+  }
+  .button-group {
+    display: inline-block; /* Hiển thị các nút cùng một hàng */
+}
+
+.save-button, .exit-button {
+    padding: 8px 12px; /* Khoảng cách bên trong nút */
+    margin-left: 5px; /* Khoảng cách giữa các nút */
+    border: none; /* Loại bỏ viền */
+    background-color: #007bff; /* Màu nền của nút */
+    color: #fff; /* Màu chữ */
+    cursor: pointer; /* Con trỏ chuột khi di chuột qua nút */
+    border-radius: 5px; /* Bo tròn góc */
+    transition: background-color 0.3s ease; /* Hiệu ứng chuyển đổi màu nền */
+}
+
+.save-button:hover, .exit-button:hover {
+    background-color: #363636; /* Màu nền khi di chuột qua nút */
+}
+/* CSS cho ô tích */
+.checkbox-custom {
+  margin-top:10% ;
+  margin-left: 86%;
+  margin-right: 0px; /* Khoảng cách giữa ô tích và nhãn */
+  height: 25px;
+  width: 25px;
+}
+
+/* CSS cho nhãn */
+.label-custom {
+  font-size: 15px;
+  color: #ECEDEF;
+  margin-top: -25%;
+  margin-left: -17%;
+  width: 95%;
+  display: inline-block; /* Hiển thị nhãn cùng hàng với ô tích */
+  vertical-align: middle; /* Căn chỉnh theo chiều dọc */
+}
+
+/* Chỉnh màu chữ của nhãn khi di chuột qua */
+.label-custom:hover {
+  color: #007bff;
+  cursor: pointer; /* Biến con trỏ chuột thành dấu nhấp chuột */
+}
+/* CSS cho ô tích */
+.checkbox-custom {
+  margin-right: 5px; /* Khoảng cách giữa ô tích và nhãn */
+}
+
+/* CSS cho nhãn */
+.label-custom {
+  display: inline-block; /* Hiển thị nhãn cùng hàng với ô tích */
+  vertical-align: middle; /* Căn chỉnh theo chiều dọc */
+}
+
+/* Chỉnh màu chữ của nhãn khi di chuột qua */
+.label-custom:hover {
+  color: #007bff;
+  cursor: pointer; /* Biến con trỏ chuột thành dấu nhấp chuột */
+}
+/* CSS cho ô chọn số sản phẩm */
+/* CSS cho ô chọn số sản phẩm */
+.select-custom {
+  margin-top: -px;
+  margin-left: 130px; /* Khoảng cách giữa ô chọn và văn bản */
+  padding: 5px; /* Khoảng cách bên trong ô chọn */
+  border-radius: 5px; /* Bo tròn góc */
+  border: 1px solid #ccc; /* Viền */
+  background-color: #fff; /* Màu nền */
+  color: #333; /* Màu chữ */
+  font-size: 14px; /* Kích thước chữ */
+}
+
+.select-custom:hover {
+  border-color: #000000; /* Màu viền khi di chuột qua */
+}
+
+.select-custom:focus {
+  outline: none; /* Loại bỏ đường viền khi focus */
+  border-color: #080808; /* Màu viền khi focus */
+}
+.page-option-label {
+  margin-top: 5px;
+  width: 100%;
+  margin-left:-17%;
+  color: #333; /* Màu chữ */
+  margin-right: 10px; /* Khoảng cách với ô chọn */
+}
+
+
+
+
+
+
+  

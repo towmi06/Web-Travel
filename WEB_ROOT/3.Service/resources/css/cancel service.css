@@ -1,0 +1,76 @@
+.sort-and-search {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background-color: #102338; 
+    color: white; 
+    font-weight: bold; 
+    padding: 10px; 
+}
+
+h1, label, td {
+    color: black;
+}
+   
+
+td {
+    padding: 8px;
+    text-align: center; 
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2; 
+}
+
+
+tbody tr:hover {
+    background-color: #ddd; 
+}
+
+.sort-dropdown {
+    margin-bottom: 20px;
+}
+
+.sort-dropdown label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.sort-dropdown select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #e9e4e4;
+    font-size: 14px;
+}
+
+.sort-dropdown select:hover {
+    background-color: #cdc9c9;
+}
+
+.sort-dropdown select:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px #007bff;
+}
+
+.edit-btn {
+    background-color: #bb6363;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.edit-btn:hover {
+    background-color: #686f75;
+}

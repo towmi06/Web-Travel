@@ -1,0 +1,424 @@
+.infor-service {
+    position: fixed; 
+    top: 5%; 
+    left: 19.5%; 
+    width: 70%;
+    height: 90%;
+    background-color: #ffffff;
+    border-radius: 0px;
+    z-index: 1;
+}
+
+.cover-photo {
+    position: fixed; 
+    top: 14.5%;
+    left: calc(26.5%);
+    width:47.8%;
+    height: 16%;
+    border-radius: 10px;
+    z-index: 1;
+}
+.avatar-infsv {
+    position: fixed; 
+    width: 96px; 
+    margin-top: 4.8%;
+    margin-left: 10%;
+    height: 96px; 
+    border-radius: 10%; 
+    z-index: 2;
+}
+.nameinf {
+    position: fixed; 
+    width: 10%; 
+    margin-top: 6%;
+    margin-left: 17%;
+    height: 5%; 
+    border-radius: 50%; 
+    z-index: 3;
+    color: #fcf9f9;
+}
+.nameinf h3, .nameinf h4 {
+    margin: 5px 0; 
+}
+.id {
+    position: fixed;
+    margin-top: 12.3%;
+    margin-left: 6.3%;
+    width: 47%;
+    height: 45px; 
+    border-radius: 0; 
+    z-index: 4;
+    display: flex; 
+    align-items: center;
+    padding: 10px; 
+    border: none; /* Bỏ viền */
+     /* Sử dụng font "Helvetica Neue" */
+}
+
+.id::after {
+    content: ''; /* Đặt nội dung cho phần tử ::after */
+    position: absolute; /* Đặt vị trí là absolute để phần tử ::after không làm thay đổi vị trí của phần tử cha */
+    bottom: 0; /* Đặt vị trí ở dưới phần tử cha */
+    left: 0; /* Đặt vị trí bắt đầu từ góc trái */
+    width: 100%; /* Chiều rộng bằng với phần tử cha */
+    height: 0.5px; /* Chiều cao của đường kẻ */
+    background-color: rgba(0, 0, 0, 0.2); /* Màu của đường kẻ */
+   
+}
+
+.id h4 {
+    margin: 0;
+    margin-right: 50px;
+}
+
+.edit {
+    margin-top: 13px;
+    margin-left: auto;
+    color: rgb(0, 25, 246); 
+    border: none;
+    padding: 8px 16px; 
+    border-radius: 5px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; /* Sử dụng font "Helvetica Neue" */
+}
+
+.edit:hover {
+    transform: scale(1.1); 
+}
+
+.user-name {
+    position: fixed;
+    margin-top: 15.3%; /* Sử dụng cùng một giá trị margin-top với lớp .id */
+    margin-left: 6.3%;
+    width: 47%;
+    height: 45px; 
+    border-radius: 0; 
+    z-index: 4;
+    display: flex; 
+    align-items: center;
+    padding: 10px; 
+    border: none; /* Bỏ viền */
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; /* Sử dụng font "Helvetica Neue" */
+}
+.user-name:after {
+    content: ''; /* Đặt nội dung cho phần tử ::after */
+    position: absolute; /* Đặt vị trí là absolute để phần tử ::after không làm thay đổi vị trí của phần tử cha */
+    bottom: 0; /* Đặt vị trí ở dưới phần tử cha */
+    left: 0; /* Đặt vị trí bắt đầu từ góc trái */
+    width: 100%; /* Chiều rộng bằng với phần tử cha */
+    height: 0.5px; /* Chiều cao của đường kẻ */
+    background-color: rgba(0, 0, 0, 0.2); /* Màu của đường kẻ */
+    
+}
+.user-name h4 {
+    margin: 0;
+    margin-right: 30px;
+   /* Sử dụng font "Helvetica Neue" */
+}
+
+.user-name .edit {
+    margin-left: auto;
+    color: rgb(0, 25, 246); 
+    padding: 8px 16px; 
+    border-radius: 5px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; /* Sử dụng font "Helvetica Neue" */
+}
+
+.user-name .edit:hover {
+    transform: scale(1.1); 
+}
+
+.email {
+    position: fixed;
+    margin-top: 18.3%; /* Sử dụng cùng một giá trị margin-top với lớp .id */
+    margin-left: 6.3%;
+    width: 47%;
+    height: 45px;  
+    border-radius: 0; 
+    z-index: 4;
+    display: flex; 
+    align-items: center;
+    padding: 10px; 
+    border: none; /* Bỏ viền */
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; /* Sử dụng font "Helvetica Neue" */
+}
+.email:after {
+    content: ''; /* Đặt nội dung cho phần tử ::after */
+    position: absolute; /* Đặt vị trí là absolute để phần tử ::after không làm thay đổi vị trí của phần tử cha */
+    bottom: 0; /* Đặt vị trí ở dưới phần tử cha */
+    left: 0; /* Đặt vị trí bắt đầu từ góc trái */
+    width: 100%; /* Chiều rộng bằng với phần tử cha */
+    height: 0.5px; /* Chiều cao của đường kẻ */
+    background-color: rgba(0, 0, 0, 0.2); /* Màu của đường kẻ */
+    
+}
+
+.email h4 {
+    margin: 0;
+    margin-right: 30px;
+    
+}
+
+.email .edit {
+    margin-left: auto;
+    color: rgb(0, 25, 246); 
+    border: none;
+    padding: 8px 16px; 
+    border-radius: 5px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; /* Sử dụng font "Helvetica Neue" */
+}
+
+.email .edit:hover {
+    transform: scale(1.1); 
+}
+
+.phone-number {
+    position: fixed;
+    margin-top: 21.25%; /* Sử dụng cùng một giá trị margin-top với lớp .id */
+    margin-left: 6.3%;
+    width: 47%;
+    height: 45px;  
+    border-radius: 0; 
+    z-index: 4;
+    display: flex; 
+    align-items: center;
+    padding: 10px; 
+    border: none; /* Bỏ viền */
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; /* Sử dụng font "Helvetica Neue" */
+}
+.phone-number:after {
+    content: ''; /* Đặt nội dung cho phần tử ::after */
+    position: absolute; /* Đặt vị trí là absolute để phần tử ::after không làm thay đổi vị trí của phần tử cha */
+    bottom: 0; /* Đặt vị trí ở dưới phần tử cha */
+    left: 0; /* Đặt vị trí bắt đầu từ góc trái */
+    width: 100%; /* Chiều rộng bằng với phần tử cha */
+    height: 0.5px; /* Chiều cao của đường kẻ */
+    background-color: rgba(0, 0, 0, 0.2); /* Màu của đường kẻ */
+    
+}
+
+.phone-number h4 {
+    margin: 0;
+    margin-right: 30px;
+   
+}
+
+.phone-number .edit {
+    margin-left: auto; 
+    border: none;
+    color: rgb(0, 25, 246); 
+    padding: 8px 16px; 
+    border-radius: 5px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; /* Sử dụng font "Helvetica Neue" */
+}
+
+.phone-number .edit:hover {
+    transform: scale(1.1); 
+}
+
+.gender {
+    width: 94%;
+    height: 40px; 
+    border-radius: 9px; /* Đặt giá trị đúng cho border-radius */
+    display: flex;
+    margin-top: 35%;
+    margin-left: 95px;
+    align-items: center;
+    padding: 10px; 
+    border: none; /* Bỏ viền */
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; 
+    position: relative; /* Đặt vị trí là relative để ::after sử dụng vị trí tương đối */
+}
+
+.gender::after {
+    content: ''; /* Đặt nội dung cho phần tử ::after */
+    position: absolute; /* Đặt vị trí là absolute để phần tử ::after không làm thay đổi vị trí của phần tử cha */
+    bottom: 0; /* Đặt vị trí ở dưới phần tử cha */
+    left: 0; /* Đặt vị trí bắt đầu từ góc trái */
+    width: 72.2%; /* Chiều rộng bằng với phần tử cha */
+    height: 0.5px; /* Chiều cao của đường kẻ */
+    background-color: rgba(0, 0, 0, 0.2); /* Màu của đường kẻ */
+    
+}
+
+.gender .gen-der {
+    margin-right: 60px; /* Đặt margin-right cho phần tử h4 */
+    margin-left: 1.5px;
+}
+
+.gender label {
+    margin: 5px; /* Loại bỏ toàn bộ margin */
+}
+
+.gender input[type="radio"] {
+    margin-left: 7px; /* Đặt margin-left cho các nút lựa chọn */
+}
+
+.birthdate {
+    width: 94.1%;
+    height: 45px; 
+    margin-top: 0.1%;
+    margin-left: 95px;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.birthdate::after {
+    content: ''; /* Đặt nội dung cho phần tử ::after */
+    position: absolute; /* Đặt vị trí là absolute để phần tử ::after không làm thay đổi vị trí của phần tử cha */
+    bottom: 0; /* Đặt vị trí ở dưới phần tử cha */
+    left: 0; /* Đặt vị trí bắt đầu từ góc trái */
+    width: 73.5%; /* Chiều rộng bằng với phần tử cha */
+    height: 0.5px; /* Chiều cao của đường kẻ */
+    background-color: rgba(0, 0, 0, 0.2); /* Màu của đường kẻ */
+    
+}
+
+.birthdate .editsn {
+    margin-right: 60px; /* Đặt margin-right cho phần tử h4 */
+    margin-left: 10px;
+    font-family: Arial, sans-serif; /* Chọn kiểu chữ */
+}
+
+.birthdate select {
+    margin-right: 5px; /* Đặt khoảng cách giữa các dropdown */
+    padding: 5px; /* Thêm padding để làm cho các dropdown dễ nhìn hơn */
+    border-radius: 5px; 
+    font-size: 14px; /* Đặt kích thước chữ */
+    font-family: Arial, sans-serif; /* Chọn kiểu chữ */
+}
+
+.bank-account {
+    position: fixed;
+    margin-top: -1.2%; /* Sử dụng cùng một giá trị margin-top với lớp .id */
+    margin-left: 6.2%;
+    width: 47%;
+    height: 44px;  
+    border-radius: 0; 
+    z-index: 4;
+    display: flex; 
+    align-items: center;
+    padding: 10px; 
+    border: none; /* Bỏ viền */
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; /* Sử dụng font "Helvetica Neue" */
+    
+}
+.bank-account::after {
+    content: ''; /* Đặt nội dung cho phần tử ::after */
+    position: absolute; /* Đặt vị trí là absolute để phần tử ::after không làm thay đổi vị trí của phần tử cha */
+    bottom: 0; /* Đặt vị trí ở dưới phần tử cha */
+    left: 0; /* Đặt vị trí bắt đầu từ góc trái */
+    width: 100%; /* Chiều rộng bằng với phần tử cha */
+    height: 0.5px; /* Chiều cao của đường kẻ */
+    background-color: rgba(0, 0, 0, 0.2); /* Màu của đường kẻ */
+    
+}
+
+.bank-account h4 {
+    margin: 0;
+    margin-right: 20px;
+    
+}
+
+.bank-account .edit {
+    margin-left: auto; 
+    border: none;
+    color: rgb(0, 25, 246); 
+    padding: 8px 16px; 
+    border-radius: 5px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; /* Sử dụng font "Helvetica Neue" */
+}
+
+.bank-account .edit:hover {
+    transform: scale(1.1); 
+}
+
+.tax-code {
+    position: fixed;
+    margin-top: 1.8%; /* Sử dụng cùng một giá trị margin-top với lớp .id */
+    margin-left: 6.3%;
+    width: 47%;
+    height: 44px;  
+    border-radius: 0; 
+    z-index: 4;
+    display: flex; 
+    align-items: center;
+    padding: 10px; 
+    border: none; /* Bỏ viền */
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; /* Sử dụng font "Helvetica Neue" */
+}
+
+.tax-code::after {
+    content: ''; /* Đặt nội dung cho phần tử ::after */
+    position: absolute; /* Đặt vị trí là absolute để phần tử ::after không làm thay đổi vị trí của phần tử cha */
+    bottom: 0; /* Đặt vị trí ở dưới phần tử cha */
+    left: 0; /* Đặt vị trí bắt đầu từ góc trái */
+    width: 100%; /* Chiều rộng bằng với phần tử cha */
+    height: 0.5px; /* Chiều cao của đường kẻ */
+    background-color: rgba(0, 0, 0, 0.2); /* Màu của đường kẻ */
+   
+}
+
+.tax-code h4 {
+    margin: 0;
+    margin-right: 30px;
+    
+}
+.tax-code .edit:hover {
+    transform: scale(1.1); 
+}
+
+.social-link {
+    margin-top: 9%;
+    margin-left: 10%;
+    display: inline-block;
+    margin-right: 10px; /* Khoảng cách giữa các liên kết */
+    text-decoration: none; /* Loại bỏ gạch chân mặc định */
+    color: #000000; /* Màu chữ */
+}
+
+.social-link img {
+    width: 30px; /* Kích thước của biểu tượng */
+    height: 30px;
+    margin-left: 20px;
+    margin-right: 5px; /* Khoảng cách giữa biểu tượng và văn bản */
+    vertical-align: middle; /* Canh chỉnh theo chiều dọc */
+}
+
+.facebook { /* Màu của Facebook */
+    color: #000000; /* Màu chữ trắng */
+    padding: 8px 12px; /* Kích thước của nút */
+    border-radius: 5px; /* Bo tròn viền */
+    margin-top: 12%;
+}
+
+.instagram { /* Màu của Instagram */
+    color: #000000; /* Màu chữ trắng */
+    padding: 8px 12px; /* Kích thước của nút */
+    border-radius: 5px; /* Bo tròn viền */
+}
+
+.telegram {/* Màu của Telegram */
+    color: #000000; /* Màu chữ trắng */
+    padding: 8px 12px; /* Kích thước của nút */
+    border-radius: 5px; /* Bo tròn viền */
+}
+.save-btn {
+    margin-top: 0%;
+    height: 39px;
+    width: 60px;
+    margin-left: 71.5%;
+    /* CSS tùy chỉnh cho nút lưu */
+    background-color: #007bff; /* Màu nền */
+    color: #fff; /* Màu chữ */
+    border: none; /* Loại bỏ viền */
+    padding: 10px 20px; /* Kích thước nút */
+    border-radius: 5px; /* Bo tròn góc */
+    cursor: pointer; /* Con trỏ chuột khi di chuột qua */
+}
+
+.save-btn:hover {
+    background-color: #c12424; /* Màu nền khi di chuột qua */
+}
+
+
+

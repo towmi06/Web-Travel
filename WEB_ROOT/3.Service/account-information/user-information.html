@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="user-information.css">
+    <script src="resources/js/account-information/user-information.js"></script>
+    <title>Information</title>
+</head>
+<body>
+   <!-- infor service-->
+   <div class="infor-service">
+        <img src="resources/images/cv3.jpg" class="cover-photo">
+        <img src="resources/images/avtp2.jpg" class="avatar-infsv">
+        <div class="nameinf"> 
+            <h4> Service Name</h4>
+            <h4> Bio</h4>
+        </div>
+        <div class="id">
+            <h4> Service ID</h4>
+            <p style="margin-left: 15%;" style="color: rgb(55, 54, 54);"> ID123</p>
+            <button class="edit">Edit</button>
+        </div>
+        <div class="user-name">
+            <h4>User Name</h4>
+            <p style="margin-left: 16.5%;">Name</p>
+            <button class="edit">Edit</button>
+        </div>
+
+        <div class="email">
+            <h4>Email</h4>
+            <p style="margin-left: 22%;">Email********@gmail.com</p>
+            <button class="edit">Edit</button>
+        </div>
+
+        <div class="phone-number">
+            <h4>Phone Number</h4>
+            <p style="margin-left: 12%;">098*******</p>
+            <button class="edit">Edit</button>
+        </div>
+
+        <div class="gender">
+            <h4 class="gen-der"> Gender</h4>
+            <label for="male" style="margin-left: 115px;">Male</label>
+            <input type="radio" id="male" name="gender" value="male">
+        
+            <label for="female">Female</label>
+            <input type="radio" id="female" name="gender" value="female">
+        
+            <label for="other">Other</label>
+            <input type="radio" id="other" name="gender" value="other">
+        </div>
+
+        <div class="bank-account">
+            <h4>Thông tin ngân hàng : ACB</h4>
+            <h4>- Số tài khoản: 123456789</h4>
+            <button class="edit">Edit</button>
+        </div>
+
+        <div class="tax-code">
+            <h4>Mã số thuế </h4>
+            <p style="margin-left: 16%;">123456789</p>
+            <button class="edit">Edit</button>
+        </div>
+
+        <div class="social-link">
+            <!-- Liên kết các tài khoản mạng xã hội của người dùng -->
+            <p>Liên kết MXH: 
+                <a href="https://facebook.com/johndoe">Facebook</a>, 
+                <a href="https://twitter.com/johndoe">Twitter</a>, 
+                <a href="https://instagram.com/johndoe">Instagram</a>
+            </p>
+        </div>
+        <div class="save-btn1">
+            <button id="save-button" class="save-btn" onclick="saveChanges()">Lưu</button>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,76 @@
+.main-pass{
+    position: relative;
+    width: 120%;
+    height: 80px;
+    background-color: rgb(252, 252, 252);
+    margin-top: -4.2%;
+    margin-left: -20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+.title-pass{
+    position: absolute;
+    margin-top: 35px;
+    margin-left: 30px;
+}
+.pass-list {
+    position: relative;
+    width: 120%;
+    height: 80px;
+}
+.pass-list > *{
+    margin-bottom: 20px;
+}
+.input-pass{
+    position: absolute;
+    margin-top: 100px;
+    margin-left: 30px; 
+}
+
+.input-pass > * {
+    margin-right: 5px;
+}
+
+
+.auth-input{
+    height: 30px;
+}
+.password-input {
+    width: 280px; /* Độ rộng của ô nhập */
+    height: 30px; /* Chiều cao của ô nhập */
+    margin-top: -1px; /* Khoảng cách từ ô nhập đến tiêu đề */
+    /* Thêm các thuộc tính khác tùy thuộc vào thiết kế của bạn */
+}
+
+.reload-button {
+    padding: 5px 10px; /* Kích thước của nút tải lại */
+    background-color: #6ad787; /* Màu nền của nút */
+    color: #fff; /* Màu chữ của nút */
+    border: none; /* Loại bỏ đường viền */
+    border-radius: 5px; /* Bo tròn góc của nút */
+    cursor: pointer; /* Biến con trỏ thành hình bàn tay khi di chuột qua nút */
+}
+.reload-button:hover {
+    background-color: #0056b3; /* Màu nền khi di chuột vào */
+}
+.button-group {
+    display: flex; /* Hiển thị các nút cùng hàng ngang */
+}
+
+.save-button, .cancel-button {
+    margin-right: 10px; /* Khoảng cách giữa các nút */
+    padding: 5px 10px; /* Kích thước của nút */
+    background-color: #7e8084; /* Màu nền mặc định */
+    color: #fff; /* Màu chữ mặc định */
+    border-radius: 0px; /* Bo tròn góc */
+    cursor: pointer; /* Biến con trỏ thành hình bàn tay khi di chuột qua nút */
+    transition: background-color 0.3s; /* Hiệu ứng màu nền */
+    border: 1px solid #706d6d;
+}
+
+.save-button:hover, .cancel-button:hover {
+    background-color: #0056b3; /* Màu nền khi di chuột vào */
+}
+
+
+
+
