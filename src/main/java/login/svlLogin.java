@@ -6,7 +6,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import login.login;
 
 /**
  * Servlet implementation class svlLogin
@@ -44,9 +43,9 @@ public class svlLogin extends HttpServlet {
         if (isValid) {
         	if(role.equals("admin"))
         		response.sendRedirect("/Web_Travel/2.Admin/index.html");
-        	else if(role.equals("admin"))
+        	else if(role.equals("customer"))
                 response.sendRedirect("/Web_Travel/1.Customer/index.html");
-        	else if(role.equals("admin"))
+        	else if(role.equals("service"))
                 response.sendRedirect("/Web_Travel/3.Service/index.html");
         } else {
         	String errorMessage = "Sai tài khoản hoặc mật khẩu!";
