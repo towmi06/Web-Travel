@@ -13,8 +13,5 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="D:/study/WEB/jstl-1.2.jar"/>
-	<classpathentry kind="lib" path="D:/study/WEB/mssql-jdbc-8.2.2.jre13.jar"/>
-	<classpathentry kind="lib" path="D:/study/WEB/mysql-connector-java-8.0.12.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
