@@ -1,102 +1,352 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us</title>
-    <link rel="icon" href="./files/logo.png">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <title>Về chúng tôi</title>
+    <link rel="icon" href="image/logo.png">
+    <link rel="stylesheet" type="text/css" href="./css/AboutStyles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans&family=Open+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet"
-    href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&family=Open+Sans:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
 </head>
-<body class="aboutbody">
-        <nav>
-            <img src="./files/logo.png" class="logo" alt="Logo" title="FirstFlight Travels">
 
-            <ul class="navbar">
-                <li>
-                    <a href="./index.html">Home</a>
-                    <a href="./index.html#locations">Địa điểm</a>
-                    <a href="./index.html#package">Gói dịch vụ</a>
-                    <a href="./about.html">Về chúng tôi</a>
-                    <a href="./contact.html">Liên hệ chúng tôi</a>
-                </li>
-            </ul>
-        </nav>
-        
-    <section class="about">
-           <div class="main">
-            <img src="./files/aboutpic.png" alt="My Photo">
-            <div class="abt-text">
-                <h1>About <span>Us</span></h1>
-                <p>Firstflight Travels is a travel website project developed by Mohd. Rahil using HTML, CSS and JavaScript.</p>
-                <a href="https://www.linkedin.com/in/mohdrahil101" class="connectbtn" target="_blank">Connect with me!</a>
+<body>
+    <div class="Layout_layout__1y4NW">
+        <!-- Header -->
+        <div class="Header_wrapper__IXtx_ ">
+            <div class="container flex justify-between align-center Header_container__jM6_b">
+                <div class="flex align-center gap-40 h-full">
+                    <div class="Header_logo__tC3WE">
+                        <a href="/Cus.html">
+                            <span
+                                style="box-sizing: border-box; display: inline-block; overflow: hidden; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;">
+                                <span
+                                    style="box-sizing: border-box; display: block; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;">
+                                    <img alt aria-hidden="true"
+                                        src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%27156%27%20height=%2742%27/%3e"
+                                        style="display: block; max-width: 100%; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;">
+                                </span>
+                                <img src="/image/logo.png" decoding="async" data-nimg="intrinsic"
+                                    style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;">
+                                <noscript></noscript>
+                            </span>
+                        </a>
+                    </div>
+                </div>
 
-                <div class="connect-section">
+                <ul class="navbar" style="text-align: center;">
+                    <li>
+                        <a href="#home">Trang chủ</a>
+                        <a href="#locations">Địa điểm</a>
+                        <a href="#package">Gói dịch vụ</a>
+                        <a href="jsp_user/about.html">Tiện ích</a>
+                        <a href="jsp_user/about.html" style="margin-right: 170px;">Liên hệ </a>
 
-                    <div class="social-icons">
-                        <a href="https://www.facebook.com/mohd.rahil.blogger" target="_blank"><i class='bx bxl-facebook'></i></a>
-                        <a href="https://www.instagram.com/mohdrahil101" target="_blank"><i class='bx bxl-instagram' ></i></a>
-                        <a href="https://www.twitter.com/mohdrahil101" target="_blank"><i class='bx bxl-twitter' ></i></a>
-                        <a href="https://www.linkedin.com/in/mohdrahil101" target="_blank"><i class='bx bxl-linkedin' ></i></a>
-                        <a href="https://www.youtube.com/techdollarz" target="_blank"><i class='bx bxl-youtube' ></i></a>
-                        <a href="https://www.mohdrahil.wordpress.com" target="_blank"><i class='bx bxl-wordpress' ></i></a>
-                        <a href="https://www.github.com/mohdrahil101" target="_blank"><i class='bx bxl-github'></i></a>
-                        <a href="https://www.amazon.in/shop/mohdrahil101" target="_blank"><i class='bx bxl-amazon'></i></a>
+                    </li>
+                </ul>
+
+                <!-- Thanh dropdown cho các tiện ích -->
+                <div class="dropdown" id="dropdown-menu">
+                    <div class="dropdown-toggle" onclick="toggleDropdown()"></div>
+                    <div class="dropdown-content" id="dropdown-content">
+                        <a href="#home">Trang chủ</a>
+                        <a href="#locations">Địa điểm</a>
+                        <a href="#package">Gói dịch vụ</a>
+                        <a href="./contact.html">Liên hệ chúng tôi</a>
+                        <a href="./partnership.html">Hợp tác với chúng tôi</a>
+                        <a href="./affiliate.html">Trở thành đối tác liên kết</a>
+                    </div>
+                </div>
+
+                <script src="\src\dropdowns.js"></script>
+
+                <!-- chat-->
+                <div class="chat-widget">
+                    <div class="chat-logo" onclick="toggleChat()">
+                        <img src="./image/logo_chat.png" alt="Chat Logo">
+                    </div>
+                    <div class="chat-box hidden">
+
+                        Du lịch Việt xin trân trọng được phục vụ quý khách!
+                    </div>
+                </div>
+                <script src="src/chatcs.js"></script>
+                <script>
+
+                    const chatLogo = document.getElementById('chat-logo');
+
+                    chatLogo.addEventListener('click', function () {
+
+                        toggleChat();
+                    });
+                </script>
+            </div>
+        </div>
+        <!-- Layout main -->
+
+        <div class="Layout_main__gbdP0">
+            <div class="container flex flex-col gap-80 AboutUsPage_wrapper__XCG6l">
+                <!-- Phần 1 -->
+                <div class="SectionHeader_sectionHeader__60CR7">
+                    <div class="SectionHeader_title__eE2Rf">
+                        <h4>Về Du Lịch Việt</h4>
+                        <div>
+                            <span
+                                style="box-sizing: border-box; display: inline-block; overflow: hidden; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;">
+                                <span
+                                    style="box-sizing: border-box; display: block; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;">
+                                    <img alt aria-hidden="true"
+                                        src="https://mixivivu.com/_next/image?url=%2Fheading-border.png&w=96&q=75"
+                                        style="display: block; max-width: 100%; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;">
+                                </span>
+
+                                <img src="https://mixivivu.com/_next/image?url=%2Fheading-border.png&w=96&q=75"
+                                    decoding="async" data-nimg="intrinsic"
+                                    srcset="https://mixivivu.com/_next/image?url=%2Fheading-border.png&w=96&q=75 1x, https://mixivivu.com/_next/image?url=%2Fheading-border.png&w=96&q=75 2x"
+                                    style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;">
+                                <noscript></noscript>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Phần 2  -->
+                <div class="flex flex-col gap-40">
+                    <div class="flex flex-col gap-16">
+                        <h6 style="color: var(#101828);">1. Chúng tôi là Du Lịch Việt</h6>
+                        <p class="md">
+                            DulichViet là sản phẩm chính thức của Công ty TNHH Du lịch và dịch vụ N5-Vivu. Với niềm đam
+                            mê du lịch, ưa khám phá, chúng tôi đã cùng nhau xây dựng một website – nơi mà khách hàng sẽ
+                            dễ dàng lựa chọn cho mình cũng như những người thân yêu chuyến nghỉ dưỡng đáng nhớ.
+                            DulichViet chọn lọc các địa điểm du lịch, khách sạn và liên kết với các nhà cung cấp không
+                            nhằm cung cấp những dịch vụ đa dạng và tốt nhất cho khách hàng.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="flex flex-col gap-16">
+                            <h6 style="color: var(#101828);">2. Tại sao chọn chúng tôi?</h6>
+                            <p class="md" style="color: var(#475467);">
+                                Chúng tôi mong muốn khách hàng tận hưởng các dịch vụ du lịch chất lương bằng sự trải
+                                nghiệm thực tế của chính đội ngũ của DulichViet. Các hình ảnh về địa điểm, khách sạn hay
+                                những dịch vụ mà chúng tôi đã ghi lại cũng sẽ được chúng tôi giới thiệu tới khách hàng.
+                                Chính từ những hình ảnh này, quý khách có thể chọn lựa cho mình hay gia đình, bạn bè,
+                                đồng nghiệp những chuyến đi ý nghĩa nhất. Chúng tôi chắc chắn sẽ mang lại cho du khách
+                                những kỳ nghĩ đáng nhớ với:
+                            </p>
+                            <div class="grid grid-cols-2 gap-24 AboutUsPage_whyUs__rT243">
+                                <div class="Card_card__rC1zg AboutUsPage_question-card__b_WdJ">
+                                    <div class="flex flex-col gap-20">
+                                        <div class="AboutUsPage_whyIcon__fnVyl">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                viewBox="0 0 24 24" fill="none">
+                                                <path
+                                                    d="M3.11357 9.00017H20.8885M7.04969 3.05065L12.001 9.00023L16.9607 3.05482M20.6871 8.52922L17.2385 3.35641C17.1517 3.22616 17.1083 3.16104 17.0509 3.11389C17.0001 3.07216 16.9416 3.04084 16.8787 3.02174C16.8077 3.00017 16.7294 3.00017 16.5729 3.00017H7.42917C7.27264 3.00017 7.19437 3.00017 7.12333 3.02174C7.06043 3.04084 7.00192 3.07216 6.95114 3.11389C6.89378 3.16104 6.85036 3.22616 6.76353 3.35641L3.31499 8.52922C3.20195 8.69878 3.14543 8.78356 3.12517 8.87476C3.10728 8.95532 3.10961 9.03905 3.13194 9.11849C3.15722 9.20843 3.21836 9.28995 3.34063 9.45298L11.361 20.1468C11.5781 20.4363 11.6867 20.5811 11.8198 20.6328C11.9364 20.6782 12.0657 20.6782 12.1823 20.6328C12.3153 20.5811 12.4239 20.4363 12.641 20.1468L20.6614 9.45298C20.7837 9.28995 20.8448 9.20843 20.8701 9.11849C20.8924 9.03905 20.8948 8.95532 20.8769 8.87476C20.8566 8.78356 20.8001 8.69878 20.6871 8.52922Z"
+                                                    stroke="#0E4F4F" stroke-width="2" stroke-linecap="round"
+                                                    stroke-linejoin="round">
+                                                </path>
+                                            </svg>
+                                        </div>
+                                        <p class="subHeading md" style="font-weight: 700; color: #1D2939;"> Đội ngũ
+                                            chuyên nghiệp, tâm huyết</p>
+                                        <p class="sm">
+                                            Chúng tôi có đội ngũ nhân viên kinh nghiệm, tâm huyết, luôn lắng nghe những
+                                            thắc mắc, ý kiến của khách hàng thông qua hotline, fanpage được kết nối liên
+                                            tục. Với vốn kiến thức quý giá tích lũy qua nhiều năm, chúng tôi sẽ tư vấn
+                                            cho quý khách những sản phẩm du lịch phù hợp nhất cũng như những vấn đề phát
+                                            sinh trong chuyến nghỉ dưỡng. Ngoài ra, chúng tôi còn có những nhân viên mới
+                                            trẻ trung, năng động hứa hẹn sẽ giới thiệu nhiều điểm đến mới hấp dẫn cho du
+                                            khách.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="Card_card__rC1zg AboutUsPage_question-card__b_WdJ">
+                                    <div class="flex flex-col gap-20">
+                                        <div class="AboutUsPage_whyIcon__fnVyl">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                viewBox="0 0 24 24" fill="none">
+                                                <path
+                                                    d="M11.2443 4.17391C11.4758 3.50799 11.5916 3.17503 11.7627 3.08276C11.9108 3.00289 12.0892 3.00289 12.2373 3.08276C12.4084 3.17503 12.5242 3.50799 12.7556 4.17391L14.2859 8.5763C14.3518 8.76583 14.3847 8.86059 14.4441 8.93116C14.4965 8.9935 14.5634 9.04209 14.6389 9.07269C14.7244 9.10734 14.8247 9.10938 15.0253 9.11347L19.6851 9.20843C20.3899 9.22279 20.7423 9.22998 20.883 9.36423C21.0047 9.48042 21.0598 9.65005 21.0297 9.81559C20.9948 10.0069 20.7139 10.2198 20.1521 10.6458L16.438 13.4615C16.2782 13.5828 16.1982 13.6434 16.1494 13.7216C16.1063 13.7908 16.0808 13.8694 16.075 13.9506C16.0685 14.0426 16.0975 14.1387 16.1556 14.3307L17.5053 18.7918C17.7094 19.4666 17.8115 19.804 17.7273 19.9792C17.6544 20.1309 17.5101 20.2357 17.3433 20.2582C17.1506 20.2841 16.8613 20.0828 16.2826 19.6801L12.4569 17.018C12.2922 16.9034 12.2099 16.8461 12.1204 16.8239C12.0413 16.8042 11.9587 16.8042 11.8796 16.8239C11.7901 16.8461 11.7078 16.9034 11.5431 17.018L7.71738 19.6801C7.1387 20.0828 6.84936 20.2841 6.65666 20.2582C6.48988 20.2357 6.34559 20.1309 6.2727 19.9792C6.18848 19.804 6.29056 19.4666 6.49471 18.7918L7.84436 14.3307C7.90246 14.1387 7.93151 14.0426 7.92497 13.9506C7.91919 13.8694 7.89365 13.7908 7.85056 13.7216C7.80179 13.6434 7.72184 13.5828 7.56195 13.4615L3.84791 10.6458C3.28611 10.2198 3.00521 10.0069 2.97034 9.81559C2.94015 9.65005 2.99527 9.48042 3.11699 9.36423C3.25764 9.22998 3.61007 9.22279 4.31492 9.20843L8.97472 9.11347C9.17533 9.10938 9.27564 9.10734 9.3611 9.07269C9.43659 9.04209 9.50346 8.9935 9.5559 8.93116C9.61526 8.86059 9.6482 8.76583 9.71408 8.5763L11.2443 4.17391Z"
+                                                    stroke="#0E4F4F" stroke-width="2" stroke-linecap="round"
+                                                    stroke-linejoin="round"></path>
+                                            </svg>
+                                        </div>
+                                        <p class="subHeading md" style="font-weight: 700; color: #1D2939;">Sản phẩm
+                                            phong phú</p>
+                                        <p class="sm">
+                                            Tại địa chỉ website: https://dulichviet.com của chúng tôi, khách hàng có thể
+                                            dễ dàng tìm thấy một địa điểm du lịch sang trọng, một khu nghỉ dưỡng tuyệt
+                                            đẹp trên mảnh đất hình chữ S. Chúng tôi cũng đưa ra những thông tin đầy đủ,
+                                            hình ảnh thực tế của các dịch vụ chất lượng. Qua đó, quý khách sẽ chon lựa
+                                            được một dịch vụ phù hợp cho chuyến đi cùng gia đình, bạn bè hay đồng
+                                            nghiệp.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="Card_card__rC1zg AboutUsPage_question-card__b_WdJ">
+                                    <div class="flex flex-col gap-20">
+                                        <div class="AboutUsPage_whyIcon__fnVyl">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                viewBox="0 0 24 24" fill="none">
+                                                <path
+                                                    d="M15 10V9.91667C15 8.85812 14.1419 8 13.0833 8H11C9.89543 8 9 8.89543 9 10C9 11.1046 9.89543 12 11 12H13C14.1046 12 15 12.8954 15 14C15 15.1046 14.1046 16 13 16H10.9583C9.87678 16 9 15.1232 9 14.0417V14M12 17.5V6.5M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"
+                                                    stroke="#0E4F4F" stroke-width="2" stroke-linecap="round"
+                                                    stroke-linejoin="round"></path>
+                                            </svg>
+                                        </div>
+                                        <p class="subHeading md" style="font-weight: 700; color: #1D2939;">
+                                            Mức giá hấp dẫn
+                                        </p>
+                                        <p class="sm">
+                                            DulichViet luôn cam kết sẽ đem đến các dịch vụ chất lượng với các mức giá
+                                            tốt nhất. Chúng tôi tin chắc rằng chi phí mà quý khách thanh toán là hoàn
+                                            toàn xứng đáng. Bên cạnh đó, quý khách cũng có thể tìm thấy nhiều món quà
+                                            hấp dẫn trong những đợt khuyến mại trên website của chúng tôi.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="Card_card__rC1zg AboutUsPage_question-card__b_WdJ">
+                                    <div class="flex flex-col gap-20">
+                                        <div class="AboutUsPage_whyIcon__fnVyl">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                viewBox="0 0 24 24" fill="none">
+                                                <path
+                                                    d="M12 14.5V16.5M7 10.0288C7.47142 10 8.05259 10 8.8 10H15.2C15.9474 10 16.5286 10 17 10.0288M7 10.0288C6.41168 10.0647 5.99429 10.1455 5.63803 10.327C5.07354 10.6146 4.6146 11.0735 4.32698 11.638C4 12.2798 4 13.1198 4 14.8V16.2C4 17.8802 4 18.7202 4.32698 19.362C4.6146 19.9265 5.07354 20.3854 5.63803 20.673C6.27976 21 7.11984 21 8.8 21H15.2C16.8802 21 17.7202 21 18.362 20.673C18.9265 20.3854 19.3854 19.9265 19.673 19.362C20 18.7202 20 17.8802 20 16.2V14.8C20 13.1198 20 12.2798 19.673 11.638C19.3854 11.0735 18.9265 10.6146 18.362 10.327C18.0057 10.1455 17.5883 10.0647 17 10.0288M7 10.0288V8C7 5.23858 9.23858 3 12 3C14.7614 3 17 5.23858 17 8V10.0288"
+                                                    stroke="#0E4F4F" stroke-width="2" stroke-linecap="round"
+                                                    stroke-linejoin="round"></path>
+                                            </svg>
+                                        </div>
+                                        <p class="subHeading md" style="font-weight: 700; color: #1D2939;">Bảo mật thông
+                                            tin</p>
+                                        <p class="sm">
+                                            Chúng tôi cam kết toàn bộ mọi thông tin cá nhân của khách hàng sẽ được giữ
+                                            bí mật tuyệt đối. Quý khách có thể yên tâm trải nghiệm dịch vụ thực sự thoải
+                                            mái và riêng tư. Hi vọng, dulichviet.com sẽ là một địa chỉ tin cậy trong mỗi
+                                            chuyến đi , mỗi kỳ nghỉ của quý khách.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- mục 3  -->
+                    <div class="flex flex-col gap-16">
+                        <h6 style="color: #101828;">3. Sản phẩm dịch vụ</h6>
+                        <div class="md" style="color: #475467;">Du lịch Việt cung cấp nhiều dịch vụ du lịch phong phú và
+                            đa dạng giúp du khách có nhiều lựa chọn:
+                            <ul class="custom-marker">
+                                <li>
+                                    Các địa điểm du lịch đa dạng và phong phú ở trong nước
+                                </li>
+                                <li>
+                                    Với các địa điểm du lịch đa dạng, dịch vụ phong phú
+                                </li>
+                                <li>
+                                    Đặt phòng khách sạn và resort
+                                </li>
+                            </ul>
+                        </div>
+                        <p class="md" style="color: #475467;">
+                            Ngoài ra, chúng tôi cũng cung cấp nhiều dịch vụ khác như: thuê xe du lịch chất lượng cao,
+                            thuê hướng dẫn viên du lịch, visa, vé tàu…giúp du khách thoải mái và dễ dàng cho những
+                            chuyến du lịch.
+                        </p>
+                    </div>
+                    <!-- mục 4 -->
+                    <div class="flex flex-col gap-16">
+                        <h6 style="color: #101828;">
+                            4. Liên hệ với chúng tôi
+                        </h6>
+                        <div class="Card_card__rC1zg AboutUsPage_question-card__b_WdJ">
+                            <div class="flex flex-col gap-20">
+                                <div>
+                                    <div class="subheading md" style="color: #1D2939;">CÔNG TY TNHH DU LỊCH VÀ DỊCH VỤ
+                                        N5-VIVU</div>
+                                    <label class="sm" style="color: #475467;">N5-VIVU TRAVEL AND SERVICE COMPANY LIMITED
+                                    </label>
+                                </div>
+                                <p class="sm" style="color:#475467;">
+                                    Mã số thuế: 1000123456
+                                    <br>
+                                    Giấy phép kinh doanh số: 1000123456
+                                    <br>
+                                    Nơi cấp: Sở KH & ĐT TP Hà Nội.
+                                    <br>
+                                    <br>
+                                    Hà Nội: Km10-Trần Phú-Hà Đông-Hà Nội
+                                    <br>
+                                    Điện thoại: 0123456789
+                                    <br>
+                                    Địa chỉ email: info@dulichviet.com
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Footer -->
+
+        <section class="footer">
+            <div class="foot">
+                <img src="./image/logo.png" style="margin-top: 50px; margin-left: 70px;max-width: 10%; height:auto;">
+
+                <div class="footer-content">
+                    <div class="intro" style="margin-top: 70px;
+                font-size:18px;color:rgb(226, 222, 222) ;
+                max-width: 350px; margin-left:10px;
+                font-family:  sans-serif; font-weight: 400; line-height: 2; display:'block'">
+                        <p>Chúng tôi chuyên cung cấp các dịch vụ du lịch chất lượng, đảm
+                            bảo mang lại trải nghiệm du lịch tuyệt vời cho tất cả du khách.
+                            Hãy đồng hành cùng DuLichViet khám phá những điểm đến độc đáo và hấp dẫn
+                            nhất của Việt Nam.
+                        </p>
+                    </div>
+                    <div class="footlinks">
+                        <h4>Giới thiệu</h4>
+                        <ul>
+                            <li><a href="./register.html">Đăng kí </a></li>
+                            <li><a href="./about.html">Về chúng tôi</a></li>
+
+                            <li><a href="./Terms of service.html">Điều khoản và dịch vụ</a></li>
+                            <li><a href="./Privacy.html">Chính sách quyền riêng tư</a></li>
+                            <li><a href="./contact.html">Liên hệ</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footlinks">
+                        <h4>Kết nối với chúng tôi</h4>
+                        <div class="social">
+                            <a href="https://www.facebook.com" target="_blank"><i class='bx bxl-facebook'></i></a>
+                            <a href="https://www.instagram.com" target="_blank"><i class='bx bxl-instagram'></i></a>
+                            <a href="https://www.twitter.com" target="_blank"><i class='bx bxl-twitter'></i></a>
+                            <a href="https://www.linkedin.com" target="_blank"><i class='bx bxl-linkedin'></i></a>
+                            <a href="https://www.youtube.com" target="_blank"><i class='bx bxl-youtube'></i></a>
+                            <a href="https://www.github.com" target="_blank"><i class='bx bxl-github'></i></a>
+                        </div>
+                        <br>
+                        <br>
+                        <h4>Phương thức thanh toán</h4>
+                        <img src="./image/pay.jpg" style="border-radius: 15px;">
+                        <!-- Thêm các biểu tượng thanh toán khác ở đây -->
                     </div>
 
                 </div>
             </div>
-            
-
-           </div>
-           
-
-    </section>
-
-
-    <!-- Footer -->
-
-<!-- Footer -->
-
-<section class="footer">
-    <div class="foot">
-        <div class="footer-content">
-            
-            <div class="footlinks">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="./register.html">Register</a></li>
-                    <li><a href="./about.html">About Us</a></li>
-                    <li><a href="./contact.html">Contact Us</a></li>
-                </ul>
+            <div class="end">
+                <img src=".\image\image.png" alt="Logo"
+                    style="width:150px;float: right; margin-right:200px;margin-top:-10px">
+                <p>Copyright ©2024DuLichViet. Website developed by: N5_PTIT</p>
+                <br>
             </div>
-
-            <div class="footlinks">
-                <h4>Connect</h4>
-                <div class="social">
-                    <a href="https://www.facebook.com/mohd.rahil.blogger" target="_blank"><i class='bx bxl-facebook'></i></a>
-                    <a href="https://www.instagram.com/mohdrahil101" target="_blank"><i class='bx bxl-instagram' ></i></a>
-                    <a href="https://www.twitter.com/mohdrahil101" target="_blank"><i class='bx bxl-twitter' ></i></a>
-                    <a href="https://www.linkedin.com/in/mohdrahil101" target="_blank"><i class='bx bxl-linkedin' ></i></a>
-                    <a href="https://www.youtube.com/techdollarz" target="_blank"><i class='bx bxl-youtube' ></i></a>
-                    <a href="https://www.mohdrahil.wordpress.com" target="_blank"><i class='bx bxl-wordpress' ></i></a>
-                    <a href="https://www.github.com/mohdrahil101" target="_blank"><i class='bx bxl-github'></i></a>
-                </div>
-            </div>
-            
-        </div>
-    </div>
-
-    <div class="end">
-        <p>Copyright © 2022 Firstflight Travels All Rights Reserved.<br>Website developed by: Mohd. Rahil</p>
-    </div>
-</section>
+        </section>
 
 </body>
+
 </html>

@@ -1,0 +1,855 @@
+/* Global styles */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Archivo', sans-serif;
+    text-decoration: none;
+    list-style: none;
+    scroll-behavior: smooth;
+}
+
+/* Layout */
+.Layout_layout__1y4NW {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    width: 100%;
+    max-width: 1280px;
+    margin: auto;
+    padding: 0 20px; /* Added some padding */
+}
+
+/* Header */
+.Header_wrapper__IXtx_ {
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    z-index: 20;
+    border-bottom: 1px solid #eaecf0;
+}
+
+.Header_container__jM6_b {
+    display: flex;
+    justify-content: space-between; /* Align items horizontally */
+    align-items: center; /* Align items vertically */
+    height: 96px;
+}
+
+.Header_logo__tC3WE {
+    width: 190px;
+    height: 50px;
+    position: relative;
+}
+
+.Header_logo__tC3WE img {
+    width: 100%;
+    height: auto;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+
+.h-full {
+    height: 100%;
+}
+
+.gap-40 {
+    gap: 40px;
+}
+
+.gap-24 {
+    gap: 24px;
+}
+
+.Header_logo__tC3WE {
+    width: 190px;
+    height: 50px;
+    position: relative;
+}
+
+/* Adjustments for smaller screens */
+@media only screen and (max-width: 1024px) {
+    .Header_logo__tC3WE {
+        width: 120px;
+        height: 30px;
+    }
+}
+
+@media only screen and (max-width: 1280px) {
+    .container {
+        padding: 0 8px;
+    }
+}
+
+/* CSS cho dropdown */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+@media only screen and (min-width: 1281px) {
+    .dropdown-content {
+        right: auto;
+        left: 0;
+    }
+}
+
+.dropdown-toggle {
+    width: 30px;
+    height: 3px;
+    background-color: #333;
+    cursor: pointer;
+    position: relative;
+    margin-right: 20px;
+}
+
+.dropdown-toggle::before,
+.dropdown-toggle::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 3px;
+    background-color: #333;
+    transition: transform 0.3s ease;
+}
+
+.dropdown-toggle::before {
+    top: -8px;
+}
+
+.dropdown-toggle::after {
+    bottom: -8px;
+}
+
+.dropdown.open .dropdown-content {
+    display: block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    width: 200px;
+    right: 0;
+    top: 50px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 20px 20px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown.open .dropdown-toggle::before {
+    transform: none;
+}
+
+/* Thuộc tính boder đầu tiên */
+nav {
+    width: 100%;
+    height: 70px;
+    background-color: rgb(254, 254, 254);
+    box-shadow: 5px 5px 30px rgba(0, 0, 0, 15%);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav ul {
+    margin-right: 2vh;
+}
+
+nav .logo {
+    width: 70px;
+    margin: 2vh;
+    margin-left: 4%;
+}
+
+nav ul li {
+    list-style: none;
+    display: inline-block;
+    margin-left: 15px;
+}
+
+.navbar {
+    text-align: center;
+    /* Căn giữa các phần tử bên trong .navbar */
+}
+
+.navbar li {
+    display: inline-block;
+    /* Hiển thị các phần tử liên kết cùng một dòng */
+}
+
+.navbar a {
+    margin-right: 20px;
+    /* Khoảng cách giữa các liên kết */
+}
+
+/*Màu Chữ tiêu đề */
+.navbar a {
+    color: rgb(0, 0, 0);
+    font-size: 18px;
+    padding: 10px 22px;
+    border-radius: 5px;
+    font-weight: 550;
+    /* Tăng độ đậm của chữ */
+    text-decoration: none;
+    transition: ease 0.4s;
+}
+
+/* Hover */
+.navbar a:hover {
+    color: rgb(238, 57, 104);
+    box-shadow: 0 0 10px rgba(138, 136, 136, 0.5);
+}
+
+/* Active */
+.navbar a.active {
+    background: rgb(255, 255, 255);
+    /* Màu nền khi active */
+    color: rgb(255, 254, 254);
+    /* Màu chữ khi active */
+    box-shadow: 5px 10px 30px rgba(85, 85, 85, 0.2);
+    /* Bóng đổ khi active */
+    border-radius: 5px;
+    /* Bo góc */
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    font-size: 17px;
+}
+
+.title {
+    text-decoration: none;
+    /* display: inline-block; */
+    font-size: 4vh;
+    color: rgb(255, 255, 255);
+    padding: 14px 17px;
+    margin-top: 32vh;
+    text-align: center;
+    vertical-align: center;
+}
+
+.title h1 {
+    font-size: 10vh;
+    text-shadow: 2px black;
+    transition: ease 0.3s;
+}
+
+.title h1:hover {
+    color: transparent;
+    -webkit-text-stroke: 1px white;
+
+}
+
+.button {
+    display: inline-block;
+    margin-top: 5vh;
+    font-size: 25px;
+    font-weight: 600;
+    padding: 10px 30px;
+    /* background-color:rgb(164, 44, 44); */
+    background-color: white;
+    border-radius: 20px;
+    text-decoration: none;
+    transition: ease 0.30s;
+}
+
+.button:hover {
+    transform: scale(1.1);
+    color: rgb(255, 255, 255);
+    background-color: #77dada;
+    /* border: 2px solid rgb(42, 37, 68); */
+    box-shadow: 5px 10px 30px rgba(0, 0, 0, 0.4);
+    padding: 10px 30px;
+}
+
+/* Hiển thị chat widget ở góc dưới phải của trang */
+.chat-widget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    /* Đảm bảo nó hiển thị trên các phần khác của trang */
+}
+
+/* Thiết lập kiểu dáng cho logo chat */
+.chat-logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    /* Tạo hình tròn */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    /* Hiển thị shadow */
+}
+
+/* Kiểu dáng cho hình ảnh trong logo chat */
+.chat-logo img {
+    width: 80%;
+    height: auto;
+}
+
+/* Hiển thị hộp chat khi được kích hoạt */
+.chat-box {
+    position: absolute;
+    bottom: 70px;
+    /* Hiển thị hộp chat lên trên logo chat */
+    right: 0;
+    width: 300px;
+    height: 400px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    display: none;
+    /* Ẩn ban đầu */
+}
+
+/* Hiển thị hộp chat khi được kích hoạt */
+.chat-box.active {
+    display: block;
+}
+
+/* Container main */
+
+
+.Layout_main__gbdP0 {
+    flex-grow: 1;
+}
+
+.Rules_wrapper__dRyPC {
+    padding: 80px 32px
+}
+
+.AboutUsPage_wrapper__XCG6l {
+    padding: 80px 32px
+}
+
+.gap-80 {
+    gap: 80px;
+}
+
+.gap-16 {
+    gap: 16px;
+}
+
+.flex-col {
+    flex-direction: column
+}
+
+.flex {
+    display: flex;
+}
+
+@media (max-width: 1024px) {
+    .SectionHeader_sectionHeader__60CR7 {
+        flex-direction:column;
+        align-items: flex-start;
+        text-align: left;
+        gap: 24px
+    }
+    .SectionHeader_sectionHeader__60CR7 .SectionHeader_title__eE2Rf h4 {
+        font-size: 30px
+    }
+}
+.subheading {
+    color: #344054;
+}
+
+.subheading.sm {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 700
+}
+
+.SectionHeader_sectionHeader__60CR7 {
+    display: flex;
+    flex-grow: 1;
+    gap: 16px
+}
+
+.SectionHeader_sectionHeader__60CR7 .SectionHeader_title__eE2Rf {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    flex: 1 0
+}
+
+.SectionHeader_title__eE2Rf h4 {
+    margin: 0;
+    color: var(#101828)
+}
+
+h4, h5 {
+    font-weight: 700;
+    color: var(#101828)
+}
+
+h4 {
+    display: block;
+    margin-block-start: 1.33em;
+    margin-block-end: 1.33em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    unicode-bidi: isolate;
+}
+
+h4 {
+    font-size: 36px;
+    line-height: 44px;
+}
+
+/* Reset CSS */
+
+
+.border {
+    border: 1px solid #ccc;
+    margin: 40px 0;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(138, 123, 123, 0.3);
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.text {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.text h2 {
+    font-size: 40px;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.text p {
+    font-size: 20px;
+    margin-bottom: 0;
+    color: rgb(108, 107, 107);
+}
+
+/* Box tìm kiếm */
+.input-with-icon {
+    position: relative;
+    padding: 16px 20px;
+    border-radius: 28px;
+    border: 1px solid #eaecf0;
+    box-shadow: 0px 1px 2px 0px #0108280d;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    /* Thêm transition cho hiệu ứng mượt mà */
+}
+
+.input-with-icon:focus-within {
+    border-color: #77dada;
+    /* Thay đổi màu viền khi focus */
+    box-shadow: 0 0 0 4px rgba(119, 218, 218, 0.2);
+    /* Thay đổi shadow khi focus */
+}
+
+
+.input-with-icon svg {
+    margin-right: 10px;
+}
+
+.input-with-icon input[type="text"] {
+    border: none;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: left;
+    outline: none;
+}
+
+.priceButton {
+    border: none;
+    flex-grow: 1;
+    width: auto;
+    height: 24px;
+    background-color: transparent;
+    position: relative;
+}
+
+/* Dropdown Styles */
+
+/* Khi kích thước màn hình nhỏ hơn hoặc bằng 768px, sử dụng flex-direction: column */
+@media (max-width: 1023px) {
+    .dropdown-search {
+        flex-direction: column;
+    }
+}
+
+/* Khi kích thước màn hình lớn hơn 768px, sử dụng flex-direction: row */
+@media (min-width: 1024px) {
+    .dropdown-search {
+        flex-direction: row;
+    }
+    .grid-cols-2 {
+        grid-template-columns: repeat(2,1fr)
+    }
+}
+
+.gap-20 {
+    gap: 20px;
+}
+
+
+/* Style text */
+p {
+    margin: 0;
+}
+
+p {
+    word-wrap: break-word;
+}
+
+p.md, p.sm {
+    font-weight: 400;
+}
+
+p.md {
+    font-size: 16px;
+    line-height: 24px;
+    color: #475467;
+}
+
+p.sm {
+    font-size: 14px;
+    line-height: 20px;
+}
+
+h6 {
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 700;
+}
+.md {
+    font-size: 16px;
+    line-height: 24px;
+    color: #475467;
+}
+.subheading.md {
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 700
+}
+
+label.sm {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 500
+}
+label {
+    cursor: inherit
+}
+@media (max-width: 1024px) {
+    .AboutUsPage_whyUs__rT243 {
+        grid-template-columns: auto;
+    }
+}
+
+.grid {
+    display: grid
+}
+
+/* .grid-cols-2 {
+    grid-template-columns: repeat(2,1fr)
+} */
+
+.AboutUsPage_wrapper__XCG6l .AboutUsPage_question-card__b_WdJ {
+    padding: 24px
+}
+
+.AboutUsPage_wrapper__XCG6l ul {
+    padding-left: 20px
+}
+
+.Card_card__rC1zg {
+    border-radius: 32px;
+    border: 1px solid #eaecf0;
+    background: #fff;
+    box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, .06), 0px 1px 3px 0px rgba(16, 24, 40, .1)
+}
+
+.AboutUsPage_wrapper__XCG6l .AboutUsPage_whyUs__rT243 .AboutUsPage_whyIcon__fnVyl {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    background: #77dada;
+}
+.custom-marker {
+    list-style-type: none; /* Ẩn kiểu marker mặc định */
+    margin-bottom: 10px;
+}
+
+.custom-marker li::before {
+    content: "•"; /* Sử dụng dấu chấm làm marker */
+    margin-right: 5px; /* Khoảng cách giữa marker và nội dung */
+}
+
+
+.dropdown-item {
+    margin: 10px;
+    font-weight: 300;
+    position: relative;
+    /* Để định vị menu dropdown */
+}
+
+/* Dropdown Menu Styles */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 0;
+    z-index: 1;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: max-content;
+    /* Thêm chiều rộng tối đa để menu phù hợp với nội dung */
+    min-width: 100%;
+    /* Đảm bảo dropdown menu có độ rộng tối thiểu */
+    padding: 10px 0;
+    /* Thêm padding để tạo khoảng cách giữa các mục */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Thêm shadow cho dropdown-menu */
+}
+
+/* Hiển thị menu dropdown khi hover vào dropdown-item */
+.dropdown-item:hover .dropdown-menu {
+    display: none;
+    border: 1 solid #b1acac;
+}
+
+/* Dropdown Menu Item Styles */
+.dropdown-menu .SearchBox_dropdown-item {
+    padding: 15px 30px;
+    /* Thêm padding cho mỗi mục */
+    font-size: 16px;
+    color: #423d3d;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    /* Thêm transition cho hiệu ứng mượt mà */
+}
+
+/* Hover Styles */
+.dropdown-menu .SearchBox_dropdown-item:hover {
+    background-color: #f0f0f0;
+    color: #000;
+    /* Thay đổi màu chữ khi di chuột qua */
+}
+
+/* Ngăn input bị thay đổi kích thước */
+#searchInput,
+#priceInput {
+    white-space: nowrap;
+}
+
+
+/* Styles for select element */
+.dropdown-item select {
+    font-size: 16px;
+    color: #423d3d;
+    padding: 10px;
+    border: 1px solid #b1acac;
+    border-radius: 20px;
+}
+
+
+/* Styles for button element */
+@media (max-width: 1024px) {
+    .SearchBox_submit-btn__eNdeg {
+        width: 100%;
+    }
+}
+
+.label.md {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 500;
+}
+
+button {
+    border-radius: 100px;
+    box-shadow: 0px 1px 2px 0px #1018280d;
+    /* Sửa lỗi cú pháp trong box-shadow */
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.Button_button-normal__y4h10 {
+    padding: 16px 20px;
+    white-space: nowrap;
+}
+
+.Button_button__QHarr {
+    height: fit-content;
+    /* Sửa lỗi cú pháp */
+    /* width: fit-content; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Button_button-color__7QnYK {
+    background-color: #77dada;
+    /* Sửa cú pháp của giá trị màu */
+    border: 1px solid #77dada;
+    /* Sửa cú pháp của giá trị màu */
+    color: #0e4f4f;
+    /* Sửa cú pháp của giá trị màu */
+    fill: #0a4f4f;
+    /* Sửa cú pháp của giá trị màu */
+}
+
+.Button_button-color__7QnYK:focus {
+    box-shadow: 0 0 0 4px #caf8f8, 0 1px 2px 0 rgba(24, 24, 27, .05);
+}
+
+.Button_button-color__7QnYK:hover {
+    background-color: #0e4f4f;
+    /* Sửa cú pháp của giá trị màu */
+    color: #fff;
+    cursor: pointer;
+    fill: #fff;
+}
+
+/* Footer styles */
+
+
+.footer{
+    margin-top: 50px;
+    background-color: #154a4a;
+    height: fit-content;
+}
+.foot{
+    padding: 20px 0;
+}
+
+.footer-content{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top:-100px;
+}
+
+.footlinks h4{
+    margin-top: 30px;
+    font-size: 20px;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+
+.footlinks h4::before{
+    content: "";
+    position: absolute;
+    height: 2px;
+    width: 70px;
+    left: 0;
+    bottom: -7px;
+    background: white;
+}
+
+.footlinks ul li{
+    margin-bottom: 15px;
+}
+
+.footlinks ul li a{
+    font-size: 17px;
+    color: #dddddd;
+    display: block;
+    transition: ease 0.30s;
+}
+
+.footlinks ul li a:hover{
+    transform: translate(6px);
+    color: white;
+}
+
+
+.social-icons a{
+    height: 40px;
+    width: 40px;
+    margin: 4px;
+    font-size: 30px;
+    color: #0d0d0d;
+    background-color: rgb(58, 56, 56);
+    border-radius: 20px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    transition: ease 0.30s;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.social-icons a:hover{
+    transform: scale(1.2);
+}
+.social a{
+    font-size: 25px;
+    margin: 4px;
+    height: 40px;
+    width: 40px;
+    color: rgb(21, 74, 74);
+    background-color: rgb(245, 245, 245);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    transition: ease 0.30s;
+}
+
+.social a:hover{
+    transform: scale(1.2);
+}
+
+.end{
+    
+    border-top: 1px solid #898989; 
+    text-align: left;
+    padding-top: 25px;
+    padding-bottom: 10px;
+}
+
+.end p{
+    font-size: 15px;
+    color: rgb(220, 216, 216);
+    letter-spacing: 1px;
+    font-weight: 300;
+    
+    margin-left: 100px;
+}
