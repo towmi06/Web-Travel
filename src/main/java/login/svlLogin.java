@@ -1,11 +1,16 @@
 package login;
 
+import admin_info.*;
+import cooperate.*;
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class svlLogin
@@ -34,6 +39,7 @@ public class svlLogin extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
 		String role = request.getParameter("role");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
@@ -41,8 +47,13 @@ public class svlLogin extends HttpServlet {
         boolean isValid = login.validateUser(role, email, password);
 
         if (isValid) {
-        	if(role.equals("admin"))
-        		response.sendRedirect("/Web_Travel/2.Admin/index.html");
+        	if(role.equals("admin")) {
+        		AdminInfo admin = AdminInfo.findAdminByEmail(email);
+        		List<Cooperate> cooperates = new CooperateDAO().getAllCooperates();
+                session.setAttribute("adminInfo", admin);
+                session.setAttribute("cooperates", cooperates);
+        		response.sendRedirect("/Web_Travel/2.Admin/index.jsp");
+        	}
         	else if(role.equals("customer"))
                 response.sendRedirect("/Web_Travel/1.Customer/index.html");
         	else if(role.equals("service"))

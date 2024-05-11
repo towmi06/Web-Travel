@@ -19,7 +19,7 @@
     margin-left: 10%;
     margin-top: 5%;
     width: 80%;
-    height: 65%;
+    height: 75%;
     display: flex;
     flex-direction: column; 
     justify-content: space-between;
@@ -30,7 +30,7 @@
 .cover-photo {
     margin-top: 1%;
     margin-left: 1%;
-    height: 50%;
+    height: 40%;
     width: 98%;
     background-color: #000000;
 }

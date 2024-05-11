@@ -74,5 +74,4 @@
         <aside class="info-side"></aside>
     </div>
 </body>
-
 </html>
