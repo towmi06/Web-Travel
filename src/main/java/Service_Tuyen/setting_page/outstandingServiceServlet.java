@@ -1,16 +1,17 @@
-package setting_page;
+package Service_Tuyen.setting_page;
 
 import java.io.IOException;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import setting_page.OutstandingServiceDAO;
+import Service_Tuyen.setting_page.OutstandingServiceDAO;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class outstandingServiceServlet
@@ -39,7 +40,11 @@ public class outstandingServiceServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		
 		String[] tourIds = request.getParameterValues("outstandingIds");
+		
+		int result = 0;
 
         List<OutstandingService> danhSach = null;
         try {
@@ -64,7 +69,7 @@ public class outstandingServiceServlet extends HttpServlet {
                 if (found && !service.getOutstanding()) {
                     // If the service ID is found and outstanding status is false, update to true
                     try {
-						OutstandingServiceDAO.updateOutstandingService(service);
+						result = OutstandingServiceDAO.updateOutstandingService(service);
 					} catch (ClassNotFoundException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -72,7 +77,7 @@ public class outstandingServiceServlet extends HttpServlet {
                 } else if (!found && service.getOutstanding()) {
                     // If the service ID is not found and outstanding status is true, update to false
                     try {
-						OutstandingServiceDAO.updateOutstandingService(service);
+                    	result = OutstandingServiceDAO.updateOutstandingService(service);
 					} catch (ClassNotFoundException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -83,6 +88,11 @@ public class outstandingServiceServlet extends HttpServlet {
                 response.getWriter().println(service.toString());
             }
         }
+        if (result == 10) 
+            session.setAttribute("message", "Cập nhật dịch vụ nổi bật thành công");
+        else 
+            session.setAttribute("message", "Cập nhật dịch vụ nổi bật không thành công");
+        
         response.sendRedirect("/Web_Travel/3.Service/index.jsp");
 	}
 }

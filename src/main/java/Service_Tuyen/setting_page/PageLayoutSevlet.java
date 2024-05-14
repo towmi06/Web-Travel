@@ -1,6 +1,6 @@
-package setting_page;
+package Service_Tuyen.setting_page;
 
-import setting_page.PageLayout;
+import Service_Tuyen.setting_page.PageLayout;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

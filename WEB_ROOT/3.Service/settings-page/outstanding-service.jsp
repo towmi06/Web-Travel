@@ -2,8 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
 <%@ page import="java.util.List" %>
-<%@ page import="setting_page.OutstandingService" %>
-<%@ page import="setting_page.OutstandingServiceDAO" %>
+<%@ page import="Service_Tuyen.setting_page.OutstandingService" %>
+<%@ page import="Service_Tuyen.setting_page.OutstandingServiceDAO" %>
 <!DOCTYPE html>
 <html>
 <head>

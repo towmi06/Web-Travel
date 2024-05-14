@@ -2,8 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="java.util.List" %>
-<%@ page import="admin_info.AdminInfoDAO" %>
-<%@ page import="admin_info.AdminInfo" %>
+<%@ page import="Admin_Quan.admin_info.AdminInfoDAO" %>
+<%@ page import="Admin_Quan.admin_info.AdminInfo" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -1,6 +1,6 @@
-package account_infomation;
+package Service_Tuyen.account_infomation;
 
-import setting_page.ContactInfoService;
+import Service_Tuyen.setting_page.ContactInfoService;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="java.util.List" %>
-<%@ page import="bill_managenment.BillManagenment" %>
-<%@ page import="bill_managenment.BillManagenmentDAO" %>
+<%@ page import="Admin_Quan.bill_managenment.BillManagenment" %>
+<%@ page import="Admin_Quan.bill_managenment.BillManagenmentDAO" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>

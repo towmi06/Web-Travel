@@ -1,7 +1,7 @@
-package setting_page;
+package Service_Tuyen.setting_page;
 
 
-import setting_page.ContactInfoService;
+import Service_Tuyen.setting_page.ContactInfoService;
 import java.io.IOException;
 
 import javax.servlet.ServletException;

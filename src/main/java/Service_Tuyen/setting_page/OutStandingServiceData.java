@@ -1,4 +1,4 @@
-package setting_page;
+package Service_Tuyen.setting_page;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

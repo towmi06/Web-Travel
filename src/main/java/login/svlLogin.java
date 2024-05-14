@@ -1,8 +1,8 @@
 package login;
 
-import admin_info.*;
-import cooperate.*;
-import help.*;
+import Admin_Quan.admin_info.*;
+import Admin_Quan.cooperate.*;
+import Admin_Quan.help.*;
 
 import java.io.IOException;
 import java.util.List;
@@ -63,7 +63,8 @@ public class svlLogin extends HttpServlet {
         	else if(role.equals("customer"))
                 response.sendRedirect("/Web_Travel/1.Customer/index.html");
         	else if(role.equals("service"))
-                response.sendRedirect("/Web_Travel/3.Service/index.html");
+        		response.sendRedirect("/Web_Travel/3.Service/index.jsp");
+            	session.setAttribute("email", email); 
         } else {
         	String errorMessage = "Sai tài khoản hoặc mật khẩu!";
             request.setAttribute("errorMessage", errorMessage);

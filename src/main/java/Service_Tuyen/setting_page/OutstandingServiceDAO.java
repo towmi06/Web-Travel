@@ -1,4 +1,4 @@
-package setting_page;
+package Service_Tuyen.setting_page;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import setting_page.OutstandingService;
+import Service_Tuyen.setting_page.OutstandingService;
 
 public class OutstandingServiceDAO {
 	public static List<OutstandingService> getOutstandingServices() throws ClassNotFoundException {
@@ -115,7 +115,7 @@ public class OutstandingServiceDAO {
 	}
 
 
-	public static void updateOutstandingService(OutstandingService service) throws ClassNotFoundException {
+	public static int updateOutstandingService(OutstandingService service) throws ClassNotFoundException {
 		Connection conn = null;
 	    PreparedStatement stmt = null;
 
@@ -142,8 +142,19 @@ public class OutstandingServiceDAO {
 	        
 	        // Update the outstanding status in the OutstandingService object
 	        service.setOutstanding(newStatus);
+	        
+	        int rowsAffected = stmt.executeUpdate();
+            
+            if (rowsAffected > 0) {
+                System.out.println("Page layout updated successfully.");
+                return 10;
+            } else {
+                System.out.println("Failed to update page layout.");
+                return 3;
+            }
 	    } catch (SQLException e) {
 	        e.printStackTrace();
+	        return 5;
 	    } finally {
 	        // Close resources
 	        try {

@@ -16,13 +16,13 @@ public class login {
         
         try {
             // Load driver
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        	Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 
             // Establish connection
-            String urlDB = "jdbc:sqlserver://DESKTOP-HM360E0\\MSSQLSERVER04:1433;databaseName=Web Travel";
+            String urlDB = "jdbc:sqlserver://DESKTOP-00GD31A\\LEY:1433;databaseName=WEB TOUR";
             String user = "sa";
-            String dbPassword = "12345";
-            conn = DriverManager.getConnection(urlDB, user, dbPassword);
+            String DBPassword = "12345";
+            conn = DriverManager.getConnection(urlDB, user, DBPassword);
             
             // Prepare statement for querying user
             String querySQL = "SELECT * FROM Accounts WHERE Role = ? AND Username = ? AND Password = ?";

@@ -1,6 +1,6 @@
-package customer_care;
+package Service_Tuyen.customer_care;
 
-import customer_care.Bill;
+import Service_Tuyen.customer_care.Bill;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
