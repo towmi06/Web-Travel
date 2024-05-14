@@ -2,6 +2,8 @@ package login;
 
 import admin_info.*;
 import cooperate.*;
+import help.*;
+
 import java.io.IOException;
 import java.util.List;
 
@@ -50,8 +52,12 @@ public class svlLogin extends HttpServlet {
         	if(role.equals("admin")) {
         		AdminInfo admin = AdminInfo.findAdminByEmail(email);
         		List<Cooperate> cooperates = new CooperateDAO().getAllCooperates();
+        		List<Help> helpList = new HelpDAO().getAllHelp();
+
                 session.setAttribute("adminInfo", admin);
                 session.setAttribute("cooperates", cooperates);
+                session.setAttribute("helpList", helpList);
+                
         		response.sendRedirect("/Web_Travel/2.Admin/index.jsp");
         	}
         	else if(role.equals("customer"))

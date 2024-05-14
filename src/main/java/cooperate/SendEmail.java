@@ -12,7 +12,7 @@ import javax.mail.internet.MimeMessage;
 
 public class SendEmail {
 
-    public static void sendEmailTo(String recipientEmail) {
+    public static int sendEmailTo(String recipientEmail) {
         // Get properties object
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");
@@ -40,6 +40,7 @@ public class SendEmail {
             Transport.send(message);
 
             System.out.println("Message sent successfully to " + recipientEmail);
+            return 10;
         } catch (MessagingException e) {
             throw new RuntimeException(e);
         }

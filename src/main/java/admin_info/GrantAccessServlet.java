@@ -1,4 +1,6 @@
-package cooperate;
+package admin_info;
+
+import admin_info.AdminInfo;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -9,16 +11,16 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class CooperateServlet
+ * Servlet implementation class GrantAccessServlet
  */
-@WebServlet("/CooperateServlet")
-public class CooperateServlet extends HttpServlet {
+@WebServlet("/GrantAccessServlet")
+public class GrantAccessServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CooperateServlet() {
+    public GrantAccessServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,8 +29,13 @@ public class CooperateServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		HttpSession session = request.getSession();
+		
+		String email = request.getParameter("email");
+		AdminInfo admin = null;
+		admin = AdminInfo.findAdminByEmail(email);
+		session.setAttribute("admin", admin);
+	    response.sendRedirect("/Web_Travel/2.Admin/grant-access-edit.jsp");
 	}
 
 	/**
@@ -37,16 +44,16 @@ public class CooperateServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		
-		String email = request.getParameter("email"); 
-        int result = SendEmail.sendEmailTo(email);
-        
-        if(result == 10) {
-        	session.setAttribute("message", "gửi mail liên hệ thành công");
+		String email = request.getParameter("employeeID");
+	    String position = request.getParameter("positionSelect");
+	    int result = AdminInfo.updateAdminPosition(email, position);
+	    
+	    if(result == 10) {
+        	session.setAttribute("message", "cật nhật quyền truy cập thành công");
         }
         else {
-        	session.setAttribute("message", "gửi mali liên hê không thành công");
-        }
-        response.sendRedirect("/Web_Travel/2.Admin/index.jsp");
+        	session.setAttribute("message", "cật nhật quyền truy cập không thành công");
+        }	    
+	    response.sendRedirect("/Web_Travel/2.Admin/index.jsp");
 	}
-
 }

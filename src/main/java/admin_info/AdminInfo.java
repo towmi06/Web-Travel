@@ -227,7 +227,7 @@ public class AdminInfo {
         return null;
     }
     
-    public static void updateAdminInfo(String ID, String name, String email, String phone, String position, String facebook, String twitter, String instagram, String tiktok) {
+    public static int updateAdminInfo(String ID, String name, String email, String phone, String position, String facebook, String twitter, String instagram, String tiktok) {
         try {
             // Load SQL Server JDBC driver
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
@@ -255,27 +255,70 @@ public class AdminInfo {
 
             // Execute the update query
             int rowsAffected = statement.executeUpdate();
-
-            // Check if the update was successful
-            if (rowsAffected > 0) {
-                System.out.println("Admin information updated successfully.");
-            } else {
-                System.out.println("Failed to update admin information.");
-            }
-
+            
             // Close resources
             statement.close();
             connection.close();
 
+            // Check if the update was successful
+            if (rowsAffected > 0) {
+                System.out.println("Admin information updated successfully.");
+                return 10;
+            } else {
+                System.out.println("Failed to update admin information.");
+                return 3;
+            }
+
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
+            return 5;
+        }
+    }
+    
+    public static int updateAdminPosition(String ID, String position) {
+        try {
+            // Load SQL Server JDBC driver
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+
+            // Establish connection
+            String urlDB = "jdbc:sqlserver://DESKTOP-HM360E0\\MSSQLSERVER04:1433;databaseName=Web Travel";
+            String user = "sa";
+            String password = "12345";
+            Connection connection = DriverManager.getConnection(urlDB, user, password);
+
+            // Query to update admin position
+            String query = "UPDATE AdminInfo SET position = ? WHERE ID = ?";
+            PreparedStatement statement = connection.prepareStatement(query);
+
+            // Set parameters for the prepared statement
+            statement.setString(1, position);
+            statement.setString(2, ID);
+
+            // Execute the update query
+            int rowsAffected = statement.executeUpdate();
+            
+            // Close resources
+            statement.close();
+            connection.close();
+
+            // Check if the update was successful
+            if (rowsAffected > 0) {
+                System.out.println("Admin position updated successfully.");
+                return 10;
+            } else {
+                System.out.println("Failed to update admin position.");
+                return 3;
+            }
+
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+            return 5;
         }
     }
 
-
     public static void main(String[] args) {
         AdminInfo ad = findAdminByEmail("vumanhquan@admin.com");
-        ad.updateAdminInfo("AD001", "Vu Manh Quan","vumanhquan@admin.com", "091232139999", "Admin", "facebook.com/admin1", "twitter.com/admin1", "instagram.com/admin1", "tiktok.com/admin1");
+        ad.updateAdminPosition("AD001", "Admin");
         System.out.print(ad.toString());
     }
 }

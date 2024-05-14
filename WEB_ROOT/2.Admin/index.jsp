@@ -53,6 +53,20 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap">
 </head>
 <body>
+	<!-- Hiển thị thông báo nếu có -->
+    <%
+	    String message = (String) session.getAttribute("message");
+	    if (message != null && !message.isEmpty()) {
+	%>
+	    <script>
+	        alert("<%= message %>");
+	    </script>
+	<%
+	        // Xóa thông điệp sau khi đã hiển thị
+	        session.removeAttribute("message");
+	    }
+	%>
+
     <!--Top sidebar-->
     <div class="header"> 
         <div class="header-content">

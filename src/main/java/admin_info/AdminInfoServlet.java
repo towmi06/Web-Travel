@@ -1,12 +1,14 @@
 package admin_info;
 
 import admin_info.AdminInfo;
+
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class AdminInfoServlet
@@ -35,6 +37,8 @@ public class AdminInfoServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		
 		String adminID = request.getParameter("adminID");
         String adminName = request.getParameter("adminName");
         String adminEmail = request.getParameter("adminEmail");
@@ -45,7 +49,15 @@ public class AdminInfoServlet extends HttpServlet {
         String adminInstagram = request.getParameter("adminInstagram");
         String adminTiktok = request.getParameter("adminTiktok");
 
-        AdminInfo.updateAdminInfo(adminID, adminName, adminEmail, adminPhone, adminPosition, adminFacebook, adminTwitter, adminInstagram, adminTiktok);
+        int result = AdminInfo.updateAdminInfo(adminID, adminName, adminEmail, adminPhone, adminPosition, adminFacebook, adminTwitter, adminInstagram, adminTiktok);
+        
+        if(result == 10) {
+        	session.setAttribute("message", "cập nhật thông tin thành công");
+        }
+        else {
+        	session.setAttribute("message", "cập nhật thông tin không thành công");
+        }
+        
         response.sendRedirect("/Web_Travel/2.Admin/index.jsp");
 	}
 
