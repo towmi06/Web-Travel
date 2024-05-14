@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,7 +29,6 @@
     <script src="resources/js/account-information/user-information.js"></script>
     <!--customer-care-->
     <script src="resources/js/customer-care/support-change-cancel.js"></script>
-    <script src="resources/js/customer-care/msg2.js"></script>
     <!--setting-->
     <script src="resources/js/settings/change-password.js"></script>
     <!--support--> 
@@ -48,11 +48,25 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
+
+	<%
+	    String message = (String) session.getAttribute("message");
+	    if (message != null && !message.isEmpty()) {
+	%>
+	    <script>
+	        alert("<%= message %>");
+	    </script>
+	<%
+	        // Xóa thông điệp sau khi đã hiển thị
+	        session.removeAttribute("message");
+	    }
+	%>
+
     <div class="header"> 
         <div class="header-content">
             <!--Logo and name page-->
             <div class="title">
-                <a href="index.html" title="Logo">
+                <a href="index.jsp" title="Logo">
                     <img src="resources/images/logo.png" alt="logo" class="logo">
                 </a>
                 <h3 id="admin">Service</h3>
@@ -102,7 +116,7 @@
             <h4>Điều khoản dịch vụ</h4>
         </button>
 
-        <a style="font-size: 17px;" class="admin-page-button" href="login/index.html">
+        <a style="font-size: 17px;" class="admin-page-button" href="login/index.jsp">
             <img src="resources/images/sign-out.svg" class="icon">
             <h4>Đăng xuất</h4>
         </a>
@@ -382,7 +396,7 @@
         <div class="right-side-container-chart">
             <!--Biểu đồ radar (Radar Chart)-->
             <iframe class="radar-chart" width="100%" height="360px" src="https://thoitiet.app/widget/embed/" id="widgeturl" scrolling="no" frameborder="0" allowtransparency="true" style="border:none;overflow:hidden;"></iframe>
-<iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=Asia%2FHo_Chi_Minh&bgcolor=%233a3651&showTitle=0&showPrint=0&showTz=0&showCalendars=0&src=dmkudmlldG5hbWVzZSNob2xpZGF5QGdyb3VwLnYuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&color=%230B8043" style="border:solid 1px #9c9a9a" width="245" height="280" frameborder="0" scrolling="no" border-radius="30"></iframe>
+			<iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=Asia%2FHo_Chi_Minh&bgcolor=%233a3651&showTitle=0&showPrint=0&showTz=0&showCalendars=0&src=dmkudmlldG5hbWVzZSNob2xpZGF5QGdyb3VwLnYuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&color=%230B8043" style="border:solid 1px #9c9a9a" width="245" height="280" frameborder="0" scrolling="no" border-radius="30"></iframe>
         </div>
     </div>
     <!--End right side bar-->

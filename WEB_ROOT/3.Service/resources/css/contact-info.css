@@ -41,6 +41,7 @@
 
 .cancel-button {
     background-color: #f44336; /* Màu nền cho nút "Hủy" */
+    text-decoration: none;
 }
 
 .save-button:hover, .cancel-button:hover {
