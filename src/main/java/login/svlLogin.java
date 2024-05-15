@@ -1,11 +1,19 @@
 package login;
 
+import Admin_Quan.admin_info.*;
+import Admin_Quan.cooperate.*;
+import Admin_Quan.help.*;
+import Service_Tuyen.setting_page.*;
+
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class svlLogin
@@ -34,6 +42,7 @@ public class svlLogin extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
 		String role = request.getParameter("role");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
@@ -41,12 +50,26 @@ public class svlLogin extends HttpServlet {
         boolean isValid = login.validateUser(role, email, password);
 
         if (isValid) {
-        	if(role.equals("admin"))
-        		response.sendRedirect("/Web_Travel/2.Admin/index.html");
+        	if(role.equals("admin")) {
+        		AdminInfo admin = AdminInfo.findAdminByEmail(email);
+        		List<Cooperate> cooperates = new CooperateDAO().getAllCooperates();
+        		List<Help> helpList = new HelpDAO().getAllHelp();
+
+                session.setAttribute("adminInfo", admin);
+                session.setAttribute("cooperates", cooperates);
+                session.setAttribute("helpList", helpList);
+                
+        		response.sendRedirect("/Web_Travel/2.Admin/index.jsp");
+        	}
         	else if(role.equals("customer"))
                 response.sendRedirect("/Web_Travel/1.Customer/index.html");
-        	else if(role.equals("service"))
-                response.sendRedirect("/Web_Travel/3.Service/index.html");
+        	else if(role.equals("service")) {
+        		ContactInfoService service = new ContactInfoService().findProviderByCredentials(email);
+        		
+        		session.setAttribute("service", service); 
+            	session.setAttribute("email", email); 
+            	response.sendRedirect("/Web_Travel/3.Service/index.jsp");
+        	}
         } else {
         	String errorMessage = "Sai tài khoản hoặc mật khẩu!";
             request.setAttribute("errorMessage", errorMessage);

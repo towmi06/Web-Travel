@@ -53,6 +53,20 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap">
 </head>
 <body>
+	<!-- Hiển thị thông báo nếu có -->
+    <%
+	    String message = (String) session.getAttribute("message");
+	    if (message != null && !message.isEmpty()) {
+	%>
+	    <script>
+	        alert("<%= message %>");
+	    </script>
+	<%
+	        // Xóa thông điệp sau khi đã hiển thị
+	        session.removeAttribute("message");
+	    }
+	%>
+
     <!--Top sidebar-->
     <div class="header"> 
         <div class="header-content">
@@ -87,8 +101,8 @@
 
             <!--Avatar and username-->
             <button id="adminButton" class="admin" onclick="toggleChevron('chevronIcon')">
-                <img src="resources/images/admin_VMQ.jpg" alt="Avatar" class="admin-avatar">
-                <span class="admin-name">Vũ Mạnh Quân</span>
+                <img src="${sessionScope.adminInfo.avatar}" alt="Avatar" class="admin-avatar">
+                <span class="admin-name">${sessionScope.adminInfo.name}</span>
                 <img src="resources/images/chevron-down.svg" class="chevron-icon" id="chevronIcon">
             </button>
 
@@ -133,8 +147,8 @@
     <!--Admin Page-->
     <div id="adminPage" class="admin-page">
         <div class="admin-page-avatar">
-            <img src="resources/images/admin_VMQ.jpg" class="admin-avatar">
-            <span class="admin-page-name">Vũ Mạnh Quân</span>
+            <img src="${sessionScope.adminInfo.avatar}" class="admin-avatar">
+            <span class="admin-page-name">${sessionScope.adminInfo.name}</span>
         </div>
 
         <button class="admin-page-button" onclick="loadAdminProfile()">

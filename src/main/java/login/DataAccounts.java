@@ -27,9 +27,9 @@ public class DataAccounts {
 
             // Insert data into the table
             String[] accountData = {
-                "ACC001, vu@admin.com, vu.12345, admin",
-                "ACC002, manh@admin.com, manh.12345, admin",
-                "ACC003, quan@admin.com, quan.12345, admin",
+                "ACC001, vumanhquan@admin.com, quan@12345, admin",
+                "ACC002, nguyenminhdung@admin.com, dung@12345, admin",
+                "ACC003, phamhailong@admin.com, long@12345, admin",
                 "ACC004, hagiangtravel@gmail.com, hagiang.12345, service",
                 "ACC005, taxuatravel@gmail.com, taxua.12345, service",
                 "ACC006, mucangtrai@gmail.com, mucangtrai.12345, service",
