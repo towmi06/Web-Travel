@@ -2,8 +2,9 @@ package context;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.Connection;
-
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.PreparedStatement;
 public class DBContext {
 
 	public Connection getConnection() throws Exception {

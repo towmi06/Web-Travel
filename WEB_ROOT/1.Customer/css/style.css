@@ -1004,18 +1004,20 @@ h5, p {
 .view-all-services a {
     display: inline-block;
     padding: 10px 20px;
-    color: #0a4f4f; /* Màu hồng */
+    color: #fafafa; /* Màu hồng */
     border: 2px solid var(#77dada); /* Viền màu đen */
     border-radius: 20px;
     text-decoration: none;
     transition: background-color 0.3s, color 0.3s;
     font-size: 20px;
+    background-color: rgb(10, 79, 79);
 }
 
 .view-all-services a:hover {
-    /* background-color:#ee3968 ; Màu nền đen khi di chuột qua */
-    color: #158f8f; /* Màu chữ trắng khi di chuột qua */
-    filter:brightness(90%)
+     background-color:#77c0af ;/* Màu nền đen khi di chuột qua */
+    /*color: #82e4ce; /* Màu chữ trắng khi di chuột qua */
+    filter:brightness(110%);
+    color: rgb(255, 255, 255);
 }
 
 

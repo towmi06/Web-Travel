@@ -103,7 +103,7 @@ public class tour {
 
 	@Override
 	public String toString() {
-		return "Tour{" + "id='" + id + '\'' + ", tourName='" + tourName + '\'' + ", image='" + image + '\'' + ", date='"
+		return "thu{" + "id='" + id + '\'' + ", tourName='" + tourName + '\'' + ", image='" + image + '\'' + ", date='"
 				+ date + '\'' + ", price=" + price + ", journeys='" + journeys + '\'' + ", description1='"
 				+ description1 + '\'' + ", cateID=" + cateID + ", sell_ID=" + sell_ID + '}';
 	}

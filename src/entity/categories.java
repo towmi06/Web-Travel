@@ -16,15 +16,15 @@ public class categories {
 		this.description = description;
 	}
 
-	public int getCid() {
+	public int getId() {
 		return id;
 	}
 
-	public void setCid(int id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
-	public String getCname() {
+	public String getName() {
 		return name;
 	}
 
@@ -32,11 +32,11 @@ public class categories {
 		this.name = name;
 	}
 
-	public String getCdescription() {
+	public String getDescription() {
 		return description;
 	}
 
-	public void setCdescription(String description) {
+	public void setDescription(String description) {
 		this.description = description;
 	}
 
