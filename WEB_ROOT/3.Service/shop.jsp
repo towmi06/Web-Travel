@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -109,7 +110,7 @@
 	 <!-- chat-->
     <div class="chat-widget">
         <div class="chat-logo">
-            <a href="https://www.facebook.com/messages/t/305350015998522/" target="_blank">
+            <a href="${sessionScope.service.message}" target="_blank">
                 <img src="resources/images/logo_chat.png" alt="Chat Logo">
             </a>
         </div>
@@ -118,8 +119,8 @@
     <section class="contact-info-main">
         <div class="supplier-content">
             <img src="resources/images/Dốc_Thẩm_Mã_2022_-_NKS.jpg" class="cover-photo">
-            <img src="resources/images/avt.jpg" class="avt">
-            <h2 class="name">Name Service</h2>
+            <img src="${sessionScope.service.avatar}" class="avt">
+            <h2 class="name">${sessionScope.service.username}</h2>
             <h4 class="status">Online</h4>
 
             <div class="bettwen-row">

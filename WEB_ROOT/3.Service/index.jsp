@@ -61,7 +61,7 @@
 	        session.removeAttribute("message");
 	    }
 	%>
-
+	
     <div class="header"> 
         <div class="header-content">
             <!--Logo and name page-->
@@ -85,7 +85,7 @@
 
             <!--Avatar and username-->
             <button id="adminButton" class="admin" onclick="toggleChevron('chevronIcon')">
-                <img src="resources/images/avatar.jpg" alt="Avatar" class="admin-avatar">
+                <img src="${sessionScope.service.avatar}" alt="Avatar" class="admin-avatar">
                 <img src="resources/images/chevron-down.svg" class="chevron-icon" id="chevronIcon">
             </button>
 
@@ -102,11 +102,11 @@
     <!--Admin Page-->
     <div id="adminPage" class="admin-page">
         <div class="admin-page-avatar">
-            <img src="resources/images/avatar.jpg" class="admin-avatar">
-            <span class="admin-page-name">Name Service</span>
+            <img src="${sessionScope.service.avatar}" class="admin-avatar">
+            <span class="admin-page-name">${sessionScope.service.username}</span>
         </div>
 
-        <a style="font-size: 17px;" class="admin-page-button" href="shop.html">
+        <a style="font-size: 17px;" class="admin-page-button" href="shop.jsp">
             <img src="resources/images/pngwing.com (8).png" class="icon">
             <h4>Trang Cá Nhân</h4>
         </a>
@@ -208,7 +208,7 @@
                     </button>
                     <ul class="submenu">
                         <li><a href="#Hỗ-trợ-đổi-hủy" onclick="loadSupportChangeCancel()"> Hỗ Trợ Đổi / Hủy</a></li>
-                        <li><a href="message2.html"  onclick="loadChat()"> Chat Tư Vấn</a></li>
+                        <li><a href="${sessionScope.service.metaBusiness}"  target="_blank"> Chat Tư Vấn</a></li>
                     </ul>
                 </li>
 

@@ -22,12 +22,16 @@ public class ContactInfoService {
     private String instagram;
     private String address;
     private String workingHours;
+    private String coverPhoto;
+    private String avatar;
+    private String message;
+    private String metaBusiness;
 
     // Constructors
     public ContactInfoService() {
     }
 
-    public ContactInfoService(String serviceID, String address, String email, String phoneNumber, String workingHours, String taiKhoan, String username, String gioiTinh, String thongTinNganHang, String stk, String maSoThue, String facebook, String twitter, String instagram) {
+    public ContactInfoService(String serviceID, String address, String email, String phoneNumber, String workingHours, String taiKhoan, String username, String gioiTinh, String thongTinNganHang, String stk, String maSoThue, String facebook, String twitter, String instagram, String coverPhoto, String avatar, String message, String metaBusiness) {
         this.serviceID = serviceID;
         this.address = address;
         this.email = email;
@@ -42,6 +46,10 @@ public class ContactInfoService {
         this.facebook = facebook;
         this.twitter = twitter;
         this.instagram = instagram;
+        this.coverPhoto = coverPhoto;
+        this.avatar = avatar;
+        this.message = message;
+        this.metaBusiness = metaBusiness;
     }
 
     // Getter and setter methods
@@ -156,6 +164,38 @@ public class ContactInfoService {
     public void setWorkingHours(String workingHours) {
         this.workingHours = workingHours;
     }
+    
+    public String getCoverPhoto() {
+        return coverPhoto;
+    }
+
+    public void setCoverPhoto(String coverPhoto) {
+        this.coverPhoto = coverPhoto;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public String getMetaBusiness() {
+        return metaBusiness;
+    }
+
+    public void setMetaBusiness(String metaBusiness) {
+        this.metaBusiness = metaBusiness;
+    }
 
     // Override toString() method
     @Override
@@ -175,9 +215,13 @@ public class ContactInfoService {
                 ", instagram='" + instagram + '\'' +
                 ", address='" + address + '\'' +
                 ", workingHours='" + workingHours + '\'' +
+                ", coverPhoto='" + coverPhoto + '\'' +
+                ", avatar='" + avatar + '\'' +
+                ", message='" + message + '\'' +
+                ", metaBusiness='" + metaBusiness + '\'' +
                 '}';
     }
-    
+
     public static ContactInfoService findProviderByCredentials(String taiKhoan) {
         Connection conn = null;
         PreparedStatement pstmt = null;
@@ -185,11 +229,11 @@ public class ContactInfoService {
         ContactInfoService provider = null;
 
         try {
-            // Load SQLServer JDBC driver
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        	// Load driver
+        	Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 
             // Establish connection
-            String urlDB = "jdbc:sqlserver://DESKTOP-00GD31A\\LEY:1433;databaseName=WEB TOUR";
+        	String urlDB = "jdbc:sqlserver://DESKTOP-00GD31A\\LEY:1433;databaseName=WEB TOUR";
             String user = "sa";
             String password = "12345";
             conn = DriverManager.getConnection(urlDB, user, password);
@@ -218,9 +262,13 @@ public class ContactInfoService {
                 String facebook = rs.getString("facebook");
                 String twitter = rs.getString("twitter");
                 String instagram = rs.getString("instagram");
+                String coverPhoto = rs.getString("coverPhoto");
+                String avatar = rs.getString("avatar");
+                String message = rs.getString("message");
+                String metaBusiness = rs.getString("metaBusiness");
 
                 // Tạo đối tượng ContactInfoService
-                provider = new ContactInfoService(serviceID, address, email, phoneNumber, workingHours, taiKhoan, username, gioiTinh, thongTinNganHang, stk, maSoThue, facebook, twitter, instagram);
+                provider = new ContactInfoService(serviceID, address, email, phoneNumber, workingHours, taiKhoan, username, gioiTinh, thongTinNganHang, stk, maSoThue, facebook, twitter, instagram, coverPhoto, avatar, message, metaBusiness);
             }
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
@@ -242,11 +290,11 @@ public class ContactInfoService {
         PreparedStatement pstmt = null;
 
         try {
-            // Load SQLServer JDBC driver
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        	// Load driver
+        	Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 
             // Establish connection
-            String urlDB = "jdbc:sqlserver://DESKTOP-00GD31A\\LEY:1433;databaseName=WEB TOUR";
+        	String urlDB = "jdbc:sqlserver://DESKTOP-00GD31A\\LEY:1433;databaseName=WEB TOUR";
             String user = "sa";
             String password = "12345";
             conn = DriverManager.getConnection(urlDB, user, password);
@@ -291,11 +339,11 @@ public class ContactInfoService {
         PreparedStatement pstmt = null;
 
         try {
-            // Load SQLServer JDBC driver
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        	// Load driver
+        	Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 
             // Establish connection
-            String urlDB = "jdbc:sqlserver://DESKTOP-00GD31A\\LEY:1433;databaseName=WEB TOUR";
+        	String urlDB = "jdbc:sqlserver://DESKTOP-00GD31A\\LEY:1433;databaseName=WEB TOUR";
             String user = "sa";
             String password = "12345";
             conn = DriverManager.getConnection(urlDB, user, password);
@@ -347,11 +395,11 @@ public class ContactInfoService {
         ResultSet rs = null;
 
         try {
-            // Load SQLServer JDBC driver
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        	// Load driver
+        	Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 
             // Establish connection
-            String urlDB = "jdbc:sqlserver://DESKTOP-00GD31A\\LEY:1433;databaseName=WEB TOUR";
+        	String urlDB = "jdbc:sqlserver://DESKTOP-00GD31A\\LEY:1433;databaseName=WEB TOUR";
             String user = "sa";
             String password = "12345";
             conn = DriverManager.getConnection(urlDB, user, password);

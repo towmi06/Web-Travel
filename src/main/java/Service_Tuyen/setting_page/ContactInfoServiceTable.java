@@ -38,7 +38,11 @@ public class ContactInfoServiceTable {
                     "Twitter VARCHAR(100)," +
                     "Instagram VARCHAR(100)," +
                     "Address VARCHAR(255)," +
-                    "WorkingHours VARCHAR(100)" +
+                    "WorkingHours VARCHAR(100)," +
+                    "CoverPhoto VARCHAR(255)," +
+                    "Avatar VARCHAR(255)," +
+                    "Message VARCHAR(255)," +
+                    "MetaBusiness VARCHAR(255)" +
                     ")";
             stmt.execute(createTableSQL);
 

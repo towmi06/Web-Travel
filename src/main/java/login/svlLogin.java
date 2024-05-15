@@ -3,6 +3,7 @@ package login;
 import Admin_Quan.admin_info.*;
 import Admin_Quan.cooperate.*;
 import Admin_Quan.help.*;
+import Service_Tuyen.setting_page.*;
 
 import java.io.IOException;
 import java.util.List;
@@ -62,9 +63,13 @@ public class svlLogin extends HttpServlet {
         	}
         	else if(role.equals("customer"))
                 response.sendRedirect("/Web_Travel/1.Customer/index.html");
-        	else if(role.equals("service"))
-        		response.sendRedirect("/Web_Travel/3.Service/index.jsp");
+        	else if(role.equals("service")) {
+        		ContactInfoService service = new ContactInfoService().findProviderByCredentials(email);
+        		
+        		session.setAttribute("service", service); 
             	session.setAttribute("email", email); 
+            	response.sendRedirect("/Web_Travel/3.Service/index.jsp");
+        	}
         } else {
         	String errorMessage = "Sai tài khoản hoặc mật khẩu!";
             request.setAttribute("errorMessage", errorMessage);

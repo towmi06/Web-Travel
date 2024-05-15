@@ -20,8 +20,8 @@
 
    <!-- infor service-->
    <div class="infor-service">
-        <img src="resources/images/cv3.jpg" class="cover-photo">
-        <img src="resources/images/avtp2.jpg" class="avatar-infsv">
+        <img src="${sessionScope.service.coverPhoto}" class="cover-photo">
+        <img src="${sessionScope.service.avatar}" class="avatar-infsv">
         <div class="nameinf"> 
             <h4>${provider.username}</h4>
             <h4> Bio</h4>
