@@ -29,7 +29,7 @@
 	<!--main-->
 	<!--left-main-->
 	<div id="leftMain" class="left-main">
-	    <iframe src="shop.html" frameborder="0" width="100%" height="100%"></iframe>
+	    <iframe src="shop.jsp" frameborder="0" width="100%" height="100%"></iframe>
 	</div>
 	
 	<!--right-main-->

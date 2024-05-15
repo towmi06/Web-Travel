@@ -1,4 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.util.List" %>
+<%@ page import="Service_Tuyen.setting_page.PageLayout" %>
+<%@ page import="Service_Tuyen.setting_page.OutstandingService" %>
+<%@ page import="Service_Tuyen.setting_page.OutstandingServiceDAO" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,9 +18,15 @@
 
 <body>
 
-    <!-- Background Video & Header -->
-    
-   
+	<%
+	    String email = (String) session.getAttribute("email");
+	    PageLayout pageLayout = PageLayout.findByTaiKhoan(email);
+	    
+	    List<OutstandingService> danhSach = OutstandingServiceDAO.getOutstandingServices();
+	    session.setAttribute("danhSach", danhSach);
+	    
+	    session.setAttribute("pageLayout", pageLayout); 
+	%>
 
         <!-- Header -->
         <div class="content" id="home">
