@@ -172,7 +172,7 @@
 
 .notification-link:hover {
     filter: brightness(120%); /* Thay đổi màu nền thành màu đen khi hover */
-    color:  #d84c8b;
+    color:  #0a4f4f;
 }
 
 .notification-input {
@@ -237,7 +237,7 @@
 .select-button .primary-btn {
     position: relative;
     display: inline-block; /* Hiển thị nút trên cùng một hàng */
-    background-color: rgb(223, 83, 120); /* Màu nền hồng */
+background-color:#0a4f4f;
     color: white; /* Màu chữ trắng */
     padding: 10px 10px; /* Padding cho nút */
     border-radius: 15px; /* Góc bo tròn */
@@ -331,19 +331,19 @@ li.cart-price {
     box-shadow: #4c4c4c;
     background-color: #158f8f;
     color:  #fff;
-    border: 1px solid var(#77dada);
+    border: 1px solid var(rgb(14, 114, 114));
 }
 
 .login-link {
     background-color: #0a4f4f; 
     color: #fff; 
-    border: 1px solid var(#77dada); 
+    border: 1px solid var(rgb(10, 80, 80)); 
 }
 
 .register-link {
     background-color: #fff; 
-    color: rgb(238, 57, 104); 
-    border: 1px solid #ff69b4; 
+    color:rgb(10, 79, 79); 
+    border: 1px solid rgb(10, 80, 80); 
 }
 
 .register-link:hover {
@@ -353,6 +353,8 @@ li.cart-price {
 }
 
 /* Thuộc tính boder đầu tiên */
+
+/* Navigation Styles */
 nav {
     width: 100%;
     height: 70px;
@@ -373,11 +375,7 @@ nav .logo{
     margin: 2vh;
     margin-left: 4%;
 }
-nav ul li{
-    list-style: none;
-    display: inline-block;
-    margin-left: 15px;
-}   
+
 .navbar {
     text-align: center; /* Căn giữa các phần tử bên trong .navbar */
     justify-content: space-around;
@@ -389,9 +387,6 @@ nav ul li{
 
 .navbar a {
     margin-right: 20px; /* Khoảng cách giữa các liên kết */
-}
-/*Màu Chữ tiêu đề */
-.navbar a {
     color: rgb(0, 0, 0);
     font-size: 18px;
     padding: 10px 22px;
@@ -402,8 +397,9 @@ nav ul li{
 }
 
 /* Hover */
-.navbar a:hover {
-    color: rgb(238, 57, 104); 
+.navbar a:hover,
+.dropdown-content a:hover {
+    color: rgb(10 79 79);
     box-shadow: 0 0 10px rgba(138, 136, 136, 0.5);
 }
 
@@ -421,6 +417,7 @@ nav ul li a{
     color: rgb(255, 255, 255);
     font-size: 17px;
 }
+
 @import url(https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&family=Open+Sans:wght@300;400;600;700&display=swap);
 
 /* Reset */
@@ -582,9 +579,9 @@ nav ul li a{
 }
 
 .input-with-icon:focus-within {
-    border-color: #77dada;
+    border-color:#0a4f4f;
     /* Thay đổi màu viền khi focus */
-    box-shadow: 0 0 0 4px rgba(119, 218, 218, 0.2);
+    box-shadow: 0 0 0 4px #0a4f4f;
     /* Thay đổi shadow khi focus */
 }
 
@@ -751,26 +748,26 @@ button {
 }
 
 .Button_button-color__7QnYK {
-    background-color: #77dada;
+    background-color: #0e4f4f;
     /* Sửa cú pháp của giá trị màu */
-    border: 1px solid #77dada;
+    border: 1px solid #0e4f4f;
     /* Sửa cú pháp của giá trị màu */
     color: #0e4f4f;
-    /* Sửa cú pháp của giá trị màu */
+    /* Sửa cú pháp của rgb(10, 80, 80)ị màu */
     fill: #0a4f4f;
-    /* Sửa cú pháp của giá trị màu */
+    /* Sửa rgb(14, 109, 109) của giá trị màu */
 }
 
 .Button_button-color__7QnYK:focus {
-    box-shadow: 0 0 0 4px #caf8f8, 0 1px 2px 0 rgba(24, 24, 27, .05);
+    box-shadow: 0 0 0 4px rgb(14, 109, 109), 
 }
 
-.Button_button-color__7QnYK:hover {
-    background-color: #0e4f4f;
+.Button_button-color__7QnY{
+    background-color: rgb(64, 128, 128) ;
     /* Sửa cú pháp của giá trị màu */
     color: #fff;
     cursor: pointer;
-    fill: #fff;
+   fill: #fff;
 }
 
 /* Packages */

@@ -77,32 +77,6 @@ html,body{
     height: 30px; 
     border-radius: 50%; 
 }
- /*Notification page setting*/
- .notification-pagemsg {
-    position: fixed;
-	display: none;
-    margin-top: 26.5%;
-    margin-left: 16.5%;
-	transform: translate(-50%, -50%);
-	width: 300px;
-	height: 800px;
-	background-color: #ffffff;
-	border-radius: 0px;
-	z-index: 9999;
-	padding: 20px;
-  }
-  
-  .notification-pagemsg::after {
-	content: "";
-	position: absolute;
-	top: -7px; 
-	right: 45px; 
-	border-left: 15px solid transparent; 
-	border-bottom: 15px solid  #171717; 
-	transform: rotate(225deg); 
-	z-index: 1;
-  }
-
 .message {
     font-family: 'Somatic', sans-serif;
     filter: brightness(0) invert(1);
@@ -120,7 +94,6 @@ html,body{
     text-align: center; /* Căn giữa nội dung */
     line-height: 1; /* Chia nội dung ra giữa */
     transition: all 0.3s ease; 
-    
 }
 .msg3 {
     margin-top:80px;
@@ -220,7 +193,6 @@ html,body{
     background-color: #ffffff;
     overflow-y: auto;
     display: flex;
-    
 }
 .name-web {
     margin-left: 5%;
@@ -326,7 +298,6 @@ html,body{
     width: 100%;
     max-width: 600px; 
     background-color: #413f3f;
-    
 }
 
 
@@ -338,7 +309,6 @@ html,body{
 }
 
 .message-content {
-    
     position: relative; /* Màu nền của tin nhắn */
     padding: 10px;
     width: 100%;
