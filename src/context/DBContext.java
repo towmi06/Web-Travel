@@ -2,29 +2,36 @@ package context;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.PreparedStatement;
+
 public class DBContext {
 
-	public Connection getConnection() throws Exception {
-		String url = "jdbc:sqlserver://" + serverName + ":" + portNumber + "\\" + instance + ";databaseName=" + dbName;
-		if (instance == null || instance.trim().isEmpty())
-			url = "jdbc:sqlserver://" + serverName + ":" + portNumber + ";databaseName=" + dbName;
-		Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-		return DriverManager.getConnection(url, userID, password);
-	}
-	private final String serverName = "TOWMIESS";
-	private final String dbName = "tour";
-	private final String portNumber = "1433";
-	private final String instance = "";// LEAVE THIS ONE EMPTY IF YOUR SQL IS A SINGLE INSTANCE
-	private final String userID = "user";
-	private final String password = "12345";
+    // Method to establish a database connection
+    public static Connection getConnection() throws ClassNotFoundException, SQLException {
+        // Load driver
+        Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 
-	public static void main(String[] args) {
-		try {
-			System.out.println(new DBContext().getConnection());
-		} catch (Exception e) {
-		}
-	}
+        // Establish connection
+        String urlDB = "jdbc:sqlserver://DESKTOP-HM360E0\\MSSQLSERVER04:1433;databaseName=Web Travel";
+        String user = "sa";
+        String password = "12345";
+        
+        // Return the connection object
+        return DriverManager.getConnection(urlDB, user, password);
+    }
+
+    public static void main(String[] args) {
+        // Example usage of getConnection() method
+        try {
+            // Get connection
+            Connection conn = getConnection();
+            // Print message if connection is successful
+            System.out.println("Database connection established.");
+            // Don't forget to close the connection when done
+            conn.close();
+        } catch (ClassNotFoundException | SQLException e) {
+            // Print error message if connection fails
+            e.printStackTrace();
+        }
+    }
 }
