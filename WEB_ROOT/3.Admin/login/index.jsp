@@ -15,6 +15,14 @@
 </head>
 
 <body>
+	<!-- Hiển thị thông báo lỗi nếu có -->
+    <% String errorMessage = (String) request.getAttribute("errorMessage"); %>
+       	<% if (errorMessage != null && !errorMessage.isEmpty()) { %>
+            <script>
+                 alert("<%= errorMessage %>");
+             </script>
+    <% } %>
+
     <div class="form-wrapper">
         <main class="form-side">
             <a href="#" title="Logo">
@@ -66,4 +74,5 @@
         <aside class="info-side"></aside>
     </div>
 </body>
+
 </html>
