@@ -572,7 +572,7 @@ nav ul li a{
 .cover-photo{
     height: auto;
     opacity: 50%;
-    border-radius: 15px;
+    border-radius: 0px;
     width: 30%;
     height: 60%;
     margin-top: 4.6%;
@@ -1306,5 +1306,3 @@ h5, p {
     font-size: 20px;
     color: rgb(197, 167, 44);
 }
-
-

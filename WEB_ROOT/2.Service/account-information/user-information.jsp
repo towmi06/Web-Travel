@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page import="Service_Tuyen.setting_page.ContactInfoService" %>
+<%@ page import="entity.Service_Tuyen3_ContactInfoService" %>
+<%@ page import="loadDAO.Service_Tuyen3_ContactInfoService_DAO" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,11 +13,11 @@
 </head>
 <body>
 
-<%
-    String email = (String) session.getAttribute("email");
-    ContactInfoService provider = ContactInfoService.findProviderByCredentials(email);
-    session.setAttribute("provider", provider);
-%>
+	<%
+	    String email = (String) session.getAttribute("email");
+		Service_Tuyen3_ContactInfoService provider =Service_Tuyen3_ContactInfoService_DAO.findProviderByCredentials(email);
+	    session.setAttribute("provider", provider);
+	%>
 
    <!-- infor service-->
    <div class="infor-service">
@@ -28,7 +29,7 @@
         </div>
         <div class="id">
             <h4> ID</h4>
-            <p style="margin-left: 15%;" style="color: rgb(55, 54, 54);"> ${provider.serviceID}</p>
+            <p style="margin-left: 15%;" style="color: rgb(55, 54, 54);"> ${provider.sell_ID}</p>
         </div>
         <div class="user-name">
             <h4>User Name</h4>

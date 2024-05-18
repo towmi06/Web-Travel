@@ -2,8 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="java.util.List" %>
-<%@ page import="Admin_Quan.tour_managenment.TourManagenment" %>
-<%@ page import="Admin_Quan.tour_managenment.TourManagenmentDAO" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,12 +20,6 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap">
 </head>
 <body>
-
-	<% 
-		List<TourManagenment> tours = new TourManagenmentDAO().getAllTours();
-        request.setAttribute("tours", tours);
-    %>
-	
     <!--Main container-->
     <div class="main-container">
         <h1>Thông Tin Tour</h1>

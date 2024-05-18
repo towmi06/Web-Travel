@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="java.util.List" %>
-<%@ page import="Admin_Quan.bill_managenment.BillManagenment" %>
-<%@ page import="Admin_Quan.bill_managenment.BillManagenmentDAO" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,11 +19,6 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap">
 </head>
 <body>
-    <% 
-    	List<BillManagenment> bills = new BillManagenmentDAO().getAllBills();
-        request.setAttribute("bills", bills);
-    %>
-    
     <!--Main container-->
     <div class="main-container">
         <h1>Thông Tin Đơn</h1>

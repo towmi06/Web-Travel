@@ -9,9 +9,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" href="/Web_Travel/2.Service/login/assets/logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/path/to/style.css">
-    <link rel="stylesheet" href="/Web_Travel/2.Admin/login/style.css">
+    <link rel="stylesheet" href="/Web_Travel/2.Service/login/style.css">
 </head>
 
 <body>
@@ -26,7 +27,7 @@
     <div class="form-wrapper">
         <main class="form-side">
             <a href="#" title="Logo">
-                <img src="/Web_Travel/2.Admin/login/assets/ptit.png" alt="Laplace Logo" class="logo">
+                <img src="/Web_Travel/2.Service/login/assets/logo.png" alt="Laplace Logo" class="logo">
             </a>
             <form class="my-form" method="post" action="/Web_Travel/svlLogin">
                 <div class="form-welcome-row">

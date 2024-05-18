@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="Service_Tuyen.setting_page.PageLayout" %>
+<%@ page import="entity.Service_Tuyen2_PageLayout" %>
+<%@ page import="loadDAO.Service_Tuyen2_PageLayout_DAO" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,12 +11,13 @@
     <script src="resources/js/settings-page/page-layout.js"></script>
 </head>
 <body>
+
 	<%
 	    String email = (String) session.getAttribute("email");
-	    PageLayout pageLayout = PageLayout.findByTaiKhoan(email);
+		Service_Tuyen2_PageLayout pageLayout = Service_Tuyen2_PageLayout_DAO.findByTaiKhoan(email);
 	    session.setAttribute("pageLayout", pageLayout);
 	%>
-	
+
 	<div class="main-container">
 	
 	</div>
@@ -66,16 +68,14 @@
 	
 	            <li class="drop-down">
 	                <a onclick="toggleSubMenu('submenu3')" class="drop-down-toggle">
-	                    3. Phân trang
+	                    3. Hiển thị
 	                </a>
 	                <ul class="submenu1" id="submenu3">
 	                    <li>
-	                        <a href="#" class="page-option-label">Số sản phẩm hiển thị ở mỗi trang :</a>
-	                        <select name="productPerPage" class="select-custom">
-	                            <option value="3" <% if (pageLayout.getSoSanPhamMoiTrang() == 3) out.print("selected"); %> >3</option>
-	                            <option value="6" <% if (pageLayout.getSoSanPhamMoiTrang() == 6) out.print("selected"); %> >6</option>
-	                            <option value="9" <% if (pageLayout.getSoSanPhamMoiTrang() == 9) out.print("selected"); %> >9</option>
-	                            <option value="12" <% if (pageLayout.getSoSanPhamMoiTrang() == 12) out.print("selected"); %> >12</option>
+	                        <a href="#" class="page-option-label">Hiển thị sản phẩm theo  :</a>
+	                        <select name="display" class="select-custom" style="margin-left: 60px">
+	                            <option value="true" <% if (pageLayout.geHhienThi() == true) out.print("selected"); %> >Hàng dọc</option>
+	                            <option value="false" <% if (pageLayout.geHhienThi() == false) out.print("selected"); %> >Hàng ngang</option>
 	                        </select>
 	                    </li>
 	                </ul>

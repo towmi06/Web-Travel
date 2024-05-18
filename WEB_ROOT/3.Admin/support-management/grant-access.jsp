@@ -2,8 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="java.util.List" %>
-<%@ page import="Admin_Quan.admin_info.AdminInfoDAO" %>
-<%@ page import="Admin_Quan.admin_info.AdminInfo" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,33 +20,30 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap">
 </head>
 <body>
-
-	<%
-		List<AdminInfo> adminList = new AdminInfoDAO().getAllAdmins(); 
-		session.setAttribute("adminList", adminList);
-	%>
-
     <!--Main container-->
     <div class="main-container">
         <h1>Nhân Viên</h1>
         <div class="sort-and-search">
             <!--Sort-->
             <div class="sort-dropdown">
-                <label for="sort-options">Sắp Xếp Theo:</label>
-                <select id="sort-options" onchange="sortTable()">
-                    <option value="id">ID</option>
-                    <option value="name">Tên</option>
-                    <option value="location">Địa Chỉ</option>
+                <label for="sort-options4">Sắp Xếp Theo:</label>
+                <select id="sort-options4" onchange="sortTable4()">
+                    <option value="0">ID</option>
+                    <option value="1">Tên</option>
+                    <option value="2">Giới Tính</option>
+                    <option value="3">Tài Khoản</option>
+                    <option value="4">Số Điện Thoại</option>
+                    <option value="5">Chức Vụ</option>
                 </select>
             </div>
             <!--Search-->
             <div class="search">
-                <input type="search" name="btnSearch" id="search" class="search-input" placeholder="Nhập ở đây">
+                <input type="search" name="btnSearch" id="searchInput2" class="search-input" oninput="searchTable2()" placeholder="Nhập ở đây">
                 <img src="resources/images/search.svg" class="search-icon"></img>
             </div>
         </div>
         
-        <table>
+        <table id="adminTable">
             <thead>
                 <tr>
                     <th>ID</th>

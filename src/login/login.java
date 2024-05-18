@@ -1,6 +1,6 @@
 package login;
 
-import DB_connect.ConnestionDB;
+import context.DBContext;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -16,10 +16,10 @@ public class login {
         boolean isValid = false;
         
         try {
-        	conn = ConnestionDB.getConnection();
+        	conn = DBContext.getConnection();
             
             // Prepare statement for querying user
-            String querySQL = "SELECT * FROM Accounts WHERE Role = ? AND Username = ? AND Password = ?";
+            String querySQL = "SELECT * FROM accounts WHERE Role = ? AND Username = ? AND Password = ?";
             pstmt = conn.prepareStatement(querySQL);
             pstmt.setString(1, role);
             pstmt.setString(2, username);

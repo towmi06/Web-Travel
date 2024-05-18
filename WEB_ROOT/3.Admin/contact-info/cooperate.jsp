@@ -24,21 +24,24 @@
         <div class="sort-and-search">
             <!--Sort-->
             <div class="sort-dropdown">
-                <label for="sort-options">Sắp Xếp Theo:</label>
-                <select id="sort-options" onchange="sortTable()">
-                    <option value="name">Tên</option>
-                    <option value="date">Ngày Gửi</option>
-                    <option value="location">Địa Chỉ</option>
-                </select>
+                <label for="sort-options2">Sắp Xếp Theo:</label>
+                <select id="sort-options2" onchange="sortTable2()">
+				    <option value="0">Tên NCC</option>
+				    <option value="1">Email</option>
+				    <option value="2">Số Điện Thoại</option>
+				    <option value="3">Địa Chỉ</option>
+				    <option value="4">Ngày Gửi</option>
+				    <option value="5">Nội Dung Hợp Tác</option>
+				</select>
             </div>
             <!--Search-->
-            <div class="search">
-                <input type="search" name="btnSearch" id="search" class="search-input" placeholder="Nhập ở đây">
+           <div class="search">
+                <input type="search" name="btnSearch" id="searchInput" class="search-input" oninput="searchTable()" placeholder="Nhập ở đây">
                 <img src="resources/images/search.svg" class="search-icon"></img>
             </div>
         </div>
         
-        <table>
+        <table id="cooperateTable">
             <thead>
                 <tr>
                     <th>Tên NCC</th>

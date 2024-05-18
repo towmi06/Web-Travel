@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page import="Service_Tuyen.setting_page.ContactInfoService" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,24 +10,17 @@
     <title>Information</title>
 </head>
 <body>
-
-<%
-    String email = (String) session.getAttribute("email");
-    ContactInfoService provider = ContactInfoService.findProviderByCredentials(email);
-    session.setAttribute("provider", provider);
-%>
-
 	<!-- infor service-->
 	<form class="infor-service"  method="post" action="/Web_Travel/userInfoEdit">
-	    <img src="resources/images/cv3.jpg" class="cover-photo">
-	    <img src="resources/images/avtp2.jpg" class="avatar-infsv">
+	    <img src="${sessionScope.service.coverPhoto}" class="cover-photo">
+        <img src="${sessionScope.service.avatar}" class="avatar-infsv">
 	    <div class="nameinf"> 
 	        <h4>${provider.username}</h4>
 	        <h4> Bio</h4>
 	    </div>
 	    <div class="id">
 	        <h4> ID</h4>
-	        <input type="text" id="serviceID" name="serviceID" value=" ${provider.serviceID}">
+	        <input type="text" id="serviceID" name="serviceID" value=" ${provider.sell_ID}">
 	    </div>
 	    <div class="user-name">
 	        <h4>User Name</h4>

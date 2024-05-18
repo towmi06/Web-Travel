@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page import="Service_Tuyen.setting_page.ContactInfoService" %>
+<%@ page import="entity.Service_Tuyen3_ContactInfoService" %>
+<%@ page import="loadDAO.Service_Tuyen3_ContactInfoService_DAO" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,11 +12,11 @@
 </head>
 <body>
 
-<%
-    String email = (String) session.getAttribute("email");
-    ContactInfoService provider = ContactInfoService.findProviderByCredentials(email);
-    session.setAttribute("provider", provider);
-%>
+	<%
+	    String email = (String) session.getAttribute("email");
+		Service_Tuyen3_ContactInfoService provider = Service_Tuyen3_ContactInfoService_DAO.findProviderByCredentials(email);
+	    session.setAttribute("provider", provider);
+	%>
 
 
 <div class="main-infor">
@@ -43,7 +44,7 @@
                 <input type="text" id="working-hours-input" name="working_hours" value="<c:out value='${provider.workingHours}' />">
             </div>
             <button type="submit" style="margin-top: 10px;" class="save-button" name="contact-info-save">Lưu</button>
-            <button type="button" style="margin-top: 10px;" class="cancel-button" onclick="location.href='/Web_Travel/3.Service/index.jsp';">Hủy</button>
+            <button type="button" style="margin-top: 10px;" class="cancel-button" onclick="location.href='/Web_Travel/2.Service/index.jsp';">Hủy</button>
         </div>
     </form>
 </div>

@@ -25,7 +25,7 @@
     <script src="resources/js/settings-page/outstanding-service.js"></script>
     <script src="resources/js/settings-page/page-layout.js"></script>
     <!--service-management--> 
-    <script src="resources/js/account-information/social-network-link.js"></script>
+    <script src="resources/js/account-information/change-password.js"></script>
     <script src="resources/js/account-information/user-information.js"></script>
     <!--customer-care-->
     <script src="resources/js/customer-care/support-change-cancel.js"></script>

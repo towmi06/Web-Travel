@@ -47,19 +47,19 @@
 						<h2>Tài Khoản Mạng Xã Hội</h2>
 		                <li>
 		                    <strong>FaceBook:</strong> 
-		                    <input type="text" id="adminFacebook" name="adminName" value="${sessionScope.adminInfo.facebook}">
+		                    <input type="text" id="adminFacebook" name="adminFacebook" value="${sessionScope.adminInfo.facebook}">
 		                </li>
 						<li>
 							<strong>Twitter:</strong> 
-							<input type="text" id="adminTwitter" name="adminEmail" value="${sessionScope.adminInfo.twitter}">
+							<input type="text" id="adminTwitter" name="adminTwitter" value="${sessionScope.adminInfo.twitter}">
 						</li>
 						<li>
 							<strong>Instagram:</strong> 
-							<input type="tex" id="adminInstagram" name="adminPhone" value="${sessionScope.adminInfo.instagram}">
+							<input type="tex" id="adminInstagram" name="adminInstagram" value="${sessionScope.adminInfo.instagram}">
 						</li>
 						<li>
 							<strong>TikTok:</strong> 
-							<input type="text" id="adminTiktok" name="adminPhone" value="${sessionScope.adminInfo.tiktok}">
+							<input type="text" id="adminTiktok" name="adminTiktok" value="${sessionScope.adminInfo.tiktok}">
 						</li>
 		                <button class="edit-button" type="submit">Save</button>   
 	                </ul>

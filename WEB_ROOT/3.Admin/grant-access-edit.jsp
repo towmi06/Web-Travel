@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="Admin_Quan.admin_info.AdminInfo" %>
+<%@ page import="entity.Admin_Quan_AdminInfo" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,8 +22,8 @@
 <body>
 
 	<%
-		AdminInfo admin = (AdminInfo) session.getAttribute("admin");
-	    session.setAttribute("admin", admin);
+		Admin_Quan_AdminInfo admin = (Admin_Quan_AdminInfo) session.getAttribute("admin");
+		session.setAttribute("admin", admin);
 	%>
 
     <!--Main container-->

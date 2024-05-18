@@ -1,9 +1,7 @@
 package login;
 
-import Model.Admin_Quan.*;
-import DAO.Admin_Quan.*;
-import Model.Service_Tuyen.ContactInfoService;
-import DAO.Service_Tuyen.ContactInfoServiceDAO;
+import entity.*;
+import loadDAO.*;
 
 import java.io.IOException;
 import java.util.List;
@@ -51,43 +49,52 @@ public class svlLogin extends HttpServlet {
 
         if (isValid) {
         	if(role.equals("admin")) {
-        		AdminInfo admin = AdminInfoDAO.findAdminByEmail(email);
-        		List<Cooperate> cooperates = null;
+        		Admin_Quan_AdminInfo admin = Admin_Quan_AdminInfo_DAO.findAdminByEmail(email);
+        		List<Admin_Quan_Cooperate> cooperates = null;
 				try {
-					cooperates = new CooperateDAO().getAllCooperates();
+					cooperates = new Admin_Quan_Cooperate_DAO().getAllCooperates();
 				} catch (ClassNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-        		List<Help> helpList = null;
+				List<Admin_Quan_Help> helpList = null;
 				try {
-					helpList = new HelpDAO().getAllHelp();
+					helpList = new Admin_Quan_Help_DAO().getAllHelp();
 				} catch (ClassNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-
+				List<Admin_Quan_AdminInfo> adminList = null;
+				try {
+					adminList = new Admin_Quan_AdminInfo_DAO().getAllAdmins();
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} 
+				
+				session.setAttribute("adminList", adminList);
                 session.setAttribute("adminInfo", admin);
                 session.setAttribute("cooperates", cooperates);
                 session.setAttribute("helpList", helpList);
                 
-        		response.sendRedirect("/Web_Travel/2.Admin/index.jsp");
+                response.sendRedirect("/Web_Travel/3.Admin/index.jsp");
         	}
         	else if(role.equals("customer"))
                 response.sendRedirect("/Web_Travel/1.Customer/index.html");
-        	else if(role.equals("service")) {
-        		ContactInfoService service = new ContactInfoServiceDAO().findProviderByCredentials(email);
-        		String IDNCC = service.getServiceID();
+        	else if(role.equals("service")) { 
+        		Service_Tuyen3_ContactInfoService service = new Service_Tuyen3_ContactInfoService_DAO().findProviderByCredentials(email);
+        		String sell_ID = service.getSell_ID();
         		
         		session.setAttribute("service", service); 
-        		session.setAttribute("IDNCC", IDNCC); 
+        		session.setAttribute("sell_ID", sell_ID); 
             	session.setAttribute("email", email); 
-            	response.sendRedirect("/Web_Travel/3.Service/index.jsp");
+        		
+        		response.sendRedirect("/Web_Travel/2.Service/index.jsp");
         	}
         } else {
         	String errorMessage = "Sai tài khoản hoặc mật khẩu!";
             request.setAttribute("errorMessage", errorMessage);
-            request.getRequestDispatcher("2.Admin/login/index.jsp").forward(request, response);
+            request.getRequestDispatcher("3.Admin/login/index.jsp").forward(request, response);
         }
 	}
 }

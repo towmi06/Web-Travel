@@ -1,7 +1,7 @@
 // Load currency price list
 function loadCurrencyPriceList() {
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'financial-management/currency-price-list.html', true);
+    xhr.open('GET', 'financial-management/currency-price-list.jsp', true);
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
             document.getElementById('mainContent').innerHTML = xhr.responseText;

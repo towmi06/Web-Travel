@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="java.util.List" %>
-<%@ page import="Service_Tuyen.setting_page.PageLayout" %>
-<%@ page import="Service_Tuyen.setting_page.OutstandingService" %>
-<%@ page import="Service_Tuyen.setting_page.OutstandingServiceDAO" %>
+<%@ page import="entity.Service_Tuyen2_PageLayout" %>
+<%@ page import="entity.Service_Tuyen1_OutStanding" %>
+<%@ page import="loadDAO.Service_Tuyen2_PageLayout_DAO" %>
+<%@ page import="loadDAO.Service_Tuyen1_OutStanding_DAO" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,111 +14,109 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Du lịch Việt</title>
     <link rel="icon" href="resources/images/logo.png">
-    <link rel="stylesheet" type="text/css" href="resources/css/shop.css"/> 
+    <link rel="stylesheet" type="text/css" href="resources/css/shop.css">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
 </head>
 
 <body>
 
 	<%
-	    String email = (String) session.getAttribute("email");
-	    PageLayout pageLayout = PageLayout.findByTaiKhoan(email);
-	    
-	    List<OutstandingService> danhSach = OutstandingServiceDAO.getOutstandingServices();
-	    session.setAttribute("danhSach", danhSach);
-	    
-	    session.setAttribute("pageLayout", pageLayout); 
+		String email = (String) session.getAttribute("email");
+		Service_Tuyen2_PageLayout pageLayout = Service_Tuyen2_PageLayout_DAO.findByTaiKhoan(email);
+			    
+		String sell_ID = (String) session.getAttribute("sell_ID");
+		List<Service_Tuyen1_OutStanding> danhSach = Service_Tuyen1_OutStanding_DAO.getOutstandingServices(sell_ID);
+		
+		session.setAttribute("danhSach", danhSach);    
+		session.setAttribute("pageLayout", pageLayout);
 	%>
 
-        <!-- Header -->
-        <div class="content" id="home">
-            <nav>
-                <img src="resources/images/logo.png" class="logo" alt="Logo" title="Du lịch Việt">
-                <ul class="navbar">
-                    <li>
-                        <a href="#home">Trang chủ</a>
-                        <a href="#locations">Địa điểm</a>
-                        <a href="#package">Gói dịch vụ</a>
-                        <div class="dropdown" id="dropdown">
-                            <a href="javascript:void(0);" class="dropbtn">Tiện ích</a>
-                            <div class="dropdown-content" id="dropdown-content">
-                                <a href="#home">Thanh toán</a>
-                                <a href="#locations">Địa điểm hot</a>
-                                <a href="#blog">Blog</a>
-                                <a href="./package.html">Điều khoản sử dụng</a>
-                                <a href="./contact.html">Các dịch vụ hot</a>
-                                <a href="./partnership.html">Hợp tác với chúng tôi</a>
-                                <a href="./affiliate.html">Tuyển dụng </a>
-                            </div>
-                            <script src="resources/js/dropdowns.js">                           
-                            </script>
+    <!-- Header -->
+    <div class="content" id="home">
+        <nav>
+        	<img src="resources/images/logo.png" class="logo" alt="Logo" title="Du lịch Việt">
+            <ul class="navbar">
+                <li>
+                    <a href="#home">Trang chủ</a>
+                    <a href="#locations">Địa điểm</a>
+                    <a href="#package">Gói dịch vụ</a>
+                    <div class="dropdown" id="dropdown">
+                        <a href="javascript:void(0);" class="dropbtn">Tiện ích</a>
+                        <div class="dropdown-content" id="dropdown-content">
+                            <a href="#home">Thanh toán</a>
+                            <a href="#locations">Địa điểm hot</a>
+                            <a href="#blog">Blog</a>
+                            <a href="./package.html">Điều khoản sử dụng</a>
+                            <a href="./contact.html">Các dịch vụ hot</a>
+                            <a href="./partnership.html">Hợp tác với chúng tôi</a>
+                            <a href="./affiliate.html">Tuyển dụng </a>
                         </div>
-                        <a href="jsp_user/about.html" style="margin-right: 170px;">Liên hệ</a>
-                    </li>
-                </ul>
+                        <script src="resources/js/dropdowns.js"></script>
+                    </div>
+                    <a href="jsp_user/about.html" style="margin-right: 170px;">Liên hệ</a>
+                </li>
+            </ul>
                 
-                </ul>
-                <div class="language-selector" >
-                    <div class="flag-container">
-                        <img src="resources/images/flagvn.jpg" alt="Selected Flag" class="selected-flag">
-                    </div>
-                    <select class="language_drop" name="countries" id="countries" style="width:50px;">
-                        <option value="yu" data-imagecss="resources/images/flagvn.jpg" data-title="Việt Nam">VN</option>   
-                        <option value="yt" data-imagecss="resources/images/flag-1.jpg" data-title="English">ENG</option>
-                    </select>
+            </ul>
+            <div class="language-selector" >
+                <div class="flag-container">
+                    <img src="resources/images/flagvn.jpg" alt="Selected Flag" class="selected-flag">
                 </div>
-                <script src="resources/js/language.js"></script>
-                <!-- Biểu tượng thông báo -->
-                <a href="#" class="notification-link">
-                        <input type="text" id="notification-input" class="notification-input">
-                        <i class='bx bx-bell' style='color:#fd5bbd' ></i>
-                        <label for="notification-input" class="notification-label">Thông báo </label>
-                        
-                </a>
-                 <!-- Biểu tượng giỏ hàng -->
-                 <div class="cart-container">
-                    <div class="cart-icon" onclick="toggleCart()">
-                        <i class='bx bx-shopping-bag' style='color:#fd5bbd'></i>
-                    </div>
-                    <div class="cart-hover" id="cartHover">
-                        <div class="select-items">
+                <select class="language_drop" name="countries" id="countries" style="width:50px;">
+                    <option value="yu" data-imagecss="resources/images/flagvn.jpg" data-title="Việt Nam">VN</option>   
+                    <option value="yt" data-imagecss="resources/images/flag-1.jpg" data-title="English">ENG</option>
+                </select>
+            </div>
+            <script src="resources/js/language.js"></script>
+                
+            <!-- Biểu tượng thông báo -->
+            <a href="#" class="notification-link">
+                    <input type="text" id="notification-input" class="notification-input">
+                    <i class='bx bx-bell' style='color:#fd5bbd' ></i>
+                    <label for="notification-input" class="notification-label">Thông báo </label>         
+            </a>
+                
+             <!-- Biểu tượng giỏ hàng -->
+             <div class="cart-container">
+                <div class="cart-icon" onclick="toggleCart()">
+                    <i class='bx bx-shopping-bag' style='color:#fd5bbd'></i>
+                </div>
+                <div class="cart-hover" id="cartHover">
+                    <div class="select-items">
                             <br>
                             <table>1<br>
                                    2<br>
                                    3
                             </table>
-                        </div>
-                        <hr class="separator">
-                        <div class="select-total">
-                            <span class="total-label">TỔNG: </span>
-                            <h5 class="total-value">$0</h5>
-                        </div>
-                        
-                        <div class="select-button">
-                            <a href="shopping-cart.html" class="primary-btn view-card">Giỏ hàng</a>
-                            <a href="check-out.html" class="primary-btn checkout-btn">Thanh toán </a>
-                        </div>
-                        <br>
                     </div>
-                        <script>
-                            function toggleCart() {
-                                var cartHover = document.getElementById("cartHover");
-                                cartHover.style.display = cartHover.style.display === "block" ? "none" : "block";
-                            }
-                            
-                        </script>
+                    <hr class="separator">
+                    <div class="select-total">
+                        <span class="total-label">TỔNG: </span>
+                        <h5 class="total-value">$0</h5>
+                    </div>
                         
+                    <div class="select-button">
+                        <a href="shopping-cart.html" class="primary-btn view-card">Giỏ hàng</a>
+                        <a href="check-out.html" class="primary-btn checkout-btn">Thanh toán </a>
+                    </div>
+                     <br>
                 </div>
-                
-                
-                <!-- Thêm phần đăng nhập và đăng kí -->
-                <div class="user-actions">
-                    <!-- Đăng nhập và đăng kí -->
-                    <a href="./login.html" class="login-link"><i class='bx bx-user' style=" width:20px"  ></i></i>Đăng nhập</a>
-                </div>
-            </nav>
-        </div>
-
+	                <script>
+	                    function toggleCart() {
+	                        var cartHover = document.getElementById("cartHover");
+	                        cartHover.style.display = cartHover.style.display === "block" ? "none" : "block";
+	                    }
+	                            
+	               </script>            
+        	  </div>
+         	         
+          	<!-- Thêm phần đăng nhập và đăng kí -->
+         	<div class="user-actions">
+            	<!-- Đăng nhập và đăng kí -->
+            	 <a href="./login.html" class="login-link"><i class='bx bx-user' style=" width:20px"  ></i></i>Đăng nhập</a>
+        	</div>
+        </nav>
+     </div>
 	 <!-- chat-->
     <div class="chat-widget">
         <div class="chat-logo">
@@ -144,7 +144,7 @@
                     <button class="betwwen-button">
                         <img src="resources/images/product.png" class="icon">
                         <h4>Số sản phẩm: </h4>
-                        <h4 style="color: rgb(214, 110, 62);">1k</h4>
+                        <h4 style="color: rgb(214, 110, 62);">10</h4>
                     </button>
 
                     <button class="betwwen-button">
@@ -158,32 +158,193 @@
                     <button class="betwwen-button">
                         <img src="resources/images/call.png" class="icon">
                         <h4>Số điện thoại: </h4>
-                        <h4 style="color: rgb(214, 110, 62);">0349530775</h4>
+                        <h4 style="color: rgb(214, 110, 62);">${sessionScope.service.phoneNumber}</h4>
                     </button>
 
                     <button class="betwwen-button">
                         <img src="resources/images/gmail.png" class="icon">
                         <h4>Gmail: </h4>
-                        <h4 style="color: rgb(214, 110, 62);">abc@gmail.com</h4>
+                        <h4 style="color: rgb(214, 110, 62);">${sessionScope.service.email}</h4>
                     </button>
 
                     <button class="betwwen-button">
                         <img src="resources/images/address.png" class="icon">
                         <h4>Địa chỉ: </h4>
-                        <h4 style="color: rgb(214, 110, 62);">Hà Đông</h4>
+                        <h4 style="color: rgb(214, 110, 62);">${sessionScope.service.address}</h4>
                     </button>
                 </div>
             </div>
         </div>
     </section>
-    
     <!-- services -->
 
     <!-- Locations -->
 
+    <%
+    	if (pageLayout.getDichVuNoiBat()) {
+	%>
+	    <section class="locations" id="locations" style="display: block;">
+	<%
+	    } else {
+	%>
+	    <section class="locations" id="locations" style="display: none;">
+	<%
+	    }
+	%>
+        <div class="package-title">
+            <h2>Dịch vụ nổi bật</h2>
+        </div>
+        <div class="location-content">
+            <div class="slider">
+            <%
+            	int count = 0;
+            	for (Service_Tuyen1_OutStanding service : danhSach) {
+            		if(service.getOutstanding()) {
+            			count++;
+            %>
+                <div class="slide">
+                    <a href="./locations.html#kashmir" target="_blank">
+                        <div class="col-content">
+                            <img src="resources/images/image_tour/<%= service.getImage() %>" alt="">
+                            <h5><c:out value="<%= service.getTourName() %>" /></h5>
+                            <p><c:out value="<%= service.getDate() %>" /></p>
+                        </div>
+                    </a>
+                </div>
+             <%
+            		}
+            	}
+             %>
+            </div>
+        </div>
+        
+        <!-- Navigation arrows -->
+		<!-- Next and previous buttons -->
+		<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+		<a class="next" onclick="plusSlides(1)">&#10095;</a>
+		<div class="dots" style="text-align:center">
+		    <%
+		        int numDots = (int) Math.ceil(count / 2.0); 
+		        for (int i = 1; i <= numDots; i++) {
+		    %>
+		        <span class="dot" onclick="currentSlide(<%= i %>)"></span>
+		    <%
+		        }
+		    %>
+		</div>
+	</section>
+
+   	<script src="resources/js/slider1.js"></script>
+    
+    <!--Button tat ca dv-->
+    <!-- Nút chuyển đến trang Tất cả dịch vụ 
+        <button onclick="window.location.href='./tat-ca-dich-vu.html'">Tất cả dịch vụ</button>-->
+        <div class="view-all-services">
+            <a href="link_to_all_services_page"> Xem thêm   →</a>
+        </div>
+
+    <!-- Packages -->
+    <%
+    	if (pageLayout.getChuongTrinhKhuyenMai()) {
+	%>
+	    <section style="display: block;">
+	<%
+	    } else {
+	%>
+	    <section style="display: none;">
+	<%
+	    }
+	%>
+        <div class="package-title">
+            <h2>Siêu ưu đãi dành cho khách hàng hội viên </h2>
+        </div>
+
+        <div class="package-content">
+
+            <div class="box">
+                <div class="image">
+                    <img src="resources/images/p1.jpg" alt="">
+                    <h3>🏷️sale 10%-</h3>
+                </div>
+
+                <div class="dest-content">
+                    <div class="location">
+                        <h4>Bronze</h4>
+                        <ul class="pac-details">
+                            <li>🏨Khách sạn ⭐⭐⭐</li>
+                            <li>📹Gói chụp 10 tấm ảnh miễn phí </li>
+                            <li>🤵🏻Hướng dẫn viên </li>
+                            <li>🎧Hỗ trợ 24/7 </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="image">
+                    <img src="resources/images/p2.jpg" alt="">
+                    <h3>🏷️sale 15%-</h3>
+                </div>
+
+                <div class="dest-content">
+                    <div class="location">
+                        <h4>Silver</h4>
+                        <ul class="pac-details">
+                            <li>🏨Khách sạn ⭐⭐⭐</li>
+                            <li>📹Ekip chụp ảnh miễn phí không giới hạn</li>
+                            <li>🤵🏻Hướng dẫn viên </li>
+                            <li>🎧Hỗ trợ 24/7 </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="image">
+                    <img src="resources/images/p3.jpg" alt="">
+                    <h3>🏷️sale 22%-</h3>
+                </div>
+
+                <div class="dest-content">
+                    <div class="location">
+                        <h4>Gold</h4>
+                        <ul class="pac-details">
+                            <li>🏨Khách sạn ⭐⭐⭐⭐</li>
+                            <li>🥗Được chuẩn bị sẵn bữa sáng và tối</li>
+                            <li>📹Ekip chụp ảnh miễn phí không giới hạn</li>
+                            <li>🤵🏻Hướng dẫn viên </li>
+                            <li>🎧Hỗ trợ 24/7 </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="image">
+                    <img src="resources/images/p4.jpg" alt="">
+                    <h3>🏷️sale 26%-</h3>
+                </div>
+
+                <div class="dest-content">
+                    <div class="location">
+                        <h4>Platinum</h4>
+                        <ul class="pac-details">
+                            <li>🏨Khách sạn ⭐⭐⭐⭐⭐</li>
+                            <li>🥗Được chuẩn bị sẵn 3 bữa</li>
+                            <li>📹Ekip chụp ảnh miễn phí không giới hạn</li>
+                            <li>🛫Phương tiện hạng bussiness</li>
+                            <li>🤵🏻Hướng dẫn viên </li>
+                            <li>🎧Hỗ trợ 24/7 </li>
+                        </ul> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
     <section class="locations" id="locations">
         <div class="package-title">
-            <h2>Tour nổi bật</h2>
+            <h2>Địa điểm hấp dẫn nhất mùa hè này!</h2>
         </div>
         <div class="location-content">
             <div class="slider">
@@ -191,7 +352,7 @@
                 <div class="slide">
                     <a href="./locations.html#kashmir" target="_blank">
                         <div class="col-content">
-                            <img src="resources/images/image_tour/A65.jpg" alt="">
+                            <img src="resources/images/image_tour/a65.jpg" alt="">
                             <h5>Hang Heo</h5>
                             <p>Nha Trang</p>
                         </div>
@@ -285,109 +446,22 @@
     </div>
     </section>
 
-    <script src="resources/js/slider1.js"></script>
-    
+    <!-- Newsletter -->
 
-
-    <!--Button tat ca dv-->
-    <!-- Nút chuyển đến trang Tất cả dịch vụ 
-        <button onclick="window.location.href='./tat-ca-dich-vu.html'">Tất cả dịch vụ</button>-->
-        <div class="view-all-services">
-            <a href="link_to_all_services_page"> Xem thêm   →</a>
+    <section class="newsletter">
+        <div class="newstext">
+            <h2>Newsletter</h2>
+            <p>Subscribe to get offers and latest<br>updates every week!</p>
         </div>
 
-    <!-- Packages -->
-        <div class="package-title">
-            <h2>Siêu ưu đãi dành cho khách hàng hội viên </h2>
-        </div>
-
-        <div class="package-content">
-
-            <div class="box">
-                <div class="image">
-                    <img src="resources/images/p1.jpg" alt="">
-                    <h3>🏷️sale 10%-</h3>
-                </div>
-
-                <div class="dest-content">
-                    <div class="location">
-                        <h4>Bronze</h4>
-                        <ul class="pac-details">
-                            <li>🏨Khách sạn ⭐⭐⭐</li>
-                            <li>📹Gói chụp 10 tấm ảnh miễn phí </li>
-                            <li>🤵🏻Hướng dẫn viên </li>
-                            <li>🎧Hỗ trợ 24/7 </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="box">
-                <div class="image">
-                    <img src="resources/images/p2.jpg" alt="">
-                    <h3>🏷️sale 15%-</h3>
-                </div>
-
-                <div class="dest-content">
-                    <div class="location">
-                        <h4>Silver</h4>
-                        <ul class="pac-details">
-                            <li>🏨Khách sạn ⭐⭐⭐</li>
-                            <li>📹Ekip chụp ảnh miễn phí không giới hạn</li>
-                            <li>🤵🏻Hướng dẫn viên </li>
-                            <li>🎧Hỗ trợ 24/7 </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="box">
-                <div class="image">
-                    <img src="resources/images/p3.jpg" alt="">
-                    <h3>🏷️sale 22%-</h3>
-                </div>
-
-                <div class="dest-content">
-                    <div class="location">
-                        <h4>Gold</h4>
-                        <ul class="pac-details">
-                            <li>🏨Khách sạn ⭐⭐⭐⭐</li>
-                            <li>🥗Được chuẩn bị sẵn bữa sáng và tối</li>
-                            <li>📹Ekip chụp ảnh miễn phí không giới hạn</li>
-                            <li>🤵🏻Hướng dẫn viên </li>
-                            <li>🎧Hỗ trợ 24/7 </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="box">
-                <div class="image">
-                    <img src="resources/images/p4.jpg" alt="">
-                    <h3>🏷️sale 26%-</h3>
-                </div>
-
-                <div class="dest-content">
-                    <div class="location">
-                        <h4>Platinum</h4>
-                        <ul class="pac-details">
-                            <li>🏨Khách sạn ⭐⭐⭐⭐⭐</li>
-                            <li>🥗Được chuẩn bị sẵn 3 bữa</li>
-                            <li>📹Ekip chụp ảnh miễn phí không giới hạn</li>
-                            <li>🛫Phương tiện hạng bussiness</li>
-                            <li>🤵🏻Hướng dẫn viên </li>
-                            <li>🎧Hỗ trợ 24/7 </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
+        <div class="send">
+            <form action="">
+                <input type="email" name="emailid" placeholder="E-mail" required>
+                <input type="submit" value="Subscribe">
+            </form>
         </div>
 
     </section>
-
-    <!-- Newsletter -->
-
     
     <!-- Footer -->
 
@@ -449,11 +523,6 @@
         </section>
         
         </section>
-        
-
-    
-
-
 </body>
 
 </html>
