@@ -61,9 +61,7 @@ public class Service_Tuyen1_OutStanding_DAO {
         return outstandingServices;
     }
     
-    
-    // Lấy danh sách các dịch vụ outstanding theo sell_ID
-    public static List<Service_Tuyen1_OutStanding> getAllTour() throws ClassNotFoundException {
+    public List<Service_Tuyen1_OutStanding> getAllTour() throws ClassNotFoundException {
         List<Service_Tuyen1_OutStanding> outstandingServices = new ArrayList<>();
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -205,7 +203,7 @@ public class Service_Tuyen1_OutStanding_DAO {
     // test
     public static void main(String[] args) {
         try {   
-            List<Service_Tuyen1_OutStanding> services = Service_Tuyen1_OutStanding_DAO.getOutstandingServices("1");
+            List<Service_Tuyen1_OutStanding> services = new Service_Tuyen1_OutStanding_DAO().getAllTour();
             
             for (Service_Tuyen1_OutStanding service : services) {
                 System.out.println(service.toString());

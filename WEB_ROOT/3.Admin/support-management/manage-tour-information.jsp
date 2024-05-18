@@ -26,21 +26,25 @@
         <div class="sort-and-search">
             <!--Sort-->
             <div class="sort-dropdown">
-                <label for="sort-options">Sắp Xếp Theo:</label>
-                <select id="sort-options" onchange="sortTable()">
-                    <option value="id">ID</option>
-                    <option value="destination">Điểm Đến</option>
-                    <option value="price">Giá</option>
+                <label for="sort-options3">Sắp Xếp Theo:</label>
+                <select id="sort-options3" onchange="sortTable3()">
+                    <option value="0">ID</option>
+                    <option value="1">Sell ID</option>
+                    <option value="2">Cate ID</option>
+                    <option value="3">Tên Tour</option>
+                    <option value="4">Hành Trình</option>
+                    <option value="5">Thời Gian</option>
+                    <option value="6">Giá</option>
                 </select>
             </div>
             <!--Search-->
             <div class="search">
-                <input type="search" name="btnSearch" id="search" class="search-input" placeholder="Nhập ở đây">
+                <input type="search" name="btnSearch" id="searchInput4" class="search-input" oninput="searchTable4()" placeholder="Nhập ở đây">
                 <img src="resources/images/search.svg" class="search-icon"></img>
             </div>
         </div>
         
-        <table>
+        <table id="tourTable">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -54,7 +58,7 @@
                 </tr>
             </thead>
             <tbody>
-			    <c:forEach var="tour" items="${requestScope.allTourList}">
+			    <c:forEach var="tour" items="${sessionScope.allTourList}">
 			        <tr>
 			            <td><c:out value="${tour.id}" /></td>
 			            <td><c:out value="${tour.sell_ID}" /></td>
