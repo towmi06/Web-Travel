@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class Admin_Quan_Cooperate_Data {
     public static void main(String[] args) {
@@ -15,6 +16,24 @@ public class Admin_Quan_Cooperate_Data {
         	conn = DBContext.getConnection();
             // Connection success message
             System.out.println("Connection success!");
+            
+            // Create table query
+            String createTableSQL = "CREATE TABLE Cooperate (" +
+                    "tenNCC NVARCHAR(255)," +
+                    "email NVARCHAR(255)," +
+                    "soDienThoai NVARCHAR(20)," +
+                    "diaChi NVARCHAR(255)," +
+                    "ngayGui NVARCHAR(20)," +
+                    "noiDungHopTac NVARCHAR(MAX)," +
+                    ")";
+
+            // Create a Statement object
+            Statement statement = conn.createStatement();
+
+            // Execute the query to create the table
+            statement.executeUpdate(createTableSQL);
+            
+            System.out.println("Table created successfully.");
 
             // Prepare statement for data insertion
             String insertSQL = "INSERT INTO Cooperate (tenNCC, email, soDienThoai, diaChi, ngayGui, noiDungHopTac) VALUES (?, ?, ?, ?, ?, ?)";

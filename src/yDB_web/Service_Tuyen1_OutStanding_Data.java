@@ -16,6 +16,29 @@ public class Service_Tuyen1_OutStanding_Data {
         ResultSet rs = null;
         try {
             conn = DBContext.getConnection();
+            
+         // Create table statement
+            String createTableSQL = "CREATE TABLE OutstandingService ("
+                    + "id VARCHAR(10) PRIMARY KEY,"
+                    + "sell_ID VARCHAR(50),"
+                    + "cateID VARCHAR(50),"
+                    + "rate FLOAT,"
+                    + "sales BIGINT,"
+                    + "tourName NVARCHAR(50),"
+                    + "image NVARCHAR(50),"
+                    + "journeys NVARCHAR(MAX),"
+                    + "date NVARCHAR(50),"
+                    + "price INT,"
+                    + "outstanding BIT"
+                    + ")";
+
+            stmt = conn.createStatement();
+
+            // Execute the SQL statement
+            stmt.executeUpdate(createTableSQL);
+
+            // Connection success message
+            System.out.println("Table created successfully!");
 
             // SQL statement to retrieve data from the 'tour' table
             String selectSQL = "SELECT id, sell_ID, cateID, tourName, image, journeys, date, price FROM tour";

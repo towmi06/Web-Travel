@@ -5,6 +5,7 @@ import context.DBContext;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class Service_Tuyen4_Orders_Data {
     public static void main(String[] args) {
@@ -13,9 +14,27 @@ public class Service_Tuyen4_Orders_Data {
 
         try {
             conn = DBContext.getConnection();
-
+            
             // Connection success message
             System.out.println("Connection success!");
+            
+            // Create table
+            Statement statement = conn.createStatement();
+            String createTableSQL = "CREATE TABLE Orders (" +
+                    "ID VARCHAR(50) PRIMARY KEY," +
+                    "sell_ID VARCHAR(50)," +
+                    "customer_ID VARCHAR(50)," +
+                    "tour_ID VARCHAR(50)," +
+                    "booking_date VARCHAR(50)," +
+                    "tourName NVARCHAR(100)," +
+                    "date NVARCHAR(100)," +
+                    "numberOfPeople INT," +
+                    "price BIGINT," +
+                    "type NVARCHAR(50)," +
+                    "status NVARCHAR(50)" +
+                    ")";
+            statement.executeUpdate(createTableSQL);
+            System.out.println("Table created successfully.");
 
             // Prepare statement for data insertion
             String insertSQL = "INSERT INTO Orders (ID, sell_ID, customer_ID, tour_ID, booking_date, tourName, date, numberOfPeople, price, type, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";

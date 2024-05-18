@@ -13,6 +13,32 @@ public class Service_Tuyen3_ContactInfoService_Data {
 
         try {
         	conn = DBContext.getConnection();
+        	stmt = conn.createStatement();
+        	
+        	// Create table for ContactInfoService
+            String createTableSQL = "CREATE TABLE ContactInfoService (" +
+            		"Sell_ID VARCHAR(50) PRIMARY KEY," +
+                    "TaiKhoan VARCHAR(50)," +
+                    "Username VARCHAR(50)," +
+                    "Email VARCHAR(100)," +
+                    "PhoneNumber VARCHAR(20)," +
+                    "GioiTinh VARCHAR(10)," +
+                    "ThongTinNganHang VARCHAR(255)," +
+                    "STK VARCHAR(50)," +
+                    "MaSoThue VARCHAR(50)," +
+                    "Facebook VARCHAR(100)," +
+                    "Twitter VARCHAR(100)," +
+                    "Instagram VARCHAR(100)," +
+                    "Address VARCHAR(255)," +
+                    "WorkingHours VARCHAR(100)," +
+                    "CoverPhoto VARCHAR(255)," +
+                    "Avatar VARCHAR(255)," +
+                    "Message VARCHAR(255)," +
+                    "MetaBusiness VARCHAR(255)" +
+                    ")";
+            stmt.execute(createTableSQL);
+
+            System.out.println("Table created successfully.");
             
             // Create statement object
             stmt = conn.createStatement();
