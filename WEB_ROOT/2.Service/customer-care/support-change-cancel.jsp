@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản Lý Thông Tin Tour</title>
     <!-- Style CSS -->
-    <link rel="stylesheet" type="text/css" href="resources/css/cancel_service.css"/> 
+    <link rel="stylesheet" type="text/css" href="resources/css/cancel-service.css"/> 
 </head>
 <body>  
 
@@ -47,7 +47,7 @@
             </div>
         </div>
         
-        <table>
+        <table id="supportTable">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -77,7 +77,7 @@
                         <td><c:out value="${order.price}" /></td>
                         <td><c:out value="${order.type}" /></td>
                         <td>
-                            <form action="/Web_Travel/BillServlet" method="post">
+                            <form action="/Web_Travel/OrderServlet" method="post">
                                 <input type="hidden" name="orderId" value="${order.ID}">
                                 <button type="submit" class="edit-btn">Edit</button>
                             </form>

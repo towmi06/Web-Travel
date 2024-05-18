@@ -14,6 +14,7 @@
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap">
     <!--Style CSS-->
+    <link rel="icon" href="/Web_Travel/3.Admin/login/assets/logo.png">
     <link rel="stylesheet" type="text/css" href="resources/css/support-management.css"/> 
     <link rel="stylesheet" type="text/css" href="resources/css/dark_mode.css"/> 
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>

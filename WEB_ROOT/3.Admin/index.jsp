@@ -46,6 +46,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <!--Style CSS-->
+    <link rel="icon" href="/Web_Travel/3.Admin/login/assets/logo.png">
     <link rel="stylesheet" type="text/css" href="resources/css/core.css"/> 
     <link rel="stylesheet" type="text/css" href="resources/css/dark_mode.css"/> 
     <link rel="stylesheet" type="text/css" href="resources/css/interface-management.css"/>
@@ -73,7 +74,7 @@
             <!--Logo and name page-->
             <div class="title">
                 <a href="index.jsp" title="Logo">
-                    <img src="resources/images/ptit_logo.png" alt="logo" class="logo">
+                    <img src="resources/images/logo.png" alt="logo" class="logo">
                 </a>
                 <h3 id="admin">Admin</h3>
             </div>

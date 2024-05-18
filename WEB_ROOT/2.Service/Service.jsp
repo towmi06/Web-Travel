@@ -40,6 +40,7 @@
     <!--Other-->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!--Style CSS-->
+    <link rel="icon" href="/Web_Travel/3.Admin/login/assets/logo.png">
     <link rel="stylesheet" type="text/css" href="resources/css/style.css"/> 
     <link rel="stylesheet" type="text/css" href="resources/css/dark_mode.css"/> 
     <link rel="stylesheet" type="text/css" href="resources/css/page-layout.css"/>

@@ -162,7 +162,7 @@ public class Service_Tuyen4_Orders_DAO {
         return order;
     }
 
-    public static int updateOrder(String ID, String sellID, String customerID, String tourID, Date bookingDate, String tourName, String date, int numberOfPeople, long price, String type, String status) throws ClassNotFoundException {
+    public static int updateOrder(String ID, String sellID, String customerID, String tourID, String bookingDate, String tourName, String date, int numberOfPeople, long price, String type) throws ClassNotFoundException {
         Connection conn = null;
         PreparedStatement stmt = null;
 
@@ -170,21 +170,20 @@ public class Service_Tuyen4_Orders_DAO {
             conn = DBContext.getConnection();
 
             // SQL query for updating order
-            String query = "UPDATE Orders SET sell_ID=?, customer_ID=?, tour_ID=?, booking_date=?, tourName=?, date=?, numberOfPeople=?, price=?, type=?, status=? WHERE ID=?";
+            String query = "UPDATE Orders SET sell_ID=?, customer_ID=?, tour_ID=?, booking_date=?, tourName=?, date=?, numberOfPeople=?, price=?, type=? WHERE ID=?";
             stmt = conn.prepareStatement(query);
 
             // Set parameters for the prepared statement
             stmt.setString(1, sellID);
             stmt.setString(2, customerID);
             stmt.setString(3, tourID);
-            stmt.setDate(4, bookingDate);
+            stmt.setString(4, bookingDate);
             stmt.setString(5, tourName);
             stmt.setString(6, date);
             stmt.setInt(7, numberOfPeople);
             stmt.setLong(8, price);
             stmt.setString(9, type);
-            stmt.setString(10, status);
-            stmt.setString(11, ID);
+            stmt.setString(10, ID);
 
             // Execute the update statement
             int rowsUpdated = stmt.executeUpdate();

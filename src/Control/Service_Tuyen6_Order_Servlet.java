@@ -16,14 +16,14 @@ import org.apache.jasper.tagplugins.jstl.core.Out;
 /**
  * Servlet implementation class BillServlet
  */
-@WebServlet("/BillServlet")
-public class Service_Tuyen6_Bill_Servlet extends HttpServlet {
+@WebServlet("/OrderServlet")
+public class Service_Tuyen6_Order_Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Service_Tuyen6_Bill_Servlet() {
+    public Service_Tuyen6_Order_Servlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -43,14 +43,14 @@ public class Service_Tuyen6_Bill_Servlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 		String orderId = request.getParameter("orderId");
-		Service_Tuyen4_Order bill = null;
+		Service_Tuyen4_Order order = null;
 		try {
-			 bill = Service_Tuyen4_Orders_DAO.findOrderByID(orderId);
+			order = Service_Tuyen4_Orders_DAO.findOrderByID(orderId);
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		session.setAttribute("bill", bill);
+		session.setAttribute("order", order);
 	    response.sendRedirect("/Web_Travel/2.Service/support-change-cancel-edit.jsp");
 	}
 

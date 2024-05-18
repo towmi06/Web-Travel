@@ -24,53 +24,61 @@
         <h1>Thông Tin Đơn</h1>
         <div class="sort-and-search">
             <!--Sort-->
-            <div class="sort-dropdown">
+            <<div class="sort-dropdown">
                 <label for="sort-options">Sắp Xếp Theo:</label>
                 <select id="sort-options" onchange="sortTable()">
-                    <option value="id">ID</option>
-                    <option value="email">Email</option>
-                    <option value="contact">sdt</option>
+                    <option value="0">ID</option>
+                    <option value="1">Sell ID</option>
+                    <option value="2">Customer ID</option>
+                    <option value="3">Tour ID</option>
+                    <option value="4">Ngày đặt</option>
+                    <option value="5">Tên tour</option>
+                    <option value="6">Thời gian</option>
+                    <option value="7">Số người</option>
+                    <option value="8">Giá</option>
+                    <option value="9">Loại hình</option>
+                    <option value="10">Trạng thái</option>
                 </select>
             </div>
             <!--Search-->
             <div class="search">
-                <input type="search" name="btnSearch" id="search" class="search-input" placeholder="Nhập ở đây">
+                <input type="search" name="btnSearch" id="searchInput3" class="search-input" oninput="searchTable3()" placeholder="Nhập ở đây">
                 <img src="resources/images/search.svg" class="search-icon"></img>
             </div>
         </div>
         
-        <table>
+        <table id="orderTable">
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>ID NCC</th>
-                    <th>ID KH</th>
-                    <th>Tên Tour</th>
-                    <th>Điểm Đến</th>
-                    <th>Ngày Khởi Hành</th>
+                    <th>Sell ID</th>
+                    <th>Customer ID</th>
+                    <th>Tour ID</th>
+                    <th>Ngày đặt</th>
+                    <th>Tên tour</th>
+                    <th>Thời gian</th>
                     <th>Số người</th>
                     <th>Giá</th>
-                    <th>Địa Chỉ</th>
-                    <th>Loại Hình</th> 
-                    <th>Trạng Thái</th> 
+                    <th>Loại hình</th> 
+                    <th>Trạng thái</th> 
                 </tr>
             </thead>
             <tbody>
-                <c:forEach var="bill" items="${requestScope.bills}">
+                <c:forEach var="order" items="${sessionScope.allOrderList}">
                     <tr>
-                        <td><c:out value="${bill.ID}" /></td>
-                        <td><c:out value="${bill.providerID}" /></td>
-                        <td><c:out value="${bill.customerID}" /></td>
-                        <td><c:out value="${bill.tourName}" /></td>
-                        <td><c:out value="${bill.destination}" /></td>
-                        <td><c:out value="${bill.departureDate}" /></td>
-                        <td><c:out value="${bill.numberOfPeople}" /></td>
-                        <td><c:out value="${bill.price}" /></td>
-                        <td><c:out value="${bill.address}" /></td>
-                        <td><c:out value="${bill.type}" /></td>
-                        <td><c:out value="${bill.status}" /></td>
+                        <td><c:out value="${order.ID}" /></td>
+                        <td><c:out value="${order.sellID}" /></td>
+                        <td><c:out value="${order.customerID}" /></td>
+                        <td><c:out value="${order.tourID}" /></td>
+                        <td><c:out value="${order.bookingDate}" /></td>
+                        <td><c:out value="${order.tourName}" /></td>
+                        <td><c:out value="${order.date}" /></td>
+                        <td><c:out value="${order.numberOfPeople}" /></td>
+                        <td><c:out value="${order.price}" /></td>
+                        <td><c:out value="${order.type}" /></td>
+                        <td><c:out value="${order.status}" /></td>
                     </tr>
-                </c:forEach>
+               </c:forEach>
             </tbody>
         </table>
     </div>

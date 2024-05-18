@@ -10,7 +10,7 @@ function loadTrackOrders() {
 }
 
 function sortTable() {
-    const table = document.getElementById("billTable");
+    const table = document.getElementById("orderTable");
     const rows = Array.from(table.rows).slice(1);
     const columnIndex = document.getElementById("sort-options").value;
     const isAscending = table.rows[0].cells[columnIndex].getAttribute('data-order') === 'asc';
@@ -41,7 +41,7 @@ function searchTable3() {
     var input, filter, table, tr, td, i, j, txtValue;
     input = document.getElementById("searchInput3");
     filter = input.value.toUpperCase();
-    table = document.getElementById("billTable");
+    table = document.getElementById("orderTable");
     tr = table.getElementsByTagName("tr");
     
     for (i = 1; i < tr.length; i++) {

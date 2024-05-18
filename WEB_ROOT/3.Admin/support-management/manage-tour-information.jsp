@@ -44,36 +44,35 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>ID NCC</th>
+                    <th>Sell ID</th>
+                    <th>Cate ID</th>
                     <th>Tên Tour</th>
-                    <th>Điểm Đến</th>
-                    <th>Ngày Khởi Hành</th>
+                    <th>Hành Trình</th>
+                    <th>Thời Gian</th>
                     <th>Giá</th>
-                    <th>Địa Chỉ</th>
-                    <th>Loại Hình</th>
                     <th>Thao Tác</th>
                 </tr>
             </thead>
             <tbody>
-			    <c:forEach var="tour" items="${requestScope.tours}">
+			    <c:forEach var="tour" items="${requestScope.allTourList}">
 			        <tr>
-			            <td><c:out value="${tour.ID}" /></td>
-			            <td><c:out value="${tour.providerID}" /></td>
+			            <td><c:out value="${tour.id}" /></td>
+			            <td><c:out value="${tour.sell_ID}" /></td>
+			            <td><c:out value="${tour.cateID}" /></td>
 			            <td><c:out value="${tour.tourName}" /></td>
-			            <td><c:out value="${tour.destination}" /></td>
-			            <td><c:out value="${tour.departureDate}" /></td>
+			            <td><c:out value="${tour.journeys}" /></td>
+			            <td><c:out value="${tour.date}" /></td>
 			            <td><c:out value="${tour.price}" /></td>
-			            <td><c:out value="${tour.address}" /></td>
-			            <td><c:out value="${tour.type}" /></td>
 			            <td>
 			                <form action="/Web_Travel/TourManagenmentServlet" method="get">
-			                    <input type="hidden" name="tourId" value="${tour.ID}">
+			                    <input type="hidden" name="tourId" value="${tour.id}">
 			                    <button type="submit" class="edit-btn">Edit</button>
 			                </form>
 			            </td>
 			        </tr>
 			    </c:forEach>     
 			</tbody>
+
         </table>
     </div>
     <!--End main container-->
