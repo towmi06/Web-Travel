@@ -317,11 +317,24 @@
                             <script src="src/MenuSearch.js"></script>
                         </div>
                         <!-- Nút tìm kiếm -->
-                        <button type="button"
-                            class="Button_button__QHarr SearchBox_submit-btn__eNdeg Button_button-normal__y4h10 Button_button-color__7QnYK"
-                            color="color">
-                            <div class="label md">Tìm kiếm</div>
-                        </button>
+							<button type="button"
+							        class="Button_button__QHarr SearchBox_submit-btn__eNdeg Button_button-normal__y4h10 Button_button-color__7QnYK">
+							    <div class="label md" style="color: white;">Tìm kiếm</div>
+							    
+							</button>
+						<!-- Thêm một đoạn mã JavaScript để kích hoạt servlet -->
+							<script>
+							document.addEventListener('DOMContentLoaded', function() {
+							    // Lắng nghe sự kiện click trên nút tìm kiếm
+							    document.getElementById('searchButton').addEventListener('click', function() {
+							        // Thực hiện hành động tìm kiếm bằng cách chuyển hướng đến servlet tìm kiếm
+							        window.location.href = 'login.html';
+							        // href dường dẫn svl
+							    });
+							});
+
+							</script>
+						
                     </div>
                 </div>
             </div>
