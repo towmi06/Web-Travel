@@ -182,8 +182,8 @@
                 <!-- Thêm phần đăng nhập và đăng kí -->
                 <div class="user-actions">
                     <!-- Đăng nhập và đăng kí -->
-                    <a href="login.html" class="login-link"><i class='bx bx-user' style=" width:20px"></i></i>Đăng
-                        nhập</a>
+                   <a href="<%= request.getContextPath() %>/3.Admin/login/index.jsp" class="login-link"><i class='bx bx-user' style=" width:20px"></i>Đăng nhập</a>
+
                 </div>
 
                 <!-- Thanh dropdown cho các tiện ích 
@@ -317,11 +317,24 @@
                             <script src="src/MenuSearch.js"></script>
                         </div>
                         <!-- Nút tìm kiếm -->
-                        <button type="button"
-                            class="Button_button__QHarr SearchBox_submit-btn__eNdeg Button_button-normal__y4h10 Button_button-color__7QnYK"
-                            color="color">
-                            <div class="label md">Tìm kiếm</div>
-                        </button>
+							<button type="button"
+							        class="Button_button__QHarr SearchBox_submit-btn__eNdeg Button_button-normal__y4h10 Button_button-color__7QnYK">
+							    <div class="label md" style="color: white;">Tìm kiếm</div>
+							    
+							</button>
+						<!-- Thêm một đoạn mã JavaScript để kích hoạt servlet -->
+							<script>
+							document.addEventListener('DOMContentLoaded', function() {
+							    // Lắng nghe sự kiện click trên nút tìm kiếm
+							    document.getElementById('searchButton').addEventListener('click', function() {
+							        // Thực hiện hành động tìm kiếm bằng cách chuyển hướng đến servlet tìm kiếm
+							        window.location.href = 'login.html';
+							        // href dường dẫn svl
+							    });
+							});
+
+							</script>
+						
                     </div>
                 </div>
             </div>
@@ -438,10 +451,10 @@
 	<!--Button tat ca dv-->
 	<!-- Nút chuyển đến trang Tất cả dịch vụ -->
 	<div class="view-all-services">
-	    <form action="HomeControl" method="GET" style="display: inline;">
-	        <a href="javascript:void(0);" onclick="this.parentElement.submit()">Xem thêm →</a>
-	    </form>
-	</div>
+    <form action="/Web_Travel/HomeControl" method="GET" style="display: inline;">
+        <a href="javascript:void(0);" onclick="this.parentElement.submit()">Xem thêm →</a>
+    </form>
+</div>
 
     <!-- Packages -->
     <div class="package-title">
