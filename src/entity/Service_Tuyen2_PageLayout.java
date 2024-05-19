@@ -7,8 +7,12 @@ public class Service_Tuyen2_PageLayout {
     private boolean chuongTrinhKhuyenMai;
     private boolean hienThi;
 
-    // Constructors
     public Service_Tuyen2_PageLayout() {
+    	this.taiKhoan = "";
+        this.sapXep = false;
+        this.dichVuNoiBat = false;
+        this.chuongTrinhKhuyenMai = false;
+        this.hienThi = false;
     }
 
     public Service_Tuyen2_PageLayout(String taiKhoan, boolean sapXep, boolean dichVuNoiBat, boolean chuongTrinhKhuyenMai, boolean hienThi) {
@@ -19,7 +23,6 @@ public class Service_Tuyen2_PageLayout {
         this.hienThi = hienThi;
     }
 
-    // Getter and setter methods
     public String getTaiKhoan() {
         return taiKhoan;
     }
@@ -52,23 +55,11 @@ public class Service_Tuyen2_PageLayout {
         this.chuongTrinhKhuyenMai = chuongTrinhKhuyenMai;
     }
 
-    public boolean geHhienThi() {
+    public boolean getHienThi() {
         return hienThi;
     }
 
     public void setHienThi(boolean hienThi) {
         this.hienThi = hienThi;
-    }
-
-    // Override toString() method
-    @Override
-    public String toString() {
-        return "PageLayout{" +
-                "taiKhoan='" + taiKhoan + '\'' +
-                ", sapXep=" + sapXep +
-                ", dichVuNoiBat=" + dichVuNoiBat +
-                ", chuongTrinhKhuyenMai=" + chuongTrinhKhuyenMai +
-                ", hienThi=" + hienThi +
-                '}';
     }
 }

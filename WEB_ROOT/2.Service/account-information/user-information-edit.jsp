@@ -20,7 +20,7 @@
 	    </div>
 	    <div class="id">
 	        <h4> ID</h4>
-	        <input type="text" id="serviceID" name="serviceID" value=" ${provider.sell_ID}">
+            <p style="margin-left: 15%;" style="color: rgb(55, 54, 54);"> ${provider.sell_ID}</p>
 	    </div>
 	    <div class="user-name">
 	        <h4>User Name</h4>

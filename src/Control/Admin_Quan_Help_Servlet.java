@@ -44,52 +44,25 @@ public class Admin_Quan_Help_Servlet extends HttpServlet {
 		String idCauHoi = request.getParameter("idCauHoi").trim(); 
         String cauHoi = request.getParameter("cauHoi").trim();
         String cauTraLoi = request.getParameter("cauTraloi").trim();
+        String result = "";
 
         try {
             if (request.getParameter("btnSave") != null && (idCauHoi != null && idCauHoi.length() > 0) && (cauHoi != null && cauHoi.length() > 0) && (cauTraLoi != null && cauTraLoi.length() > 0)) {
             	Admin_Quan_Help help = new Admin_Quan_Help(idCauHoi, cauHoi, cauTraLoi);
-                int result = new Admin_Quan_Help_DAO().themCauHoi(help);
-
-                String message;
-                if (result == 10) {
-                    message = "Thêm câu hỏi thành công";
-                } else if (result == 3) {
-                    message = "ID câu hỏi đã tồn tại";
-                } else {
-                    message = "Thêm câu hỏi không thành công";
-                }
-                session.setAttribute("message", message);
+                result = new Admin_Quan_Help_DAO().themCauHoi(help);
 
             } else if (request.getParameter("btnDelete") != null && (idCauHoi != null && idCauHoi.length() > 0)) {
             	Admin_Quan_Help help = new Admin_Quan_Help(idCauHoi, "", ""); 
-                int result = new Admin_Quan_Help_DAO().xoaCauHoi(idCauHoi);
-
-                String message;
-                if (result == 10) {
-                    message = "Xóa câu hỏi thành công";
-                } else if (result == 3) {
-                    message = "Không tìm thấy câu hỏi";
-                } else {
-                    message = "Xóa câu hỏi không thành công";
-                }
-                session.setAttribute("message", message);
+                result = new Admin_Quan_Help_DAO().xoaCauHoi(idCauHoi);
 
             } else if (request.getParameter("btnChange") != null && (idCauHoi != null && idCauHoi.length() > 0) && (cauHoi != null && cauHoi.length() > 0) && (cauTraLoi != null && cauTraLoi.length() > 0)) {
             	Admin_Quan_Help help = new Admin_Quan_Help(idCauHoi, cauHoi, cauTraLoi);
-                int result = new Admin_Quan_Help_DAO().suaCauHoi(help);
-                
-                String message;
-                if (result == 10) {
-                    message = "Sửa câu hỏi thành công";
-                } else if (result == 3) {
-                    message = "Không tìm thấy câu hỏi";
-                } else {
-                    message = "Sửa câu hỏi không thành công";
-                }
-                session.setAttribute("message", message); 
+                result = new Admin_Quan_Help_DAO().suaCauHoi(help); 
             }
             
             List<Admin_Quan_Help> helpList = new Admin_Quan_Help_DAO().getAllHelp();
+            
+            session.setAttribute("message", result); 
             session.setAttribute("helpList", helpList);
             response.sendRedirect("/Web_Travel/3.Admin/index.jsp");
         } catch (Exception e) {

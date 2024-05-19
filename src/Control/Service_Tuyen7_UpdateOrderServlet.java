@@ -17,13 +17,36 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/UpdateOrderServlet")
 public class Service_Tuyen7_UpdateOrderServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private Service_Tuyen4_Orders_DAO ordersDAO;
+	private int result;
+	private String id;
+	private String sellID;
+	private String customerID;
+	private String tourID;
+	private String bookingDate;
+	private String tourName;
+	private String date;
+	private int numberOfPeople;
+	private long price;
+	private String type;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
     public Service_Tuyen7_UpdateOrderServlet() {
         super();
-        // TODO Auto-generated constructor stub
+        ordersDAO = new Service_Tuyen4_Orders_DAO();
+        result = 0;
+    	id = "";
+    	sellID = "";
+    	customerID = "";
+    	tourID = "";
+    	bookingDate = "";
+    	tourName = "";
+    	date = "";
+    	numberOfPeople = 0;
+    	price = 0;
+    	type = "";
     }
 
 	/**
@@ -40,52 +63,47 @@ public class Service_Tuyen7_UpdateOrderServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		
-		String id = request.getParameter("id");
-	    String sellID = request.getParameter("providerID");
-	    String customerID = request.getParameter("customerID");
-	    String tourID = request.getParameter("tourID");
-	    String bookingDate = request.getParameter("destination");
-	    String tourName = request.getParameter("tourName");
-	    String date = request.getParameter("departureDate");
-	    int numberOfPeople = Integer.parseInt(request.getParameter("numberOfPeople"));
-	    long price = Long.parseLong(request.getParameter("price"));
-	    String type = request.getParameter("type");
+		id = request.getParameter("id");
+	    sellID = request.getParameter("providerID");
+	    customerID = request.getParameter("customerID");
+	    tourID = request.getParameter("tourID");
+	    bookingDate = request.getParameter("destination");
+	    tourName = request.getParameter("tourName");
+	    date = request.getParameter("departureDate");
+	    numberOfPeople = Integer.parseInt(request.getParameter("numberOfPeople"));
+	    price = Long.parseLong(request.getParameter("price"));
+	    type = request.getParameter("type");
         
         if(request.getParameter("btnSave") != null) {
-        	int result = 0;
         	try {
-				result = Service_Tuyen4_Orders_DAO.updateOrder(id, sellID, customerID, tourID, bookingDate,  tourName, date, numberOfPeople, price, type);
+				result = ordersDAO.updateOrder(id, sellID, customerID, tourID, bookingDate,  tourName, date, numberOfPeople, price, type);
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
         	
-        	if(result == 10) {
+        	if(result == 10) 
             	session.setAttribute("message", "update thông tin đơn thành công");
-            }
-            else {
+            else 
             	session.setAttribute("message", "update thông tin đơn không thành công");
-            }
-            response.sendRedirect("/Web_Travel/2.Service/index.jsp");   	
+        	
+        	response.sendRedirect("/Web_Travel/2.Service/index.jsp");
         }
         else if(request.getParameter("btnCancel") != null) {
-        	int result = 0;
         	try {
-				result = Service_Tuyen4_Orders_DAO.deleteOrder(id);
+				result = ordersDAO.deleteOrder(id);
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
         	
-        	if(result == 10) {
+        	if(result == 10) 
             	session.setAttribute("message", "xóa đơn thành công");
-            }
-            else {
+            else 
             	session.setAttribute("message", "xóa đơn không thành công");
-            }
-            response.sendRedirect("/Web_Travel/2.Service/index.jsp");   
-        }
-        	
-	}
 
+        	response.sendRedirect("/Web_Travel/2.Service/index.jsp");
+        }
+     	
+	}
 }

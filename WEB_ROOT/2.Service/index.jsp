@@ -63,6 +63,28 @@
 	    }
 	%>
 	
+	<script>
+		function loadSupportChangeCancelEdit() {
+		    // Sử dụng XMLHttpRequest hoặc fetch để tải nội dung từ tệp HTML
+		    var xhr = new XMLHttpRequest();
+		    xhr.open('GET', 'customer-care/support-change-cancel-edit.jsp', true);
+		    xhr.onreadystatechange = function () {
+		        if (xhr.readyState == 4 && xhr.status == 200) {
+		            document.getElementById('mainContent').innerHTML = xhr.responseText;
+		        }
+		    };
+		    xhr.send();
+		}
+
+        (function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('callFunction') === 'true') {
+            	loadSupportChangeCancelEdit();
+            	callFunction = false;
+            }
+        })();
+    </script>
+	
     <div class="header"> 
         <div class="header-content">
             <!--Logo and name page-->

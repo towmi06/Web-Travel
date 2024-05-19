@@ -20,8 +20,24 @@ public class Service_Tuyen3_ContactInfoService {
     private String message;
     private String metaBusiness;
 
-    // Constructors
     public Service_Tuyen3_ContactInfoService() {
+    	this.sell_ID = "";
+        this.taiKhoan = "";
+        this.username = "";
+        this.email = "";
+        this.phoneNumber = "";
+        this.gioiTinh = "";
+        this.thongTinNganHang = "";
+        this.stk = "";
+        this.maSoThue = "";
+        this.facebook = "";
+        this.twitter = "";
+        this.instagram = "";
+        this.address = "";
+        this.workingHours = "";
+        this.coverPhoto = "";
+        this.avatar = "";
+        this.message = "";
     }
 
     public Service_Tuyen3_ContactInfoService(String sell_ID, String taiKhoan, String username, String email, String phoneNumber, String gioiTinh, String thongTinNganHang, String stk, String maSoThue, String facebook, String twitter, String instagram, String address, String workingHours, String coverPhoto, String avatar, String message, String metaBusiness) {
@@ -45,7 +61,6 @@ public class Service_Tuyen3_ContactInfoService {
         this.metaBusiness = metaBusiness;
     }
 
-    // Getter and setter methods
     public String getSell_ID() {
         return sell_ID;
     }
@@ -188,30 +203,5 @@ public class Service_Tuyen3_ContactInfoService {
 
     public void setMetaBusiness(String metaBusiness) {
         this.metaBusiness = metaBusiness;
-    }
-
-    // Override toString() method
-    @Override
-    public String toString() {
-        return "Service_Tuyen3_ContactInfoService{" +
-                "sell_ID='" + sell_ID + '\'' +
-                ", taiKhoan='" + taiKhoan + '\'' +
-                ", username='" + username + '\'' +
-                ", email='" + email + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", gioiTinh='" + gioiTinh + '\'' +
-                ", thongTinNganHang='" + thongTinNganHang + '\'' +
-                ", stk='" + stk + '\'' +
-                ", maSoThue='" + maSoThue + '\'' +
-                ", facebook='" + facebook + '\'' +
-                ", twitter='" + twitter + '\'' +
-                ", instagram='" + instagram + '\'' +
-                ", address='" + address + '\'' +
-                ", workingHours='" + workingHours + '\'' +
-                ", coverPhoto='" + coverPhoto + '\'' +
-                ", avatar='" + avatar + '\'' +
-                ", message='" + message + '\'' +
-                ", metaBusiness='" + metaBusiness + '\'' +
-                '}';
     }
 }

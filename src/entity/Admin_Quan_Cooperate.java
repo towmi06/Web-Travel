@@ -8,11 +8,6 @@ public class Admin_Quan_Cooperate {
     private String ngayGui;
     private String noiDungHopTac;
 
-    // Constructors
-    public Admin_Quan_Cooperate() {
-        // Default constructor
-    }
-
     public Admin_Quan_Cooperate(String tenNCC, String email, String soDienThoai, String diaChi, String ngayGui, String noiDungHopTac) {
         this.tenNCC = tenNCC;
         this.email = email;
@@ -22,7 +17,6 @@ public class Admin_Quan_Cooperate {
         this.noiDungHopTac = noiDungHopTac;
     }
 
-    // Getters and setters
     public String getTenNCC() {
         return tenNCC;
     }

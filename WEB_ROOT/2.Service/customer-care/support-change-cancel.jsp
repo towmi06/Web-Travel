@@ -76,12 +76,7 @@
                         <td><c:out value="${order.numberOfPeople}" /></td>
                         <td><c:out value="${order.price}" /></td>
                         <td><c:out value="${order.type}" /></td>
-                        <td>
-                            <form action="/Web_Travel/OrderServlet" method="post">
-                                <input type="hidden" name="orderId" value="${order.ID}">
-                                <button type="submit" class="edit-btn">Edit</button>
-                            </form>
-                        </td>
+                        <td><a href="/Web_Travel/OrderServlet?orderId=${order.ID}" class="edit-btn" style="text-decoration: none;">Edit</a></td>
                     </tr>
                </c:forEach>
             </tbody>

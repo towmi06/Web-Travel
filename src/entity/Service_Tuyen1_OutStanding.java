@@ -13,7 +13,6 @@ public class Service_Tuyen1_OutStanding {
     private int price;
     private boolean outstanding;
 
-    // Constructor
     public Service_Tuyen1_OutStanding() {
         this.id = "";
         this.sell_ID = "";
@@ -26,8 +25,21 @@ public class Service_Tuyen1_OutStanding {
         this.price = 0;
         this.outstanding = false;
     }
+    
+    public Service_Tuyen1_OutStanding(String id, String sell_ID, String cateID, float rate, long sales, String tourName, String image, String journeys, String date, int price, boolean outstanding) {
+        this.id = id;
+        this.sell_ID = sell_ID;
+        this.cateID = cateID;
+        this.rate = rate;
+        this.sales = sales;
+        this.tourName = tourName;
+        this.image = image;
+        this.journeys = journeys;
+        this.date = date;
+        this.price = price;
+        this.outstanding = outstanding;
+    }
 
-    // Getters and setters
     public String getId() {
         return id;
     }
@@ -114,22 +126,5 @@ public class Service_Tuyen1_OutStanding {
 
     public void setOutstanding(boolean outstanding) {
         this.outstanding = outstanding;
-    }
-
-    @Override
-    public String toString() {
-        return "Service_Tuyen1_OutStanding{" +
-                "id='" + id + '\'' +
-                ", sell_ID='" + sell_ID + '\'' +
-                ", cateID='" + cateID + '\'' +
-                ", rate=" + rate +
-                ", sales=" + sales +
-                ", tourName='" + tourName + '\'' +
-                ", image='" + image + '\'' +
-                ", journeys='" + journeys + '\'' +
-                ", date='" + date + '\'' +
-                ", price=" + price +
-                ", outstanding=" + outstanding +
-                '}';
     }
 }

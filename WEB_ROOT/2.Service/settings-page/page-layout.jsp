@@ -74,8 +74,8 @@
 	                    <li>
 	                        <a href="#" class="page-option-label">Hiển thị sản phẩm theo  :</a>
 	                        <select name="display" class="select-custom" style="margin-left: 60px">
-	                            <option value="true" <% if (pageLayout.geHhienThi() == true) out.print("selected"); %> >Hàng dọc</option>
-	                            <option value="false" <% if (pageLayout.geHhienThi() == false) out.print("selected"); %> >Hàng ngang</option>
+	                            <option value="true" <% if (pageLayout.getHienThi() == true) out.print("selected"); %> >Hàng dọc</option>
+	                            <option value="false" <% if (pageLayout.getHienThi() == false) out.print("selected"); %> >Hàng ngang</option>
 	                        </select>
 	                    </li>
 	                </ul>
@@ -83,7 +83,7 @@
 	            <!-- Thêm div chứa nút Lưu và Thoát -->
 	            <div class="button-group">
 	                <button type="submit" class="save-button">Lưu</button>
-	                <button type="button" class="exit-button" onclick="location.href='/Web_Travel/3.Service/index.jsp';">Thoát</button>
+	                <button type="button" class="exit-button" onclick="location.href='/Web_Travel/2.Service/index.jsp';">Thoát</button>
 	            </div>
 	        </ul>
 	    </form>

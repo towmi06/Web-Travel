@@ -12,13 +12,12 @@ import java.util.List;
 
 public class Service_Tuyen1_OutStanding_DAO {
     
-    // Lấy danh sách các dịch vụ outstanding theo sell_ID
+    // Lấy danh sách các dịch vụ outstanding theo sell_ID sắp xếp theo sales và rate
     public static List<Service_Tuyen1_OutStanding> getOutstandingServices(String sell_ID) throws ClassNotFoundException {
         List<Service_Tuyen1_OutStanding> outstandingServices = new ArrayList<>();
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
-
         try {
             conn = DBContext.getConnection();
 
@@ -31,6 +30,7 @@ public class Service_Tuyen1_OutStanding_DAO {
 
             while (rs.next()) {
                 Service_Tuyen1_OutStanding service = new Service_Tuyen1_OutStanding();
+                
                 service.setId(rs.getString("id"));
                 service.setSell_ID(rs.getString("sell_ID"));
                 service.setCateID(rs.getString("cateID"));
@@ -78,6 +78,7 @@ public class Service_Tuyen1_OutStanding_DAO {
 
             while (rs.next()) {
                 Service_Tuyen1_OutStanding service = new Service_Tuyen1_OutStanding();
+                
                 service.setId(rs.getString("id"));
                 service.setSell_ID(rs.getString("sell_ID"));
                 service.setCateID(rs.getString("cateID"));
@@ -133,10 +134,8 @@ public class Service_Tuyen1_OutStanding_DAO {
             service.setOutstanding(newStatus);
 
             if (rowsAffected > 0) {
-                System.out.println("Outstanding status updated successfully.");
                 return 10;
             } else {
-                System.out.println("Failed to update outstanding status.");
                 return 3;
             }
         } catch (SQLException e) {
@@ -158,7 +157,7 @@ public class Service_Tuyen1_OutStanding_DAO {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        Service_Tuyen1_OutStanding service = null;
+        Service_Tuyen1_OutStanding service = new Service_Tuyen1_OutStanding();
 
         try {
             conn = DBContext.getConnection();
@@ -170,8 +169,7 @@ public class Service_Tuyen1_OutStanding_DAO {
             
             rs = stmt.executeQuery();
             
-            if (rs.next()) {
-                service = new Service_Tuyen1_OutStanding();
+            if (rs.next()) {            
                 service.setId(rs.getString("id"));
                 service.setSell_ID(rs.getString("sell_ID"));
                 service.setCateID(rs.getString("cateID"));
@@ -203,10 +201,10 @@ public class Service_Tuyen1_OutStanding_DAO {
     // test
     public static void main(String[] args) {
         try {   
-            List<Service_Tuyen1_OutStanding> services = new Service_Tuyen1_OutStanding_DAO().getAllTour();
+            List<Service_Tuyen1_OutStanding> services = new Service_Tuyen1_OutStanding_DAO().getOutstandingServices("1");
             
             for (Service_Tuyen1_OutStanding service : services) {
-                System.out.println(service.toString());
+                System.out.println(service.getId());
             }
         } catch (ClassNotFoundException e) {
             e.printStackTrace();

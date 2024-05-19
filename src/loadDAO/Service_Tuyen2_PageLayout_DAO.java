@@ -14,7 +14,7 @@ public class Service_Tuyen2_PageLayout_DAO {
         Connection conn = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
-        Service_Tuyen2_PageLayout pageLayout = null;
+        Service_Tuyen2_PageLayout pageLayout = new Service_Tuyen2_PageLayout();
 
         try {
         	conn = DBContext.getConnection();
@@ -29,14 +29,10 @@ public class Service_Tuyen2_PageLayout_DAO {
 
             // Xử lý kết quả trả về
             if (rs.next()) {
-                // Lấy các giá trị từ cơ sở dữ liệu
-                boolean sapXep = rs.getBoolean("sapXep");
-                boolean dichVuNoiBat = rs.getBoolean("dichVuNoiBat");
-                boolean chuongTrinhKhuyenMai = rs.getBoolean("chuongTrinhKhuyenMai");
-                boolean hienThi = rs.getBoolean("hienThi");
-
-                // Khởi tạo đối tượng PageLayout
-                pageLayout = new Service_Tuyen2_PageLayout(taiKhoan, sapXep, dichVuNoiBat, chuongTrinhKhuyenMai, hienThi);
+            	pageLayout.setSapXep(rs.getBoolean("sapXep"));
+            	pageLayout.setDichVuNoiBat(rs.getBoolean("dichVuNoiBat"));
+            	pageLayout.setChuongTrinhKhuyenMai(rs.getBoolean("chuongTrinhKhuyenMai"));
+            	pageLayout.setHienThi(rs.getBoolean("hienThi"));  
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -73,10 +69,8 @@ public class Service_Tuyen2_PageLayout_DAO {
             int rowsAffected = pstmt.executeUpdate();
             
             if (rowsAffected > 0) {
-                System.out.println("Page layout updated successfully.");
                 return 10;
             } else {
-                System.out.println("Failed to update page layout.");
                 return 3;
             }
         } catch (SQLException e) {

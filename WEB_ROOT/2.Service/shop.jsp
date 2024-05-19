@@ -6,7 +6,7 @@
 <%@ page import="loadDAO.Service_Tuyen2_PageLayout_DAO" %>
 <%@ page import="loadDAO.Service_Tuyen1_OutStanding_DAO" %>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"> 
 
 <head>
     <meta charset="UTF-8">
@@ -74,46 +74,12 @@
                     <input type="text" id="notification-input" class="notification-input">
                     <i class='bx bx-bell' style='color:#fd5bbd' ></i>
                     <label for="notification-input" class="notification-label">Thông báo </label>         
-            </a>
-                
-             <!-- Biểu tượng giỏ hàng -->
-             <div class="cart-container">
-                <div class="cart-icon" onclick="toggleCart()">
-                    <i class='bx bx-shopping-bag' style='color:#fd5bbd'></i>
-                </div>
-                <div class="cart-hover" id="cartHover">
-                    <div class="select-items">
-                            <br>
-                            <table>1<br>
-                                   2<br>
-                                   3
-                            </table>
-                    </div>
-                    <hr class="separator">
-                    <div class="select-total">
-                        <span class="total-label">TỔNG: </span>
-                        <h5 class="total-value">$0</h5>
-                    </div>
-                        
-                    <div class="select-button">
-                        <a href="shopping-cart.html" class="primary-btn view-card">Giỏ hàng</a>
-                        <a href="check-out.html" class="primary-btn checkout-btn">Thanh toán </a>
-                    </div>
-                     <br>
-                </div>
-	                <script>
-	                    function toggleCart() {
-	                        var cartHover = document.getElementById("cartHover");
-	                        cartHover.style.display = cartHover.style.display === "block" ? "none" : "block";
-	                    }
-	                            
-	               </script>            
-        	  </div>
+            </a>            
          	         
           	<!-- Thêm phần đăng nhập và đăng kí -->
          	<div class="user-actions">
             	<!-- Đăng nhập và đăng kí -->
-            	 <a href="./login.html" class="login-link"><i class='bx bx-user' style=" width:20px"  ></i></i>Đăng nhập</a>
+            	 <a href="index.jsp" class="login-link"><i class='bx bx-user' style=" width:20px"  ></i></i>Trang quản lý</a>
         	</div>
         </nav>
      </div>
@@ -342,109 +308,59 @@
         </div>
     </section>
     
-    <section class="locations" id="locations">
+    <%
+    	if (pageLayout.getHienThi()) {
+	%>
+	    <section class="locations" id="locations" style="display: block;">
+	<%
+	    } else {
+	%>
+	    <section class="locations" id="locations" style="display: none;">
+	<%
+	    }
+	%>
         <div class="package-title">
-            <h2>Địa điểm hấp dẫn nhất mùa hè này!</h2>
+            <h2>Dịch vụ nổi bật</h2>
         </div>
         <div class="location-content">
             <div class="slider">
-                <!-- Slide 1 -->
+            <%
+            	int count2 = 0;
+            	for (Service_Tuyen1_OutStanding service : danhSach) {
+            		if(service.getOutstanding()) {
+            %>
                 <div class="slide">
                     <a href="./locations.html#kashmir" target="_blank">
                         <div class="col-content">
-                            <img src="resources/images/image_tour/a65.jpg" alt="">
-                            <h5>Hang Heo</h5>
-                            <p>Nha Trang</p>
+                            <img src="resources/images/image_tour/<%= service.getImage() %>" alt="">
+                            <h5><c:out value="<%= service.getTourName() %>" /></h5>
+                            <p><c:out value="<%= service.getDate() %>" /></p>
                         </div>
                     </a>
                 </div>
-                <!-- Slide 2 -->
-                <div class="slide">
-                    <a href="./locations.html#istanbul" target="_blank">
-                        <div class="col-content">
-                            <img src="resources/images/image_tour/a1.jpg" alt="">
-                            <h5>Bãi Sao</h5>
-                            <p>Phú Quốc</p>
-                        </div>
-                    </a>
-                </div>
-                <!-- Slide 3 -->
-                <div class="slide">
-                    <a href="./locations.html#paris" target="_blank">
-                        <div class="col-content">
-                            <img src="resources/images/image_tour/a4.jpg" alt="">
-                            <h5>Nhà hát Cao Văn Lầu</h5>
-                            <p>Bạc Liêu</p>
-                        </div>
-                    </a>
-                </div>
-                <!-- Slide 4 -->
-                <div class="slide">
-                    <a href="./locations.html#bali" target="_blank">
-                        <div class="col-content">
-                            <img src="resources/images/image_tour/a5.jpg" alt="">
-                            <h5>Chùa Vinh Tràng</h5>
-                            <p>Mỹ Tho</p>
-                        </div>
-                    </a>
-                </div>
-                <!-- Slide 5 -->
-                <div class="slide">
-                    <a href="./locations.html#dubai" target="_blank">
-                        <div class="col-content">
-                            <img src="resources/images/image_tour/a8.jpg" alt="">
-                            <h5>Côn Đảo</h5>
-                            <p>Bà Rịa - Vũng Tàu</p>
-                        </div>
-                    </a>
-                </div>
-                <!-- Slide 6 -->
-                <div class="slide">
-                    <a href="./locations.html#geneva" target="_blank">
-                        <div class="col-content">
-                            <img src="resources/images/image_tour/a18.jpg" alt="">
-                            <h5>Tháp Pô Klong Garai</h5>
-                            <p>Tháp Chàm, Ninh Thuận</p>
-                        </div>
-                    </a>
-                </div>
-                <!-- Slide 7 -->
-                <div class="slide">
-                    <a href="./locations.html#port-blair" target="_blank">
-                        <div class="col-content">
-                            <img src="resources/images/image_tour/a57.jpg" alt="">
-                            <h5>Bà Nà Hill</h5>
-                            <p>Đà Nẵng</p>
-                        </div>
-                    </a>
-                </div>
-                <!-- Slide 8 -->
-                <div class="slide">
-                    <a href="./locations.html#rome" target="_blank">
-                        <div class="col-content">
-                            <img src="resources/images/image_tour/a41.jpg" alt="">
-                            <h5>Đồng Văn</h5>
-                            <p>Hà Giang</p>
-                        </div>
-                    </a>
-                </div>
-                <!-- Add more slides here if needed -->
+             <%
+            		}
+            	}
+             %>
             </div>
         </div>
+        
         <!-- Navigation arrows -->
- <!-- Next and previous buttons -->
- <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
- <a class="next" onclick="plusSlides(1)">&#10095;</a>
-</div>
-    <!-- Pagination dots -->
-    <div class="dots" style="text-align:center">
-        <span class="dot" onclick="currentSlide(1)"></span>
-        <span class="dot" onclick="currentSlide(2)"></span>
-        <span class="dot" onclick="currentSlide(3)"></span>
-        <span class="dot" onclick="currentSlide(4)"></span>
-        <!-- Add more dots here if needed -->
-    </div>
-    </section>
+		<!-- Next and previous buttons -->
+		<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+		<a class="next" onclick="plusSlides(1)">&#10095;</a>
+		<div class="dots" style="text-align:center">
+		    <%
+		        int numDots2 = (int) Math.ceil(count2 / 2.0); 
+		        for (int i = 1; i <= numDots2; i++) {
+		    %>
+		        <span class="dot" onclick="currentSlide(<%= i %>)"></span>
+		    <%
+		        }
+		    %>
+		</div>
+	</section>
+
 
     <!-- Newsletter -->
 

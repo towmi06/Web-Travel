@@ -17,13 +17,38 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/userInfoEdit")
 public class Service_Tuyen4_UserInfoEdit_Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private Service_Tuyen3_ContactInfoService_DAO contactDAO;
+	private int result;
+	private String taiKhoan;
+	private String userName;
+	private String email;
+	private String phoneNumber;
+	private String gender;
+	private String thongTinNganHang;
+	private String stk;
+	private String maSoThue;
+	private String facebook;
+	private String twitter;
+	private String instagram;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
     public Service_Tuyen4_UserInfoEdit_Servlet() {
         super();
-        // TODO Auto-generated constructor stub
+        contactDAO = new Service_Tuyen3_ContactInfoService_DAO();
+        result = 0;
+    	taiKhoan = "";
+    	userName = "";
+    	email = "";
+    	phoneNumber = "";
+    	gender = "";
+    	thongTinNganHang = "";
+    	stk = "";
+    	maSoThue = "";
+    	facebook = "";
+    	twitter = "";
+    	instagram = "";
     }
 
 	/**
@@ -39,29 +64,27 @@ public class Service_Tuyen4_UserInfoEdit_Servlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-        String taiKhoan = (String) session.getAttribute("email");
-
-        String ID = request.getParameter("serviceID");
-        String userName = request.getParameter("username");
-        String email = request.getParameter("email");
-        String phoneNumber = request.getParameter("phoneNumber");
-        String gender = request.getParameter("gender");
-        String thongTinNganHang = request.getParameter("bankInfo");
-        String stk = request.getParameter("accountNumber");
-        String maSoThue = request.getParameter("taxCode");
-        String facebook = request.getParameter("facebook");
-        String twitter = request.getParameter("twitter");
-        String instagram = request.getParameter("instagram");
+       
+		taiKhoan = (String) session.getAttribute("email");
+        userName = request.getParameter("username");
+        email = request.getParameter("email");
+        phoneNumber = request.getParameter("phoneNumber");
+        gender = request.getParameter("gender");
+        thongTinNganHang = request.getParameter("bankInfo");
+        stk = request.getParameter("accountNumber");
+        maSoThue = request.getParameter("taxCode");
+        facebook = request.getParameter("facebook");
+        twitter = request.getParameter("twitter");
+        instagram = request.getParameter("instagram");
 
         // Call updateAccountInfo method to update account information
-        int result = Service_Tuyen3_ContactInfoService_DAO.updateAccountInfo(taiKhoan, ID, userName, email, phoneNumber, gender, thongTinNganHang, stk, maSoThue, facebook, twitter, instagram);
+        result = contactDAO.updateAccountInfo(taiKhoan, userName, email, phoneNumber, gender, thongTinNganHang, stk, maSoThue, facebook, twitter, instagram);
 
         if(result == 10) 
         	session.setAttribute("message", "update thông tin tài khoảng thành công");
         else 
         	session.setAttribute("message", "update thông tin tài khoảng thành công");
-        // Redirect back to user information page
+        
         response.sendRedirect("/Web_Travel/2.Service/index.jsp");
 	}
-
 }

@@ -34,6 +34,7 @@ public class Service_Tuyen4_Orders_DAO {
             while (rs.next()) {
                 // Retrieve data from result set and create Service_Tuyen4_Order object
                 Service_Tuyen4_Order order = new Service_Tuyen4_Order();
+                
                 order.setID(rs.getString("ID"));
                 order.setSellID(rs.getString("sell_ID"));
                 order.setCustomerID(rs.getString("customer_ID"));
@@ -85,6 +86,7 @@ public class Service_Tuyen4_Orders_DAO {
             while (rs.next()) {
                 // Retrieve data from result set and create Service_Tuyen4_Order object
                 Service_Tuyen4_Order order = new Service_Tuyen4_Order();
+                
                 order.setID(rs.getString("ID"));
                 order.setSellID(rs.getString("sell_ID"));
                 order.setCustomerID(rs.getString("customer_ID"));
@@ -120,7 +122,7 @@ public class Service_Tuyen4_Orders_DAO {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        Service_Tuyen4_Order order = null;
+        Service_Tuyen4_Order order = new Service_Tuyen4_Order();
 
         try {
             conn = DBContext.getConnection();
@@ -131,20 +133,17 @@ public class Service_Tuyen4_Orders_DAO {
             rs = stmt.executeQuery();
 
             if (rs.next()) {
-                // Retrieve data from ResultSet and create Service_Tuyen4_Order object
-                order = new Service_Tuyen4_Order(
-                    rs.getString("ID"),
-                    rs.getString("sell_ID"),
-                    rs.getString("customer_ID"),
-                    rs.getString("tour_ID"),
-                    rs.getString("booking_date"),
-                    rs.getString("tourName"),
-                    rs.getString("date"),
-                    rs.getInt("numberOfPeople"),
-                    rs.getLong("price"),
-                    rs.getString("type"),
-                    rs.getString("status")
-                );
+            	order.setID(rs.getString("ID"));
+                order.setSellID(rs.getString("sell_ID"));
+                order.setCustomerID(rs.getString("customer_ID"));
+                order.setTourID(rs.getString("tour_ID"));
+                order.setBookingDate(rs.getString("booking_date"));
+                order.setTourName(rs.getString("tourName"));
+                order.setDate(rs.getString("date"));
+                order.setNumberOfPeople(rs.getInt("numberOfPeople"));
+                order.setPrice(rs.getLong("price"));
+                order.setType(rs.getString("type"));
+                order.setStatus(rs.getString("status"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -170,7 +169,7 @@ public class Service_Tuyen4_Orders_DAO {
             conn = DBContext.getConnection();
 
             // SQL query for updating order
-            String query = "UPDATE Orders SET sell_ID=?, customer_ID=?, tour_ID=?, booking_date=?, tourName=?, date=?, numberOfPeople=?, price=?, type=? WHERE ID=?";
+            String query = "UPDATE Orders SET ID=?, customer_ID=?, tour_ID=?, booking_date=?, tourName=?, date=?, numberOfPeople=?, price=?, type=? WHERE ID=?";
             stmt = conn.prepareStatement(query);
 
             // Set parameters for the prepared statement
@@ -189,15 +188,15 @@ public class Service_Tuyen4_Orders_DAO {
             int rowsUpdated = stmt.executeUpdate();
 
             if (rowsUpdated > 0) {
-                System.out.println("Order with ID " + ID + " updated successfully.");
-                return 1;
+                //Cập nhật thành công
+                return 10;
             } else {
-                System.out.println("Failed to update order with ID " + ID + ".");
-                return 0;
+                //Cập nhật không thành công
+                return 3;
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            return 0;
+            return 5;
         } finally {
             // Close resources
             try {
@@ -227,15 +226,15 @@ public class Service_Tuyen4_Orders_DAO {
             int rowsDeleted = stmt.executeUpdate();
 
             if (rowsDeleted > 0) {
-                System.out.println("Order with ID " + ID + " deleted successfully.");
-                return 1;
+                //Xóa thành công
+                return 10;
             } else {
-                System.out.println("Failed to delete order with ID " + ID + ". It may not exist.");
-                return 0;
+                //Xóa không thành công
+                return 3;
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            return 0;
+            return 5;
         } finally {
             // Close resources
             try {
@@ -247,14 +246,14 @@ public class Service_Tuyen4_Orders_DAO {
         }
     }
 
+    // Test getAllOrders method
     public static void main(String[] args) {
         Service_Tuyen4_Orders_DAO ordersDAO = new Service_Tuyen4_Orders_DAO();
 
-        // Test getAllOrders method
         List<Service_Tuyen4_Order> orders = ordersDAO.getAllOrders();
 
         for (Service_Tuyen4_Order order : orders) {
-            System.out.println(order.toString());
+            System.out.println(order.getID());
         }
     }
 }

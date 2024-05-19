@@ -50,19 +50,12 @@ public class Admin_Quan_AdminInfo_Servlet extends HttpServlet {
         String adminInstagram = request.getParameter("adminInstagram");
         String adminTiktok = request.getParameter("adminTiktok");
 
-        int result = Admin_Quan_AdminInfo_DAO.updateAdminInfo(adminID, adminName, adminEmail, adminPhone, adminPosition, adminFacebook, adminTwitter, adminInstagram, adminTiktok);
-        
-        if(result == 10) {
-        	session.setAttribute("message", "cập nhật thông tin thành công");
-        }
-        else {
-        	session.setAttribute("message", "cập nhật thông tin không thành công");
-        }
-        
+        String result = Admin_Quan_AdminInfo_DAO.updateAdminInfo(adminID, adminName, adminEmail, adminPhone, adminPosition, adminFacebook, adminTwitter, adminInstagram, adminTiktok);
         Admin_Quan_AdminInfo adminInfo = Admin_Quan_AdminInfo_DAO.findAdminByEmail(adminEmail);
+        
+        session.setAttribute("message", result);
         session.setAttribute("adminInfo", adminInfo);
         
         response.sendRedirect("/Web_Travel/3.Admin/index.jsp");
 	}
-
 }

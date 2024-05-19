@@ -20,29 +20,27 @@ public class Admin_Quan_Help_DAO {
         List<Admin_Quan_Help> helpList = new ArrayList<>();
         try {
         	conn = DBContext.getConnection();
+        	System.out.println("Connections sussces");
 
         	String sql = "SELECT * FROM Help";
         	
-            // Prepare statement
             pstmt = conn.prepareStatement(sql);
 
-            // Execute query
             rs = pstmt.executeQuery();
 
-            // Process result set
             while (rs.next()) {
+            	System.out.println("Successfully got the list of questions");
+            	
                 String idCauHoi = rs.getString("idCauHoi");
                 String cauHoi = rs.getString("cauHoi");
                 String cauTraLoi = rs.getString("cauTraLoi");
 
-                // Create Help object and add to list
                 Admin_Quan_Help help = new Admin_Quan_Help(idCauHoi, cauHoi, cauTraLoi);
                 helpList.add(help);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            // Close resources
             try {
                 if (rs != null) {
                     rs.close();
@@ -60,31 +58,36 @@ public class Admin_Quan_Help_DAO {
         return helpList;
     }
 
-    // Phương thức thêm câu hỏi
-    public int themCauHoi(Admin_Quan_Help help) throws SQLException, ClassNotFoundException {
-        int result = 0;
-        if (help == null || help.getIdCauHoi() == null || help.getIdCauHoi().isEmpty())
-            return 0;
-        if (help.getCauHoi() == null || help.getCauHoi().isEmpty() || help.getCauTraLoi() == null || help.getCauTraLoi().isEmpty())
-            return 1;
+    public String themCauHoi(Admin_Quan_Help help) throws SQLException, ClassNotFoundException {
+        String result = "";
+        if (help == null || help.getIdCauHoi() == null || help.getIdCauHoi().isEmpty()) {
+        	System.out.println("Please enter complete information");
+            return "Vui lòng nhập đầy đủ thông tin";
+        }
+        if (help.getCauHoi() == null || help.getCauHoi().isEmpty() || help.getCauTraLoi() == null || help.getCauTraLoi().isEmpty()) {
+        	System.out.println("Please enter complete information");
+        	return "Vui lòng nhập đầy đủ thông tin";
+        }
         String sql = "INSERT INTO help (idCauHoi, cauHoi, cauTraLoi) VALUES (?, ?, ?)";
         Connection conn = null;
         PreparedStatement pstmt = null;
         try {
         	conn = DBContext.getConnection();
+        	System.out.println("Connections sussces");
+        	
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, help.getIdCauHoi());
             pstmt.setString(2, help.getCauHoi());
             pstmt.setString(3, help.getCauTraLoi());
 
-            // Execute insert query
-            if (pstmt.executeUpdate() > 0)
-                result = 10;
+            if (pstmt.executeUpdate() > 0) {
+            	System.out.println("Adding questions susscess");
+                result = "Thêm câu hỏi thành công";
+            }
         } catch (SQLException e) {
             e.printStackTrace();
-            result = 3;
+            result = "ID câu hỏi đã tồn tại";
         } finally {
-            // Close resources
             if (pstmt != null) {
                 pstmt.close();
             }
@@ -94,29 +97,34 @@ public class Admin_Quan_Help_DAO {
         }
         return result;
     }
-
-    // Phương thức xóa câu hỏi
-    public int xoaCauHoi(String idCauHoi) throws SQLException, ClassNotFoundException {
-        int result = 0;
-        if (idCauHoi == null || idCauHoi.isEmpty())
-            return 0;
+    
+    public String xoaCauHoi(String idCauHoi) throws SQLException, ClassNotFoundException {
+        String result = "";
+        if (idCauHoi == null || idCauHoi.isEmpty()) {
+        	System.out.println("Please enter complete information");
+            return "Vui lòng nhập đầy đủ thông tin";
+        }
         String sql = "DELETE FROM help WHERE idCauHoi=?";
         Connection conn = null;
         PreparedStatement pstmt = null;
         try {
         	conn = DBContext.getConnection();
+        	System.out.println("Connections sussces");
+        	
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, idCauHoi);
 
-            // Execute delete query
-            if (pstmt.executeUpdate() > 0)
-                result = 10;
-            else
-                result = 3;
+            if (pstmt.executeUpdate() > 0) {
+            	System.out.println("Delete questions susscess");
+                result = "Xóa câu hỏi thành công";
+            }
+            else {
+            	System.out.println("Delete questions faild");
+                result = "Không tìm thấy câu hỏi";
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            // Close resources
             if (pstmt != null) {
                 pstmt.close();
             }
@@ -127,32 +135,39 @@ public class Admin_Quan_Help_DAO {
         return result;
     }
 
-    // Phương thức sửa câu hỏi
-    public int suaCauHoi(Admin_Quan_Help help) throws SQLException, ClassNotFoundException {
-        int result = 0;
-        if (help == null || help.getIdCauHoi() == null || help.getIdCauHoi().isEmpty())
-            return 0;
-        if (help.getCauHoi() == null || help.getCauHoi().isEmpty() || help.getCauTraLoi() == null || help.getCauTraLoi().isEmpty())
-            return 1;
+    public String suaCauHoi(Admin_Quan_Help help) throws SQLException, ClassNotFoundException {
+        String result = "";
+        if (help == null || help.getIdCauHoi() == null || help.getIdCauHoi().isEmpty()) {
+        	System.out.println("Please enter complete information");
+            return "Vui lòng nhập đầy đủ thông tin";
+        }
+        if (help.getCauHoi() == null || help.getCauHoi().isEmpty() || help.getCauTraLoi() == null || help.getCauTraLoi().isEmpty()) {
+        	System.out.println("Please enter complete information");
+            return "Vui lòng nhập đầy đủ thông tin";
+        }
         String sql = "UPDATE help SET cauHoi=?, cauTraLoi=? WHERE idCauHoi=?";
         Connection conn = null;
         PreparedStatement pstmt = null;
         try {
         	conn = DBContext.getConnection();
+        	System.out.println("Connections sussces");
+        	
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, help.getCauHoi());
             pstmt.setString(2, help.getCauTraLoi());
             pstmt.setString(3, help.getIdCauHoi());
 
-            // Execute update query
-            if (pstmt.executeUpdate() > 0)
-                result = 10;
-            else
-                result = 3;
+            if (pstmt.executeUpdate() > 0) {
+            	System.out.println("Change questions susscess");
+                result = "Cập nhật câu hỏi thành công";
+            }
+            else {
+            	System.out.println("Change questions faild");
+                result = "Không tìm thấy câu hỏi";
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            // Close resources
             if (pstmt != null) {
                 pstmt.close();
             }

@@ -17,13 +17,38 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/PageLayoutSevlet")
 public class Service_Tuyen2_PageLayout_Sevlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	Service_Tuyen2_PageLayout pageLayout;
+	Service_Tuyen2_PageLayout_DAO pageLayoutDAO;
+	int result;
+	private String email;
+	String taiKhoan;
+	String allowSorting;
+	boolean sapXep;
+	String hideService;
+	boolean dichVuNoiBat;
+	String hidePromotion;
+	boolean chuongTrinhKhuyenMai;
+	String display;
+	boolean hienThi;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
     public Service_Tuyen2_PageLayout_Sevlet() {
         super();
-        // TODO Auto-generated constructor stub
+        pageLayout = new Service_Tuyen2_PageLayout();
+        pageLayoutDAO = new Service_Tuyen2_PageLayout_DAO();
+        result = 0;
+        email = null;
+        taiKhoan = "";
+    	allowSorting = "";
+    	sapXep = false;
+    	hideService = "";
+    	dichVuNoiBat = false;
+    	hidePromotion = "";
+    	chuongTrinhKhuyenMai = false;
+    	display = "";
+    	hienThi = false;
     }
 
 	/**
@@ -40,39 +65,35 @@ public class Service_Tuyen2_PageLayout_Sevlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		
-		String email = (String) session.getAttribute("email");
-		Service_Tuyen2_PageLayout pageLayout = null;
+		email = (String) session.getAttribute("email");
 	    try {
-			pageLayout = Service_Tuyen2_PageLayout_DAO.findByTaiKhoan(email);
+			pageLayout = pageLayoutDAO.findByTaiKhoan(email);
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	    
-        String taiKhoan = (String) session.getAttribute("email");
-        String allowSorting = request.getParameter("allowSorting");
-        String hideService = request.getParameter("hideService");
-        String hidePromotion = request.getParameter("hidePromotion");
-        String display = request.getParameter("display");
+        taiKhoan = (String) session.getAttribute("email");
+        allowSorting = request.getParameter("allowSorting");
+        hideService = request.getParameter("hideService");
+        hidePromotion = request.getParameter("hidePromotion");
+        display = request.getParameter("display");
 
         // Chuyển đổi các giá trị sang kiểu dữ liệu phù hợp nếu cần thiết
-        boolean sapXep = false;
-        if(allowSorting == null) sapXep = false;
-        else sapXep = true;
+        if(allowSorting == null) sapXep = false; //nếu nút sắp xếp không được bấm thì gán sapXep = false
+        else sapXep = true; //nếu nút sắp xếp được bấm thì gán sapXep = false
         
-        boolean dichVuNoiBat = false;
         if(hideService == null) dichVuNoiBat = false;
         else dichVuNoiBat = true;
         	
-        boolean chuongTrinhKhuyenMai = false;
         if(hidePromotion == null) chuongTrinhKhuyenMai = false;
         else chuongTrinhKhuyenMai = true;
         
-        boolean hienThi = Boolean.parseBoolean(display);
+        if(display == null) hienThi = false;
+        else hienThi = true;
         
-        int result = 0;
 		try {
-			result = Service_Tuyen2_PageLayout_DAO.updatePageLayout(taiKhoan, sapXep, dichVuNoiBat, chuongTrinhKhuyenMai, hienThi);
+			result = pageLayoutDAO.updatePageLayout(taiKhoan, sapXep, dichVuNoiBat, chuongTrinhKhuyenMai, hienThi);
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

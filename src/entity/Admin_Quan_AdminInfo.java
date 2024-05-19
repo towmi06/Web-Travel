@@ -15,10 +15,6 @@ public class Admin_Quan_AdminInfo {
     private String instagram;
     private String tiktok;
 
-    // Constructors
-    public Admin_Quan_AdminInfo() {
-    }
-
     public Admin_Quan_AdminInfo(String ID, String name, String email, String phone, String gender, String address, String position, String coverPhoto, String avatar, String facebook, String twitter, String instagram, String tiktok) {
         this.ID = ID;
         this.name = name;
@@ -35,7 +31,6 @@ public class Admin_Quan_AdminInfo {
         this.tiktok = tiktok;
     }
 
-    // Getters and setters
     public String getID() {
         return ID;
     }

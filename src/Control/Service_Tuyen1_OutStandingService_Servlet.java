@@ -21,20 +21,28 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/outstandingServiceServlet")
 public class Service_Tuyen1_OutStandingService_Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private Service_Tuyen1_OutStanding_DAO outStandingDAO;
+	private List<Service_Tuyen1_OutStanding> danhSach;
+	private int result;
+	private String[] tourIds;
+	private String sell_ID ;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
     public Service_Tuyen1_OutStandingService_Servlet() {
         super();
-        // TODO Auto-generated constructor stub
+        outStandingDAO = new Service_Tuyen1_OutStanding_DAO();
+        danhSach = null;
+        result = 0;
+        tourIds = null;
+        sell_ID = "";
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
@@ -44,21 +52,18 @@ public class Service_Tuyen1_OutStandingService_Servlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		
-		String[] tourIds = request.getParameterValues("outstandingIds");
-		
-		int result = 0;
-        List<Service_Tuyen1_OutStanding> danhSach = null;
-        String sell_ID = (String) session.getAttribute("sell_ID");
+		tourIds = request.getParameterValues("outstandingIds");
+		sell_ID = (String) session.getAttribute("sell_ID");
         try {
-            danhSach = Service_Tuyen1_OutStanding_DAO.getOutstandingServices(sell_ID);
+            danhSach = outStandingDAO.getOutstandingServices(sell_ID);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
 
-        // Update the outstanding status of each service
+        // Cập nhật trạng thái nổi bật của từng dịch vụ
         if (danhSach != null) {
-            for (Service_Tuyen1_OutStanding service : danhSach) { // danh sách đối tương outstandingService
-                // Check if the service ID is in the list of tourIds
+            for (Service_Tuyen1_OutStanding service : danhSach) { // danh sách đối tượng outstandingService
+                // Kiểm tra xem ID dịch vụ có nằm trong danh sách tourIds không
                 boolean found = false;
                 for (String tourId : tourIds) { // duyệt tourId trong mảng tourIds
                     if (tourId.equals(service.getId())) {
@@ -67,27 +72,22 @@ public class Service_Tuyen1_OutStandingService_Servlet extends HttpServlet {
                     }
                 }
 
-                // Perform update based on conditions
+                // Thực hiện cập nhật dựa trên điều kiện
                 if (found && !service.getOutstanding()) {
-                    // If the service ID is found and outstanding status is false, update to true
+                    // Nếu ID dịch vụ được tìm thấy và trạng thái nổi bật là false, cập nhật thành true
                     try {
-						result = Service_Tuyen1_OutStanding_DAO.updateOutstandingService(service);
+						result = outStandingDAO.updateOutstandingService(service);
 					} catch (ClassNotFoundException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
                 } else if (!found && service.getOutstanding()) {
-                    // If the service ID is not found and outstanding status is true, update to false
+                    // Nếu ID dịch vụ không được tìm thấy và trạng thái nổi bật là true, cập nhật thành false
                     try {
-                    	result = Service_Tuyen1_OutStanding_DAO.updateOutstandingService(service);
+                    	result = outStandingDAO.updateOutstandingService(service);
 					} catch (ClassNotFoundException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
                 }
-
-                // Print service details
-                response.getWriter().println(service.toString());
             }
         }
         if (result == 10) 

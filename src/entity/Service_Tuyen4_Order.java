@@ -15,8 +15,18 @@ public class Service_Tuyen4_Order {
     private String type;
     private String status;
 
-    // Constructors
     public Service_Tuyen4_Order() {
+    	this.ID = "";
+        this.sellID = "";
+        this.customerID = "";
+        this.tourID = "";
+        this.bookingDate = "";
+        this.tourName = "";
+        this.date = "";
+        this.numberOfPeople = 0;
+        this.price = 0;
+        this.type = "";
+        this.status = "";
     }
 
     public Service_Tuyen4_Order(String ID, String sellID, String customerID, String tourID, String bookingDate, String tourName, String date, int numberOfPeople, long price, String type, String status) {
@@ -33,7 +43,6 @@ public class Service_Tuyen4_Order {
         this.status = status;
     }
 
-    // Getter and setter methods
     public String getID() {
         return ID;
     }
@@ -120,23 +129,5 @@ public class Service_Tuyen4_Order {
 
     public void setStatus(String status) {
         this.status = status;
-    }
-
-    // Override toString() method
-    @Override
-    public String toString() {
-        return "Service_Tuyen4_Order{" +
-                "ID='" + ID + '\'' +
-                ", sellID='" + sellID + '\'' +
-                ", customerID='" + customerID + '\'' +
-                ", tourID='" + tourID + '\'' +
-                ", bookingDate=" + bookingDate +
-                ", tourName='" + tourName + '\'' +
-                ", date='" + date + '\'' +
-                ", numberOfPeople=" + numberOfPeople +
-                ", price=" + price +
-                ", type='" + type + '\'' +
-                ", status='" + status + '\'' +
-                '}';
     }
 }

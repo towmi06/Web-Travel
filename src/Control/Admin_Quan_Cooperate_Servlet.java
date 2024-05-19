@@ -40,14 +40,10 @@ public class Admin_Quan_Cooperate_Servlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 		String email = request.getParameter("email"); 
-        int result = Admin_Quan_SendEmail.sendEmailTo(email);
+        String result = Admin_Quan_SendEmail.sendEmailTo(email);
         
-        if(result == 10) {
-        	session.setAttribute("message", "gửi mail liên hệ thành công");
-        }
-        else {
-        	session.setAttribute("message", "gửi mali liên hê không thành công");
-        }
+        session.setAttribute("message", result);
+ 
         response.sendRedirect("/Web_Travel/3.Admin/index.jsp");
 	}
 

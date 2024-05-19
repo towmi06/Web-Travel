@@ -35,8 +35,8 @@ public class Admin_Quan_GrantAccess_Servlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 		String email = request.getParameter("email");
-		Admin_Quan_AdminInfo admin = null;
-		admin = Admin_Quan_AdminInfo_DAO.findAdminByEmail(email);
+		Admin_Quan_AdminInfo admin = Admin_Quan_AdminInfo_DAO.findAdminByEmail(email);
+
 		session.setAttribute("admin", admin);
 	    response.sendRedirect("/Web_Travel/3.Admin/grant-access-edit.jsp");
 	}
@@ -48,16 +48,9 @@ public class Admin_Quan_GrantAccess_Servlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 		String email = request.getParameter("employeeID");
-	    String position = request.getParameter("positionSelect");
-	    int result = Admin_Quan_AdminInfo_DAO.updateAdminPosition(email, position);
+	    String position = request.getParameter("positionSelect"); 
 	    
-	    if(result == 10) {
-        	session.setAttribute("message", "cật nhật quyền truy cập thành công");
-        }
-        else {
-        	session.setAttribute("message", "cật nhật quyền truy cập không thành công");
-        }	 
-	    
+	    String result = Admin_Quan_AdminInfo_DAO.updateAdminPosition(email, position);	 
 	    List<Admin_Quan_AdminInfo> adminList = null;
 		try {
 			adminList = new Admin_Quan_AdminInfo_DAO().getAllAdmins();
@@ -66,7 +59,9 @@ public class Admin_Quan_GrantAccess_Servlet extends HttpServlet {
 			e.printStackTrace();
 		} 
 		
+		session.setAttribute("message", result);
 		session.setAttribute("adminList", adminList);
+		
 	    response.sendRedirect("/Web_Travel/3.Admin/index.jsp");
 	}
 }

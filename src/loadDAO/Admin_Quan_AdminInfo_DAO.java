@@ -20,18 +20,17 @@ public class Admin_Quan_AdminInfo_DAO {
     	
         try {
         	conn = DBContext.getConnection();
-
-            // Query to find admin by email
+        	System.out.println("Connections sussces");
+        	
             String query = "SELECT * FROM AdminInfo WHERE email = ?";
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setString(1, email);
 
-            // Execute query
             ResultSet resultSet = statement.executeQuery();
 
-            // Check if admin found
             if (resultSet.next()) {
-                // Extract admin information from the result set
+            	System.out.println("Successfully found admin");
+            	
                 String ID = resultSet.getString("ID");
                 String name = resultSet.getString("name");
                 String adminEmail = resultSet.getString("email");
@@ -46,19 +45,15 @@ public class Admin_Quan_AdminInfo_DAO {
                 String instagram = resultSet.getString("instagram");
                 String tiktok = resultSet.getString("tiktok");
 
-                // Create AdminInfo object with extracted information
                 Admin_Quan_AdminInfo admin = new Admin_Quan_AdminInfo(ID, name, adminEmail, phone, gender, address, position, coverPhoto, avatar, facebook, twitter, instagram, tiktok);
 
-                // Close resources
                 resultSet.close();
                 statement.close();
                 conn.close();
 
-                // Return the admin object
                 return admin;
             }
 
-            // Close resources
             resultSet.close();
             statement.close();
             conn.close();
@@ -66,23 +61,20 @@ public class Admin_Quan_AdminInfo_DAO {
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
-
-        // Return null if admin not found
         return null;
     }
     
-    public static int updateAdminInfo(String ID, String name, String email, String phone, String position, String facebook, String twitter, String instagram, String tiktok) {
+    public static String updateAdminInfo(String ID, String name, String email, String phone, String position, String facebook, String twitter, String instagram, String tiktok) {
     	Connection conn = null;
         Statement stmt = null;
     	
     	try {
     		conn = DBContext.getConnection();
+    		System.out.println("Connections sussces");
 
-            // Query to update admin information
             String query = "UPDATE AdminInfo SET name = ?, email = ?, phone = ?, position = ?, facebook = ?, twitter = ?, instagram = ?, tiktok = ? WHERE ID = ?";
             PreparedStatement statement = conn.prepareStatement(query);
-            
-            // Set parameters for the prepared statement
+
             statement.setString(1, name);
             statement.setString(2, email);
             statement.setString(3, phone);
@@ -93,62 +85,55 @@ public class Admin_Quan_AdminInfo_DAO {
             statement.setString(8, tiktok);
             statement.setString(9, ID);
 
-            // Execute the update query
             int rowsAffected = statement.executeUpdate();
             
-            // Close resources
             statement.close();
             conn.close();
 
-            // Check if the update was successful
             if (rowsAffected > 0) {
                 System.out.println("Admin information updated successfully.");
-                return 10;
+                return "Cập nhật thông tin thành công";
             } else {
                 System.out.println("Failed to update admin information.");
-                return 3;
+                return "Cập nhật thông tin không thành công";
             }
 
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
-            return 5;
+            return "Lỗi hệ thống";
         }
     }
     
-    public static int updateAdminPosition(String ID, String position) {
+    public static String updateAdminPosition(String ID, String position) {
     	Connection conn = null;
         Statement stmt = null;
     	
         try {
         	conn = DBContext.getConnection();
-
-            // Query to update admin position
+        	System.out.println("Connections sussces");
+        	
             String query = "UPDATE AdminInfo SET position = ? WHERE ID = ?";
             PreparedStatement statement = conn.prepareStatement(query);
 
-            // Set parameters for the prepared statement
             statement.setString(1, position);
             statement.setString(2, ID);
 
-            // Execute the update query
             int rowsAffected = statement.executeUpdate();
             
-            // Close resources
             statement.close();
             conn.close();
 
-            // Check if the update was successful
             if (rowsAffected > 0) {
                 System.out.println("Admin position updated successfully.");
-                return 10;
+                return "Cật nhật quyền truy cập thành công";
             } else {
                 System.out.println("Failed to update admin position.");
-                return 3;
+                return "Cật nhật quyền truy cập không thành công";
             }
 
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
-            return 5;
+            return "Lỗi hệ thống";
         }
     }
 
@@ -160,12 +145,15 @@ public class Admin_Quan_AdminInfo_DAO {
 
         try {
         	conn = DBContext.getConnection();
+        	System.out.println("Connections sussces");
         	
             String query = "SELECT * FROM AdminInfo";
             PreparedStatement statement = conn.prepareStatement(query);
             ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
+            	System.out.println("Successfully got the list of admins");
+            	
                 String ID = resultSet.getString("ID");
                 String name = resultSet.getString("name");
                 String email = resultSet.getString("email");

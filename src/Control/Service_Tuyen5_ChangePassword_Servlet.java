@@ -18,13 +18,24 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/changePassword")
 public class Service_Tuyen5_ChangePassword_Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	private Service_Tuyen3_ContactInfoService_DAO contactDAO;
+	int result;
+	String taiKhoan;
+	String currentPass;
+	String newPass;
+	String confirmPass;
+	
     /**
      * @see HttpServlet#HttpServlet()
      */
     public Service_Tuyen5_ChangePassword_Servlet() {
         super();
-        // TODO Auto-generated constructor stub
+        contactDAO = new Service_Tuyen3_ContactInfoService_DAO();
+        result = 0;
+    	taiKhoan = "";
+    	currentPass = "";
+    	newPass = "";
+    	confirmPass = "";
     }
 
 	/**
@@ -41,12 +52,12 @@ public class Service_Tuyen5_ChangePassword_Servlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		
-		String taiKhoan = (String) request.getSession().getAttribute("email"); 
-	    String currentPass = request.getParameter("currentPass");
-	    String newPass = request.getParameter("newPass");
-	    String confirmPass = request.getParameter("confirmPass");
+		taiKhoan = (String) request.getSession().getAttribute("email"); 
+	    currentPass = request.getParameter("currentPass");
+	    newPass = request.getParameter("newPass");
+	    confirmPass = request.getParameter("confirmPass");
 
-	    int result = Service_Tuyen3_ContactInfoService_DAO.changePassword(taiKhoan, currentPass, newPass, confirmPass);
+	    result = contactDAO.changePassword(taiKhoan, currentPass, newPass, confirmPass);
 	   
 	    if(result == 10) 
 	    	session.setAttribute("message", "đổi mật khẩu thành công");
@@ -61,5 +72,4 @@ public class Service_Tuyen5_ChangePassword_Servlet extends HttpServlet {
 
 	    response.sendRedirect("/Web_Travel/2.Service/index.jsp");
 	}
-
 }

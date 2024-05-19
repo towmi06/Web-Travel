@@ -18,13 +18,26 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/ContactInfoServiceServlet")
 public class Service_Tuyen3_ContactInfoService_Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private Service_Tuyen3_ContactInfoService_DAO contactInfoDAO;
+	private int result;
+	private String taiKhoan;
+	private String address;
+	private String email;
+	private String phone;
+	private String workingHours;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
     public Service_Tuyen3_ContactInfoService_Servlet() {
         super();
-        // TODO Auto-generated constructor stub
+        contactInfoDAO = new Service_Tuyen3_ContactInfoService_DAO();
+        int result = 0;
+        String taiKhoan = "";
+    	String address = "";
+    	String email = "";
+    	String phone = "";
+    	String workingHours = "";
     }
     
 	/**
@@ -40,19 +53,19 @@ public class Service_Tuyen3_ContactInfoService_Servlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		
-		String taiKhoan = request.getParameter("taiKhoan");
-        String address = request.getParameter("address");
-        String email = request.getParameter("email");
-        String phone = request.getParameter("phone");
-        String workingHours = request.getParameter("working_hours");
+		taiKhoan = request.getParameter("taiKhoan");
+        address = request.getParameter("address");
+        email = request.getParameter("email");
+        phone = request.getParameter("phone");
+        workingHours = request.getParameter("working_hours");
         
-        int result = Service_Tuyen3_ContactInfoService_DAO.updateContactInfo(address, email, phone, workingHours, taiKhoan);
-        if(result == 10) {
+        //Cập nhật thông tin liên hệ của nhà cung cấp
+        result = contactInfoDAO.updateContactInfo(address, email, phone, workingHours, taiKhoan);
+        if(result == 10) 
         	session.setAttribute("message", "update thông tin liên hệ thành công");
-        }
-        else {
+        else 
         	session.setAttribute("message", "update thông tin liên hệ không thành công");
-        }
+        
         response.sendRedirect("/Web_Travel/2.Service/index.jsp");
 	}
 }
