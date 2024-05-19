@@ -182,8 +182,8 @@
                 <!-- Thêm phần đăng nhập và đăng kí -->
                 <div class="user-actions">
                     <!-- Đăng nhập và đăng kí -->
-                    <a href="login.html" class="login-link"><i class='bx bx-user' style=" width:20px"></i></i>Đăng
-                        nhập</a>
+                   <a href="<%= request.getContextPath() %>/3.Admin/login/index.jsp" class="login-link"><i class='bx bx-user' style=" width:20px"></i>Đăng nhập</a>
+
                 </div>
 
                 <!-- Thanh dropdown cho các tiện ích 
@@ -438,10 +438,10 @@
 	<!--Button tat ca dv-->
 	<!-- Nút chuyển đến trang Tất cả dịch vụ -->
 	<div class="view-all-services">
-	    <form action="HomeControl" method="GET" style="display: inline;">
-	        <a href="javascript:void(0);" onclick="this.parentElement.submit()">Xem thêm →</a>
-	    </form>
-	</div>
+    <form action="/Web_Travel/HomeControl" method="GET" style="display: inline;">
+        <a href="javascript:void(0);" onclick="this.parentElement.submit()">Xem thêm →</a>
+    </form>
+</div>
 
     <!-- Packages -->
     <div class="package-title">

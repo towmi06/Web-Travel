@@ -1,7 +1,7 @@
 package Control;
 
-import Model.Admin_Quan.TourManagenment;
-import DAO.Admin_Quan.TourManagenmentDAO;
+import entity.Admin_Quan.TourManagenment;
+import loadDAO.Admin_Quan.TourManagenmentDAO;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
