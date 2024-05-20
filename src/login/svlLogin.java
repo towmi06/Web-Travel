@@ -75,11 +75,10 @@ public class svlLogin extends HttpServlet {
 					e.printStackTrace();
 				} 
 				
-				List<Service_Th1_OrderManager> allOrders = null;				
-				try {
+				List<Service_Th1_OrderManager> allOrders = null;
+			    try {
 					allOrders = new Service_th1_OrderM_DAO().getAllOrders();
 				} catch (ClassNotFoundException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 		        

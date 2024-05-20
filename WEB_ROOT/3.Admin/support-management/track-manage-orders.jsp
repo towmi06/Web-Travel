@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="java.util.List" %>
+<%@ page import="entity.Service_Th1_OrderManager" %>
+<%@ page import="loadDAO.Service_th1_OrderM_DAO" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -66,13 +68,13 @@
                 </tr>
             </thead>
             <tbody>
-                <c:forEach var="order" items="${sessionScope.allOrderList}">
+                <c:forEach var="order" items="${sessionScope.allOrders}">
                     <tr>
                         <td><c:out value="${order.id}" /></td>
                         <td><c:out value="${order.customerId}" /></td>
                         <td><c:out value="${order.tourId}" /></td>
                         <td><c:out value="${order.bookingDate}" /></td>
-                        <td><c:out value="${order.totalPrice" /></td>
+                        <td><c:out value="${order.totalPrice}" /></td>
                         <td><c:out value="${order.status}" /></td>
                         <td><c:out value="${order.createdAt}" /></td>
                         <td><c:out value="${order.updatedAt}" /></td>
