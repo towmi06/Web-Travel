@@ -1,6 +1,6 @@
 package Control;
 
-import entity.Service_Tuyen4_Order;
+import entity.Service_Th1_OrderManager;
 import loadDAO.Service_Tuyen4_Orders_DAO;
 
 import java.io.IOException;
@@ -19,16 +19,17 @@ public class Service_Tuyen7_UpdateOrderServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private Service_Tuyen4_Orders_DAO ordersDAO;
 	private int result;
-	private String id;
-	private String sellID;
-	private String customerID;
-	private String tourID;
-	private String bookingDate;
-	private String tourName;
-	private String date;
-	private int numberOfPeople;
-	private long price;
-	private String type;
+	private int id;
+    private int customerId;
+    private int tourId;
+    private String bookingDate;
+    private double totalPrice;
+    private String status;
+    private String createdAt;
+    private String updatedAt;
+    private String customerName;
+    private String phoneNumber;
+    private String address;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -37,16 +38,17 @@ public class Service_Tuyen7_UpdateOrderServlet extends HttpServlet {
         super();
         ordersDAO = new Service_Tuyen4_Orders_DAO();
         result = 0;
-    	id = "";
-    	sellID = "";
-    	customerID = "";
-    	tourID = "";
-    	bookingDate = "";
-    	tourName = "";
-    	date = "";
-    	numberOfPeople = 0;
-    	price = 0;
-    	type = "";
+        id = 0;
+        customerId = 0;
+        tourId = 0;
+        bookingDate = "";
+        totalPrice = 0.0;
+        status = "";
+        createdAt = "";
+        updatedAt = "";
+        customerName = "";
+        phoneNumber = "";
+        address = "";
     }
 
 	/**
@@ -63,20 +65,21 @@ public class Service_Tuyen7_UpdateOrderServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		
-		id = request.getParameter("id");
-	    sellID = request.getParameter("providerID");
-	    customerID = request.getParameter("customerID");
-	    tourID = request.getParameter("tourID");
-	    bookingDate = request.getParameter("destination");
-	    tourName = request.getParameter("tourName");
-	    date = request.getParameter("departureDate");
-	    numberOfPeople = Integer.parseInt(request.getParameter("numberOfPeople"));
-	    price = Long.parseLong(request.getParameter("price"));
-	    type = request.getParameter("type");
+		id = Integer.parseInt(request.getParameter("id"));
+        customerId = Integer.parseInt(request.getParameter("customerId"));
+        tourId = Integer.parseInt(request.getParameter("tourId"));
+        bookingDate = request.getParameter("bookingDate");
+        totalPrice = Double.parseDouble(request.getParameter("totalPrice"));
+        status = request.getParameter("status");
+        createdAt = request.getParameter("createdAt");
+        updatedAt = request.getParameter("updatedAt");
+        customerName = request.getParameter("customerName");
+        phoneNumber = request.getParameter("phoneNumber");
+        address = request.getParameter("address");
         
         if(request.getParameter("btnSave") != null) {
         	try {
-				result = ordersDAO.updateOrder(id, sellID, customerID, tourID, bookingDate,  tourName, date, numberOfPeople, price, type);
+				result = ordersDAO.updateOrder(id, customerId, tourId, bookingDate, totalPrice, status, createdAt, updatedAt, customerName, phoneNumber, address);
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

@@ -50,7 +50,6 @@ public class svlLogin extends HttpServlet {
         if (isValid) {
         	if(role.equals("admin")) {
         		Admin_Quan_AdminInfo admin = Admin_Quan_AdminInfo_DAO.findAdminByEmail(email);
-        		List<Service_Tuyen4_Order> allOrderList = new Service_Tuyen4_Orders_DAO().getAllOrders();
         		
         		List<Admin_Quan_Cooperate> cooperates = null;
 				try {
@@ -75,6 +74,14 @@ public class svlLogin extends HttpServlet {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} 
+				
+				List<Service_Th1_OrderManager> allOrders = null;
+				try {
+					allOrders = new Service_th1_OrderM_DAO().getAllOrders();
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 		        
 				List<Service_Tuyen1_OutStanding> allTourList = null;
 		        try {
@@ -83,9 +90,9 @@ public class svlLogin extends HttpServlet {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-		        
+
+		        session.setAttribute("allOrders", allOrders);
 		        session.setAttribute("allTourList", allTourList);
-		        session.setAttribute("allOrderList", allOrderList);
 				session.setAttribute("adminList", adminList);
                 session.setAttribute("adminInfo", admin);
                 session.setAttribute("cooperates", cooperates);

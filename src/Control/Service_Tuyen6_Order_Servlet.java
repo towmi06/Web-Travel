@@ -1,6 +1,6 @@
 package Control;
 
-import entity.Service_Tuyen4_Order;
+import entity.Service_Th1_OrderManager;
 import loadDAO.Service_Tuyen4_Orders_DAO;
 
 import java.io.IOException;
@@ -10,8 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import org.apache.jasper.tagplugins.jstl.core.Out;
 
 /**
  * Servlet implementation class BillServlet

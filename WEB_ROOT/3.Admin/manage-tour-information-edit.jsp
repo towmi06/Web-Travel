@@ -28,26 +28,28 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>ID NCC</th>
+                    <th>Sell ID</th>
+                    <th>Cate ID</th>
                     <th>Tên Tour</th>
+                    <th>Ảnh</th>
+                    <th>Hành Trình</th>
                     <th>Điểm Đến</th>
-                    <th>Ngày Khởi Hành</th>
+                    <th>Thời Gian</th>
                     <th>Giá</th>
-                    <th>Địa Chỉ</th>
-                    <th>Loại Hình</th>
                     <th>Thao Tác</th>
                 </tr>
             </thead>
             <tbody>
 			        <tr>
-			            <td><input name="id" value="${sessionScope.tour.ID}" /></td>
-			            <td><input name="providerID" value="${sessionScope.tour.providerID}" /></td>
+			            <td><input name="id" value="${sessionScope.tour.id}" /></td>
+			            <td><input name="sell_ID" value="${sessionScope.tour.sell_ID}" /></td>
+			            <td><input name="cateID" value="${sessionScope.tour.cateID}" /></td>
 			            <td><input name="tourName" value="${sessionScope.tour.tourName}" /></td>
-			            <td><input name="destination" value="${sessionScope.tour.destination}" /></td>
-			            <td><input name="departureDate" value="${sessionScope.tour.departureDate}" /></td>
+			            <td><input name="image" value="${sessionScope.tour.image}" /></td>
+			            <td><input name="journeys" value="${sessionScope.tour.journeys}" /></td>
+			            <td><input name="description1" value="${sessionScope.tour.description1}" /></td>
+			            <td><input name="date" value="${sessionScope.tour.date}" /></td>
 			            <td><input name="price" value="${sessionScope.tour.price}" /></td>
-			            <td><input name="address" value="${sessionScope.tour.address}" /></td>
-			            <td><input name="type" value="${sessionScope.tour.type}" /></td>
 			            <td><button type="submit" class="edit-btn">Save</button>
 			            </td>
 			        </tr> 

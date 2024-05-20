@@ -1,7 +1,7 @@
 package loadDAO;
 
 import context.DBContext;
-import entity.Service_Tuyen4_Order;
+import entity.Service_Th1_OrderManager;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,247 +13,209 @@ import java.util.List;
 
 public class Service_Tuyen4_Orders_DAO {
 
-    public List<Service_Tuyen4_Order> getAllOrdersForService(String sellID) {
-        List<Service_Tuyen4_Order> orderList = new ArrayList<>();
-        Connection conn = null;
-        PreparedStatement pstmt = null;
-        ResultSet rs = null;
+	public static List<Service_Th1_OrderManager> getOrdersBySellId(int sell_ID) throws ClassNotFoundException {
+	    List<Service_Th1_OrderManager> orders = new ArrayList<>();
+	    Connection connection = null;
+	    PreparedStatement preparedStatement = null;
+	    ResultSet resultSet = null;
+	    try {
+	        connection = DBContext.getConnection();
+	        String sql = "SELECT *"
+	                   + "o.status, o.created_at, o.updated_at, o.sell_ID, "
+	                   + "c.name AS customerName, c.phone AS phoneNumber, c.address "
+	                   + "FROM orders o "
+	                   + "JOIN customer c ON o.customer_id = c.id "
+	                   + "WHERE o.sell_ID = ?";
+	        preparedStatement = connection.prepareStatement(sql);
+	        preparedStatement.setInt(1, sell_ID);
+	        resultSet = preparedStatement.executeQuery();
 
-        try {
-            conn = DBContext.getConnection();
+	        while (resultSet.next()) {
+	            int id = resultSet.getInt("id");
+	            int customerId = resultSet.getInt("customer_id");
+	            int tourId = resultSet.getInt("tour_id");
+	            String bookingDate = resultSet.getString("booking_date");
+	            double totalPrice = resultSet.getDouble("total_price");
+	            String status = resultSet.getString("status");
+	            String createdAt = resultSet.getString("created_at");
+	            String updatedAt = resultSet.getString("updated_at");
+	            String customerName = resultSet.getString("customerName");
+	            String phoneNumber = resultSet.getString("phoneNumber");
+	            String address = resultSet.getString("address");
 
-            // Prepare statement for retrieving all orders
-            String query = "SELECT * FROM Orders WHERE sell_ID = ?";
-            pstmt = conn.prepareStatement(query);
-            pstmt.setString(1, sellID);
-
-            // Execute query
-            rs = pstmt.executeQuery();
-
-            // Process result set
-            while (rs.next()) {
-                // Retrieve data from result set and create Service_Tuyen4_Order object
-                Service_Tuyen4_Order order = new Service_Tuyen4_Order();
-                
-                order.setID(rs.getString("ID"));
-                order.setSellID(rs.getString("sell_ID"));
-                order.setCustomerID(rs.getString("customer_ID"));
-                order.setTourID(rs.getString("tour_ID"));
-                order.setBookingDate(rs.getString("booking_date"));
-                order.setTourName(rs.getString("tourName"));
-                order.setDate(rs.getString("date"));
-                order.setNumberOfPeople(rs.getInt("numberOfPeople"));
-                order.setPrice(rs.getLong("price"));
-                order.setType(rs.getString("type"));
-                order.setStatus(rs.getString("status"));
-
-                // Add order object to list
-                orderList.add(order);
-            }
-        } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
-        } finally {
-            // Close resources
-            try {
-                if (rs != null) rs.close();
-                if (pstmt != null) pstmt.close();
-                if (conn != null) conn.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-
-        return orderList;
-    }
+	            Service_Th1_OrderManager order = new Service_Th1_OrderManager(id, customerId, tourId, bookingDate, totalPrice, status, createdAt, updatedAt, sell_ID, customerName, phoneNumber, address);
+                orders.add(order);
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        if (resultSet != null) {
+	            try {
+	                resultSet.close();
+	            } catch (SQLException e) {
+	                e.printStackTrace();
+	            }
+	        }
+	        if (preparedStatement != null) {
+	            try {
+	                preparedStatement.close();
+	            } catch (SQLException e) {
+	                e.printStackTrace();
+	            }
+	        }
+	        if (connection != null) {
+	            try {
+	                connection.close();
+	            } catch (SQLException e) {
+	                e.printStackTrace();
+	            }
+	        }
+	    }
+	    return orders;
+	}
     
-    public List<Service_Tuyen4_Order> getAllOrders() {
-        List<Service_Tuyen4_Order> orderList = new ArrayList<>();
-        Connection conn = null;
-        PreparedStatement pstmt = null;
-        ResultSet rs = null;
+	public static Service_Th1_OrderManager findOrderByID(int orderID) throws ClassNotFoundException {
+	    Connection conn = null;
+	    PreparedStatement stmt = null;
+	    ResultSet rs = null;
+	    Service_Th1_OrderManager order = null;
 
-        try {
-            conn = DBContext.getConnection();
+	    try {
+	        conn = DBContext.getConnection();
 
-            // Prepare statement for retrieving all orders
-            String query = "SELECT * FROM Orders";
-            pstmt = conn.prepareStatement(query);
+	        String query = "SELECT * FROM Orders WHERE ID = ?";
+	        stmt = conn.prepareStatement(query);
+	        stmt.setInt(1, orderID); // Change to setInt for orderID
+	        rs = stmt.executeQuery();
 
-            // Execute query
-            rs = pstmt.executeQuery();
+	        if (rs.next()) {
+	            int id = rs.getInt("id");
+	            int customerId = rs.getInt("customer_id");
+	            int tourId = rs.getInt("tour_id");
+	            String bookingDate = rs.getString("booking_date");
+	            double totalPrice = rs.getDouble("total_price");
+	            String status = rs.getString("status");
+	            String createdAt = rs.getString("created_at");
+	            String updatedAt = rs.getString("updated_at");
+	            int sellID = rs.getInt("sellID"); 
+	            String customerName = rs.getString("customerName");
+	            String phoneNumber = rs.getString("phoneNumber");
+	            String address = rs.getString("address");
 
-            // Process result set
-            while (rs.next()) {
-                // Retrieve data from result set and create Service_Tuyen4_Order object
-                Service_Tuyen4_Order order = new Service_Tuyen4_Order();
-                
-                order.setID(rs.getString("ID"));
-                order.setSellID(rs.getString("sell_ID"));
-                order.setCustomerID(rs.getString("customer_ID"));
-                order.setTourID(rs.getString("tour_ID"));
-                order.setBookingDate(rs.getString("booking_date"));
-                order.setTourName(rs.getString("tourName"));
-                order.setDate(rs.getString("date"));
-                order.setNumberOfPeople(rs.getInt("numberOfPeople"));
-                order.setPrice(rs.getLong("price"));
-                order.setType(rs.getString("type"));
-                order.setStatus(rs.getString("status"));
+	            order = new Service_Th1_OrderManager(id, customerId, tourId, bookingDate, totalPrice, status, createdAt, updatedAt, sellID, customerName, phoneNumber, address);
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        // Close resources
+	        try {
+	            if (rs != null) rs.close();
+	            if (stmt != null) stmt.close();
+	            if (conn != null) conn.close();
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	    }
 
-                // Add order object to list
-                orderList.add(order);
-            }
-        } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
-        } finally {
-            // Close resources
-            try {
-                if (rs != null) rs.close();
-                if (pstmt != null) pstmt.close();
-                if (conn != null) conn.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
+	    return order;
+	}
 
-        return orderList;
-    }
 
-    public static Service_Tuyen4_Order findOrderByID(String orderID) throws ClassNotFoundException {
-        Connection conn = null;
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-        Service_Tuyen4_Order order = new Service_Tuyen4_Order();
+	public static int updateOrder(int id, int customerId, int tourId, String bookingDate, double totalPrice, String status, String createdAt, String updatedAt, String customerName, String phoneNumber, String address) throws ClassNotFoundException {
+	    Connection conn = null;
+	    PreparedStatement stmt = null;
 
-        try {
-            conn = DBContext.getConnection();
+	    try {
+	        conn = DBContext.getConnection();
 
-            String query = "SELECT * FROM Orders WHERE ID = ?";
-            stmt = conn.prepareStatement(query);
-            stmt.setString(1, orderID);
-            rs = stmt.executeQuery();
+	        // SQL query for updating order
+	        String query = "UPDATE Orders SET customer_id=?, tour_id=?, booking_date=?, total_price=?, status=?, created_at=?, updated_at=?, customerName=?, phoneNumber=?, address=? WHERE ID=?";
+	        stmt = conn.prepareStatement(query);
 
-            if (rs.next()) {
-            	order.setID(rs.getString("ID"));
-                order.setSellID(rs.getString("sell_ID"));
-                order.setCustomerID(rs.getString("customer_ID"));
-                order.setTourID(rs.getString("tour_ID"));
-                order.setBookingDate(rs.getString("booking_date"));
-                order.setTourName(rs.getString("tourName"));
-                order.setDate(rs.getString("date"));
-                order.setNumberOfPeople(rs.getInt("numberOfPeople"));
-                order.setPrice(rs.getLong("price"));
-                order.setType(rs.getString("type"));
-                order.setStatus(rs.getString("status"));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            // Close resources
-            try {
-                if (rs != null) rs.close();
-                if (stmt != null) stmt.close();
-                if (conn != null) conn.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
+	        // Set parameters for the prepared statement
+	        stmt.setInt(1, customerId);
+	        stmt.setInt(2, tourId);
+	        stmt.setString(3, bookingDate);
+	        stmt.setDouble(4, totalPrice);
+	        stmt.setString(5, status);
+	        stmt.setString(6, createdAt);
+	        stmt.setString(7, updatedAt);
+	        stmt.setString(8, customerName);
+	        stmt.setString(9, phoneNumber);
+	        stmt.setString(10, address);
+	        stmt.setInt(11, id);
 
-        return order;
-    }
+	        // Execute the update statement
+	        int rowsUpdated = stmt.executeUpdate();
 
-    public static int updateOrder(String ID, String sellID, String customerID, String tourID, String bookingDate, String tourName, String date, int numberOfPeople, long price, String type) throws ClassNotFoundException {
-        Connection conn = null;
-        PreparedStatement stmt = null;
+	        if (rowsUpdated > 0) {
+	            //Cập nhật thành công
+	            return 10;
+	        } else {
+	            //Cập nhật không thành công
+	            return 3;
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	        return 5;
+	    } finally {
+	        // Close resources
+	        try {
+	            if (stmt != null) stmt.close();
+	            if (conn != null) conn.close();
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	    }
+	}
 
-        try {
-            conn = DBContext.getConnection();
+	public static int deleteOrder(int ID) throws ClassNotFoundException {
+	    Connection conn = null;
+	    PreparedStatement stmt = null;
 
-            // SQL query for updating order
-            String query = "UPDATE Orders SET ID=?, customer_ID=?, tour_ID=?, booking_date=?, tourName=?, date=?, numberOfPeople=?, price=?, type=? WHERE ID=?";
-            stmt = conn.prepareStatement(query);
+	    try {
+	        conn = DBContext.getConnection();
 
-            // Set parameters for the prepared statement
-            stmt.setString(1, sellID);
-            stmt.setString(2, customerID);
-            stmt.setString(3, tourID);
-            stmt.setString(4, bookingDate);
-            stmt.setString(5, tourName);
-            stmt.setString(6, date);
-            stmt.setInt(7, numberOfPeople);
-            stmt.setLong(8, price);
-            stmt.setString(9, type);
-            stmt.setString(10, ID);
+	        // SQL query for deleting order
+	        String query = "DELETE FROM Orders WHERE ID=?";
+	        stmt = conn.prepareStatement(query);
 
-            // Execute the update statement
-            int rowsUpdated = stmt.executeUpdate();
+	        // Set ID parameter for the prepared statement
+	        stmt.setInt(1, ID);
 
-            if (rowsUpdated > 0) {
-                //Cập nhật thành công
-                return 10;
-            } else {
-                //Cập nhật không thành công
-                return 3;
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return 5;
-        } finally {
-            // Close resources
-            try {
-                if (stmt != null) stmt.close();
-                if (conn != null) conn.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-    }
+	        // Execute the delete statement
+	        int rowsDeleted = stmt.executeUpdate();
 
-    public static int deleteOrder(String ID) throws ClassNotFoundException {
-        Connection conn = null;
-        PreparedStatement stmt = null;
+	        if (rowsDeleted > 0) {
+	            //Xóa thành công
+	            return 10;
+	        } else {
+	            //Xóa không thành công
+	            return 3;
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	        return 5;
+	    } finally {
+	        // Close resources
+	        try {
+	            if (stmt != null) stmt.close();
+	            if (conn != null) conn.close();
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	    }
+	}
 
-        try {
-            conn = DBContext.getConnection();
-
-            // SQL query for deleting order
-            String query = "DELETE FROM Orders WHERE ID=?";
-            stmt = conn.prepareStatement(query);
-
-            // Set ID parameter for the prepared statement
-            stmt.setString(1, ID);
-
-            // Execute the delete statement
-            int rowsDeleted = stmt.executeUpdate();
-
-            if (rowsDeleted > 0) {
-                //Xóa thành công
-                return 10;
-            } else {
-                //Xóa không thành công
-                return 3;
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return 5;
-        } finally {
-            // Close resources
-            try {
-                if (stmt != null) stmt.close();
-                if (conn != null) conn.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-    }
 
     // Test getAllOrders method
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ClassNotFoundException {
         Service_Tuyen4_Orders_DAO ordersDAO = new Service_Tuyen4_Orders_DAO();
 
-        List<Service_Tuyen4_Order> orders = ordersDAO.getAllOrders();
+        List<Service_Th1_OrderManager> orders = ordersDAO.getOrdersBySellId(1);
 
-        for (Service_Tuyen4_Order order : orders) {
-            System.out.println(order.getID());
+        for (Service_Th1_OrderManager order : orders) {
+            System.out.println(order.getId());
         }
     }
 }

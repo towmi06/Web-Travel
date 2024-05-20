@@ -28,16 +28,17 @@
                 <label for="sort-options">Sắp Xếp Theo:</label>
                 <select id="sort-options" onchange="sortTable()">
                     <option value="0">ID</option>
-                    <option value="1">Sell ID</option>
-                    <option value="2">Customer ID</option>
-                    <option value="3">Tour ID</option>
-                    <option value="4">Ngày đặt</option>
-                    <option value="5">Tên tour</option>
-                    <option value="6">Thời gian</option>
-                    <option value="7">Số người</option>
-                    <option value="8">Giá</option>
-                    <option value="9">Loại hình</option>
-                    <option value="10">Trạng thái</option>
+                    <option value="1">Customer ID</option>
+                    <option value="2">Tour ID</option>
+                    <option value="3">Ngày đặt</option>
+                    <option value="4">Giá</option>
+                    <option value="5">Trạng thái</option>
+                    <option value="6">Ngày tạo</option>
+                    <option value="7">Ngày cập nhật</option>
+                    <option value="8">Sell ID</option>
+                    <option value="9">Tên khách hàng</option>
+                    <option value="10">Số điện thoại</option>
+                    <option value="11">Địa chỉ</option>
                 </select>
             </div>
             <!--Search-->
@@ -51,32 +52,34 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Sell ID</th>
                     <th>Customer ID</th>
                     <th>Tour ID</th>
                     <th>Ngày đặt</th>
-                    <th>Tên tour</th>
-                    <th>Thời gian</th>
-                    <th>Số người</th>
                     <th>Giá</th>
-                    <th>Loại hình</th> 
-                    <th>Trạng thái</th> 
+                    <th>Trạng thái</th>
+                    <th>Ngày tạo</th>
+                    <th>Ngày cập nhật</th>
+                    <th>Sell ID</th> 
+                    <th>Tên khách hàng</th>
+                    <th>Số điện thoại</th> 
+                    <th>Địa chỉ</th> 
                 </tr>
             </thead>
             <tbody>
                 <c:forEach var="order" items="${sessionScope.allOrderList}">
                     <tr>
-                        <td><c:out value="${order.ID}" /></td>
-                        <td><c:out value="${order.sellID}" /></td>
-                        <td><c:out value="${order.customerID}" /></td>
-                        <td><c:out value="${order.tourID}" /></td>
+                        <td><c:out value="${order.id}" /></td>
+                        <td><c:out value="${order.customerId}" /></td>
+                        <td><c:out value="${order.tourId}" /></td>
                         <td><c:out value="${order.bookingDate}" /></td>
-                        <td><c:out value="${order.tourName}" /></td>
-                        <td><c:out value="${order.date}" /></td>
-                        <td><c:out value="${order.numberOfPeople}" /></td>
-                        <td><c:out value="${order.price}" /></td>
-                        <td><c:out value="${order.type}" /></td>
+                        <td><c:out value="${order.totalPrice" /></td>
                         <td><c:out value="${order.status}" /></td>
+                        <td><c:out value="${order.createdAt}" /></td>
+                        <td><c:out value="${order.updatedAt}" /></td>
+                        <td><c:out value="${order.sellId}" /></td>
+                        <td><c:out value="${order.customerName}" /></td>
+                        <td><c:out value="${order.phoneNumber}" /></td>
+                        <td><c:out value="${order.address}" /></td>
                     </tr>
                </c:forEach>
             </tbody>

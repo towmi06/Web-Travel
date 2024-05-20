@@ -32,9 +32,11 @@
                     <option value="1">Sell ID</option>
                     <option value="2">Cate ID</option>
                     <option value="3">Tên Tour</option>
-                    <option value="4">Hành Trình</option>
-                    <option value="5">Thời Gian</option>
-                    <option value="6">Giá</option>
+                    <option value="4">Ảnh</option>
+                    <option value="5">Hành Trình</option>
+                    <option value="6">Điểm Đếnr</option>
+                    <option value="7">Thời Gian</option>
+                    <option value="8">Giá</option>
                 </select>
             </div>
             <!--Search-->
@@ -51,7 +53,9 @@
                     <th>Sell ID</th>
                     <th>Cate ID</th>
                     <th>Tên Tour</th>
+                    <th>Ảnh</th>
                     <th>Hành Trình</th>
+                    <th>Điểm Đến</th>
                     <th>Thời Gian</th>
                     <th>Giá</th>
                     <th>Thao Tác</th>
@@ -64,7 +68,9 @@
 			            <td><c:out value="${tour.sell_ID}" /></td>
 			            <td><c:out value="${tour.cateID}" /></td>
 			            <td><c:out value="${tour.tourName}" /></td>
+			            <td><c:out value="${tour.image}" /></td>
 			            <td><c:out value="${tour.journeys}" /></td>
+			            <td><c:out value="${tour.description1}" /></td>
 			            <td><c:out value="${tour.date}" /></td>
 			            <td><c:out value="${tour.price}" /></td>
 			            <td>
@@ -76,7 +82,6 @@
 			        </tr>
 			    </c:forEach>     
 			</tbody>
-
         </table>
     </div>
     <!--End main container-->

@@ -13,6 +13,10 @@ public class Service_Th1_OrderManager {
     private String customerName;
     private String phoneNumber;
     private String address;
+    
+    public Service_Th1_OrderManager() {
+    	
+    }
 
     public Service_Th1_OrderManager(int id, int customerId, int tourId, String bookingDate, double totalPrice, String status, String createdAt, String updatedAt, int sellId, String customerName, String phoneNumber, String address) {
         this.id = id;
