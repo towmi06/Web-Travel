@@ -61,8 +61,8 @@
                     <th>Ngày cập nhật</th>
                     <th>Tên khách hàng</th>
                     <th>Số điện thoại</th> 
-                    <th>Số điện thoại</th> 
                     <th>Địa chỉ</th> 
+                    <th>Thao tác</th> 
                 </tr>
             </thead>
             <tbody>
@@ -72,7 +72,7 @@
                         <td><c:out value="${order.customerId}" /></td>
                         <td><c:out value="${order.tourId}" /></td>
                         <td><c:out value="${order.bookingDate}" /></td>
-                        <td><c:out value="${order.totalPrice" /></td>
+                        <td><c:out value="${order.totalPrice}" /></td>
                         <td><c:out value="${order.status}" /></td>
                         <td><c:out value="${order.createdAt}" /></td>
                         <td><c:out value="${order.updatedAt}" /></td>

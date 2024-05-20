@@ -17,14 +17,14 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/OrderServlet")
 public class Service_Tuyen6_Order_Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private String orderId;
+	private int orderId;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
     public Service_Tuyen6_Order_Servlet() {
         super();
-        orderId = "";
+        orderId = 0;
     }
 
 	/**
@@ -33,7 +33,7 @@ public class Service_Tuyen6_Order_Servlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		
-		orderId = request.getParameter("orderId");
+		orderId = Integer.parseInt(request.getParameter("orderId"));
 		session.setAttribute("orderId", orderId);
 		
 		response.sendRedirect("/Web_Travel/2.Service/index.jsp?callFunction=true");

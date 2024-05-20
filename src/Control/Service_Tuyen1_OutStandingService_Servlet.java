@@ -25,7 +25,7 @@ public class Service_Tuyen1_OutStandingService_Servlet extends HttpServlet {
 	private List<Service_Tuyen1_OutStanding> danhSach;
 	private int result;
 	private String[] tourIds;
-	private String sell_ID ;
+	private int sell_ID ;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -36,7 +36,7 @@ public class Service_Tuyen1_OutStandingService_Servlet extends HttpServlet {
         danhSach = null;
         result = 0;
         tourIds = null;
-        sell_ID = "";
+        sell_ID = 0;
     }
 
 	/**
@@ -53,7 +53,7 @@ public class Service_Tuyen1_OutStandingService_Servlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 		tourIds = request.getParameterValues("outstandingIds");
-		sell_ID = (String) session.getAttribute("sell_ID");
+		sell_ID = (int) session.getAttribute("sell_ID");
         try {
             danhSach = outStandingDAO.getOutstandingServices(sell_ID);
         } catch (ClassNotFoundException e) {

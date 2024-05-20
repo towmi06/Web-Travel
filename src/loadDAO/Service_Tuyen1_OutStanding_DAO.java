@@ -13,7 +13,7 @@ import java.util.List;
 public class Service_Tuyen1_OutStanding_DAO {
     
     // Lấy danh sách các dịch vụ outstanding theo sell_ID sắp xếp theo sales và rate
-    public static List<Service_Tuyen1_OutStanding> getOutstandingServices(String sell_ID) throws ClassNotFoundException {
+    public static List<Service_Tuyen1_OutStanding> getOutstandingServices(int sell_ID) throws ClassNotFoundException {
         List<Service_Tuyen1_OutStanding> outstandingServices = new ArrayList<>();
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -25,14 +25,14 @@ public class Service_Tuyen1_OutStanding_DAO {
             String query = "SELECT * FROM OutstandingService WHERE sell_ID = ? ORDER BY sales DESC, rate DESC";
 
             stmt = conn.prepareStatement(query);
-            stmt.setString(1, sell_ID);
+            stmt.setInt(1, sell_ID);
             rs = stmt.executeQuery();
 
             while (rs.next()) {
                 Service_Tuyen1_OutStanding service = new Service_Tuyen1_OutStanding();
                 
                 service.setId(rs.getString("id"));
-                service.setSell_ID(rs.getString("sell_ID"));
+                service.setSell_ID(rs.getInt("sell_ID"));
                 service.setCateID(rs.getString("cateID"));
                 service.setRate(rs.getFloat("rate"));
                 service.setSales(rs.getLong("sales"));
@@ -80,7 +80,7 @@ public class Service_Tuyen1_OutStanding_DAO {
                 Service_Tuyen1_OutStanding service = new Service_Tuyen1_OutStanding();
                 
                 service.setId(rs.getString("id"));
-                service.setSell_ID(rs.getString("sell_ID"));
+                service.setSell_ID(rs.getInt("sell_ID"));
                 service.setCateID(rs.getString("cateID"));
                 service.setRate(rs.getFloat("rate"));
                 service.setSales(rs.getLong("sales"));
@@ -171,7 +171,7 @@ public class Service_Tuyen1_OutStanding_DAO {
             
             if (rs.next()) {            
                 service.setId(rs.getString("id"));
-                service.setSell_ID(rs.getString("sell_ID"));
+                service.setSell_ID(rs.getInt("sell_ID"));
                 service.setCateID(rs.getString("cateID"));
                 service.setRate(rs.getFloat("rate"));
                 service.setSales(rs.getLong("sales"));
@@ -201,7 +201,7 @@ public class Service_Tuyen1_OutStanding_DAO {
     // test
     public static void main(String[] args) {
         try {   
-            List<Service_Tuyen1_OutStanding> services = new Service_Tuyen1_OutStanding_DAO().getOutstandingServices("1");
+            List<Service_Tuyen1_OutStanding> services = new Service_Tuyen1_OutStanding_DAO().getOutstandingServices(1);
             
             for (Service_Tuyen1_OutStanding service : services) {
                 System.out.println(service.getId());

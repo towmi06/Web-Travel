@@ -29,7 +29,7 @@ public class Service_th1_OrderM_DAO {
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
                 int customerId = resultSet.getInt("customer_id");
-                int tourId = resultSet.getInt("tour_id");
+                String tourId = resultSet.getString("tour_id");
                 String bookingDate = resultSet.getString("booking_date");
                 double totalPrice = resultSet.getDouble("total_price");
                 String status = resultSet.getString("status");

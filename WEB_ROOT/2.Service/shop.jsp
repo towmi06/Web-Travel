@@ -24,7 +24,7 @@
 		String email = (String) session.getAttribute("email");
 		Service_Tuyen2_PageLayout pageLayout = Service_Tuyen2_PageLayout_DAO.findByTaiKhoan(email);
 			    
-		String sell_ID = (String) session.getAttribute("sell_ID");
+		int sell_ID = (int) session.getAttribute("sell_ID");
 		List<Service_Tuyen1_OutStanding> danhSach = Service_Tuyen1_OutStanding_DAO.getOutstandingServices(sell_ID);
 		
 		session.setAttribute("danhSach", danhSach);    

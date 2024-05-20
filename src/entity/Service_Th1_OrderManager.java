@@ -3,7 +3,7 @@ package entity;
 public class Service_Th1_OrderManager {
     private int id;
     private int customerId;
-    private int tourId;
+    private String tourId;
     private String bookingDate;
     private double totalPrice;
     private String status;
@@ -18,7 +18,7 @@ public class Service_Th1_OrderManager {
     	
     }
 
-    public Service_Th1_OrderManager(int id, int customerId, int tourId, String bookingDate, double totalPrice, String status, String createdAt, String updatedAt, int sellId, String customerName, String phoneNumber, String address) {
+    public Service_Th1_OrderManager(int id, int customerId, String tourId, String bookingDate, double totalPrice, String status, String createdAt, String updatedAt, int sellId, String customerName, String phoneNumber, String address) {
         this.id = id;
         this.customerId = customerId;
         this.tourId = tourId;
@@ -40,8 +40,8 @@ public class Service_Th1_OrderManager {
     public int getCustomerId() { return customerId; }
     public void setCustomerId(int customerId) { this.customerId = customerId; }
 
-    public int getTourId() { return tourId; }
-    public void setTourId(int tourId) { this.tourId = tourId; }
+    public String getTourId() { return tourId; }
+    public void setTourId(String tourId) { this.tourId = tourId; }
 
     public String getBookingDate() { return bookingDate; }
     public void setBookingDate(String bookingDate) { this.bookingDate = bookingDate; }

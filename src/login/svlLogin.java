@@ -75,7 +75,7 @@ public class svlLogin extends HttpServlet {
 					e.printStackTrace();
 				} 
 				
-				List<Service_Th1_OrderManager> allOrders = null;
+				List<Service_Th1_OrderManager> allOrders = null;				
 				try {
 					allOrders = new Service_th1_OrderM_DAO().getAllOrders();
 				} catch (ClassNotFoundException e) {
@@ -104,7 +104,7 @@ public class svlLogin extends HttpServlet {
                 response.sendRedirect("/Web_Travel/1.Customer/index.html");
         	else if(role.equals("service")) { 
         		Service_Tuyen3_ContactInfoService service = new Service_Tuyen3_ContactInfoService_DAO().findProviderByCredentials(email);
-        		String sell_ID = service.getSell_ID();
+        		int sell_ID = service.getSell_ID();
         		
         		session.setAttribute("service", service); 
         		session.setAttribute("sell_ID", sell_ID); 

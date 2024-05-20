@@ -84,9 +84,9 @@
                             <td><input type="text" name="status" value="${sessionScope.order.status}" class="table-input"/></td>
                             <td><input type="text" name="createdAt" value="${sessionScope.order.createdAt}" class="table-input"/></td>
                             <td><input type="text" name="updatedAt" value="${sessionScope.order.updatedAt}" class="table-input"/></td>
-                            <td><input type="text" name="customerName" value="${sessionScope.order.customerName}" class="table-input"/></td>
-                            <td><input type="text" name="phoneNumber" value="${sessionScope.order.phoneNumber}" class="table-input"/></td>
-                            <td><input type="text" name="address" value="${sessionScope.order.address}" class="table-input"/></td>
+                            <td><c:out value="${sessionScope.order.customerName}" /></td>
+                     	  	<td><c:out value="${sessionScope.order.phoneNumber}" /></td>
+                        	<td><c:out value="${sessionScope.order.address}" /></td>
                             <td><button name="btnSave" type="submit" class="edit-btn">Lưu Đơn</button></td>
                             <td><button name="btnCancel" type="submit" class="edit-btn">Hủy Đơn</button></td>
                         </tr>
