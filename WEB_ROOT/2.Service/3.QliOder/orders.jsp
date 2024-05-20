@@ -94,7 +94,7 @@
                                 <td class="status-column" style="text-align: center; vertical-align: middle;">${order.status}</td>
                                 <td style="text-align: center; vertical-align: middle;">${order.createdAt}</td>
                                 <td style="text-align: center; vertical-align: middle;">
-                                    <form action="DetailServlet" method="GET">
+                                    <form action="Service_Th2_DetailOrderM_Servlet" method="GET">
                                         <input type="hidden" name="orderId" value="${order.id}">
                                         <button class="button-style" type="submit">Detail</button>
                                     </form>
