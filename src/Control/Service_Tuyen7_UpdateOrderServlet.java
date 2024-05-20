@@ -76,7 +76,7 @@ public class Service_Tuyen7_UpdateOrderServlet extends HttpServlet {
         
         if(request.getParameter("btnSave") != null) {
         	try {
-        		int result = ordersDAO.updateOrder(id, customerId, tourId, bookingDate, totalPrice, status, createdAt, updatedAt);
+        		result = ordersDAO.updateOrder(id, customerId, tourId, bookingDate, totalPrice, status, createdAt, updatedAt);
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

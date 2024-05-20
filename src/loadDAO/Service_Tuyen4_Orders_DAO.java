@@ -177,14 +177,24 @@ public class Service_Tuyen4_Orders_DAO {
 	    try {
 	        conn = DBContext.getConnection();
 
-	        // SQL query for deleting order
-	        String query = "DELETE FROM Orders WHERE ID=?";
-	        stmt = conn.prepareStatement(query);
+	        // SQL query for deleting payments associated with the order
+	        String query2 = "DELETE FROM payments WHERE order_id=?";
+	        stmt = conn.prepareStatement(query2);
 
 	        // Set ID parameter for the prepared statement
 	        stmt.setInt(1, ID);
 
-	        // Execute the delete statement
+	        // Execute the delete statement for payments
+	        stmt.executeUpdate();
+
+	        // SQL query for deleting order
+	        String query1 = "DELETE FROM Orders WHERE ID=?";
+	        stmt = conn.prepareStatement(query1);
+
+	        // Set ID parameter for the prepared statement
+	        stmt.setInt(1, ID);
+
+	        // Execute the delete statement for orders
 	        int rowsDeleted = stmt.executeUpdate();
 
 	        if (rowsDeleted > 0) {
@@ -207,6 +217,7 @@ public class Service_Tuyen4_Orders_DAO {
 	        }
 	    }
 	}
+
 
 
     // Test getAllOrders method
