@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import context.DBContext;
 import entity.Service_Th1_OrderManager;
+import entity.tour;
 
 public class Service_th1_OrderM_DAO {
 
@@ -18,31 +19,24 @@ public class Service_th1_OrderM_DAO {
         ResultSet resultSet = null;
         try {
             connection = DBContext.getConnection();
-            String sql = "SELECT o.id, o.customer_id, o.tour_id, o.booking_date, o.total_price, "
-                       + "o.status, o.created_at, o.updated_at, o.sell_ID, "
-                       + "c.name AS customerName, c.phone AS phoneNumber, c.address "
-                       + "FROM orders o "
-                       + "JOIN customer c ON o.customer_id = c.id";
+            String sql = "SELECT o.id, o.image, o.booking_date, o.total_price, o.status, o.created_at FROM orders o";
+
+            System.out.println("Executing SQL: " + sql);
             preparedStatement = connection.prepareStatement(sql);
             resultSet = preparedStatement.executeQuery();
-
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
-                int customerId = resultSet.getInt("customer_id");
-                int tourId = resultSet.getInt("tour_id");
+                String imageTour = resultSet.getString("image");
                 String bookingDate = resultSet.getString("booking_date");
                 double totalPrice = resultSet.getDouble("total_price");
                 String status = resultSet.getString("status");
                 String createdAt = resultSet.getString("created_at");
-                String updatedAt = resultSet.getString("updated_at");
-                int sellId = resultSet.getInt("sell_ID");
-                String customerName = resultSet.getString("customerName");
-                String phoneNumber = resultSet.getString("phoneNumber");
-                String address = resultSet.getString("address");
+                System.out.println("id: " + id + ",  imageTour: " + imageTour + ", bookingDate: " + bookingDate + ", totalPrice: " + totalPrice + ", status: " + status + ", createdAt: " + createdAt );
 
-                Service_Th1_OrderManager order = new Service_Th1_OrderManager(id, customerId, tourId, bookingDate, totalPrice, status, createdAt, updatedAt, sellId, customerName, phoneNumber, address);
+                Service_Th1_OrderManager order = new Service_Th1_OrderManager(id, imageTour, bookingDate, totalPrice, status, createdAt);
                 orders.add(order);
             }
+
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -69,5 +63,11 @@ public class Service_th1_OrderM_DAO {
             }
         }
         return orders;
+    }
+    public static void main(String[] args) throws ClassNotFoundException {
+		Service_th1_OrderM_DAO dao = new Service_th1_OrderM_DAO();
+		List<Service_Th1_OrderManager> list = dao.getAllOrders();
+		for(Service_Th1_OrderManager i : list) 
+			System.out.print(i);
     }
 }
