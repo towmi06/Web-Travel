@@ -57,7 +57,7 @@
         <div class="header-content">
             <!--Logo and name page-->
             <div class="title">
-                <a href="index.html" title="Logo">
+                <a href="Service.jsp" title="Logo">
                     <img src="resources/images/logo.png" alt="logo" class="logo">
                 </a>
                 <h3 id="admin">Service</h3>
@@ -126,6 +126,7 @@
                         <img src="resources/images/analyst.png" class="icon">
                         <span>Tổng Quan</span>
                         <img src="resources/images/chevron-down.svg" class="chevron-icon" id="chevronIcon2">
+                         <a href="Service.jsp">
                     </button>
                     <ul class="submenu">
                         <li><a href="#Phân-tích-hiệu-suất" onclick="loadAnalysisPerformance()"> Phân tích - hiệu suất</a></li>
