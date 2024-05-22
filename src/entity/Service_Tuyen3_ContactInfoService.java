@@ -1,7 +1,7 @@
 package entity;
 
 public class Service_Tuyen3_ContactInfoService {
-    private String sell_ID;
+    private int sell_ID;
     private String taiKhoan;
     private String username;
     private String email;
@@ -21,7 +21,7 @@ public class Service_Tuyen3_ContactInfoService {
     private String metaBusiness;
 
     public Service_Tuyen3_ContactInfoService() {
-    	this.sell_ID = "";
+    	this.sell_ID = 0;
         this.taiKhoan = "";
         this.username = "";
         this.email = "";
@@ -40,7 +40,7 @@ public class Service_Tuyen3_ContactInfoService {
         this.message = "";
     }
 
-    public Service_Tuyen3_ContactInfoService(String sell_ID, String taiKhoan, String username, String email, String phoneNumber, String gioiTinh, String thongTinNganHang, String stk, String maSoThue, String facebook, String twitter, String instagram, String address, String workingHours, String coverPhoto, String avatar, String message, String metaBusiness) {
+    public Service_Tuyen3_ContactInfoService(int sell_ID, String taiKhoan, String username, String email, String phoneNumber, String gioiTinh, String thongTinNganHang, String stk, String maSoThue, String facebook, String twitter, String instagram, String address, String workingHours, String coverPhoto, String avatar, String message, String metaBusiness) {
         this.sell_ID = sell_ID;
         this.taiKhoan = taiKhoan;
         this.username = username;
@@ -61,11 +61,11 @@ public class Service_Tuyen3_ContactInfoService {
         this.metaBusiness = metaBusiness;
     }
 
-    public String getSell_ID() {
+    public int getSell_ID() {
         return sell_ID;
     }
 
-    public void setSell_ID(String sell_ID) {
+    public void setSell_ID(int sell_ID) {
         this.sell_ID = sell_ID;
     }
 

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="java.util.List" %>
-<%@ page import="entity.Service_Tuyen4_Order" %>
+<%@ page import="entity.Service_Th1_OrderManager" %>
 <%@ page import="loadDAO.Service_Tuyen4_Orders_DAO" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,11 +22,10 @@
 <body>
 
 	<%
-	    String orderId = (String) session.getAttribute("orderId");
-	    Service_Tuyen4_Order order = new Service_Tuyen4_Orders_DAO().findOrderByID(orderId);
+	    int orderId = (int) session.getAttribute("orderId");
+		Service_Th1_OrderManager order = new Service_Tuyen4_Orders_DAO().findOrderByID(orderId);
 	    session.setAttribute("order", order);
 	%>
-
 
     <!--Main container-->
     <div class="main-container">
@@ -37,15 +36,17 @@
                 <label for="sort-options2">Sắp Xếp Theo:</label>
                 <select id="sort-options2" onchange="sortTable2()">
                     <option value="0">ID</option>
-                    <option value="1">Sell ID</option>
-                    <option value="2">Customer ID</option>
-                    <option value="3">Tour ID</option>
-                    <option value="4">Ngày đặt</option>
-                    <option value="5">Tên tour</option>
-                    <option value="6">Thời gian</option>
-                    <option value="7">Số người</option>
-                    <option value="8">Giá</option>
-                    <option value="9">Loại hình</option>
+                    <option value="1">Customer ID</option>
+                    <option value="2">Tour ID</option>
+                    <option value="3">Ngày đặt</option>
+                    <option value="3">Tên tour</option>
+                    <option value="4">Giá</option>
+                    <option value="5">Trạng thái</option>
+                    <option value="6">Ngày tạo</option>
+                    <option value="7">Ngày cập nhật</option>
+                    <option value="8">Tên khách hàng</option>
+                    <option value="9">Số điện thoại</option>
+                    <option value="10">Địa chỉ</option>
                 </select>
             </div>
             <!-- Search -->
@@ -60,31 +61,35 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-	                    <th>Sell ID</th>
 	                    <th>Customer ID</th>
 	                    <th>Tour ID</th>
 	                    <th>Ngày đặt</th>
 	                    <th>Tên tour</th>
-	                    <th>Thời gian</th>
-	                    <th>Số người</th>
 	                    <th>Giá</th>
-	                    <th>Loại hình</th> 
+	                    <th>Trạng thái</th>
+	                    <th>Ngày tạo</th>
+	                    <th>Ngày cập nhật</th>
+	                    <th>Tên khách hàng</th>
+	                    <th>Số điện thoại</th> 
+	                    <th>Địa chỉ</th> 
 	                    <th>Lưu đơn</th> 
 	                    <th>Hủy đơn</th> 
                     </tr>
                 </thead>
                 <tbody>
                         <tr>
-                            <td><input type="text" name="id" value="${sessionScope.order.ID}" class="table-input"/></td>
-                            <td><input type="text" name="sellID" value="${sessionScope.order.sellID}" class="table-input"/></td>
-                            <td><input type="text" name="customerID" value="${sessionScope.order.customerID}" class="table-input"/></td>
-                            <td><input type="text" name="tourID" value="${sessionScope.order.tourID}" class="table-input"/></td>
+                            <td><input type="text" name="id" value="${sessionScope.order.id}" class="table-input"/></td>
+                            <td><input type="text" name="customerId" value="${sessionScope.order.customerId}" class="table-input"/></td>
+                            <td><input type="text" name="tourId" value="${sessionScope.order.tourId}" class="table-input"/></td>
                             <td><input type="text" name="bookingDate" value="${sessionScope.order.bookingDate}" class="table-input"/></td>
-                            <td><input type="text" name="tourName" value="${sessionScope.order.tourName}" class="table-input"/></td>
-                            <td><input type="text" name="date" value="${sessionScope.order.date}" class="table-input"/></td>
-                            <td><input type="text" name="numberOfPeople" value="${sessionScope.order.numberOfPeople}" class="table-input"/></td>
-                            <td><input type="text" name="price" value="${sessionScope.order.price}" class="table-input"/></td>
-                            <td><input type="text" name="type" value="${sessionScope.order.type}" class="table-input"/></td>
+                            <td><c:out value="${order.tourName}" /></td>
+                    	    <td><c:out value="${order.totalPrice}" /></td>
+                            <td><input type="text" name="status" value="${sessionScope.order.status}" class="table-input"/></td>
+                            <td><input type="text" name="createdAt" value="${sessionScope.order.createdAt}" class="table-input"/></td>
+                            <td><input type="text" name="updatedAt" value="${sessionScope.order.updatedAt}" class="table-input"/></td>
+                            <td><c:out value="${sessionScope.order.customerName}" /></td>
+                     	  	<td><c:out value="${sessionScope.order.phoneNumber}" /></td>
+                        	<td><c:out value="${sessionScope.order.address}" /></td>
                             <td><button name="btnSave" type="submit" class="edit-btn">Lưu Đơn</button></td>
                             <td><button name="btnCancel" type="submit" class="edit-btn">Hủy Đơn</button></td>
                         </tr>

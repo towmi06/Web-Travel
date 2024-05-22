@@ -2,7 +2,7 @@ package entity;
 
 public class Service_Tuyen1_OutStanding {
     private String id;
-    private String sell_ID;
+    private int sell_ID;
     private String cateID;
     private float rate;
     private long sales;
@@ -15,7 +15,7 @@ public class Service_Tuyen1_OutStanding {
 
     public Service_Tuyen1_OutStanding() {
         this.id = "";
-        this.sell_ID = "";
+        this.sell_ID = 0;
         this.cateID = "";
         this.rate = 0.0f;
         this.sales = 0;
@@ -26,7 +26,7 @@ public class Service_Tuyen1_OutStanding {
         this.outstanding = false;
     }
     
-    public Service_Tuyen1_OutStanding(String id, String sell_ID, String cateID, float rate, long sales, String tourName, String image, String journeys, String date, int price, boolean outstanding) {
+    public Service_Tuyen1_OutStanding(String id, int sell_ID, String cateID, float rate, long sales, String tourName, String image, String journeys, String date, int price, boolean outstanding) {
         this.id = id;
         this.sell_ID = sell_ID;
         this.cateID = cateID;
@@ -48,11 +48,11 @@ public class Service_Tuyen1_OutStanding {
         this.id = id;
     }
 
-    public String getSell_ID() {
+    public int getSell_ID() {
         return sell_ID;
     }
 
-    public void setSell_ID(String sell_ID) {
+    public void setSell_ID(int sell_ID) {
         this.sell_ID = sell_ID;
     }
 

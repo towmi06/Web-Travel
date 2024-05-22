@@ -5,6 +5,8 @@
 <%@ page import="entity.Service_Tuyen1_OutStanding" %>
 <%@ page import="loadDAO.Service_Tuyen2_PageLayout_DAO" %>
 <%@ page import="loadDAO.Service_Tuyen1_OutStanding_DAO" %>
+<%@ page import="entity.Service_Tuyen3_ContactInfoService" %>
+<%@ page import="loadDAO.Service_Tuyen3_ContactInfoService_DAO" %>
 <!DOCTYPE html>
 <html lang="en"> 
 
@@ -24,9 +26,12 @@
 		String email = (String) session.getAttribute("email");
 		Service_Tuyen2_PageLayout pageLayout = Service_Tuyen2_PageLayout_DAO.findByTaiKhoan(email);
 			    
-		String sell_ID = (String) session.getAttribute("sell_ID");
+		int sell_ID = (int) session.getAttribute("sell_ID");
 		List<Service_Tuyen1_OutStanding> danhSach = Service_Tuyen1_OutStanding_DAO.getOutstandingServices(sell_ID);
 		
+		Service_Tuyen3_ContactInfoService provider =Service_Tuyen3_ContactInfoService_DAO.findProviderByCredentials(email);
+		
+	    session.setAttribute("provider", provider);
 		session.setAttribute("danhSach", danhSach);    
 		session.setAttribute("pageLayout", pageLayout);
 	%>
@@ -86,7 +91,7 @@
 	 <!-- chat-->
     <div class="chat-widget">
         <div class="chat-logo">
-            <a href="${sessionScope.service.message}" target="_blank">
+            <a href="${sessionScope.provider.message}" target="_blank">
                 <img src="resources/images/logo_chat.png" alt="Chat Logo">
             </a>
         </div>
@@ -95,16 +100,16 @@
     <section class="contact-info-main">
         <div class="supplier-content">
             <img src="resources/images/Dốc_Thẩm_Mã_2022_-_NKS.jpg" class="cover-photo">
-            <img src="${sessionScope.service.avatar}" class="avt">
-            <h2 class="name">${sessionScope.service.username}</h2>
+            <img src="${sessionScope.provider.avatar}" class="avt">
+            <h2 class="name">${sessionScope.provider.username}</h2>
             <h4 class="status">Online</h4>
 
             <div class="bettwen-row">
                 <div class="betwwen-col">
                     <button class="betwwen-button">
-                        <img src="resources/images/followers.png" class="icon">
-                        <h4>Số người theo dõi: </h4>
-                        <h4 style="color: rgb(214, 110, 62);">1k</h4>
+                        <img src="resources/images/workinghours.png" class="icon">
+                        <h4>Thời gian làm việc: </h4>
+                        <h4 style="color: rgb(214, 110, 62);">${sessionScope.provider.workingHours}</h4>
                     </button>
 
                     <button class="betwwen-button">
@@ -124,19 +129,19 @@
                     <button class="betwwen-button">
                         <img src="resources/images/call.png" class="icon">
                         <h4>Số điện thoại: </h4>
-                        <h4 style="color: rgb(214, 110, 62);">${sessionScope.service.phoneNumber}</h4>
+                        <h4 style="color: rgb(214, 110, 62);">${sessionScope.provider.phoneNumber}</h4>
                     </button>
 
                     <button class="betwwen-button">
                         <img src="resources/images/gmail.png" class="icon">
                         <h4>Gmail: </h4>
-                        <h4 style="color: rgb(214, 110, 62);">${sessionScope.service.email}</h4>
+                        <h4 style="color: rgb(214, 110, 62);">${sessionScope.provider.email}</h4>
                     </button>
 
                     <button class="betwwen-button">
                         <img src="resources/images/address.png" class="icon">
                         <h4>Địa chỉ: </h4>
-                        <h4 style="color: rgb(214, 110, 62);">${sessionScope.service.address}</h4>
+                        <h4 style="color: rgb(214, 110, 62);">${sessionScope.provider.address}</h4>
                     </button>
                 </div>
             </div>
@@ -201,13 +206,6 @@
 	</section>
 
    	<script src="resources/js/slider1.js"></script>
-    
-    <!--Button tat ca dv-->
-    <!-- Nút chuyển đến trang Tất cả dịch vụ 
-        <button onclick="window.location.href='./tat-ca-dich-vu.html'">Tất cả dịch vụ</button>-->
-        <div class="view-all-services">
-            <a href="link_to_all_services_page"> Xem thêm   →</a>
-        </div>
 
     <!-- Packages -->
     <%
@@ -308,59 +306,145 @@
         </div>
     </section>
     
-    <%
-    	if (pageLayout.getHienThi()) {
+    
+	<div class="package-title">
+	    <h2>Tất cả dịch vụ</h2>
+	    <% if (pageLayout.getSapXep()) { %>
+		    <label for="sort-by">Sắp xếp theo:</label>
+		    <select id="sort-by" onchange="sortProducts()">
+		        <option value="tourName">Tên Tour</option>
+		        <option value="price">Giá</option>
+		        <option value="sales">Lượt bán</option>
+		        <option value="rate">Đánh giá</option>
+		    </select>
+		<% } else { %>
+			<label for="sort-by" style="display: none;">Sắp xếp theo:</label>
+		    <select id="sort-by" style="display: none;" onchange="sortProducts()"> </select>
+		<% } %>
+	</div>
+	
+	<%
+	    if (!pageLayout.getHienThi()) {
 	%>
-	    <section class="locations" id="locations" style="display: block;">
+		<section class="locations" id="locations">
+		    <div class="location-content" id="products-container">
+		        <div class="slider">
+		            <%
+		                for (Service_Tuyen1_OutStanding service : danhSach) {
+		            %>
+		            <div class="slide product" data-tour-name="<%= service.getTourName() %>"
+		                 data-price="<%= service.getPrice() %>"
+		                 data-sales="<%= service.getSales() %>"
+		                 data-rate="<%= service.getRate() %>">
+		                <a href="./locations.html#kashmir" target="_blank">
+		                    <div class="col-content">
+		                        <img src="resources/images/image_tour/<%= service.getImage() %>" alt="">
+		                        <h5><c:out value="<%= service.getTourName() %>" /></h5>
+		                        <p><c:out value="<%= service.getDate() %>" /></p>
+		                        <p style="margin-left: 350px; margin-bottom: 70px">Giá: <c:out value="<%= service.getPrice() %>" /> VNĐ</p>
+		                        <p style="margin-left: 350px; margin-bottom: 40px">Lượt bán: <c:out value="<%= service.getSales() %>" /></p>
+		                        <p style="margin-left: 350px">Đánh giá: <c:out value="<%= service.getRate() %>" /></p>
+		                    </div>
+		                </a>
+		            </div>
+		            <%
+		                }
+		            %>
+		        </div>
+		    </div>
+		</section>
+	  
 	<%
 	    } else {
 	%>
-	    <section class="locations" id="locations" style="display: none;">
+	    <section class="locations" id="locations">
+	        <div id="products-container">
+	            <%
+	                for (Service_Tuyen1_OutStanding service : danhSach) {
+	            %>
+	            <div class="slide product" data-tour-name="<%= service.getTourName() %>"
+	                               data-price="<%= service.getPrice() %>"
+	                               data-sales="<%= service.getSales() %>"
+	                               data-rate="<%= service.getRate() %>">
+	                <a href="./locations.html#kashmir" target="_blank">
+	                    <div class="col-content">
+	                        <img src="resources/images/image_tour/<%= service.getImage() %>" alt="">
+	                        <h5><c:out value="<%= service.getTourName() %>" /></h5>
+	                        <p><c:out value="<%= service.getDate() %>" /></p>
+	                        <p style="margin-left: 700px; margin-bottom: 300px; color: #000000">Hành trình: <c:out value="<%= service.getJourneys() %>" /></p>
+	                        <p style="margin-left: 700px; margin-bottom: 100px; color: #000000">Giá: <c:out value="<%= service.getPrice() %>" /> VNĐ</p>
+	                        <p style="margin-left: 700px; margin-bottom: 70px; color: #000000">Lượt bán: <c:out value="<%= service.getSales() %>" /></p>
+	                        <p style="margin-left: 700px; margin-bottom: 40px; color: #000000">Đánh giá: <c:out value="<%= service.getRate() %>" /></p>
+	                    </div>
+	                </a>
+	            </div>
+	            <%
+	                }
+	            %>
+	        </div>
+	    </section>
 	<%
 	    }
 	%>
-        <div class="package-title">
-            <h2>Dịch vụ nổi bật</h2>
-        </div>
-        <div class="location-content">
-            <div class="slider">
-            <%
-            	int count2 = 0;
-            	for (Service_Tuyen1_OutStanding service : danhSach) {
-            		if(service.getOutstanding()) {
-            %>
-                <div class="slide">
-                    <a href="./locations.html#kashmir" target="_blank">
-                        <div class="col-content">
-                            <img src="resources/images/image_tour/<%= service.getImage() %>" alt="">
-                            <h5><c:out value="<%= service.getTourName() %>" /></h5>
-                            <p><c:out value="<%= service.getDate() %>" /></p>
-                        </div>
-                    </a>
-                </div>
-             <%
-            		}
-            	}
-             %>
-            </div>
-        </div>
-        
-        <!-- Navigation arrows -->
-		<!-- Next and previous buttons -->
-		<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-		<a class="next" onclick="plusSlides(1)">&#10095;</a>
-		<div class="dots" style="text-align:center">
-		    <%
-		        int numDots2 = (int) Math.ceil(count2 / 2.0); 
-		        for (int i = 1; i <= numDots2; i++) {
-		    %>
-		        <span class="dot" onclick="currentSlide(<%= i %>)"></span>
-		    <%
-		        }
-		    %>
-		</div>
-	</section>
 
+	
+	<!-- Hàm sắp xếp -->
+	<script>
+		document.addEventListener('DOMContentLoaded', (event) => {
+		    sortProducts();
+		});
+		
+		function sortProducts() {
+		    const sortBy = document.getElementById('sort-by').value;
+		    const productsContainer = document.getElementById('products-container');
+		    const products = Array.from(productsContainer.getElementsByClassName('product'));
+		
+		    products.sort((a, b) => {
+		        const valueA = getSortValue(a, sortBy);
+		        const valueB = getSortValue(b, sortBy);
+		
+		        if (sortBy === 'tourName' || sortBy === 'price') {
+		            // Sort ascending for tourName and price
+		            if (valueA < valueB) return -1;
+		            if (valueA > valueB) return 1;
+		            return 0;
+		        } else if (sortBy === 'sales' || sortBy === 'rate') {
+		            // Sort descending for sales and rate
+		            if (valueA > valueB) return -1;
+		            if (valueA < valueB) return 1;
+		            return 0;
+		        }
+		    });
+		
+		    products.forEach(product => productsContainer.appendChild(product));
+		}
+		
+		function getSortValue(product, sortBy) {
+		    switch (sortBy) {
+		        case 'tourName':
+		            return product.getAttribute('data-tour-name').toLowerCase();
+		        case 'price':
+		            return parseFloat(product.getAttribute('data-price'));
+		        case 'sales':
+		            return parseInt(product.getAttribute('data-sales'));
+		        case 'rate':
+		            return parseFloat(product.getAttribute('data-rate'));
+		        default:
+		            return '';
+		    }
+		}
+		</script>
+
+	
+	
+	<script src="resources/js/slider2.js"></script>
+	
+	<!--Button tat ca dv-->
+	<!-- Nút chuyển đến trang Tất cả dịch vụ -->
+	<div class="view-all-services">
+    <form action="/Web_Travel/HomeControl" method="GET" style="display: inline;">
+        <a href="javascript:void(0);" onclick="this.parentElement.submit()">Xem thêm →</a>
+    </form>
 
     <!-- Newsletter -->
 
@@ -440,5 +524,4 @@
         
         </section>
 </body>
-
 </html>

@@ -30,7 +30,7 @@ public class Service_Tuyen3_ContactInfoService_DAO {
 
             // Process result
             if (rs.next()) {         	
-            	service.setSell_ID(rs.getString("sell_ID"));
+            	service.setSell_ID(rs.getInt("sell_ID"));
                 service.setTaiKhoan(rs.getString("taiKhoan"));
                 service.setUsername(rs.getString("username"));
                 service.setEmail(rs.getString("email"));

@@ -89,8 +89,7 @@ public class Service_Tuyen2_PageLayout_Sevlet extends HttpServlet {
         if(hidePromotion == null) chuongTrinhKhuyenMai = false;
         else chuongTrinhKhuyenMai = true;
         
-        if(display == null) hienThi = false;
-        else hienThi = true;
+        hienThi = Boolean.parseBoolean(display);
         
 		try {
 			result = pageLayoutDAO.updatePageLayout(taiKhoan, sapXep, dichVuNoiBat, chuongTrinhKhuyenMai, hienThi);

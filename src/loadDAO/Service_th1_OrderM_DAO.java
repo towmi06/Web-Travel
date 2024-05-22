@@ -19,15 +19,21 @@ public class Service_th1_OrderM_DAO {
         ResultSet resultSet = null;
         try {
             connection = DBContext.getConnection();
-            String sql = "SELECT o.id, o.image, o.booking_date, o.total_price, o.status, o.created_at FROM orders o";
-
+            String sql = "SELECT o.id, o.booking_date, o.total_price, " +
+                    "o.status, o.created_at, " +
+                    "c.name AS customerName, c.phone AS phoneNumber, c.address, " +
+                    "t.image " +
+                    "FROM orders o " +
+                    "JOIN customer c ON o.customer_id = c.id " +
+                    "JOIN tour t ON t.id = o.tour_id ";
+	          
             System.out.println("Executing SQL: " + sql);
             preparedStatement = connection.prepareStatement(sql);
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
-                String imageTour = resultSet.getString("image");
-                String bookingDate = resultSet.getString("booking_date");
+                String imageTour = resultSet.getString("image"); 
+                String bookingDate = resultSet.getString("booking_date"); 
                 double totalPrice = resultSet.getDouble("total_price");
                 String status = resultSet.getString("status");
                 String createdAt = resultSet.getString("created_at");

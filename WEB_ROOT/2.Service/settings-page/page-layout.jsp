@@ -74,8 +74,8 @@
 	                    <li>
 	                        <a href="#" class="page-option-label">Hiển thị sản phẩm theo  :</a>
 	                        <select name="display" class="select-custom" style="margin-left: 60px">
-	                            <option value="true" <% if (pageLayout.getHienThi() == true) out.print("selected"); %> >Hàng dọc</option>
-	                            <option value="false" <% if (pageLayout.getHienThi() == false) out.print("selected"); %> >Hàng ngang</option>
+	                            <option value="true" <% if (pageLayout.getHienThi() == true) out.print("selected"); %> >Mở rộng</option>
+	                            <option value="false" <% if (pageLayout.getHienThi() == false) out.print("selected"); %> >Thu gọn</option>
 	                        </select>
 	                    </li>
 	                </ul>

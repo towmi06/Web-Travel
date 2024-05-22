@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.Map" %>
+<%@ page import="java.util.Arrays" %>
+<%@ page import="loadDAO.Admin_Quan_TourManagenment_DAO" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,39 +21,39 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap">
 </head>
 <body>
+	
+	<%
+		Map<Integer, Integer> cateIDCount = new Admin_Quan_TourManagenment_DAO().getCateIDCount();
+		long[] categories = cateIDCount.values().stream().mapToLong(Integer::longValue).toArray();
+		long total = Arrays.stream(categories).sum();
+		
+		Map<String, Integer> ordersCountByMonth = new Admin_Quan_TourManagenment_DAO().getOrdersCountByMonth();
+		int[] orders = ordersCountByMonth.values().stream().mapToInt(Integer::intValue).toArray();
+		
+		double percentBien = (double) categories[0] / total * 100;
+		double percentThienNhien = (double) categories[1] / total * 100;
+		double percentThamQuan = (double) categories[2] / total * 100;
+	%>
+
     <!--Main container-->
     <div class="main-container">
         <div class="chart-container-1">
             <!--Biểu đồ đường (Line Chart)-->
             <div class="line-chart-2">
                 <canvas id="lineChart2"></canvas>
-                <div class="chart-title">Line Chart</div>
+                <div class="chart-title">Thống kê số đơn theo tháng</div>
             </div>
             <script>
                 var ctx = document.getElementById('lineChart2').getContext('2d');
                 var lineChart = new Chart(ctx, {
                     type: 'line',
                     data: {
-                        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                        labels: ['March', 'April', 'May', 'June'],
                         datasets: [{
-                            label: 'Revenue',
-                            data: [1000, 2000, 1500, 2500, 1800, 2200, 3000],
+                            label: 'Số lượng đơn',
+                            data: <%= Arrays.toString(orders) %>,
                             fill: false,
                             borderColor: 'rgba(75, 192, 192, 1)',
-                            tension: 0.1
-                        },
-                        {
-                            label: 'Profit',
-                            data: [800, 1500, 1200, 200, 1000, 1800, 2500],
-                            fill: false,
-                            borderColor: 'rgba(255, 99, 132, 1)',
-                            tension: 0.1
-                        },
-                        {
-                            label: 'Expenses',
-                            data: [2000, 1000, 800, 1500, 1200, 1400, 1800],
-                            fill: false,
-                            borderColor: 'rgba(54, 162, 235, 1)',
                             tension: 0.1
                         }]
                     },
@@ -67,18 +70,18 @@
             <!--Biểu đồ bánh (Pie Chart)-->
             <div class="pie-chart-3">
                 <canvas id="pieChart3" width="200" height="200"></canvas>
-                <div class="chart-title">Pie Chart</div>
+                <div class="chart-title">Phân Bổ Thể Loại</div>
             </div>
             <script>
                 var ctx = document.getElementById('pieChart3').getContext('2d');
                 var pieChart = new Chart(ctx, {
                     type: 'pie',
                     data: {
-                        labels: ['Red', 'Blue', 'Yellow'],
+                        labels: ['Biển', 'Thiên nhiên', 'Tham quan'],
                         datasets: [{
                             label: 'My First Dataset',
-                            data: [300, 50, 100],
-                            backgroundColor: ['rgb(255, 99, 132)', 'rgb(54, 162, 235)', 'rgb(255, 205, 86)'],
+                            data: <%= Arrays.toString(categories) %>,
+                            backgroundColor: ['rgb(54, 162, 235)', 'rgb(255, 99, 132)', 'rgb(255, 205, 86)'],
                             hoverOffset: 4
                         }]
                     },
@@ -99,15 +102,12 @@
             </p>
             <ul>
                 <li>
-                    <strong>Biểu đồ đường (Line Chart):</strong> Biểu đồ đường hiển thị dữ liệu về doanh thu, lợi nhuận và chi phí qua các tháng trong năm. Thông qua biểu đồ này, người quản trị có thể theo dõi và phân tích xu hướng tăng trưởng hoặc giảm sút của các chỉ số quan trọng, từ đó đưa ra các quyết định chiến lược.
+                    <strong>Biểu đồ Thống kê (Line Chart):</strong> Biểu đồ đường hiển thị dữ liệu về Số lượng orders qua các tháng trong năm. Thông qua biểu đồ này, người quản trị có thể theo dõi và phân tích xu hướng tăng trưởng hoặc giảm sút của các chỉ số quan trọng, từ đó đưa ra các quyết định chiến lược.
                 </li>
                 <li>
-                    <strong>Biểu đồ bánh (Pie Chart):</strong> Biểu đồ bánh thể hiện phân phối tỷ lệ của các phần trong một tập hợp, trong trường hợp này là phân phối màu sắc giữa ba màu chính: Đỏ, Xanh và Vàng. Biểu đồ này cung cấp một cái nhìn tổng quan về phân bổ hoặc phân phối của các yếu tố khác nhau, giúp người quản trị hiểu rõ hơn về cấu trúc của dữ liệu.
+                    <strong>Biểu đồ Phân bổ thể loại (Pie Chart):</strong> Biểu đồ bánh thể hiện phân phối tỷ lệ của thể loại trong tổng các tour khách hàng đặt. Loại tour Biển chiếm <%= String.format("%.2f", percentBien) %>%, loại tour Thiên nhiên chiếm <%= String.format("%.2f", percentThienNhien) %>%, loại tour Tham quan chiếm <%= String.format("%.2f", percentThamQuan) %>%.
                 </li>
             </ul>
-            <p>
-                Trang web Quản Lý Nội Dung là một công cụ hữu ích để quản lý và phân tích thông tin, giúp người quản trị đưa ra các quyết định thông minh và phát triển chiến lược hiệu quả dựa trên dữ liệu thống kê và phân tích.
-            </p>
         </div>
         <!--End report-->
     </div>

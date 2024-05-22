@@ -50,42 +50,52 @@
 }
 
 /* CSS cho phần "Thông Báo" */
-.notification-box {
-    background-color: #f0f0f0;
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 20px;
-}
-
-.notification-box h2 {
-    color: #333;
+/* Tiêu đề */
+h2 {
     font-size: 24px;
     margin-bottom: 10px;
+    color: #007bff;
 }
 
-.notification-box p {
-    color: #555;
+/* Đoạn văn */
+p {
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+/* Input và button trong notification-box */
+.notification-box input[type="text"] {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
     font-size: 16px;
 }
 
-/* CSS cho phần "Hòm Thư" */
-.mailbox {
-    background-color: #f0f0f0;
-    border-radius: 8px;
-    padding: 20px;
+.notification-box button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-.mailbox h2 {
-    color: #333;
-    font-size: 24px;
-    margin-bottom: 10px;
+.notification-box button:hover {
+    background-color: #0056b3;
 }
 
+/* Thư trong hòm thư */
 .mailbox p {
-    color: #555;
-    font-size: 16px;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
 }
-
 
 /*Grant Access setting*/
 .sort-and-search {
