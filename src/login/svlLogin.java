@@ -4,6 +4,7 @@ import entity.*;
 import loadDAO.*;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -50,7 +51,6 @@ public class svlLogin extends HttpServlet {
         if (isValid) {
         	if(role.equals("admin")) {
         		Admin_Quan_AdminInfo admin = Admin_Quan_AdminInfo_DAO.findAdminByEmail(email);
-        		List<Service_Tuyen4_Order> allOrderList = new Service_Tuyen4_Orders_DAO().getAllOrders();
         		
         		List<Admin_Quan_Cooperate> cooperates = null;
 				try {
@@ -75,29 +75,55 @@ public class svlLogin extends HttpServlet {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} 
-		        
-				List<Service_Tuyen1_OutStanding> allTourList = null;
-		        try {
-					allTourList = new Service_Tuyen1_OutStanding_DAO().getAllTour();
+				
+				List<Service_Th1_OrderManager> allOrders = null;
+				try {
+					allOrders = new Admin_Quan_TourManagenment_DAO().getAllOrders();
+				} catch (ClassNotFoundException | SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+			    List<tour> allTourList = null;
+			    try {
+					allTourList = new Admin_Quan_TourManagenment_DAO().getAllTours();
 				} catch (ClassNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-		        
+
+			    List<String> allNotificationList = null;
+			    try {
+					allNotificationList = new Admin_Quan_Notification_Mailbox_DAO().getNotificationList();
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			    
+			    List<String> allMailboxList = null;
+			    try {
+			    	allMailboxList = new Admin_Quan_Notification_Mailbox_DAO().getMailboxList();
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			    
+		        session.setAttribute("allOrders", allOrders);
 		        session.setAttribute("allTourList", allTourList);
-		        session.setAttribute("allOrderList", allOrderList);
 				session.setAttribute("adminList", adminList);
                 session.setAttribute("adminInfo", admin);
                 session.setAttribute("cooperates", cooperates);
                 session.setAttribute("helpList", helpList);
+                session.setAttribute("allNotificationList", allNotificationList);
+                session.setAttribute("allMailboxList", allMailboxList);
                 
                 response.sendRedirect("/Web_Travel/3.Admin/index.jsp");
         	}
         	else if(role.equals("customer"))
-                response.sendRedirect("/Web_Travel/1.Customer/index.html");
+                response.sendRedirect("/Web_Travel/1.Customer/Cus.jsp");
         	else if(role.equals("service")) { 
         		Service_Tuyen3_ContactInfoService service = new Service_Tuyen3_ContactInfoService_DAO().findProviderByCredentials(email);
-        		String sell_ID = service.getSell_ID();
+        		int sell_ID = service.getSell_ID();
         		
         		session.setAttribute("service", service); 
         		session.setAttribute("sell_ID", sell_ID); 

@@ -38,7 +38,7 @@
 </head>
 <body>
 <div class="container">
-    <h2 class="center" style="font-size: 30px; margin-top: 20px; margin-bottom:15px;">
+    <h2 class="center" style="font-size: 40px; margin-top: 20px; margin-bottom:15px;">
         <i class='bx bx-purchase-tag-alt' style='color:#326f30;'></i> Order List
     </h2>
 
@@ -95,9 +95,9 @@
                                 <td style="text-align: center; vertical-align: middle;">${order.createdAt}</td>
                                 <td style="text-align: center; vertical-align: middle;">
                                     <form action="Service_Th2_DetailOrderM_Servlet" method="GET">
-                                        <input type="hidden" name="orderId" value="${order.id}">
-                                        <button class="button-style" type="submit">Detail</button>
-                                    </form>
+									    <input type="hidden" name="id" value="${order.id}">
+									    <button class="button-style" type="submit">Detail</button>
+									</form>
                                 </td>
                             </tr>
                         </c:forEach>
