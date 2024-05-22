@@ -16,9 +16,22 @@ public class Service_Th1_OrderManager {
     private String phoneNumber;
     private String address;
     
-    public Service_Th1_OrderManager() {
-    	
+    public Service_Th1_OrderManager(int id, int customerId, String tourId, String bookingDate, String tourName, double totalPrice, String status, String createdAt, String updateAt, int sellId, String customerName, String phoneNumber, String address) {
+        this.id = id;
+        this.customerId = customerId;
+        this.tourId = tourId;
+        this.bookingDate = bookingDate;
+        this.tourName = tourName;
+        this.totalPrice = totalPrice;
+        this.status = status;
+        this.createdAt = createdAt;
+        this.updatedAt = updateAt;
+        this.sellId = sellId;
+        this.customerName = customerName;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
     }
+
 
     public Service_Th1_OrderManager(int id, String imageTour, String bookingDate, double totalPrice, String status, String createdAt ) {
         this.id = id;
@@ -56,5 +69,20 @@ public class Service_Th1_OrderManager {
 
     public String getCreatedAt() { return createdAt; }
     public void setCreatedAt(String createdAt) { this.createdAt = createdAt; }
+    
+    public String getUpdatedAt() { return updatedAt; }
+    public void setUpdatedAt(String updatedAt) { this.updatedAt = updatedAt; }
 
+
+    public int getSellId() { return sellId; }
+    public void setSellId(int sellId) { this.sellId = sellId; }
+
+    public String getCustomerName() { return customerName; }
+    public void setCustomerName(String customerName) { this.customerName = customerName; }
+
+    public String getPhoneNumber() { return phoneNumber; }
+    public void setPhoneNumber(String phoneNumber) { this.phoneNumber = phoneNumber; }
+
+    public String getAddress() { return address; }
+    public void setAddress(String address) { this.address = address; }
 }

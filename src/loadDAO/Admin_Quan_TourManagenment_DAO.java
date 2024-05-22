@@ -1,6 +1,7 @@
 package loadDAO;
 
 import context.DBContext;
+import entity.Service_Th1_OrderManager;
 import entity.tour;
 
 import java.sql.Connection;
@@ -14,6 +15,51 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class Admin_Quan_TourManagenment_DAO {
+	
+	public List<Service_Th1_OrderManager> getAllOrders() throws ClassNotFoundException, SQLException {
+	    List<Service_Th1_OrderManager> orders = new ArrayList<>();
+	    Connection connection = null;
+	    PreparedStatement statement = null;
+	    ResultSet resultSet = null;
+
+	    try {
+	        connection = DBContext.getConnection();
+	        String sql = "SELECT o.id, o.customer_id, o.tour_id, o.booking_date, o.total_price, " +
+	                "o.status, o.created_at, o.updated_at, o.sell_ID, " +
+	                "c.name AS customerName, c.phone AS phoneNumber, c.address, " +
+	                "t.tourName " +
+	                "FROM orders o " +
+	                "JOIN customer c ON o.customer_id = c.id " +
+	                "JOIN tour t ON t.id = o.tour_id ";
+	        statement = connection.prepareStatement(sql);
+	        resultSet = statement.executeQuery(); 
+
+	        while (resultSet.next()) {
+	            int id = resultSet.getInt("id");
+	            int customerId = resultSet.getInt("customer_id");
+	            String tourId = resultSet.getString("tour_id");
+	            String bookingDate = resultSet.getString("booking_date");
+	            double totalPrice = resultSet.getDouble("total_price");
+	            String status = resultSet.getString("status");
+	            String createdAt = resultSet.getString("created_at");
+	            String updatedAt = resultSet.getString("updated_at");
+	            int sellId = resultSet.getInt("sell_ID");
+	            String customerName = resultSet.getString("customerName");
+	            String phoneNumber = resultSet.getString("phoneNumber");
+	            String address = resultSet.getString("address");
+	            String tourName = resultSet.getString("tourName");
+
+	            Service_Th1_OrderManager order = new Service_Th1_OrderManager(id, customerId, tourId, bookingDate, tourName, totalPrice, status, createdAt, updatedAt, sellId, customerName, phoneNumber, address);
+	            orders.add(order);
+	        }
+	    } finally {
+	        if (resultSet != null) resultSet.close();
+	        if (statement != null) statement.close();
+	        if (connection != null) connection.close();
+	    }
+
+	    return orders; 
+	}
 	
 	public List<tour> getAllTours() throws ClassNotFoundException {
 	    List<tour> tours = new ArrayList<>();
@@ -215,19 +261,5 @@ public class Admin_Quan_TourManagenment_DAO {
         }
 
         return tourCountByMonth;
-    }
-
-    public static void main(String[] args) {
-        Admin_Quan_TourManagenment_DAO dao = new Admin_Quan_TourManagenment_DAO();
-
-        try {
-            Map<String, Integer> tourCountByMonth = dao.getOrdersCountByMonth();
-            System.out.println("Tour Count by Month:");
-            for (Map.Entry<String, Integer> entry : tourCountByMonth.entrySet()) {
-                System.out.println("Month: " + entry.getKey() + " - Count: " + entry.getValue());
-            }
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
     }
 }

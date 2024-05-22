@@ -4,6 +4,7 @@ import entity.*;
 import loadDAO.*;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -76,12 +77,13 @@ public class svlLogin extends HttpServlet {
 				} 
 				
 				List<Service_Th1_OrderManager> allOrders = null;
-			    try {
-					allOrders = new Service_th1_OrderM_DAO().getAllOrders();
-				} catch (ClassNotFoundException e) {
+				try {
+					allOrders = new Admin_Quan_TourManagenment_DAO().getAllOrders();
+				} catch (ClassNotFoundException | SQLException e) {
+					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-		        
+
 			    List<tour> allTourList = null;
 			    try {
 					allTourList = new Admin_Quan_TourManagenment_DAO().getAllTours();

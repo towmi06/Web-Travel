@@ -102,9 +102,9 @@
             <div class="bettwen-row">
                 <div class="betwwen-col">
                     <button class="betwwen-button">
-                        <img src="resources/images/followers.png" class="icon">
-                        <h4>Số người theo dõi: </h4>
-                        <h4 style="color: rgb(214, 110, 62);">1k</h4>
+                        <img src="resources/images/workinghours.png" class="icon">
+                        <h4>Thời gian làm việc: </h4>
+                        <h4 style="color: rgb(214, 110, 62);">${sessionScope.service.workingHours}</h4>
                     </button>
 
                     <button class="betwwen-button">

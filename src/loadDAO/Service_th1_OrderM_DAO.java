@@ -20,13 +20,13 @@ public class Service_th1_OrderM_DAO {
         try {
             connection = DBContext.getConnection();
             String sql = "SELECT o.id, o.customer_id, o.tour_id, o.booking_date, o.total_price, " +
-                    "o.status, o.created_at, o.updated_at, o.sell_ID, " +
+                    "o.status, o.created_at, " +
                     "c.name AS customerName, c.phone AS phoneNumber, c.address, " +
-                    "t.tourName " +
+                    "t.tourName, t.image " +
                     "FROM orders o " +
                     "JOIN customer c ON o.customer_id = c.id " +
                     "JOIN tour t ON t.id = o.tour_id ";
-          
+	          
             System.out.println("Executing SQL: " + sql);
             preparedStatement = connection.prepareStatement(sql);
             resultSet = preparedStatement.executeQuery();
@@ -34,9 +34,9 @@ public class Service_th1_OrderM_DAO {
                 int id = resultSet.getInt("id");
                 int customerId = resultSet.getInt("customer_id");
                 String tourId = resultSet.getString("tour_id");
-                String imageTour = resultSet.getString("image");
+                String imageTour = resultSet.getString("image"); 
                 String bookingDate = resultSet.getString("booking_date");
-                String tourName = resultSet.getString("tourName");
+                String tourName = resultSet.getString("tourName"); 
                 double totalPrice = resultSet.getDouble("total_price");
                 String status = resultSet.getString("status");
                 String createdAt = resultSet.getString("created_at");
