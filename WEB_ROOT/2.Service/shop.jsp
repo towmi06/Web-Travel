@@ -5,6 +5,8 @@
 <%@ page import="entity.Service_Tuyen1_OutStanding" %>
 <%@ page import="loadDAO.Service_Tuyen2_PageLayout_DAO" %>
 <%@ page import="loadDAO.Service_Tuyen1_OutStanding_DAO" %>
+<%@ page import="entity.Service_Tuyen3_ContactInfoService" %>
+<%@ page import="loadDAO.Service_Tuyen3_ContactInfoService_DAO" %>
 <!DOCTYPE html>
 <html lang="en"> 
 
@@ -27,6 +29,9 @@
 		int sell_ID = (int) session.getAttribute("sell_ID");
 		List<Service_Tuyen1_OutStanding> danhSach = Service_Tuyen1_OutStanding_DAO.getOutstandingServices(sell_ID);
 		
+		Service_Tuyen3_ContactInfoService provider =Service_Tuyen3_ContactInfoService_DAO.findProviderByCredentials(email);
+		
+	    session.setAttribute("provider", provider);
 		session.setAttribute("danhSach", danhSach);    
 		session.setAttribute("pageLayout", pageLayout);
 	%>
@@ -86,7 +91,7 @@
 	 <!-- chat-->
     <div class="chat-widget">
         <div class="chat-logo">
-            <a href="${sessionScope.service.message}" target="_blank">
+            <a href="${sessionScope.provider.message}" target="_blank">
                 <img src="resources/images/logo_chat.png" alt="Chat Logo">
             </a>
         </div>
@@ -95,8 +100,8 @@
     <section class="contact-info-main">
         <div class="supplier-content">
             <img src="resources/images/Dốc_Thẩm_Mã_2022_-_NKS.jpg" class="cover-photo">
-            <img src="${sessionScope.service.avatar}" class="avt">
-            <h2 class="name">${sessionScope.service.username}</h2>
+            <img src="${sessionScope.provider.avatar}" class="avt">
+            <h2 class="name">${sessionScope.provider.username}</h2>
             <h4 class="status">Online</h4>
 
             <div class="bettwen-row">
@@ -104,7 +109,7 @@
                     <button class="betwwen-button">
                         <img src="resources/images/workinghours.png" class="icon">
                         <h4>Thời gian làm việc: </h4>
-                        <h4 style="color: rgb(214, 110, 62);">${sessionScope.service.workingHours}</h4>
+                        <h4 style="color: rgb(214, 110, 62);">${sessionScope.provider.workingHours}</h4>
                     </button>
 
                     <button class="betwwen-button">
@@ -124,19 +129,19 @@
                     <button class="betwwen-button">
                         <img src="resources/images/call.png" class="icon">
                         <h4>Số điện thoại: </h4>
-                        <h4 style="color: rgb(214, 110, 62);">${sessionScope.service.phoneNumber}</h4>
+                        <h4 style="color: rgb(214, 110, 62);">${sessionScope.provider.phoneNumber}</h4>
                     </button>
 
                     <button class="betwwen-button">
                         <img src="resources/images/gmail.png" class="icon">
                         <h4>Gmail: </h4>
-                        <h4 style="color: rgb(214, 110, 62);">${sessionScope.service.email}</h4>
+                        <h4 style="color: rgb(214, 110, 62);">${sessionScope.provider.email}</h4>
                     </button>
 
                     <button class="betwwen-button">
                         <img src="resources/images/address.png" class="icon">
                         <h4>Địa chỉ: </h4>
-                        <h4 style="color: rgb(214, 110, 62);">${sessionScope.service.address}</h4>
+                        <h4 style="color: rgb(214, 110, 62);">${sessionScope.provider.address}</h4>
                     </button>
                 </div>
             </div>
