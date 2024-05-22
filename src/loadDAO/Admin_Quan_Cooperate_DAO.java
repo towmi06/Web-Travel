@@ -24,6 +24,8 @@ public class Admin_Quan_Cooperate_DAO {
             ResultSet rs = pstmt.executeQuery();
 
             while (rs.next()) {
+            	System.out.println("Successfully got the list of cooperates");
+            	
                 String tenNCC = rs.getString("tenNCC");
                 String email = rs.getString("email");
                 String soDienThoai = rs.getString("soDienThoai");

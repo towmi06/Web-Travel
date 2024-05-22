@@ -42,7 +42,7 @@
             <tbody>
 			        <tr>
 			            <td><input name="id" value="${sessionScope.tour.id}" /></td>
-			            <td><input name="sell_ID" value="${sessionScope.tour.sell_ID}" /></td>
+			            <td><input name="sell_ID" value="${sessionScope.tour.sellID}" /></td>
 			            <td><input name="cateID" value="${sessionScope.tour.cateID}" /></td>
 			            <td><input name="tourName" value="${sessionScope.tour.tourName}" /></td>
 			            <td><input name="image" value="${sessionScope.tour.image}" /></td>

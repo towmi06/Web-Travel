@@ -18,11 +18,13 @@ public class Service_th1_OrderM_DAO {
         ResultSet resultSet = null;
         try {
             connection = DBContext.getConnection();
-            String sql = "SELECT o.id, o.customer_id, o.tour_id, o.booking_date, o.total_price, "
-                       + "o.status, o.created_at, o.updated_at, o.sell_ID, "
-                       + "c.name AS customerName, c.phone AS phoneNumber, c.address "
-                       + "FROM orders o "
-                       + "JOIN customer c ON o.customer_id = c.id";
+            String sql = "SELECT o.id, o.customer_id, o.tour_id, o.booking_date, o.total_price, " +
+                    "o.status, o.created_at, o.updated_at, o.sell_ID, " +
+                    "c.name AS customerName, c.phone AS phoneNumber, c.address, " +
+                    "t.tourName " +
+                    "FROM orders o " +
+                    "JOIN customer c ON o.customer_id = c.id " +
+                    "JOIN tour t ON t.id = o.tour_id ";
             preparedStatement = connection.prepareStatement(sql);
             resultSet = preparedStatement.executeQuery();
 
@@ -31,6 +33,7 @@ public class Service_th1_OrderM_DAO {
                 int customerId = resultSet.getInt("customer_id");
                 String tourId = resultSet.getString("tour_id");
                 String bookingDate = resultSet.getString("booking_date");
+                String tourName = resultSet.getString("tourName");
                 double totalPrice = resultSet.getDouble("total_price");
                 String status = resultSet.getString("status");
                 String createdAt = resultSet.getString("created_at");
@@ -40,7 +43,7 @@ public class Service_th1_OrderM_DAO {
                 String phoneNumber = resultSet.getString("phoneNumber");
                 String address = resultSet.getString("address");
 
-                Service_Th1_OrderManager order = new Service_Th1_OrderManager(id, customerId, tourId, bookingDate, totalPrice, status, createdAt, updatedAt, sellId, customerName, phoneNumber, address);
+                Service_Th1_OrderManager order = new Service_Th1_OrderManager(id, customerId, tourId, bookingDate, tourName, totalPrice, status, createdAt, updatedAt, sellId, customerName, phoneNumber, address);
                 orders.add(order);
             }
         } catch (SQLException e) {

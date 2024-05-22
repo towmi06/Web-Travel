@@ -60,55 +60,6 @@ public class Service_Tuyen1_OutStanding_DAO {
 
         return outstandingServices;
     }
-    
-    public List<Service_Tuyen1_OutStanding> getAllTour() throws ClassNotFoundException {
-        List<Service_Tuyen1_OutStanding> outstandingServices = new ArrayList<>();
-        Connection conn = null;
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-
-        try {
-            conn = DBContext.getConnection();
-
-            // Building the SQL query
-            String query = "SELECT * FROM OutstandingService";
-
-            stmt = conn.prepareStatement(query);
-            rs = stmt.executeQuery();
-
-            while (rs.next()) {
-                Service_Tuyen1_OutStanding service = new Service_Tuyen1_OutStanding();
-                
-                service.setId(rs.getString("id"));
-                service.setSell_ID(rs.getInt("sell_ID"));
-                service.setCateID(rs.getString("cateID"));
-                service.setRate(rs.getFloat("rate"));
-                service.setSales(rs.getLong("sales"));
-                service.setTourName(rs.getString("tourName"));
-                service.setImage(rs.getString("image"));
-                service.setJourneys(rs.getString("journeys"));
-                service.setDate(rs.getString("date"));
-                service.setPrice(rs.getInt("price"));
-                service.setOutstanding(rs.getBoolean("outstanding"));
-
-                outstandingServices.add(service);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            // Close resources
-            try {
-                if (rs != null) rs.close();
-                if (stmt != null) stmt.close();
-                if (conn != null) conn.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-
-        return outstandingServices;
-    }
-
 
     // Cập nhật trạng thái outstanding của dịch vụ
     public static int updateOutstandingService(Service_Tuyen1_OutStanding service) throws ClassNotFoundException {

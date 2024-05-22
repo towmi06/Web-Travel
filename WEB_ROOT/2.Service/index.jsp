@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.util.List" %>
+<%@ page import="loadDAO.Admin_Quan_Notification_Mailbox_DAO" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -117,10 +119,27 @@
     <!--End top sidebar-->
 
     <!--Function Page-->
-    <!--Notificatiion Page-->
-    <div id="notificationPage" class="notification-page">
-        <h3>Thông báo hệ thống</h3>
-    </div>
+    <!--Notification Page-->
+	<div id="notificationPage" class="notification-page">
+	    <h1>Thông báo hệ thống</h1>
+	    <!-- Thông báo sẽ được hiển thị ở đây -->
+	    <%
+		    List<String> allNotificationList = null;
+		    try {
+				allNotificationList = new Admin_Quan_Notification_Mailbox_DAO().getNotificationList();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+            if (allNotificationList != null && !allNotificationList.isEmpty()) {
+            	for (int i = allNotificationList.size() - 1; i >= 0; i--) {
+                    out.println("<p>" + allNotificationList.get(i) + "</p>");
+                }
+            } else {
+                out.println("<p>Không có thông báo nào.</p>");
+            }
+        %>
+	</div>
 
     <!--Admin Page-->
     <div id="adminPage" class="admin-page">

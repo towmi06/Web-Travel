@@ -1,1 +1,15 @@
 /Service_Th1_OrderM.class
+/Admin_Quan_AdminInfo_Servlet.class
+/Admin_Quan_Cooperate_Servlet.class
+/Admin_Quan_GrantAccess_Servlet.class
+/Admin_Quan_Help_Servlet.class
+/Admin_Quan_TourManagenment_Servlet.class
+/HomeControl.class
+/Service_Tuyen1_OutStandingService_Servlet.class
+/Service_Tuyen2_PageLayout_Sevlet.class
+/Service_Tuyen3_ContactInfoService_Servlet.class
+/Service_Tuyen4_UserInfoEdit_Servlet.class
+/Service_Tuyen5_ChangePassword_Servlet.class
+/Service_Tuyen6_Order_Servlet.class
+/Service_Tuyen7_UpdateOrderServlet.class
+/Admin_Quan_Notification_Mailbox_Servlet.class

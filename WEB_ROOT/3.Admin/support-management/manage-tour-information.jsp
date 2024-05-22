@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page import="java.util.List" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,7 +33,7 @@
                     <option value="3">Tên Tour</option>
                     <option value="4">Ảnh</option>
                     <option value="5">Hành Trình</option>
-                    <option value="6">Điểm Đếnr</option>
+                    <option value="6">Miêu Tả</option>
                     <option value="7">Thời Gian</option>
                     <option value="8">Giá</option>
                 </select>
@@ -65,7 +64,7 @@
 			    <c:forEach var="tour" items="${sessionScope.allTourList}">
 			        <tr>
 			            <td><c:out value="${tour.id}" /></td>
-			            <td><c:out value="${tour.sell_ID}" /></td>
+			            <td><c:out value="${tour.sellID}" /></td>
 			            <td><c:out value="${tour.cateID}" /></td>
 			            <td><c:out value="${tour.tourName}" /></td>
 			            <td><c:out value="${tour.image}" /></td>

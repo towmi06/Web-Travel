@@ -82,25 +82,43 @@ public class svlLogin extends HttpServlet {
 					e.printStackTrace();
 				}
 		        
-				List<Service_Tuyen1_OutStanding> allTourList = null;
-		        try {
-					allTourList = new Service_Tuyen1_OutStanding_DAO().getAllTour();
+			    List<tour> allTourList = null;
+			    try {
+					allTourList = new Admin_Quan_TourManagenment_DAO().getAllTours();
 				} catch (ClassNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 
+			    List<String> allNotificationList = null;
+			    try {
+					allNotificationList = new Admin_Quan_Notification_Mailbox_DAO().getNotificationList();
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			    
+			    List<String> allMailboxList = null;
+			    try {
+			    	allMailboxList = new Admin_Quan_Notification_Mailbox_DAO().getMailboxList();
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			    
 		        session.setAttribute("allOrders", allOrders);
 		        session.setAttribute("allTourList", allTourList);
 				session.setAttribute("adminList", adminList);
                 session.setAttribute("adminInfo", admin);
                 session.setAttribute("cooperates", cooperates);
                 session.setAttribute("helpList", helpList);
+                session.setAttribute("allNotificationList", allNotificationList);
+                session.setAttribute("allMailboxList", allMailboxList);
                 
                 response.sendRedirect("/Web_Travel/3.Admin/index.jsp");
         	}
         	else if(role.equals("customer"))
-                response.sendRedirect("/Web_Travel/1.Customer/index.html");
+                response.sendRedirect("/Web_Travel/1.Customer/Cus.jsp");
         	else if(role.equals("service")) { 
         		Service_Tuyen3_ContactInfoService service = new Service_Tuyen3_ContactInfoService_DAO().findProviderByCredentials(email);
         		int sell_ID = service.getSell_ID();

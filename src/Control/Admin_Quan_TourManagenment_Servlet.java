@@ -44,7 +44,7 @@ public class Admin_Quan_TourManagenment_Servlet extends HttpServlet {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        response.sendRedirect("/Web_Travel/2.Admin/manage-tour-information-edit.jsp");
+        response.sendRedirect("/Web_Travel/3.Admin/manage-tour-information-edit.jsp");
     }
 
 
@@ -65,9 +65,9 @@ public class Admin_Quan_TourManagenment_Servlet extends HttpServlet {
 	    double price = Double.parseDouble(request.getParameter("price"));
 
 	    String result = Admin_Quan_TourManagenment_DAO.updateTour(id, tourName, image, date, price, journeys, description1, cateID, sellID);
-	    List<Service_Tuyen1_OutStanding> allTourList = null;
+	    List<tour> allTourList = null;
         try {
-			allTourList = new Service_Tuyen1_OutStanding_DAO().getAllTour();
+			allTourList = new Admin_Quan_TourManagenment_DAO().getAllTours();
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

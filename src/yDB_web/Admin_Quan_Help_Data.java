@@ -14,7 +14,6 @@ public class Admin_Quan_Help_Data {
         PreparedStatement pstmt = null;
         try {
         	conn = DBContext.getConnection();
-            // Connection success message
             System.out.println("Connection success!");
             
             // Create table

@@ -5,6 +5,7 @@ public class Service_Th1_OrderManager {
     private int customerId;
     private String tourId;
     private String bookingDate;
+    private String tourName;
     private double totalPrice;
     private String status;
     private String createdAt;
@@ -18,12 +19,13 @@ public class Service_Th1_OrderManager {
     	
     }
 
-    public Service_Th1_OrderManager(int id, int customerId, String tourId, String bookingDate, double totalPrice, String status, String createdAt, String updatedAt, int sellId, String customerName, String phoneNumber, String address) {
+    public Service_Th1_OrderManager(int id, int customerId, String tourId, String bookingDate, String tourName, double totalPrice, String status, String createdAt, String updatedAt, int sellId, String customerName, String phoneNumber, String address) {
         this.id = id;
         this.customerId = customerId;
         this.tourId = tourId;
         this.bookingDate = bookingDate;
-        this.totalPrice = totalPrice;
+        this.tourName = tourName;
+        this.totalPrice = totalPrice; 
         this.status = status;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
@@ -45,6 +47,9 @@ public class Service_Th1_OrderManager {
 
     public String getBookingDate() { return bookingDate; }
     public void setBookingDate(String bookingDate) { this.bookingDate = bookingDate; }
+    
+    public String getTourName() { return tourName; }
+    public void setTourName(String tourName) { this.tourName = tourName; }
 
     public double getTotalPrice() { return totalPrice; }
     public void setTotalPrice(double totalPrice) { this.totalPrice = totalPrice; }

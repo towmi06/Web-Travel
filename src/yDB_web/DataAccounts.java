@@ -1,22 +1,35 @@
-package login;
+package yDB_web;
 
 import context.DBContext;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class DataAccounts {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ClassNotFoundException {
         Connection conn = null;
         PreparedStatement pstmt = null;
+        Statement stmt = null;
+
         try {
-        	conn = DBContext.getConnection();
-            // Connection success message
+            // Get connection from DBContext
+            conn = DBContext.getConnection();
             System.out.println("Connection success!");
 
+            // Create statement
+            stmt = conn.createStatement();
+            String sql = "CREATE TABLE IF NOT EXISTS accounts (" +
+                            "ID INT PRIMARY KEY," +
+                            "Username VARCHAR(50) NOT NULL," +
+                            "Password VARCHAR(50) NOT NULL," +
+                            "Role VARCHAR(20) NOT NULL" +
+                         ")";
+            stmt.executeUpdate(sql);
+            System.out.println("Table 'accounts' created successfully.");
+
             // Prepare statement for data insertion
-            String insertSQL = "INSERT INTO Accounts (ID, Username, Password, Role) VALUES (?, ?, ?, ?)";
+            String insertSQL = "INSERT INTO accounts (ID, Username, Password, Role) VALUES (?, ?, ?, ?)";
             pstmt = conn.prepareStatement(insertSQL);
 
             // Insert data into the table
@@ -34,7 +47,7 @@ public class DataAccounts {
 
             for (String data : accountData) {
                 String[] values = data.split(", ");
-                pstmt.setString(1, values[0]);
+                pstmt.setInt(1, Integer.parseInt(values[0]));
                 pstmt.setString(2, values[1]);
                 pstmt.setString(3, values[2]);
                 pstmt.setString(4, values[3]);
@@ -43,11 +56,14 @@ public class DataAccounts {
 
             System.out.println("Data inserted successfully.");
 
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             // Close resources
             try {
+                if (stmt != null) {
+                    stmt.close();
+                }
                 if (pstmt != null) {
                     pstmt.close();
                 }

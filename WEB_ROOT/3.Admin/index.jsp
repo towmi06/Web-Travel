@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="java.util.Map" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.Arrays" %>
+<%@ page import="loadDAO.Admin_Quan_Payments_DAO" %>
+<%@ page import="loadDAO.Admin_Quan_TourManagenment_DAO" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -67,6 +73,28 @@
 	        session.removeAttribute("message");
 	    }
 	%>
+	
+	<% 
+        Map<String, Long> paymentMethodTotalMap = new Admin_Quan_Payments_DAO().getPaymentMethodTotal(); 
+        long[] doanhThu = paymentMethodTotalMap.values().stream().mapToLong(Long::longValue).toArray();
+        long[] loiNhuan = Arrays.stream(doanhThu).map(value -> (long) (value * 0.3)).toArray(); 
+        long[] thue = Arrays.stream(loiNhuan).map(value -> (long) (value * 0.1)).toArray(); 
+        
+		Map<Integer, Integer> cateIDCount = new Admin_Quan_TourManagenment_DAO().getCateIDCount();
+		long[] categories = cateIDCount.values().stream().mapToLong(Integer::longValue).toArray();
+		
+		Map<String, Integer> ordersCountByMonth = new Admin_Quan_TourManagenment_DAO().getOrdersCountByMonth();
+		int[] orders = ordersCountByMonth.values().stream().mapToInt(Integer::intValue).toArray();
+	%>
+    
+    <script>
+	    var doanhThu = <%= Arrays.toString(doanhThu) %>;
+	    var loiNhuan = <%= Arrays.toString(loiNhuan) %>;
+	    var thue = <%= Arrays.toString(thue) %>;
+	    
+	    var categories = <%= Arrays.toString(categories) %>;
+	    var orders = <%= Arrays.toString(orders) %>
+    </script>
 
     <!--Top sidebar-->
     <div class="header"> 
@@ -112,10 +140,21 @@
     <!--End top sidebar-->
 
     <!--Function Page-->
-    <!--Notificatiion Page-->
-    <div id="notificationPage" class="notification-page">
-        <h1>Thông báo hệ thống</h1>
-    </div>
+    <!--Notification Page-->
+	<div id="notificationPage" class="notification-page">
+	    <h1>Thông báo hệ thống</h1>
+	    <!-- Thông báo sẽ được hiển thị ở đây -->
+	    <%
+            List<String> allNotificationList = (List<String>) session.getAttribute("allNotificationList");
+            if (allNotificationList != null && !allNotificationList.isEmpty()) {
+            	for (int i = allNotificationList.size() - 1; i >= 0; i--) {
+                    out.println("<p>" + allNotificationList.get(i) + "</p>");
+                }
+            } else {
+                out.println("<p>Không có thông báo nào.</p>");
+            }
+        %>
+	</div>
 
     <!--Settings Page-->
     <div id="settingsPage" class="settings-page">
@@ -237,7 +276,9 @@
                     </button>
                     <ul class="submenu">
                         <li><a href="#Dịch-Vụ-Đổi-Tiền" onclick="loadCurrencyExchangeService()"><img src="resources/images/dash.svg"> Dịch Vụ Đổi Tiền</a></li>
-                        <li><a href="#Doanh-Thu-Thuế" onclick="loadRevenue()"><img src="resources/images/dash.svg"> Doanh Thu / Thuế</a></li>
+						<c:if test="${sessionScope.adminInfo.position eq 'Admin'}">
+						    <li><a href="#Doanh-Thu-Thuế" onclick="loadRevenue()"><img src="resources/images/dash.svg"> Doanh Thu / Thuế</a></li>
+						</c:if>
                         <li><a href="#Bảng-Giá-Tiền-Tệ" onclick="loadCurrencyPriceList()"><img src="resources/images/dash.svg"> Bảng Giá Tiền Tệ</a></li>
                     </ul>
                 </li>
@@ -265,7 +306,9 @@
                     <ul class="submenu">
                         <li><a href="#Trợ-Giúp" onclick="loadHelp()"><img src="resources/images/dash.svg"> Trợ Giúp</a></li>
                         <li><a href="#Thông-Báo-Hòm-Thư" onclick="loadNotificationMailbox()"><img src="resources/images/dash.svg"> Thông Báo / Hòm Thư</a></li>
-                        <li><a href="#Cấp-Quyền-Truy-Cập" onclick="loadGrantAccess()"><img src="resources/images/dash.svg"> Cấp Quyền Truy Cập</a></li>
+                        <c:if test="${sessionScope.adminInfo.position eq 'Admin'}">
+                        	<li><a href="#Cấp-Quyền-Truy-Cập" onclick="loadGrantAccess()"><img src="resources/images/dash.svg"> Cấp Quyền Truy Cập</a></li>
+                        </c:if>
                         <li><a href="#Theo-Dõi-Quản-Lý-Đơn" onclick="loadTrackOrders()"><img src="resources/images/dash.svg"> Theo Dõi / Quản Lý Đơn</a></li>
                         <li><a href="#Quản-Lý-Thông-Tin-Tour" onclick="loadManageTourInformation()"><img src="resources/images/dash.svg"> Quản Lý Thông Tin Tour</a></li>
                         <li><a href="#Thông-Kê-Báo-Cáo-Về-Hoạt-Động-Trang-Web" onclick="loadStatisticsReports()"><img src="resources/images/dash.svg"> Thông Kê / Báo Cáo Về Hoạt Động Trang Web</a></li>

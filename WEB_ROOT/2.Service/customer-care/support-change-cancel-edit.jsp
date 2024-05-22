@@ -39,6 +39,7 @@
                     <option value="1">Customer ID</option>
                     <option value="2">Tour ID</option>
                     <option value="3">Ngày đặt</option>
+                    <option value="3">Tên tour</option>
                     <option value="4">Giá</option>
                     <option value="5">Trạng thái</option>
                     <option value="6">Ngày tạo</option>
@@ -63,6 +64,7 @@
 	                    <th>Customer ID</th>
 	                    <th>Tour ID</th>
 	                    <th>Ngày đặt</th>
+	                    <th>Tên tour</th>
 	                    <th>Giá</th>
 	                    <th>Trạng thái</th>
 	                    <th>Ngày tạo</th>
@@ -80,7 +82,8 @@
                             <td><input type="text" name="customerId" value="${sessionScope.order.customerId}" class="table-input"/></td>
                             <td><input type="text" name="tourId" value="${sessionScope.order.tourId}" class="table-input"/></td>
                             <td><input type="text" name="bookingDate" value="${sessionScope.order.bookingDate}" class="table-input"/></td>
-                            <td><input type="text" name="totalPrice" value="${sessionScope.order.totalPrice}" class="table-input"/></td>
+                            <td><c:out value="${order.tourName}" /></td>
+                    	    <td><c:out value="${order.totalPrice}" /></td>
                             <td><input type="text" name="status" value="${sessionScope.order.status}" class="table-input"/></td>
                             <td><input type="text" name="createdAt" value="${sessionScope.order.createdAt}" class="table-input"/></td>
                             <td><input type="text" name="updatedAt" value="${sessionScope.order.updatedAt}" class="table-input"/></td>

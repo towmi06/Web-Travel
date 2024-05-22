@@ -33,14 +33,14 @@
                     <option value="1">Customer ID</option>
                     <option value="2">Tour ID</option>
                     <option value="3">Ngày đặt</option>
-                    <option value="4">Giá</option>
-                    <option value="5">Trạng thái</option>
-                    <option value="6">Ngày tạo</option>
-                    <option value="7">Ngày cập nhật</option>
-                    <option value="8">Sell ID</option>
-                    <option value="9">Tên khách hàng</option>
-                    <option value="10">Số điện thoại</option>
-                    <option value="11">Địa chỉ</option>
+                    <option value="4">Tên tour</option>
+                    <option value="5">Giá</option>
+                    <option value="6">Trạng thái</option>
+                    <option value="7">Ngày tạo</option>
+                    <option value="8">Ngày cập nhật</option>
+                    <option value="9">Sell ID</option>
+                    <option value="10">Tên khách hàng</option>
+                    <option value="11">Số điện thoại</option>
                 </select>
             </div>
             <!--Search-->
@@ -57,6 +57,7 @@
                     <th>Customer ID</th>
                     <th>Tour ID</th>
                     <th>Ngày đặt</th>
+                    <th>Tên tour</th>
                     <th>Giá</th>
                     <th>Trạng thái</th>
                     <th>Ngày tạo</th>
@@ -64,7 +65,6 @@
                     <th>Sell ID</th> 
                     <th>Tên khách hàng</th>
                     <th>Số điện thoại</th> 
-                    <th>Địa chỉ</th> 
                 </tr>
             </thead>
             <tbody>
@@ -74,6 +74,7 @@
                         <td><c:out value="${order.customerId}" /></td>
                         <td><c:out value="${order.tourId}" /></td>
                         <td><c:out value="${order.bookingDate}" /></td>
+                        <td><c:out value="${order.tourName}" /></td>
                         <td><c:out value="${order.totalPrice}" /></td>
                         <td><c:out value="${order.status}" /></td>
                         <td><c:out value="${order.createdAt}" /></td>
@@ -81,7 +82,6 @@
                         <td><c:out value="${order.sellId}" /></td>
                         <td><c:out value="${order.customerName}" /></td>
                         <td><c:out value="${order.phoneNumber}" /></td>
-                        <td><c:out value="${order.address}" /></td>
                     </tr>
                </c:forEach>
             </tbody>

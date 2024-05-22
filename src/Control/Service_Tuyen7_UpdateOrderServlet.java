@@ -23,13 +23,9 @@ public class Service_Tuyen7_UpdateOrderServlet extends HttpServlet {
     private int customerId;
     private String tourId;
     private String bookingDate;
-    private double totalPrice;
     private String status;
     private String createdAt;
     private String updatedAt;
-    private String customerName;
-    private String phoneNumber;
-    private String address;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -42,13 +38,9 @@ public class Service_Tuyen7_UpdateOrderServlet extends HttpServlet {
         customerId = 0;
         tourId = "";
         bookingDate = "";
-        totalPrice = 0.0;
         status = "";
         createdAt = "";
         updatedAt = "";
-        customerName = "";
-        phoneNumber = "";
-        address = "";
     }
 
 	/**
@@ -69,14 +61,13 @@ public class Service_Tuyen7_UpdateOrderServlet extends HttpServlet {
         customerId = Integer.parseInt(request.getParameter("customerId"));
         tourId = request.getParameter("tourId");
         bookingDate = request.getParameter("bookingDate");
-        totalPrice = Double.parseDouble(request.getParameter("totalPrice"));
         status = request.getParameter("status");
         createdAt = request.getParameter("createdAt");
         updatedAt = request.getParameter("updatedAt");
         
         if(request.getParameter("btnSave") != null) {
         	try {
-        		result = ordersDAO.updateOrder(id, customerId, tourId, bookingDate, totalPrice, status, createdAt, updatedAt);
+        		result = ordersDAO.updateOrder(id, customerId, tourId, bookingDate, status, createdAt, updatedAt);
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
