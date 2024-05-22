@@ -16,7 +16,7 @@
 
     <%
         int sellID = (int) session.getAttribute("sell_ID");
-  		List<Service_Th1_OrderManager> orderList = Service_Tuyen4_Orders_DAO.getOrdersBySellId(sellID);
+  		List<Service_Th1_OrderManager> orderList = Service_Tuyen4_Orders_DAO.getOrdersBySellId(1);
         session.setAttribute("orderList", orderList);
     %>
 

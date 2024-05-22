@@ -12,56 +12,57 @@ import java.util.List;
 
 public class Service_Tuyen4_Orders_DAO {
 
-    public static List<Service_Th1_OrderManager> getOrdersBySellId(int sell_ID) throws ClassNotFoundException {
-        List<Service_Th1_OrderManager> orders = new ArrayList<>();
-        Connection connection = null;
-        PreparedStatement preparedStatement = null;
-        ResultSet resultSet = null;
-        try {
-            connection = DBContext.getConnection();
-            String sql = "SELECT o.id, o.customer_id, o.tour_id, o.booking_date, o.total_price, " +
-                    "o.status, o.created_at, o.updated_at, o.sell_ID, " +
-                    "c.name AS customerName, c.phone AS phoneNumber, c.address, " +
-                    "t.tourName " +
-                    "FROM orders o " +
-                    "JOIN customer c ON o.customer_id = c.id " +
-                    "JOIN tour t ON t.id = o.tour_id " +
-                    "WHERE o.sell_ID = ?";
-            preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setInt(1, sell_ID);
-            resultSet = preparedStatement.executeQuery();
+	public static List<Service_Th1_OrderManager> getOrdersBySellId(int sell_ID) throws ClassNotFoundException {
+	    List<Service_Th1_OrderManager> orders = new ArrayList<>();
+	    Connection connection = null;
+	    PreparedStatement preparedStatement = null;
+	    ResultSet resultSet = null;
+	    try {
+	        connection = DBContext.getConnection();
+	        String sql = "SELECT o.id, o.customer_id, o.tour_id, o.booking_date, o.total_price, " +
+	                     "o.status, o.created_at, o.updated_at, o.sell_ID, " +
+	                     "c.name AS customerName, c.phone AS phoneNumber, c.address, " +
+	                     "t.tourName, t.price " +
+	                     "FROM orders o " +
+	                     "JOIN customer c ON o.customer_id = c.id " +
+	                     "JOIN tour t ON t.id = o.tour_id " +
+	                     "WHERE o.sell_ID = ?";
+	        preparedStatement = connection.prepareStatement(sql);
+	        preparedStatement.setInt(1, sell_ID);
+	        resultSet = preparedStatement.executeQuery();
 
-            while (resultSet.next()) {
-                int id = resultSet.getInt("id");
-                int customerId = resultSet.getInt("customer_id");
-                String tourId = resultSet.getString("tour_id");
-                String bookingDate = resultSet.getString("booking_date");
-                String tourName = resultSet.getString("tourName");
-                double totalPrice = resultSet.getDouble("total_price");
-                String status = resultSet.getString("status");
-                String createdAt = resultSet.getString("created_at");
-                String updatedAt = resultSet.getString("updated_at");
-                String customerName = resultSet.getString("customerName");
-                String phoneNumber = resultSet.getString("phoneNumber");
-                String address = resultSet.getString("address");
+	        while (resultSet.next()) {
+	            int id = resultSet.getInt("id");
+	            int customerId = resultSet.getInt("customer_id");
+	            String tourId = resultSet.getString("tour_id");
+	            String bookingDate = resultSet.getString("booking_date");
+	            String tourName = resultSet.getString("tourName");
+	            double totalPrice = resultSet.getDouble("price");
+	            String status = resultSet.getString("status");
+	            String createdAt = resultSet.getString("created_at");
+	            String updatedAt = resultSet.getString("updated_at");
+	            String customerName = resultSet.getString("customerName");
+	            String phoneNumber = resultSet.getString("phoneNumber");
+	            String address = resultSet.getString("address");
 
-                Service_Th1_OrderManager order = new Service_Th1_OrderManager(id, customerId, tourId, bookingDate, tourName, totalPrice, status, createdAt, updatedAt, sell_ID, customerName, phoneNumber, address);
-                orders.add(order);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            // Close resources
-            try {
-                if (resultSet != null) resultSet.close();
-                if (preparedStatement != null) preparedStatement.close();
-                if (connection != null) connection.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-        return orders;
-    }
+	            Service_Th1_OrderManager order = new Service_Th1_OrderManager(id, customerId, tourId, bookingDate, tourName, totalPrice, status, createdAt, updatedAt, sell_ID, customerName, phoneNumber, address);
+	            orders.add(order);
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        // Close resources
+	        try {
+	            if (resultSet != null) resultSet.close();
+	            if (preparedStatement != null) preparedStatement.close();
+	            if (connection != null) connection.close();
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	    }
+	    return orders;
+	}
+
 
     public static Service_Th1_OrderManager findOrderByID(int id) throws ClassNotFoundException {
         Connection conn = null;
@@ -72,10 +73,10 @@ public class Service_Tuyen4_Orders_DAO {
         try {
             conn = DBContext.getConnection();
 
-            String sql = "SELECT o.id, o.customer_id, o.tour_id, o.booking_date, o.total_price, " +
+            String sql = "SELECT o.id, o.customer_id, o.tour_id, o.booking_date," +
                     "o.status, o.created_at, o.updated_at, o.sell_ID, " +
                     "c.name AS customerName, c.phone AS phoneNumber, c.address, " +
-                    "t.tourName " +
+                    "t.tourName, t.price " +
                     "FROM orders o " +
                     "JOIN customer c ON o.customer_id = c.id " +
                     "JOIN tour t ON t.id = o.tour_id " +
@@ -90,7 +91,7 @@ public class Service_Tuyen4_Orders_DAO {
                 String tourId = rs.getString("tour_id");
                 String bookingDate = rs.getString("booking_date");
                 String tourName = rs.getString("tourName");
-                double totalPrice = rs.getDouble("total_price");
+                double totalPrice = rs.getDouble("price");
                 String status = rs.getString("status");
                 String createdAt = rs.getString("created_at");
                 String updatedAt = rs.getString("updated_at");
