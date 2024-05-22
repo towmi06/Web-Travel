@@ -23,6 +23,7 @@ public class Service_Th1_OrderM extends HttpServlet {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+
         request.setAttribute("orders", orders);
         request.getRequestDispatcher("/2.Service/3.QliOder/orders.jsp").forward(request, response);
     }
