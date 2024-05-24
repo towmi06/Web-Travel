@@ -1,16 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>Order Details</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
-    <meta name="description" content="This is an example dashboard created using build-in elements and components.">
 
     <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-
+    <link rel="icon" href="/Web_Travel/2.Service/resources/images/online-shopping.png">    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="./2.Service/resources/css/main.css" rel="stylesheet">
     <link href="./2.Service/resources/my_style.css" rel="stylesheet">
 </head>
@@ -33,13 +32,29 @@
         </div>
     </div>
 
+    <c:if test="${not empty message}">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            ${message}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </c:if>
+
     <div class="row mt-4">
         <div class="col-md-12">
             <div class="card mb-3">
                 <div class="card-body">
                     <div class="table-responsive">
-                        <h2 class="text-center">Products list</h2>
-                        <hr>
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <a href="javascript:history.back()" style="font-size:18px">&lt; Back</a>
+                            </div>
+                            <div class="col-md-6">
+                                <h2 style="margin-left: -90px;">Products list</h2>
+                            </div>
+                        </div>
+                        <!-- Thông tin đơn hàng -->
                         <table class="table table-borderless table-striped table-hover">
                             <thead>
                                 <tr>
@@ -50,19 +65,16 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <c:forEach var="orderDetail" items="${orders}">
-                                    <tr>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <img src="./2.Service/resources/images/image_tour/${orderDetail.imageTour}" alt="" class="img-thumbnail mr-3" style="height: 60px;">
-        
-                                            </div>
-                                        </td>
-                                        <td class="text-center">${orderDetail.numberOrders}</td>
-                                        <td class="text-center">${orderDetail.bookingDate}</td>
-                                        <td class="text-center">${orderDetail.totalPrice}</td>
-                                    </tr>
-                                </c:forEach>
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <img src="./2.Service/resources/images/image_tour/${orderDetail.image}" alt="" class="img-thumbnail mr-3" style="height: 60px;">
+                                        </div>
+                                    </td>
+                                    <td class="text-center">${orderDetail.numberOrders}</td>
+                                    <td class="text-center">${orderDetail.bookingDate}</td>
+                                    <td class="text-center">${orderDetail.totalPrice}</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -132,6 +144,15 @@
                                 <div class="col-sm-8">
                                     <span class="form-control-plaintext">${orderDetail.updatedAt}</span>
                                 </div>
+                            </div>
+                            <!-- Các nút Accept, Cancel, Complete -->
+                            <div style="text-align:center;">
+                                <form method="post" action="Service_Th2_DetailOrderM_Servlet">
+                                    <input type="hidden" name="orderId" value="${orderDetail.id}">
+                                    <button type="submit" name="action" value="accept" class="btn btn-success mr-2">Accept</button>
+                                    <button type="submit" name="action" value="cancel" class="btn btn-danger mr-2">Cancel</button>
+                                    <button type="submit" name="action" value="complete" class="btn btn-warning">Complete</button>
+                                </form>
                             </div>
                         </div>
                     </div>

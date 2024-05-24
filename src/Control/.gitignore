@@ -14,3 +14,15 @@
 /Service_Tuyen7_UpdateOrderServlet.class
 /Admin_Quan_Notification_Mailbox_Servlet.class
 /Service_Th2_DetailOrderM_Servlet.class
+/Service_Th3_AddProductM_Servlet.class
+/Service_Th3_EditProductM_Servlet.class
+/Service_Th4_EditProductM_Servlet.class
+/Service_Th4_DeleteProductM_Servlet.class
+/Service_Th5_DeleteProductM_Servlet.class
+/Service_Th6_CTKM_Servlet.class
+/Service_Th4_AddProductM_Servlet.class
+/Service_Th2_EditProductM_Servlet.class
+/Service_Th5_EditProductM_Servlet.class
+/Service_Th6_DeleteProductM_Servlet.class
+/Service_Th7_CTKM_Servlet.class
+/Service_Th3_ProducM_Servlet.class

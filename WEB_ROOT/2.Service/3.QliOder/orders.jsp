@@ -4,7 +4,8 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title> 🛍️ Order List Management</title>
+    <title>Order List Management</title>
+    <link rel="icon" href="/Web_Travel/2.Service/resources/images/online-shopping.png">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.0.7/css/boxicons.min.css">
     <style>
@@ -47,10 +48,10 @@
             <form>
                 <div class="input-group">
                     <input type="search" name="search" id="search" placeholder="Search everything"
-                           class="form-control" style =  "border-radius: 3px;">
+                           class="form-control" style="border-radius: 3px;">
                     <span class="input-group-append">
                         <button type="submit" class="btn btn-primary" style="background-color: #0a4f4f; border-radius: 5px;">
-						    <box-icon name='search-alt' flip='horizontal' color='#ffffff'></box-icon>
+                            <box-icon name='search-alt' flip='horizontal' color='#ffffff'></box-icon>
                             🌐 Search
                         </button>
                     </span>
@@ -61,51 +62,47 @@
             <div class="float-right">
                 <div role="group" class="btn-group-sm btn-group">
                     <button class="btn btn-focus" style="background-color:#0a4f4f; color: #ffffff; border-radius: 5px;margin-right: 3px;">This week</button>
-                    
-					<button class="active btn btn-focus" style="background-color:#0a4f4f; color: #ffffff; border-radius: 5px;">Anytime</button>
-
+                    <button class="active btn btn-focus" style="background-color:#0a4f4f; color: #ffffff; border-radius: 5px;">Anytime</button>
                 </div>
             </div>
         </div>
     </div>
-                <table class="table table-bordered">
-                    <thead class="header-row">
-                        <tr>
-                            <th class="center">ID</th>
-                            <th class="center">Image</th>
-                            <th class="center">Booking Date</th>
-                            <th class="center">Total Price</th>
-                            <th class="center">Status</th>
-                            <th class="center">Created At</th>
-                            <th class="center">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <c:forEach var="order" items="${orders}">
-                            <tr>
-                                <td style="text-align: center; vertical-align: middle;">${order.id}</td>
-                                <td style="text-align: center; vertical-align: middle;">
-                                    <img src="./2.Service/resources/images/image_tour/${order.imageTour}"
-                                         alt="${order.imageTour}"
-                                         style="width: 300px; height: 200px; display: block; margin: 0 auto;">
-                                </td>
-                                <td style="text-align: center; vertical-align: middle;">${order.bookingDate}</td>
-                                <td style="text-align: center; vertical-align: middle;">${order.totalPrice}</td>
-                                <td class="status-column" style="text-align: center; vertical-align: middle;">${order.status}</td>
-                                <td style="text-align: center; vertical-align: middle;">${order.createdAt}</td>
-                                <td style="text-align: center; vertical-align: middle;">
-                                    <form action="Service_Th2_DetailOrderM_Servlet" method="GET">
-									    <input type="hidden" name="id" value="${order.id}">
-									    <button class="button-style" type="submit">Detail</button>
-									</form>
-                                </td>
-                            </tr>
-                        </c:forEach>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
+
+    <table class="table table-bordered">
+        <thead class="header-row">
+            <tr>
+                <th class="center">ID</th>
+                <th class="center">Image</th>
+                <th class="center">Booking Date</th>
+                <th class="center">Total Price</th>
+                <th class="center">Status</th>
+                <th class="center">Created At</th>
+                <th class="center">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <c:forEach var="order" items="${orders}">
+                <tr>
+                    <td style="text-align: center; vertical-align: middle;">${order.id}</td>
+                    <td style="text-align: center; vertical-align: middle;">
+                        <img src="./2.Service/resources/images/image_tour/${order.imageTour}"
+                             alt="${order.imageTour}"
+                             style="width: 300px; height: 200px; display: block; margin: 0 auto;">
+                    </td>
+                    <td style="text-align: center; vertical-align: middle;">${order.bookingDate}</td>
+                    <td style="text-align: center; vertical-align: middle;">${order.totalPrice}</td>
+                    <td class="status-column" style="text-align: center; vertical-align: middle;">${order.status}</td>
+                    <td style="text-align: center; vertical-align: middle;">${order.createdAt}</td>
+                    <td style="text-align: center; vertical-align: middle;">
+                        <form action="Service_Th2_DetailOrderM_Servlet" method="GET">
+                            <input type="hidden" name="orderId" value="${order.id}">
+                            <button class="button-style" type="submit">Detail</button>
+                        </form>
+                    </td>
+                </tr>
+            </c:forEach>
+        </tbody>
+    </table>
 </div>
 </body>
 </html>
