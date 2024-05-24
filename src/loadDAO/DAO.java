@@ -76,6 +76,91 @@ public class DAO {
 		}
 		return list;
 	}
+	
+	    public tour getLast() {
+	        String query = "select top 1 * from tour\n"
+	                + "order by id desc";
+	        try {
+	            conn = new DBContext().getConnection();//mo ket noi voi sql
+	            ps = conn.prepareStatement(query);
+	            rs = ps.executeQuery();
+	            while (rs.next()) {
+	                return new tour();
+	                	            }
+	        } catch (Exception e) {
+	        }
+	        return null;
+	    }
+
+	    public void singup(String user, String pass) {
+	        String query = "insert into account\n"
+	                + "values(?,?,0,0)";
+	        try {
+	            conn = new DBContext().getConnection();//mo ket noi voi sql
+	            ps = conn.prepareStatement(query);
+	            ps.setString(1, user);
+	            ps.setString(2, pass);
+	            ps.executeUpdate();
+	        } catch (Exception e) {
+	        }
+	    }
+
+	    public void deletetour(String pid) {
+	        String query = "delete from tour\n"
+	                + "where id = ?";
+	        try {
+	            conn = new DBContext().getConnection();//mo ket noi voi sql
+	            ps = conn.prepareStatement(query);
+	            ps.setString(1, pid);
+	            ps.executeUpdate();
+	        } catch (Exception e) {
+	        }
+	    }
+
+	    public void inserttour(String name, String image, String price,
+	            String title, String description, String category, int sid) {
+	        String query = "INSERT [dbo].[tour] \n"
+	                + "([name], [image], [price], [title], [description], [cateID], [sell_ID])\n"
+	                + "VALUES(?,?,?,?,?,?,?)";
+	        try {
+	            conn = new DBContext().getConnection();//mo ket noi voi sql
+	            ps = conn.prepareStatement(query);
+	            ps.setString(1, name);
+	            ps.setString(2, image);
+	            ps.setString(3, price);
+	            ps.setString(4, title);
+	            ps.setString(5, description);
+	            ps.setString(6, category);
+	            ps.setInt(7, sid);
+	            ps.executeUpdate();
+	        } catch (Exception e) {
+	        }
+	    }
+
+	    public void edittour(String name, String image, String price,
+	            String title, String description, String category, String pid) {
+	        String query = "update tour\n"
+	                + "set [name] = ?,\n"
+	                + "[image] = ?,\n"
+	                + "price = ?,\n"
+	                + "title = ?,\n"
+	                + "[description] = ?,\n"
+	                + "cateID = ?\n"
+	                + "where id = ?";
+	        try {
+	            conn = new DBContext().getConnection();//mo ket noi voi sql
+	            ps = conn.prepareStatement(query);
+	            ps.setString(1, name);
+	            ps.setString(2, image);
+	            ps.setString(3, price);
+	            ps.setString(4, title);
+	            ps.setString(5, description);
+	            ps.setString(6, category);
+	            ps.setString(7, pid);
+	            ps.executeUpdate();
+	        } catch (Exception e) {
+	        }
+	    }
 
 	public static void main(String[] args) {
 		DAO dao = new DAO();

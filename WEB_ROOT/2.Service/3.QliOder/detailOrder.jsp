@@ -9,7 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
 
     <!-- Bootstrap CSS -->
-    <link rel="icon" href="/Web_Travel/2.Service/resources/images/online-shopping.png">    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" href="/Web_Travel/2.Service/resources/images/online-shopping.png">    
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="./2.Service/resources/css/main.css" rel="stylesheet">
     <link href="./2.Service/resources/my_style.css" rel="stylesheet">
 </head>

@@ -5,6 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Product Management</title>
+     <link rel="icon" href="/Web_Travel/2.Service/resources/images/online-shopping.png">
     <link rel="icon" href="/Web_Travel/2.Service/login/assets/logo.png">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.0.7/css/boxicons.min.css">
@@ -102,7 +103,7 @@
                         <td style="text-align: center; vertical-align: middle;">${product.categoryName}</td>
                         <td style="text-align: center; vertical-align: middle;" class="action-icons">
                             <a href="Service_Th8_DetailProductM_Servlet?id=${product.id}" class="button-style"><i class='bx bx-info-circle'></i></a>
-                            <a href="Service_Th5_EditProductM_Servlet?id=${product.id}" class="button-style"><i class='bx bx-edit'></i></a>
+                            <a href="Service_Th_EditC?id=${product.id}" class="button-style"><i class='bx bx-edit'></i></a>
                             <form class="d-inline" action="Service_Th6_DeleteProductM_Servlet" method="post">
                                 <input type="hidden" name="id" value="${product.id}">
                                 <input type="hidden" name="sellId" value="${product.sellId}">

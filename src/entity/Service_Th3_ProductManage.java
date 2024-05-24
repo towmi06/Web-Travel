@@ -7,6 +7,7 @@ public class Service_Th3_ProductManage {
     private String date;
     private double price;
     private String journeys;
+    private String description1;
     private int cateID;
     private int sellId; 
     private String categoryName;
@@ -59,7 +60,13 @@ public class Service_Th3_ProductManage {
     public void setJourneys(String journeys) {
         this.journeys = journeys;
     }
+	public String getDescription1() {
+		return description1;
+	}
 
+	public void setDescription1(String description1) {
+		this.description1 = description1;
+	}
     public int getCateID() {
         return cateID;
     }
