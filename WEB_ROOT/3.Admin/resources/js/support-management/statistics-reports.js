@@ -18,7 +18,7 @@ function renderCharts(categories, orders) {
         data: {
             labels: ['March', 'April', 'May', 'June'],
             datasets: [{
-                label: 'Revenue',
+                label: 'Số lượng đơn',
                 data: orders,
                 fill: false,
                 borderColor: 'rgba(75, 192, 192, 1)',
