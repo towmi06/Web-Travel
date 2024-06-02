@@ -75,7 +75,7 @@ public class Service_Th2_DetailOrder_DAO {
         }
     }
 
-    // Xóa đơn hàng theo ID
+    // Từ chối đươn hàng đơn hàng theo ID
     public void deleteOrder(int orderId) throws ClassNotFoundException, SQLException {
         Connection connection = null;
         PreparedStatement preparedStatement = null;

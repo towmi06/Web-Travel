@@ -66,7 +66,7 @@
                     
                 </div>
                 <div class="col-sm-6">
-                    <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal" style="margin-left:200px;bottom:3px;"><span>+ Create</span></a>
+                    <a href="${pageContext.request.contextPath}/add" class="btn btn-success" data-toggle="modal" style="margin-left:200px;bottom:3px;"><span>+ Create</span></a>
                 	
                 </div>
             </div>
@@ -102,8 +102,8 @@
                         <td style="text-align: center; vertical-align: middle;">${product.date}</td>
                         <td style="text-align: center; vertical-align: middle;">${product.categoryName}</td>
                         <td style="text-align: center; vertical-align: middle;" class="action-icons">
-                            <a href="Service_Th8_DetailProductM_Servlet?id=${product.id}" class="button-style"><i class='bx bx-info-circle'></i></a>
-                            <a href="Service_Th_EditC?id=${product.id}" class="button-style"><i class='bx bx-edit'></i></a>
+                            <a href="Service_Th7_detail_Servlet?id=${product.id}" class="button-style"><i class='bx bx-info-circle'></i></a>
+                            <a href="${pageContext.request.contextPath}/edit?id=${product.id}" class="button-style"><i class='bx bx-edit'></i></a>
                             <form class="d-inline" action="Service_Th6_DeleteProductM_Servlet" method="post">
                                 <input type="hidden" name="id" value="${product.id}">
                                 <input type="hidden" name="sellId" value="${product.sellId}">

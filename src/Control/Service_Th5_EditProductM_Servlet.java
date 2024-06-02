@@ -2,90 +2,84 @@ package Control;
 
 import loadDAO.Service_Th3_ProductManagerDAO;
 import entity.Service_Th3_ProductManage;
+import entity.categories;
 
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.sql.SQLException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "Service_Th5_EditProductM_Servlet", urlPatterns = {"/Service_Th5_EditProductM_Servlet"})
+@WebServlet(name = "Service_Th5_EditProductM_Servlet", urlPatterns = {"/edit"})
 public class Service_Th5_EditProductM_Servlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private Service_Th3_ProductManagerDAO productManagerDAO;
 
     @Override
     public void init() {
-        productManagerDAO = new Service_Th3_ProductManagerDAO(); // Initialize your DAO here
+        productManagerDAO = new Service_Th3_ProductManagerDAO(); 
+    }
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException, SQLException {
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
+
+        String id = request.getParameter("id");
+       // String nameTour = request.getParameter("nameTour");
+       // String image = request.getParameter("image");
+        String date = request.getParameter("date");
+        String priceStr = request.getParameter("price");
+        BigDecimal price = new BigDecimal(priceStr); // Chuyển đổi chuỗi giá trị sang BigDecimal
+
+        String journeys = request.getParameter("journeys");
+        String description1 = request.getParameter("description1");
+        //String category = request.getParameter("category");
+        
+        Service_Th3_ProductManagerDAO tour = new Service_Th3_ProductManagerDAO();
+        tour.updateProduct(id, date, price, journeys, description1);
+        
+     // Forward the request to the edit page
+        response.sendRedirect(request.getContextPath() + "/Service_Th3_ProducM_Servlet?sellId=" + 1);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String id = request.getParameter("id");
+    	  
+    	String id = request.getParameter("id");
         System.out.println("Received ID in GET request: " + id);
 
         if (id == null || id.trim().isEmpty()) {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Product ID is missing or invalid.");
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Không nhận được ID tour");
             return;
         }
 
-        Service_Th3_ProductManage product = productManagerDAO.getProductById(id);
-        if (product == null) {
-            response.sendError(HttpServletResponse.SC_NOT_FOUND, "Product not found.");
+        Service_Th3_ProductManage tour = productManagerDAO.getProductById(id);
+        if (tour == null) {
+            response.sendError(HttpServletResponse.SC_NOT_FOUND, "Không tìm thấy.");
             return;
         }
-
-        request.setAttribute("product", product);
+        request.setAttribute("tour", tour);
         request.getRequestDispatcher("/2.Service/2.Qlidv/EditTour.jsp").forward(request, response);
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String id = request.getParameter("id");
-        System.out.println("Received ID in POST request: " + id);
 
-        if (id == null || id.trim().isEmpty()) {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Product ID is missing or invalid.");
-            return;
-        }
-
-        String date = request.getParameter("date");
-        date = (date != null) ? date.trim() : null;
-        System.out.println("Received Date: " + date);
-
-        String priceStr = request.getParameter("price");
-        priceStr = (priceStr != null) ? priceStr.trim() : null;
-        System.out.println("Received Price: " + priceStr);
-
-        String journeys = request.getParameter("journeys");
-        journeys = (journeys != null) ? journeys.trim() : null;
-        System.out.println("Received Journeys: " + journeys);
-
-        String description1 = request.getParameter("description1");
-        description1 = (description1 != null) ? description1.trim() : null;
-        System.out.println("Received Description: " + description1);
-
-        Service_Th3_ProductManage product = new Service_Th3_ProductManage();
-        product.setId(id);
-        product.setDate(date);
-
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         try {
-            double price = Double.parseDouble(priceStr);
-            product.setPrice(price);
-        } catch (NumberFormatException e) {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid price format.");
-            return;
-        }
-
-        product.setJourneys(journeys);
-        product.setDescription1(description1);
-
-        productManagerDAO.updateProduct(product);
-
-        response.sendRedirect("manager"); // Redirect to a confirmation or listing page
+			processRequest(request, response);
+		} catch (ServletException | IOException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 
     @Override
     public String getServletInfo() {
-        return "Servlet for editing tour product information";
+        return "Short description";
     }
 }

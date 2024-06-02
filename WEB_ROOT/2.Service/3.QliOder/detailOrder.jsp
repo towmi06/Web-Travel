@@ -59,7 +59,7 @@
                         <table class="table table-borderless table-striped table-hover">
                             <thead>
                                 <tr>
-                                    <th>Product</th>
+                                    <th>Tour</th>
                                     <th class="text-center">Number of Customer</th>
                                     <th class="text-center">Time Booking</th>
                                     <th class="text-center">Total</th>

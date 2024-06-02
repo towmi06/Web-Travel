@@ -12,8 +12,8 @@ public class DBContext {
         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 
         // Establish connection
-        String urlDB = "jdbc:sqlserver://DESKTOP-HM360E0\\MSSQLSERVER04:1433;databaseName=tour";
-        String user = "sa";
+        String urlDB = "jdbc:sqlserver://localhost:1433;databaseName=tour";
+        String user = "user";
         String password = "12345";
         // Return the connection object
         return DriverManager.getConnection(urlDB, user, password);
